@@ -71,6 +71,12 @@
 //获取用户自定义分组下数据
 #define SELECTCUSTOMData                      POST_INTERFACE(@"api/basic/selectCustomData")
 
+//获取设备详情数据
+#define FacilityDetailData                      POST_INTERFACE(@"api/bean/selectDeviceById")
+
+//获取网点详情数据
+#define LatticeDetailData                      POST_INTERFACE(@"api/bean/selectBranchById")
+
 
 
 

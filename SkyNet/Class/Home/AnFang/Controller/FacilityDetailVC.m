@@ -7,16 +7,28 @@
 //
 
 #import "FacilityDetailVC.h"
+#import "FacilityDetailModel.h"
 
 @interface FacilityDetailVC ()
-
+@property (nonatomic, strong) FacilityDetailModel *detailModel;
 @end
 
 @implementation FacilityDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getData];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)getData {
+    [FacilityDetailModel getDetailDataById:self.deviceId 
+                                   success:^(id returnValue) {
+        
+                                       self.detailModel = returnValue;
+                                 } failure:^(id errorCode) {
+                                       
+                                 }];
 }
 
 - (void)didReceiveMemoryWarning {

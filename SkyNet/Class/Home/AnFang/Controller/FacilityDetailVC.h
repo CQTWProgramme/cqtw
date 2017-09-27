@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface FacilityDetailVC : BaseViewController
-
+@property (nonatomic, copy) NSString *deviceId;
 @end

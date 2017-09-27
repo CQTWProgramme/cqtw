@@ -8,8 +8,10 @@
 
 #import "EquipmentVC.h"
 #import "EquipCell.h"
+#import "FacilityDetailVC.h"
 @interface EquipmentVC ()
-
+//设备数组
+@property (nonatomic, strong) NSMutableArray *equipmentsArray;
 @end
 
 @implementation EquipmentVC
@@ -17,8 +19,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      [self.view addSubview:self.myTableView];
+    [self loadData];
 }
 
+-(NSMutableArray *)equipmentsArray {
+    if (nil == _equipmentsArray) {
+        _equipmentsArray = [NSMutableArray array];
+    }
+    return _equipmentsArray;
+}
+
+//加载设备数据
+- (void)loadData {
+    
+}
 
 #pragma mark 下拉刷新
 -(void)reloadTableView{
@@ -114,7 +128,9 @@
     
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 
 
