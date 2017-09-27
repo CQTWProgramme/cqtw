@@ -9,15 +9,21 @@
 #import "FacilityDetailVC.h"
 #import "FacilityDetailModel.h"
 
-@interface FacilityDetailVC ()
+@interface FacilityDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) FacilityDetailModel *detailModel;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation FacilityDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getData];
+    self.title = @"设备详情";
+    //[self getData];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -29,6 +35,24 @@
                                  } failure:^(id errorCode) {
                                        
                                  }];
+}
+#pragma tableviewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *ID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"通道的名称%@",@(indexPath.row)];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

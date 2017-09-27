@@ -8,6 +8,7 @@
 
 #import "AnDetailVC.h"
 #import "AnDetailView.h"
+#import "LatticePointDetailVC.h"
 @interface AnDetailVC ()
 @property(nonatomic,strong)AnDetailView * anDetailView;
 @end
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    MJWeakSelf
     self.title=@"安防详情";
      [self setNavBackButtonImage:ImageNamed(@"back")];
     [self createRightItem];
@@ -50,10 +50,19 @@
 }
 
 -(AnDetailView *)anDetailView{
-    
+    MJWeakSelf
     if (!_anDetailView) {
        _anDetailView =[[AnDetailView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT) currentVC:self];
         //_afView.delegate=self;
+        NSInteger count = _anDetailView.childControllers.count;
+        for (NSInteger i = 0; i < count; i++) {
+            [self addChildViewController:_anDetailView.childControllers[i]];
+        }
+        LatticePointDetailVC *latticeDetailVC = [[LatticePointDetailVC alloc] init];
+        latticeDetailVC.view.backgroundColor = [UIColor whiteColor];
+        _anDetailView.latticePointDetailBlock = ^(){
+            [weakSelf.navigationController pushViewController:latticeDetailVC animated:YES];
+        };
     }
     return _anDetailView;
     

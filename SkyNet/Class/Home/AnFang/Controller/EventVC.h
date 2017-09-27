@@ -6,9 +6,9 @@
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface EventVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface EventVC : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) UITableView       * myTableView;
 @property (nonatomic, strong) MJRefreshComponent *myRefreshView;
 @property(nonatomic,strong)   MJRefreshAutoFooter * myAutoFooter;

@@ -21,6 +21,7 @@
     [self.view addSubview:self.inputText];
      [self setNavBackButtonImage:ImageNamed(@"back")];
     self.title=@"新增分组";
+    [self createRightItem];
     
 
 }

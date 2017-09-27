@@ -130,6 +130,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SLLog(@"点击了");
+    FacilityDetailVC *detailVC = [[FacilityDetailVC alloc] init];
+    detailVC.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 

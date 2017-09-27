@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F21F7B58D500AE83FF /* FacilityDetailModel.m */; };
 		881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F51F7B5DA600AE83FF /* BaseModel.m */; };
+		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
 		88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */; };
@@ -159,6 +160,8 @@
 		881322F21F7B58D500AE83FF /* FacilityDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailModel.m; sourceTree = "<group>"; };
 		881322F41F7B5DA600AE83FF /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		881322F51F7B5DA600AE83FF /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		881322F81F7BE14E00AE83FF /* LatticePointDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatticePointDetailHeaderView.h; sourceTree = "<group>"; };
+		881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatticePointDetailHeaderView.m; sourceTree = "<group>"; };
 		88CE3F2A1F7AADBB0075DCD9 /* FacilityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailVC.h; sourceTree = "<group>"; };
 		88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailVC.m; sourceTree = "<group>"; };
 		88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityDetailVC.xib; sourceTree = "<group>"; };
@@ -626,6 +629,8 @@
 				BFFA0A081F7A684A0019CFA8 /* EquipCell.m */,
 				BFFA0A0A1F7A685A0019CFA8 /* EventCell.h */,
 				BFFA0A0B1F7A685A0019CFA8 /* EventCell.m */,
+				881322F81F7BE14E00AE83FF /* LatticePointDetailHeaderView.h */,
+				881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1321,6 +1326,7 @@
 				BFFA09F81F7A60C40019CFA8 /* MDMultipleSegmentLayout.m in Sources */,
 				88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */,
 				BF0C32611F67CE5D009FC882 /* ShortcutModel.m in Sources */,
+				881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */,
 				BF84BAFF1F5C5A14000FB4D8 /* UIButton+ImageTitleSpacing.m in Sources */,
 				BF34EDF71F49CEBF00E05DF3 /* SDBrowserImageView.m in Sources */,
 				BFFA09EC1F7A43C30019CFA8 /* BaseNavigationC.m in Sources */,

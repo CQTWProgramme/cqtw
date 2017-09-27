@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacilityDetailVC">
             <connections>
+                <outlet property="nameLabel" destination="ZfH-eh-PR4" id="d3A-nN-QMc"/>
+                <outlet property="tableView" destination="kvU-VX-eQH" id="584-dw-jdj"/>
+                <outlet property="timeLabel" destination="iKh-Xg-NcB" id="4Wu-SC-5YY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -102,17 +105,25 @@
                         <constraint firstAttribute="height" constant="1" id="YVV-tg-EcO"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvU-VX-eQH">
+                    <rect key="frame" x="0.0" y="164" width="375" height="503"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qJP-UY-SAZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="3fN-AW-FUQ"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="kvU-VX-eQH" secondAttribute="trailing" id="Dsl-Qo-X3K"/>
+                <constraint firstItem="kvU-VX-eQH" firstAttribute="top" secondItem="Myb-gJ-3Ay" secondAttribute="bottom" id="GZb-Xv-wJd"/>
                 <constraint firstItem="41p-5B-QZv" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="GqF-E6-WiO"/>
                 <constraint firstItem="WJK-La-bYo" firstAttribute="top" secondItem="3eZ-21-ybk" secondAttribute="bottom" id="KQH-BW-ekW"/>
                 <constraint firstItem="Myb-gJ-3Ay" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Mmn-DU-Pa0"/>
+                <constraint firstItem="kvU-VX-eQH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Mpd-Fi-crZ"/>
                 <constraint firstItem="Myb-gJ-3Ay" firstAttribute="top" secondItem="WJK-La-bYo" secondAttribute="bottom" id="QqO-rC-gEf"/>
                 <constraint firstItem="0xD-mE-MWU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="TY4-tv-NfQ"/>
                 <constraint firstItem="3eZ-21-ybk" firstAttribute="top" secondItem="0xD-mE-MWU" secondAttribute="bottom" id="TyS-yD-fbY"/>
                 <constraint firstItem="0xD-mE-MWU" firstAttribute="top" secondItem="41p-5B-QZv" secondAttribute="bottom" id="VH5-Po-brt"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="kvU-VX-eQH" secondAttribute="bottom" id="VSN-9a-IxH"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="WJK-La-bYo" secondAttribute="trailing" id="aWW-tc-C5F"/>
                 <constraint firstItem="iKh-Xg-NcB" firstAttribute="top" secondItem="41p-5B-QZv" secondAttribute="bottom" id="cKV-5q-MfC"/>
                 <constraint firstItem="qJP-UY-SAZ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="ecc-im-FqR"/>
@@ -128,6 +139,7 @@
                 <constraint firstItem="WJK-La-bYo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="x9e-FA-1aQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="112" y="279"/>
         </view>
     </objects>
     <resources>

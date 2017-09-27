@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^LatticePointDetailBlock)();
 @interface AnDetailView : UIView
 @property(nonatomic,strong)UIView * headView;
 @property(nonatomic,strong)UIImageView * headImageView;
 @property(nonatomic,strong)UILabel * headTitle;
-
+@property (nonatomic, copy) LatticePointDetailBlock latticePointDetailBlock;
 
 @property(nonatomic,strong)UIView * numMenuView;
 @property(nonatomic,strong)UILabel * zxLabel;
@@ -25,6 +25,8 @@
 
 
 @property(nonatomic,strong)UIViewController * currentVC;
+
+@property (nonatomic, strong) NSArray *childControllers;
 
 
 

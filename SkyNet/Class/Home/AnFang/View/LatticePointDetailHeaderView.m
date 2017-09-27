@@ -1,46 +1,37 @@
 //
-//  AnDetailView.m
+//  LatticePointDetailHeaderView.m
 //  SkyNet
 //
-//  Created by 冉思路 on 2017/9/24.
+//  Created by 魏乔森 on 2017/9/27.
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
-#import "AnDetailView.h"
+#import "LatticePointDetailHeaderView.h"
 #import "AFViewModel.h"
-#import "LxButton.h"
-#import "MDMultipleSegmentView.h"
-#import "MDFlipCollectionView.h"
-#import "EquipmentVC.h"
-#import "EventVC.h"
-@interface AnDetailView()<MDMultipleSegmentViewDeletegate,
-MDFlipCollectionViewDelegate>
-@property(nonatomic,strong)MDMultipleSegmentView *segView;
-@property(nonatomic,strong)MDFlipCollectionView *collectView;
 
-
+@interface LatticePointDetailHeaderView ()
+@property(nonatomic,strong)UIView * headView;
+@property(nonatomic,strong)UIImageView * headImageView;
+@property(nonatomic,strong)UILabel * headTitle;
+@property(nonatomic,strong)UIView * numMenuView;
+@property(nonatomic,strong)UILabel * zxLabel;
+@property(nonatomic,strong)UILabel * lxLabel;
+@property(nonatomic,strong)UILabel * bfLabel;
+@property(nonatomic,strong)UILabel * cfLabel;
+@property(nonatomic,strong)UILabel * bjLabel;
 @end
-@implementation AnDetailView
+@implementation LatticePointDetailHeaderView
 
--(instancetype)initWithFrame:(CGRect)frame currentVC:(UIViewController *)currentVC{
-    
-    self =[super initWithFrame:frame];
-    if (self) {
-        
-        self.currentVC =currentVC;
-        self.backgroundColor=[UIColor groupTableViewBackgroundColor];
+-(instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
         [self createHeadView];
         [self createNumMenuView];
-        [self createBottomView];
-        [self createSegment];
     }
-    
     return self;
 }
 
-
 -(void)createHeadView{
-   
+    
     _headView =[UIView new];
     
     [self addSubview:_headView];
@@ -60,7 +51,7 @@ MDFlipCollectionViewDelegate>
     .heightIs(60)
     .widthEqualToHeight();
     _headImageView.sd_cornerRadius=@(30);
-
+    
     _headTitle =[UILabel new];
     [_headView addSubview:_headTitle];
     _headTitle.textAlignment=NSTextAlignmentCenter;
@@ -72,24 +63,6 @@ MDFlipCollectionViewDelegate>
     .rightEqualToView(_headView)
     .heightIs(20);
     
-    UIButton * netDetailBtn =[UIButton new];
-    [_headView addSubview:netDetailBtn];
-    [netDetailBtn setBackgroundColor:[UIColor clearColor]];
-    netDetailBtn.titleLabel.font=[UIFont systemFontOfSize:15];
-    [netDetailBtn setTitle:@"网点详情" forState:UIControlStateNormal];
-    [netDetailBtn addTarget:self action:@selector(toLatticePointDetail) forControlEvents:UIControlEventTouchUpInside];
-    netDetailBtn.contentHorizontalAlignment=UIControlContentHorizontalAlignmentRight;
-    [netDetailBtn setTitleColor:RGB(110, 217, 252) forState:UIControlStateNormal];
-    netDetailBtn.sd_layout
-    .rightSpaceToView(_headView, 10)
-    .topSpaceToView(_headView, 10)
-    .heightIs(30)
-    .widthIs(100);
-
-}
-
-- (void)toLatticePointDetail {
-    self.latticePointDetailBlock();
 }
 
 -(void)createNumMenuView{
@@ -130,31 +103,31 @@ MDFlipCollectionViewDelegate>
     
     
     UILabel * zxL =[UILabel new];
-    zxL.text=@"在线";
+    zxL.text=@"安防设备";
     zxL.textAlignment=NSTextAlignmentCenter;
     zxL.font=[UIFont systemFontOfSize:13];
     zxL.textColor =[UIColor grayColor];
     
     UILabel * lxL =[UILabel new];
-    lxL.text=@"离线";
+    lxL.text=@"门禁";
     lxL.textAlignment=NSTextAlignmentCenter;
     lxL.font=[UIFont systemFontOfSize:13];
     lxL.textColor =[UIColor grayColor];
     
     UILabel * bfL =[UILabel new];
-    bfL.text=@"布防";
+    bfL.text=@"监控";
     bfL.textAlignment=NSTextAlignmentCenter;
     bfL.font=[UIFont systemFontOfSize:13];
     bfL.textColor =[UIColor grayColor];
     
     UILabel * cfL =[UILabel new];
-    cfL.text=@"撤防";
+    cfL.text=@"消防";
     cfL.textAlignment=NSTextAlignmentCenter;
     cfL.font=[UIFont systemFontOfSize:13];
     cfL.textColor =[UIColor grayColor];
     
     UILabel * bjL =[UILabel new];
-    bjL.text=@"报警";
+    bjL.text=@"对讲";
     bjL.textAlignment=NSTextAlignmentCenter;
     bjL.font=[UIFont systemFontOfSize:13];
     bjL.textColor =[UIColor grayColor];
@@ -174,31 +147,31 @@ MDFlipCollectionViewDelegate>
     .topSpaceToView(_numMenuView, 10)
     .widthRatioToView(_numMenuView, 0.2)
     .heightIs(20);
-
+    
     _bfLabel.sd_layout
     .leftSpaceToView(_lxLabel, 0)
     .topSpaceToView(_numMenuView, 10)
     .widthRatioToView(_numMenuView, 0.2)
     .heightIs(20);
-
+    
     _cfLabel.sd_layout
     .leftSpaceToView(_bfLabel, 0)
     .topSpaceToView(_numMenuView, 10)
     .widthRatioToView(_numMenuView, 0.2)
     .heightIs(20);
-
+    
     _bjLabel.sd_layout
     .leftSpaceToView(_cfLabel, 0)
     .topSpaceToView(_numMenuView, 10)
     .widthRatioToView(_numMenuView, 0.2)
     .heightIs(20);
-
-     zxL.sd_layout
+    
+    zxL.sd_layout
     .centerXEqualToView(_zxLabel)
     .topSpaceToView(_zxLabel, 0)
     .widthRatioToView(_zxLabel, 1)
     .heightRatioToView(_zxLabel, 1);
-
+    
     lxL.sd_layout
     .centerXEqualToView(_lxLabel)
     .topSpaceToView(_lxLabel, 0)
@@ -222,106 +195,15 @@ MDFlipCollectionViewDelegate>
     .topSpaceToView(_bjLabel, 0)
     .widthRatioToView(_bjLabel, 1)
     .heightRatioToView(_bjLabel, 1);
-
-
-}
-
-
--(void)createBottomView{
-    
-    _bottomView =[UIView new];
-    _bottomView.backgroundColor=[UIColor whiteColor];
-    [self addSubview:_bottomView];
-    _bottomView.sd_layout
-    .leftEqualToView(self)
-    .bottomEqualToView(self)
-    .rightEqualToView(self)
-    .heightIs(60);
-    
-    for (int i=0; i<3; i++) {
-        
-        NSArray * titleA=@[@"布防",@"撤防",@"消警"];
-        NSArray * imageArr=@[@"bf",@"home_monitor",@"xj"];
-        UILabel * label =[UILabel new];
-        [_bottomView addSubview:label];
-        label.text=titleA[i];
-        label.textColor=[UIColor hexStringToColor:@"#3c3c3c"];
-        label.textAlignment=NSTextAlignmentCenter;
-        label.sd_layout
-        .leftSpaceToView(_bottomView, i*SCREEN_WIDTH/3)
-        .bottomSpaceToView(_bottomView, 10)
-        .widthIs(SCREEN_WIDTH/3)
-        .heightIs(15);
-        
-        
-        
-        UIButton * btn =[UIButton new];
-        [_bottomView addSubview:btn];
-        [btn setImage:[UIImage imageNamed:imageArr[i]] forState:UIControlStateNormal];
-         btn.tag =1000+ i;
-      [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        btn.sd_layout
-        .centerXEqualToView(label)
-        .widthIs(26)
-        .heightEqualToWidth();
-        btn.sd_cornerRadius=@(13);
-    
-    
-    }
-
-
-    
-    
-    
-
-}
-
-
-
-
--(void)createSegment{
-    
-    [self addSubview:self.segView];
-    
-    EquipmentVC * equiVC =[[EquipmentVC alloc]init];
-    equiVC.view.backgroundColor =[UIColor whiteColor];
-    
-    EventVC * eventVC = [[EventVC alloc]init];
-    eventVC.view.backgroundColor=[UIColor whiteColor];
-    
-    NSArray *arr = @[equiVC,eventVC];
-    self.childControllers = arr;
-    _collectView = [[MDFlipCollectionView alloc] initWithFrame:CGRectMake(0,
-                                                                          _segView.bottom,
-                                                                          SCREEN_WIDTH,
-                                                                          SCREEN_HEIGHT-_segView.bottom-NavigationBar_HEIGHT-STATUS_BAR_HEIGHT-61) withArray:arr];
-    _collectView.delegate = self;
-    [self addSubview:_collectView];
     
     
 }
-
-- (MDMultipleSegmentView *)segView {
-    if (!_segView) {
-        _segView = [[MDMultipleSegmentView alloc] init];
-        _segView.delegate =  self;
-        _segView.frame = CGRectMake(0, 250, SCREEN_WIDTH, 44);
-        _segView.items = @[@"设备",@"事件"];
-    }
-    return _segView;
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
 }
-
-- (void)changeSegmentAtIndex:(NSInteger)index
-{
-    [_collectView selectIndex:index];
-}
-
-
-- (void)flipToIndex:(NSInteger)index
-{
-    [_segView selectIndex:index];
-}
-
-
+*/
 
 @end
