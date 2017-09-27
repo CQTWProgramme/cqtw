@@ -1,0 +1,11 @@
+pod 'AFNetworking', '~> 3.0'
+pod 'Bugly', '~> 2.4.2'
+pod 'MJRefresh', '~> 3.1.12'
+pod 'SDWebImage', '~> 4.0.0-beta2'
+pod 'IQKeyboardManager', '~> 4.0.7'
+pod 'SDAutoLayout', '~> 2.1.7'
+pod 'MJExtension', '~> 3.0.13'
+pod 'LCActionSheet'
+target 'SkyNet' do
+
+end
