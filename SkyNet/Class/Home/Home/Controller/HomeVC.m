@@ -10,6 +10,8 @@
 #import "HomeView.h"
 #import "HomeViewModel.h"
 #import "AnFangVC.h"
+#import "MonitorVC.h"
+#import "MonitorDetailListVC.h"
 @interface HomeVC ()<HomeViewDelegate>
 @property(nonatomic,strong)HomeView * homeView;
 @end
@@ -113,6 +115,9 @@
        
         case 1:
         {
+            MonitorVC *monitorVC = [[MonitorVC alloc] init];
+            monitorVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:monitorVC animated:YES];
             
         }
             break;
