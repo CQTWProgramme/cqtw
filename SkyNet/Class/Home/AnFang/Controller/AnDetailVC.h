@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface AnDetailVC : BaseViewController
-
+@property (nonatomic, copy) NSString *branchId;
+@property (nonatomic, copy) NSString *customId;
 @end

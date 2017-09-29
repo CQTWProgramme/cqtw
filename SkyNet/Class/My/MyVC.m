@@ -78,6 +78,11 @@
     if (!_myView) {
         _myView=[[MyView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT)];
         _myView.delegate=self;
+        _myView.logOutBlock = ^{
+            [ClientTool removeToken];
+            [STTextHudTool loadingWithTitle:@"退出"];
+            [[[UIApplication sharedApplication].delegate window] setRootViewController:[ClientTool  setupLogVC]];
+        };
     }
     return _myView;
 }

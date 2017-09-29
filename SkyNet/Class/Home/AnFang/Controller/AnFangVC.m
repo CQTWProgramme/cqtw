@@ -278,8 +278,8 @@
             if (arr.count==0) {
                 AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
                 anDetailVC.hidesBottomBarWhenPushed=YES;
+                anDetailVC.customId = afModel.customId;
                 [self.navigationController pushViewController:anDetailVC animated:YES];
-            
             
             }else{
                 NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];

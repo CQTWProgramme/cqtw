@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface LatticePointDetailVC : BaseViewController
-
+@property (nonatomic, copy) NSString *branchId;
 @end

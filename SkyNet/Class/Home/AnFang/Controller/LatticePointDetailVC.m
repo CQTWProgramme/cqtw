@@ -8,6 +8,7 @@
 
 #import "LatticePointDetailVC.h"
 #import "LatticePointDetailHeaderView.h"
+#import "LatticePointDetailModel.h"
 
 @interface LatticePointDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)LatticePointDetailHeaderView *headerView;
@@ -22,7 +23,16 @@
     self.title = @"网点详情";
     [self setupHeaderView];
     [self setupTableView];
+    [self setupdata];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)setupdata {
+    [LatticePointDetailModel getLatticePointDetailDataById:self.branchId success:^(id returnValue) {
+        
+    } failure:^(id errorCode) {
+        
+    }];
 }
 
 - (void)setupHeaderView {

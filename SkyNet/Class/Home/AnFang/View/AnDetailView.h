@@ -26,8 +26,6 @@ typedef void (^LatticePointDetailBlock)();
 
 @property(nonatomic,strong)UIViewController * currentVC;
 
-@property (nonatomic, strong) NSArray *childControllers;
-
 
 
 -(instancetype)initWithFrame:(CGRect)frame currentVC:(UIViewController *)currentVC;

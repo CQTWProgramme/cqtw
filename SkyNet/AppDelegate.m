@@ -20,14 +20,13 @@
     
     [ClientTool autoKeyboard];
    
-    
     self.window.rootViewController= [ClientTool  setupLogVC];
-    
-    
-    
-    
-    
-    
+//    if ([ClientTool getToken]) {
+//        UITabBarController * tabBar =[ClientTool setupTabBar];
+//        self.window.rootViewController = tabBar;
+//    }else {
+//        self.window.rootViewController= [ClientTool  setupLogVC];
+//    }
     return YES;
 }
 

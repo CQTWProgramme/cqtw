@@ -130,6 +130,6 @@
 }
 
 -(void)logout{
-    
+    self.logOutBlock();
 }
 @end

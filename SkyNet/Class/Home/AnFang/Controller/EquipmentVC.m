@@ -9,6 +9,7 @@
 #import "EquipmentVC.h"
 #import "EquipCell.h"
 #import "FacilityDetailVC.h"
+#import "EquipmentModel.h"
 @interface EquipmentVC ()
 //设备数组
 @property (nonatomic, strong) NSMutableArray *equipmentsArray;
@@ -19,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      [self.view addSubview:self.myTableView];
-    [self loadData];
+     [self loadData];
 }
 
 -(NSMutableArray *)equipmentsArray {
@@ -31,7 +32,11 @@
 
 //加载设备数据
 - (void)loadData {
-    
+    [EquipmentModel getListDevicesDataById:self.customId success:^(id returnValue) {
+        
+    } failure:^(id errorCode) {
+        
+    }];
 }
 
 #pragma mark 下拉刷新
@@ -130,8 +135,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SLLog(@"点击了");
+    EquipmentModel *model = self.equipmentsArray[indexPath.row];
     FacilityDetailVC *detailVC = [[FacilityDetailVC alloc] init];
+    
+    detailVC.deviceId = model.deviceId;
     detailVC.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:detailVC animated:YES];
 }

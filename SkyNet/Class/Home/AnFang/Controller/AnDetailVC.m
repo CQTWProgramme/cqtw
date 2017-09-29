@@ -54,19 +54,17 @@
     if (!_anDetailView) {
        _anDetailView =[[AnDetailView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT) currentVC:self];
         //_afView.delegate=self;
-        NSInteger count = _anDetailView.childControllers.count;
-        for (NSInteger i = 0; i < count; i++) {
-            [self addChildViewController:_anDetailView.childControllers[i]];
-        }
-        LatticePointDetailVC *latticeDetailVC = [[LatticePointDetailVC alloc] init];
-        latticeDetailVC.view.backgroundColor = [UIColor whiteColor];
         _anDetailView.latticePointDetailBlock = ^(){
+            LatticePointDetailVC *latticeDetailVC = [[LatticePointDetailVC alloc] init];
+            latticeDetailVC.branchId = weakSelf.branchId;
+            latticeDetailVC.view.backgroundColor = [UIColor whiteColor];
             [weakSelf.navigationController pushViewController:latticeDetailVC animated:YES];
         };
     }
     return _anDetailView;
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

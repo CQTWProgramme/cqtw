@@ -19,6 +19,7 @@
 @interface MyView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UIImageView * headView;
 @property(nonatomic,strong)UILabel * nameLabel;
+@property(nonatomic,copy) void (^logOutBlock)();
 @property(nonatomic,strong)UITableView * myTableView;
 @property(nonatomic,weak)id<MyViewDelegate>delegate;
 @end

@@ -133,7 +133,12 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:USER_TOKEN];
 }
 
-
+//移除token
++(void)removeToken {
+    if ([self getToken]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_TOKEN];
+    }
+}
 
 
 @end

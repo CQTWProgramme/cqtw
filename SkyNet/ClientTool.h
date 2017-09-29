@@ -64,4 +64,9 @@
  */
 +(NSString *)getToken;
 
+/**
+ *  移除taken
+ */
++(void)removeToken;
+
 @end

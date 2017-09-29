@@ -72,6 +72,7 @@
             if (arr.count==0) {
                 //数组为空直接跳转安防详情
                 AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
+                anDetailVC.customId = netDetailModel.customId;
                 [self.navigationController pushViewController:anDetailVC animated:YES];
                 
                 

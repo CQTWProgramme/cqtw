@@ -29,6 +29,8 @@
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
 		88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */; };
 		88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F311F7AB46B0075DCD9 /* LatticePointDetailVC.xib */; };
+		88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D829E11F7DE8B3007A2406 /* EquipmentModel.m */; };
+		88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */; };
 		8B39D7FCE5E32A09CC5526C7 /* libPods-SkyNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F39E4A5A3711AC45266AF99 /* libPods-SkyNet.a */; };
 		BF0C32141F6772EC009FC882 /* angle-mask@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0C32081F6772EC009FC882 /* angle-mask@3x.png */; };
 		BF0C32151F6772EC009FC882 /* GCLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0C320A1F6772EC009FC882 /* GCLoadingView.m */; };
@@ -207,6 +209,10 @@
 		88CE3F2F1F7AB46B0075DCD9 /* LatticePointDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatticePointDetailVC.h; sourceTree = "<group>"; };
 		88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatticePointDetailVC.m; sourceTree = "<group>"; };
 		88CE3F311F7AB46B0075DCD9 /* LatticePointDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatticePointDetailVC.xib; sourceTree = "<group>"; };
+		88D829E01F7DE8B3007A2406 /* EquipmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EquipmentModel.h; sourceTree = "<group>"; };
+		88D829E11F7DE8B3007A2406 /* EquipmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EquipmentModel.m; sourceTree = "<group>"; };
+		88D829E31F7E00A9007A2406 /* LatticePointDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatticePointDetailModel.h; sourceTree = "<group>"; };
+		88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatticePointDetailModel.m; sourceTree = "<group>"; };
 		8F39E4A5A3711AC45266AF99 /* libPods-SkyNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkyNet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0C32081F6772EC009FC882 /* angle-mask@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "angle-mask@3x.png"; sourceTree = "<group>"; };
 		BF0C32091F6772EC009FC882 /* GCLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLoadingView.h; sourceTree = "<group>"; };
@@ -710,6 +716,10 @@
 				BF7338831F77D4230000FB8A /* NetDetailModel.m */,
 				881322F11F7B58D500AE83FF /* FacilityDetailModel.h */,
 				881322F21F7B58D500AE83FF /* FacilityDetailModel.m */,
+				88D829E01F7DE8B3007A2406 /* EquipmentModel.h */,
+				88D829E11F7DE8B3007A2406 /* EquipmentModel.m */,
+				88D829E31F7E00A9007A2406 /* LatticePointDetailModel.h */,
+				88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1466,6 +1476,7 @@
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
 				BF34EEFC1F4A72C600E05DF3 /* LoginView.m in Sources */,
 				BFA8C7B81F4BE1C5003A0BEE /* TAAnimatedDotView.m in Sources */,
+				88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */,
 				BF73387B1F77D31E0000FB8A /* NetDetailVC.m in Sources */,
 				BF0C32191F6772EC009FC882 /* STTextHud.m in Sources */,
 				88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */,
@@ -1529,6 +1540,7 @@
 				88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */,
 				BFA8C7BD1F4BE1C5003A0BEE /* UIView+SDExtension.m in Sources */,
 				88299C7C1F7CD3620070067C /* MonitorDetailListCell.m in Sources */,
+				88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */,
 				BF34EB371F49CDB600E05DF3 /* main.m in Sources */,
 				BF34EEAB1F49CEBF00E05DF3 /* AFNetAPIClient.m in Sources */,
 				BF84BAE51F5C5752000FB4D8 /* SystemMsgVC.m in Sources */,

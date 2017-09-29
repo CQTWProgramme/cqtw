@@ -18,7 +18,6 @@ MDFlipCollectionViewDelegate>
 @property(nonatomic,strong)MDMultipleSegmentView *segView;
 @property(nonatomic,strong)MDFlipCollectionView *collectView;
 
-
 @end
 @implementation AnDetailView
 
@@ -283,14 +282,18 @@ MDFlipCollectionViewDelegate>
     
     [self addSubview:self.segView];
     
-    EquipmentVC * equiVC =[[EquipmentVC alloc]init];
-    equiVC.view.backgroundColor =[UIColor whiteColor];
+    EquipmentVC *equipVC = [[EquipmentVC alloc]init];
+    equipVC.customId = [self.currentVC valueForKeyPath:@"customId"];
+    equipVC.view.backgroundColor =[UIColor whiteColor];
     
     EventVC * eventVC = [[EventVC alloc]init];
     eventVC.view.backgroundColor=[UIColor whiteColor];
     
-    NSArray *arr = @[equiVC,eventVC];
-    self.childControllers = arr;
+    [self.currentVC addChildViewController:equipVC];
+    [self.currentVC addChildViewController:eventVC];
+    
+    NSArray *arr = @[equipVC,eventVC];
+    
     _collectView = [[MDFlipCollectionView alloc] initWithFrame:CGRectMake(0,
                                                                           _segView.bottom,
                                                                           SCREEN_WIDTH,
