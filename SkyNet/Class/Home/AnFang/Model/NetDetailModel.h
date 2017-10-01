@@ -18,4 +18,5 @@
 @property(nonatomic,strong)NSString * sbmc;
 @property(nonatomic,strong)NSString * channelId;
 @property(nonatomic,strong)NSString * jkmc;
+
 @end

@@ -10,6 +10,9 @@
 
 @interface NetDetailVC : BaseViewController
 @property(nonatomic,strong)NSString * groupTitle;
-@property(nonatomic,strong)NSString * customId;
-@property(nonatomic,strong)NSArray * dataArr;
+//@property(nonatomic,strong)NSString * customId;
+//@property(nonatomic,strong)NSArray * dataArr;
+@property (nonatomic, copy) NSString *itemId;
+@property (nonatomic, assign) NSInteger type;
+
 @end

@@ -19,8 +19,17 @@
  */
 -(void)requestListWithType:(NSString *)type;
 
+/**
+ 获取用户默认分组
+ 
+ */
+-(void)requestDistrictList;
 
-
+/**
+ 获取用户默认分组下数据
+ @param districtId 默认分组id
+ */
+-(void)requestDistrictDataWithDistrictId:(NSString *)districtId currentPage:(NSInteger)currentPage pageSize:(NSInteger)pageSize;
 /**
  删除自定义分组
 

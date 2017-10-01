@@ -10,6 +10,7 @@
 		881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F21F7B58D500AE83FF /* FacilityDetailModel.m */; };
 		881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F51F7B5DA600AE83FF /* BaseModel.m */; };
 		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
+		8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8814733E1F7FD4980064DF4D /* AFDistrictModel.m */; };
 		88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88299C6B1F7CC44E0070067C /* MonitorVC.m */; };
 		88299C6E1F7CC44E0070067C /* MonitorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C6C1F7CC44E0070067C /* MonitorVC.xib */; };
 		88299C711F7CC7150070067C /* MonitorItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88299C701F7CC7150070067C /* MonitorItemCell.m */; };
@@ -179,6 +180,8 @@
 		881322F51F7B5DA600AE83FF /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		881322F81F7BE14E00AE83FF /* LatticePointDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatticePointDetailHeaderView.h; sourceTree = "<group>"; };
 		881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatticePointDetailHeaderView.m; sourceTree = "<group>"; };
+		8814733D1F7FD4980064DF4D /* AFDistrictModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDistrictModel.h; sourceTree = "<group>"; };
+		8814733E1F7FD4980064DF4D /* AFDistrictModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDistrictModel.m; sourceTree = "<group>"; };
 		88299C6A1F7CC44E0070067C /* MonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorVC.h; sourceTree = "<group>"; };
 		88299C6B1F7CC44E0070067C /* MonitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorVC.m; sourceTree = "<group>"; };
 		88299C6C1F7CC44E0070067C /* MonitorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonitorVC.xib; sourceTree = "<group>"; };
@@ -720,6 +723,8 @@
 				88D829E11F7DE8B3007A2406 /* EquipmentModel.m */,
 				88D829E31F7E00A9007A2406 /* LatticePointDetailModel.h */,
 				88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */,
+				8814733D1F7FD4980064DF4D /* AFDistrictModel.h */,
+				8814733E1F7FD4980064DF4D /* AFDistrictModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1535,6 +1540,7 @@
 				88299C711F7CC7150070067C /* MonitorItemCell.m in Sources */,
 				BF0C322D1F6774EB009FC882 /* NSData+Base64.m in Sources */,
 				BFA8C7CC1F4C8ADC003A0BEE /* RegisterCell.m in Sources */,
+				8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */,
 				BF84BB021F5C5A14000FB4D8 /* UILabel+LXLabel.m in Sources */,
 				BFE3AF831F79E0AF00C90C36 /* MyInfo.m in Sources */,
 				88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */,

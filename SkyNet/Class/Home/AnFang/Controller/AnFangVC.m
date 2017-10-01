@@ -15,15 +15,21 @@
 #import "AnDetailVC.h"
 @interface AnFangVC ()<AFViewDelegate>
 @property(nonatomic,strong)AFView * afView;
+@property(nonatomic,strong)NSMutableArray*dataArray;
 @end
 
 @implementation AnFangVC
 
+-(NSMutableArray *)dataArray {
+    if (nil == _dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    MJWeakSelf
     self.title=@"安防";
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self createRightItem];
@@ -56,15 +62,33 @@
 -(void)reloadTableView{
     
     __weak typeof(self)weakSelf =self;
-    [self getAfList];
-    dispatch_async(dispatch_get_main_queue(), ^(){
-        
-        [weakSelf.afView.myRefreshView endRefreshing];
-        
+    dispatch_async(dispatch_queue_create("getSumDataQueue", NULL), ^{
+        if (weakSelf.dataArray.count > 0) {
+            [weakSelf.dataArray removeAllObjects];
+        }
+        [weakSelf getAfDistrictList];
+        [weakSelf getAfList];
     });
-    
+
 }
 
+#pragma mark 查询安防默认分组
+-(void)getAfDistrictList{
+    
+    MJWeakSelf
+    
+    AFViewModel * afViewModel =[AFViewModel new];
+    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+        [weakSelf.dataArray addObject:returnValue];
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    
+    [afViewModel requestDistrictList];
+    
+}
 
 #pragma mark 查询安防自定义分组
 -(void)getAfList{
@@ -73,8 +97,10 @@
     MJWeakSelf
     AFViewModel * afViewModel =[AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
-        [weakSelf.afView setGroupArr:returnValue];
         
+        [weakSelf.dataArray addObject:returnValue];
+        
+        [weakSelf.afView setGroupArr:self.dataArray];
         dispatch_async(dispatch_get_main_queue(), ^{
             //回调或者说是通知主线程刷新，
             [weakSelf.afView.myTableView reloadData];
@@ -263,53 +289,94 @@
 
 
 
-#pragma mark 查询安防自定义分组
--(void)getGroupData:(AFModel *)afModel{
-    
-    
-    MJWeakSelf
-    AFViewModel * afViewModel =[AFViewModel new];
-    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
-        
-        NSArray * arr =returnValue;
-       
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (arr.count==0) {
-                AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
-                anDetailVC.hidesBottomBarWhenPushed=YES;
-                anDetailVC.customId = afModel.customId;
-                [self.navigationController pushViewController:anDetailVC animated:YES];
-            
-            }else{
-                NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
-                netDetailVC.hidesBottomBarWhenPushed=YES;
-                netDetailVC.groupTitle=afModel.fzmc;
-                netDetailVC.customId=afModel.customId;
-                netDetailVC.dataArr=arr;
-                [self.navigationController pushViewController:netDetailVC animated:YES];
-                
-            }
-        });
-    } WithErrorBlock:^(id errorCode) {
-        
-    } WithFailureBlock:^{
-        
-    }];
-    
-    [afViewModel requestGroupData:afModel.customId];
-    
-}
+//#pragma mark 查询安防自定义分组
+//-(void)getGroupData:(AFModel *)afModel{
+//
+//
+//    MJWeakSelf
+//    AFViewModel * afViewModel =[AFViewModel new];
+//    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+//
+//        NSArray * arr =returnValue;
+//
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (arr.count==0) {
+//                AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
+//                anDetailVC.hidesBottomBarWhenPushed=YES;
+//                anDetailVC.customId = afModel.customId;
+//                [self.navigationController pushViewController:anDetailVC animated:YES];
+//
+//            }else{
+//                NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
+//                netDetailVC.hidesBottomBarWhenPushed=YES;
+//                netDetailVC.groupTitle=afModel.fzmc;
+//                netDetailVC.customId=afModel.customId;
+//                netDetailVC.dataArr=arr;
+//                [self.navigationController pushViewController:netDetailVC animated:YES];
+//
+//            }
+//        });
+//    } WithErrorBlock:^(id errorCode) {
+//
+//    } WithFailureBlock:^{
+//
+//    }];
+//
+//    [afViewModel requestGroupData:afModel.customId];
+//
+//}
 
 
 #pragma mark 表格选择
--(void)selectItem:(AFModel *)afModel{
-    
-    [self getGroupData:afModel];
+//-(void)selectItem:(AFModel *)afModel{
+//
+//    [self getGroupData:afModel];
+//
+//}
+
+-(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger)section {
+//    MJWeakSelf
+//     AFViewModel * afViewModel =[AFViewModel new];
+    NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
+    netDetailVC.groupTitle = name;
+    netDetailVC.itemId = itemId;
+    netDetailVC.type = section;
+    netDetailVC.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:netDetailVC animated:YES];
+        
+//        [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+//
+//            NSArray * arr =returnValue;
+//
+//
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                if (arr.count==0) {
+//                    AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
+//                    anDetailVC.hidesBottomBarWhenPushed=YES;
+//                    anDetailVC.customId = afModel.customId;
+//                    [self.navigationController pushViewController:anDetailVC animated:YES];
+//
+//                }else{
+//                    NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
+//                    netDetailVC.hidesBottomBarWhenPushed=YES;
+//                    netDetailVC.groupTitle=afModel.fzmc;
+//                    netDetailVC.customId=afModel.customId;
+//                    netDetailVC.dataArr=arr;
+//                    [self.navigationController pushViewController:netDetailVC animated:YES];
+//
+//                }
+//            });
+//        } WithErrorBlock:^(id errorCode) {
+//
+//        } WithFailureBlock:^{
+//
+//        }];
+//
+//        [afViewModel requestGroupData:afModel.customId];
+//    }
     
 }
-
-
 
 
 -(AFView *)afView{

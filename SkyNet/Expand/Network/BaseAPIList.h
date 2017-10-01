@@ -47,10 +47,14 @@
 //快捷方式列表
 #define SHORTCUT_LIST                      POST_INTERFACE(@"api/bean/getShortcutList")
 
+//获取用户默认分组
+#define SELECTDISTRICT                      POST_INTERFACE(@"api/basic/selectDistrict")
+
+//根据分组查询分组下网点集合
+#define SELECTDISTRICTDATA                      POST_INTERFACE(@"api/basic/selectBranchByDistraict")
 
 //获取用户自定义分组
 #define SELECTCUSTOM                      POST_INTERFACE(@"api/basic/selectCustom")
-
 
 //删除用户自定义分组
 #define DELETECUSTOM                      POST_INTERFACE(@"api/bean/deleteCustom")

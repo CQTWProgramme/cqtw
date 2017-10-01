@@ -47,13 +47,29 @@
 -(void)reloadTableView{
     
     __weak typeof(self)weakSelf =self;
-    //[self getGroupData];
+    [self getGroupData];
     dispatch_async(dispatch_get_main_queue(), ^(){
         
         [weakSelf.netDetailView.myRefreshView endRefreshing];
         
     });
     
+}
+
+- (void)getGroupData {
+    AFViewModel *afViewModel =[AFViewModel new];
+    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+        
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    if (self.type == 0) {
+        [afViewModel requestGroupData:self.itemId];
+    }else {
+        [afViewModel requestDistrictDataWithDistrictId:self.itemId currentPage:0 pageSize:10];
+    }
 }
 
 #pragma mark 选择表格
@@ -82,7 +98,7 @@
                
                dispatch_async(dispatch_get_main_queue(), ^{
                    NetDetailVC * netDetail =[[NetDetailVC alloc]init];
-                   netDetail.dataArr=arr;
+                   //netDetail.dataArr=arr;
                    [weakSelf.navigationController pushViewController:netDetail animated:YES];
                    
                  });
@@ -132,7 +148,6 @@
     if (!_netDetailView) {
         _netDetailView =[[NetDetailView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT)];
         _netDetailView.delegate=self;
-        [_netDetailView setGroupArr:_dataArr];
     }
     
     return _netDetailView;

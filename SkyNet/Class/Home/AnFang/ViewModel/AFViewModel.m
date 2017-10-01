@@ -8,10 +8,74 @@
 
 #import "AFViewModel.h"
 #import "AFModel.h"
+#import "AFDistrictModel.h"
 #import "NetPointModel.h"
+#import "NetDetailModel.h"
 #import "NetDetailModel.h"
 @implementation AFViewModel
 
+#pragma mark  获取用户默认分组
+-(void)requestDistrictList {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDISTRICT).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        NSString * code=responseObject[@"code"];
+        if (code.integerValue==1) {
+            NSMutableArray * modelArr =[NSMutableArray new];
+            NSArray * dataArr =responseObject[@"data"];
+            for (NSDictionary * dic in dataArr) {
+                
+                AFDistrictModel * model =[AFDistrictModel mj_objectWithKeyValues:dic];
+                [modelArr addObject:model];
+            }
+            
+            super.returnBlock(modelArr);
+        }
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        
+        
+    }];
+}
+
+#pragma mark  获取用户自定义分组
+-(void)requestDistrictDataWithDistrictId:(NSString *)districtId currentPage:(NSInteger)currentPage pageSize:(NSInteger)pageSize {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"districtId": districtId,@"sbgn":@(1),@"currPage":@(currentPage),@"pageSize":@(pageSize)};
+    [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDISTRICTDATA).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        NSString * code=responseObject[@"code"];
+        if (code.integerValue==1) {
+            NSMutableArray * modelArr =[NSMutableArray new];
+            NSArray * dataArr =responseObject[@"data"];
+            if (dataArr.count > 0) {
+                for (NSDictionary * dic in dataArr) {
+                    
+                    NetDetailModel * model =[NetDetailModel mj_objectWithKeyValues:dic];
+                    [modelArr addObject:model];
+                }
+            }
+            
+            super.returnBlock(modelArr);
+        }
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        
+        
+    }];
+}
 
 #pragma mark  获取用户自定义分组
 -(void)requestListWithType:(NSString *)type{
@@ -248,10 +312,12 @@
         if (code.integerValue==1) {
             NSMutableArray * modelArr =[NSMutableArray new];
             NSArray * dataArr =responseObject[@"data"];
-            for (NSDictionary * dic in dataArr) {
-                
-                NetDetailModel * model =[NetDetailModel mj_objectWithKeyValues:dic];
-                [modelArr addObject:model];
+            if (dataArr.count > 0) {
+                for (NSDictionary * dic in dataArr) {
+                    
+                    NetDetailModel * model =[NetDetailModel mj_objectWithKeyValues:dic];
+                    [modelArr addObject:model];
+                }
             }
             
             super.returnBlock(modelArr);

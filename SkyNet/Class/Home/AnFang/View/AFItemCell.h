@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AFModel.h"
+#import "AFDistrictModel.h"
 @interface AFItemCell : UITableViewCell
 //静态构造方法
 + (instancetype)cellWithTableView: (UITableView *)tableView;
 
 @property (nonatomic, strong) AFModel *model; //模型属性
+@property (nonatomic, strong) AFDistrictModel *districtModel; //模型属性
 - (void)setData: (AFModel *)model; //设置要显示的数据
+- (void)setDistrictData:(AFDistrictModel *)districtModel; //设置默认分组数据
 
 @property (nonatomic, copy) void (^deleteAFItem)(); //删除会员block回调方法
 @property (nonatomic, copy) void (^editAFItem)();

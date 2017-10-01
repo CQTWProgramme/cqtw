@@ -24,8 +24,11 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
         groupName:(NSString *)groupName
   modifyNameBlock:(ModifyNameBlock)block;
 
-//选择分组
--(void)selectItem:(AFModel *)afModel;
+////选择分组
+//-(void)selectItem:(AFModel *)afModel;
+
+//选择分组传Id
+-(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger )section;
 
 @end
 @interface AFView : UIView<UITableViewDelegate,UITableViewDataSource>
