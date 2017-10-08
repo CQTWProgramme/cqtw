@@ -62,12 +62,17 @@
 -(void)reloadTableView{
     
     __weak typeof(self)weakSelf =self;
-    dispatch_async(dispatch_queue_create("getSumDataQueue", NULL), ^{
+    dispatch_sync(dispatch_queue_create("getSumDataQueue", DISPATCH_QUEUE_SERIAL), ^{
         if (weakSelf.dataArray.count > 0) {
             [weakSelf.dataArray removeAllObjects];
         }
         [weakSelf getAfDistrictList];
-        [weakSelf getAfList];
+    });
+    
+    dispatch_async(dispatch_get_main_queue(), ^(){
+        
+        [weakSelf.afView.myRefreshView endRefreshing];
+        
     });
 
 }
@@ -80,6 +85,7 @@
     AFViewModel * afViewModel =[AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
         [weakSelf.dataArray addObject:returnValue];
+        [weakSelf getAfList];
     } WithErrorBlock:^(id errorCode) {
         
     } WithFailureBlock:^{
@@ -248,6 +254,8 @@
 -(void)addNewGroup{
     
     AddNewGroupVC * addNewGroupVC =[AddNewGroupVC new];
+    addNewGroupVC.fzgn = 1;
+    addNewGroupVC.fid = @"0";
     [self.navigationController pushViewController:addNewGroupVC animated:YES];
     
     
@@ -335,13 +343,14 @@
 //
 //}
 
--(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger)section {
+-(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger)section parent:(NSString *)parentId{
 //    MJWeakSelf
 //     AFViewModel * afViewModel =[AFViewModel new];
     NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
     netDetailVC.groupTitle = name;
     netDetailVC.itemId = itemId;
     netDetailVC.type = section;
+    netDetailVC.parentId = parentId;
     netDetailVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:netDetailVC animated:YES];
         

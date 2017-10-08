@@ -55,8 +55,10 @@
  创建自定义分组
 
  @param groupName 自定义分组名字
+ @param fzgn 自定义分组所属模块
+ @param fid 自定义分组父节点
  */
--(void)requestAddNewGroup:(NSString *)groupName;
+-(void)requestAddNewGroup:(NSString *)groupName withFzgn:(NSInteger)fzgn withFid:(NSString *)fid;
 
 
 

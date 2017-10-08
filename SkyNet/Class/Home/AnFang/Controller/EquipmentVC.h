@@ -13,5 +13,5 @@
 @property (nonatomic, strong) MJRefreshComponent *myRefreshView;
 @property(nonatomic,strong)   MJRefreshAutoFooter * myAutoFooter;
 @property(nonatomic,assign)CGRect tableFrame;
-@property (nonatomic, copy) NSString *customId;
+@property (nonatomic, copy) NSString *branchId;
 @end

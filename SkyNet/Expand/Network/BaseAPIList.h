@@ -75,6 +75,9 @@
 //获取用户自定义分组下数据
 #define SELECTCUSTOMData                      POST_INTERFACE(@"api/basic/selectCustomData")
 
+//根据网点查询用户拥有的设备及状态（分页加载）
+#define SELECTDevicePageByBranch                      POST_INTERFACE(@"api/basic/selectDevicePageByBranch")
+
 //更具网点ID查询设备类型及数量
 #define SELECTDevicesData                      POST_INTERFACE(@"api/basic/selectDeviceStateByBranch")
 

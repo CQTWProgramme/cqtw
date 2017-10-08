@@ -283,7 +283,7 @@ MDFlipCollectionViewDelegate>
     [self addSubview:self.segView];
     
     EquipmentVC *equipVC = [[EquipmentVC alloc]init];
-    equipVC.customId = [self.currentVC valueForKeyPath:@"customId"];
+    equipVC.branchId = [self.currentVC valueForKeyPath:@"branchId"];
     equipVC.view.backgroundColor =[UIColor whiteColor];
     
     EventVC * eventVC = [[EventVC alloc]init];

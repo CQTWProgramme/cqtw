@@ -11,6 +11,9 @@
 @implementation EquipmentModel
 + (void)getListDevicesDataById:(NSString *)customId success:(BaseSuccessBlock)success failure:(BaseFailureBlock)failure {
     [STTextHudTool loadingWithTitle:@"加载中..."];
+    if (customId == nil) {
+        customId = @"";
+    }
     NSDictionary * param =@{@"branchId":customId,@"sbgn":@(1)};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDevicesData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         

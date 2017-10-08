@@ -54,10 +54,8 @@
 #pragma mark 创建自定义分组
 -(void)goToAddNetPoint{
     
-    
     if ([self.inputText.text isEqualToString:@""]) {
         [STTextHudTool showErrorText:@"请输入分组名字" withSecond:HudDelay];
-        
         return ;
     }
     
@@ -70,7 +68,7 @@
                 
                 AddGroupPointVC * adVC =[[AddGroupPointVC alloc]init];
                 adVC.customId=returnValue[@"data"];
-                [self.navigationController pushViewController:adVC animated:YES];
+                [weakSelf.navigationController pushViewController:adVC animated:YES];
                 
             }
             
@@ -81,7 +79,7 @@
             
         }];
         
-        [afViewModel requestAddNewGroup:self.inputText.text];
+        [afViewModel requestAddNewGroup:self.inputText.text withFzgn:self.fzgn withFid:self.fid];
 
 }
 

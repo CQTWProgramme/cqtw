@@ -181,12 +181,12 @@
 
 
 #pragma mark 创建自定义分组
--(void)requestAddNewGroup:(NSString *)groupName{
+-(void)requestAddNewGroup:(NSString *)groupName withFzgn:(NSInteger)fzgn withFid:(NSString *)fid{
     
     [STTextHudTool loadingWithTitle:@"正在添加..."];
-    NSDictionary * param =@{@"fzgn":@"1",
+    NSDictionary * param =@{@"fzgn":@(fzgn),
                             @"fzmc":groupName,
-                            @"fid":@"0"};
+                            @"fid":fid};
     [[AFNetAPIClient sharedJsonClient].setRequest(ADDCUSTOM).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];

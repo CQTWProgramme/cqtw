@@ -10,6 +10,7 @@
 #import "AFItemCell.h"
 #import "AFModel.h"
 #import "AFDistrictModel.h"
+#import "AFDistrictItemCell.h"
 @implementation AFView
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -99,86 +100,85 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
-    AFItemCell *cell = [AFItemCell cellWithTableView:tableView];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    if (_groupArr.count>0) {
+    if (indexPath.section == 0) {
+        AFDistrictItemCell *cell = [AFDistrictItemCell districtCellWithTableView:tableView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([_groupArr[indexPath.section] count] > 0) {
-            if (indexPath.section == 0) {
-                [cell closeLeftSwipe];
-                AFDistrictModel *model = _groupArr[indexPath.section][indexPath.row];
-                [cell setDistrictData:model];
-            }else {
-                AFModel * afModel =_groupArr[indexPath.section][indexPath.row];
-                [cell setData:afModel]; //设置数据
-                __weak typeof(self) tempSelf = self;
-                __weak typeof(cell) tempCell = cell;
-                
-                //设置删除cell回调block
-                cell.deleteAFItem = ^{
-                    
-                    if (tempSelf.delegate) {
-                        [tempSelf.delegate deleteAFItem:afModel.customId updateCellBlock:^{
-                            
-                            NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
-                            [_groupArr removeObject:tempCell.model];
-                            [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
-                        }];
-                    }
-                    
-                    
-                    
-                };
-                
-                
-                cell.editAFItem = ^{
-                    
-                    if (tempSelf.delegate) {
-                        [tempSelf.delegate editAFItem:afModel.customId groupName:afModel.fzmc modifyNameBlock:^(NSString * groupName){
-                            
-                            [tempSelf.myTableView reloadData];
-                        }];
-                    }
-                    
-                    
-                    
-                };
-                
-                //设置当cell左滑时，关闭其他cell的左滑
-                cell.closeOtherCellSwipe = ^{
-                    for (AFItemCell *item in tempSelf.myTableView.visibleCells) {
-                        if (item != tempCell) [item closeLeftSwipe];
-                    }
-                };
-            }
+            AFDistrictModel *model = _groupArr[indexPath.section][indexPath.row];
+            cell.districtModel = model;
         }
-
+        return cell;
+    }else {
+        AFItemCell *cell = [AFItemCell cellWithTableView:tableView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        __weak typeof(self) tempSelf = self;
+        __weak typeof(cell) tempCell = cell;
+        
+        if ([_groupArr[indexPath.section] count] > 0) {
+            AFModel * afModel =_groupArr[indexPath.section][indexPath.row];
+            [cell setData:afModel]; //设置数据
+            //设置删除cell回调block
+            cell.deleteAFItem = ^{
+                
+                if (tempSelf.delegate) {
+                    [tempSelf.delegate deleteAFItem:afModel.customId updateCellBlock:^{
+                        
+                        NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
+                        [_groupArr removeObject:tempCell.model];
+                        [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
+                    }];
+                }
+                
+                
+                
+            };
+            
+            
+            cell.editAFItem = ^{
+                
+                if (tempSelf.delegate) {
+                    [tempSelf.delegate editAFItem:afModel.customId groupName:afModel.fzmc modifyNameBlock:^(NSString * groupName){
+                        
+                        [tempSelf.myTableView reloadData];
+                    }];
+                }
+                
+                
+                
+            };
+            
+            //设置当cell左滑时，关闭其他cell的左滑
+            cell.closeOtherCellSwipe = ^{
+                for (AFItemCell *item in tempSelf.myTableView.visibleCells) {
+                    if ([item isKindOfClass:[AFItemCell class]]) {
+                        if (item != tempCell) [item closeLeftSwipe];
+                    }                    
+                }
+            };
+        }
+        return cell;
     }
-    
-    return cell;
-    
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSString *itemId = nil;
     NSString *name = nil;
+    NSString *parentId = nil;
     if (indexPath.section == 0) {
         AFDistrictModel *model = _groupArr[indexPath.section][indexPath.row];
         itemId = model.districtId;
         name = model.qymc;
+        parentId = model.parentId;
     }else {
         AFModel * model =_groupArr[indexPath.section][indexPath.row];
         itemId = model.customId;
         name = model.fzmc;
+        parentId = model.parentId;
     }
-    
     if (self.delegate) {
-        //[self.delegate selectItem:model];
-        [self.delegate selectItem:itemId name:name section:indexPath.section];
+        [self.delegate selectItem:itemId name:name section:indexPath.section parent:parentId];
     }
     
     

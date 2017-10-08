@@ -14,5 +14,5 @@
 //@property(nonatomic,strong)NSArray * dataArr;
 @property (nonatomic, copy) NSString *itemId;
 @property (nonatomic, assign) NSInteger type;
-
+@property (nonatomic, copy) NSString *parentId;
 @end

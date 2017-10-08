@@ -134,12 +134,6 @@
     self.afContentLabel.text =model.fzmc;
 }
 
-//设置默认分组数据
-- (void)setDistrictData:(AFDistrictModel *)districtModel {
-    _districtModel = districtModel;
-    self.afImageView.image=ImageNamed(@"home_monitor");
-    self.afContentLabel.text =districtModel.qymc;
-}
 #pragma  mark - 事件操作
 //拨打电话： 需要在真机测试效果
 - (void)editAfItem: (UIButton *)sender{

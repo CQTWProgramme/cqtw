@@ -32,7 +32,7 @@
 
 //加载设备数据
 - (void)loadData {
-    [EquipmentModel getListDevicesDataById:self.customId success:^(id returnValue) {
+    [EquipmentModel getListDevicesDataById:self.branchId success:^(id returnValue) {
         
     } failure:^(id errorCode) {
         
