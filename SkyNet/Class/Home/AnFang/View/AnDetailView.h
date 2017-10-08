@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 typedef void (^LatticePointDetailBlock)();
+typedef NS_ENUM(NSUInteger, BottomViewClickType) {
+    BuFangType = 1000,
+    CeFang,
+    XiaoJing,
+};
+@protocol AnDetailViewDelegate <NSObject>
+
+- (void)bottomViewClickWithType:(BottomViewClickType )type;
+
+@end
 @interface AnDetailView : UIView
+@property (nonatomic, weak) id<AnDetailViewDelegate> delegate;
 @property(nonatomic,strong)UIView * headView;
 @property(nonatomic,strong)UIImageView * headImageView;
 @property(nonatomic,strong)UILabel * headTitle;
@@ -26,7 +37,6 @@ typedef void (^LatticePointDetailBlock)();
 
 @property(nonatomic,strong)UIViewController * currentVC;
 
-
-
 -(instancetype)initWithFrame:(CGRect)frame currentVC:(UIViewController *)currentVC;
 @end
+

@@ -9,8 +9,11 @@
 #import "LatticePointDetailVC.h"
 #import "LatticePointDetailHeaderView.h"
 #import "LatticePointDetailModel.h"
-
-@interface LatticePointDetailVC ()<UITableViewDelegate,UITableViewDataSource>
+#import <MapKit/MapKit.h>
+#import "EditInstallerVC.h"
+@interface LatticePointDetailVC ()<UITableViewDelegate,UITableViewDataSource,MKMapViewDelegate> {
+    MKMapView *_mapView;
+}
 @property (nonatomic, strong)LatticePointDetailHeaderView *headerView;
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) UITableView *myTableView;
@@ -23,7 +26,9 @@
     self.title = @"网点详情";
     [self setupHeaderView];
     [self setupTableView];
+    [self setupMapView];
     [self setupdata];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -55,13 +60,52 @@
 -(UITableView *)myTableView{
     
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, 6 * 44) style:UITableViewStylePlain];
         _myTableView.backgroundColor = BACKGROUND_COLOR;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.rowHeight=44;
     }
     return _myTableView;
+}
+
+- (void)setupMapView{
+    _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, self.myTableView.bottom, SCREEN_WIDTH, SCREEN_HEIGHT - self.myTableView.bottom)];
+    
+    _mapView.mapType = MKMapTypeStandard;
+    _mapView.zoomEnabled = YES;
+    _mapView.scrollEnabled = YES;
+    _mapView.delegate = self;
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(0, 0);
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.01;
+    span.longitudeDelta = 0.01;
+    
+    MKCoordinateRegion region = {coordinate,span};
+    
+    [_mapView setRegion:region];
+    
+    MKPointAnnotation *annomation = [[MKPointAnnotation alloc] init];
+    annomation.coordinate = coordinate;
+    [_mapView addAnnotation:annomation];
+    
+    [self.view addSubview:_mapView];
+}
+
+#pragma mark 显示标注视图
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    static NSString *annotationID = @"annotation";
+    MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationID];
+    if (!view)
+    {
+        view = [[MKPinAnnotationView alloc]init];
+    }
+    view.annotation = annotation;
+    view.pinColor = MKPinAnnotationColorRed;
+    view.canShowCallout = YES;
+    return view;
 }
 
 #pragma tableviewDataSource
@@ -83,6 +127,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    EditInstallerVC *installerVC = [[EditInstallerVC alloc] init];
+    [self.navigationController pushViewController:installerVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

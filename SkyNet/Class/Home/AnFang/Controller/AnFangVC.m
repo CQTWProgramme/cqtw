@@ -250,140 +250,23 @@
 }
 
 
-#pragma mark 新增分组弹出框
+#pragma mark 新增分组
 -(void)addNewGroup{
     
     AddNewGroupVC * addNewGroupVC =[AddNewGroupVC new];
     addNewGroupVC.fzgn = 1;
     addNewGroupVC.fid = @"0";
     [self.navigationController pushViewController:addNewGroupVC animated:YES];
-    
-    
-    
-//    
-//    MJWeakSelf
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"新增分组" message:@"请输入您要新增分组的名字" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"好",nil];
-//    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    [[alert textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeDefault];
-//    [[alert textFieldAtIndex:0] setPlaceholder:@"输入分组名"];
-//    UITextField *tf=[alert textFieldAtIndex:0];//获得输入框
-//    
-//    alert.alertViewClickedButtonAtIndexBlock = ^(UIAlertView *alert ,NSUInteger index) {
-//        
-//        if (index == 0) {
-//            
-//            NSLog(@"取消");
-//            
-//        }else  if (index == 1) {
-//            
-//            NSString * inputText=tf.text;//获得值
-//            if ([inputText isEqualToString:@""]) {
-//                
-//                [STTextHudTool showErrorText:@"分组名不能为空" withSecond:HudDelay];
-//                
-//            }else{
-//                
-//                [weakSelf addGroup:inputText];
-//            }
-//            
-//        }
-//        
-//    };
-//    
-//    [alert show];
-
-    
 }
 
-
-
-//#pragma mark 查询安防自定义分组
-//-(void)getGroupData:(AFModel *)afModel{
-//
-//
-//    MJWeakSelf
-//    AFViewModel * afViewModel =[AFViewModel new];
-//    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
-//
-//        NSArray * arr =returnValue;
-//
-//
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if (arr.count==0) {
-//                AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
-//                anDetailVC.hidesBottomBarWhenPushed=YES;
-//                anDetailVC.customId = afModel.customId;
-//                [self.navigationController pushViewController:anDetailVC animated:YES];
-//
-//            }else{
-//                NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
-//                netDetailVC.hidesBottomBarWhenPushed=YES;
-//                netDetailVC.groupTitle=afModel.fzmc;
-//                netDetailVC.customId=afModel.customId;
-//                netDetailVC.dataArr=arr;
-//                [self.navigationController pushViewController:netDetailVC animated:YES];
-//
-//            }
-//        });
-//    } WithErrorBlock:^(id errorCode) {
-//
-//    } WithFailureBlock:^{
-//
-//    }];
-//
-//    [afViewModel requestGroupData:afModel.customId];
-//
-//}
-
-
 #pragma mark 表格选择
-//-(void)selectItem:(AFModel *)afModel{
-//
-//    [self getGroupData:afModel];
-//
-//}
-
--(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger)section parent:(NSString *)parentId{
-//    MJWeakSelf
-//     AFViewModel * afViewModel =[AFViewModel new];
+-(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger)section{
     NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
     netDetailVC.groupTitle = name;
     netDetailVC.itemId = itemId;
     netDetailVC.type = section;
-    netDetailVC.parentId = parentId;
     netDetailVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:netDetailVC animated:YES];
-        
-//        [afViewModel setBlockWithReturnBlock:^(id returnValue) {
-//
-//            NSArray * arr =returnValue;
-//
-//
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                if (arr.count==0) {
-//                    AnDetailVC * anDetailVC =[[AnDetailVC alloc]init];
-//                    anDetailVC.hidesBottomBarWhenPushed=YES;
-//                    anDetailVC.customId = afModel.customId;
-//                    [self.navigationController pushViewController:anDetailVC animated:YES];
-//
-//                }else{
-//                    NetDetailVC * netDetailVC =[[NetDetailVC alloc]init];
-//                    netDetailVC.hidesBottomBarWhenPushed=YES;
-//                    netDetailVC.groupTitle=afModel.fzmc;
-//                    netDetailVC.customId=afModel.customId;
-//                    netDetailVC.dataArr=arr;
-//                    [self.navigationController pushViewController:netDetailVC animated:YES];
-//
-//                }
-//            });
-//        } WithErrorBlock:^(id errorCode) {
-//
-//        } WithFailureBlock:^{
-//
-//        }];
-//
-//        [afViewModel requestGroupData:afModel.customId];
-//    }
     
 }
 
@@ -396,11 +279,5 @@
     }
     
     return _afView;
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 @end

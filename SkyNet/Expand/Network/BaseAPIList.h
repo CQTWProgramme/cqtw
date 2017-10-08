@@ -87,6 +87,11 @@
 //获取网点详情数据
 #define LatticeDetailData                      POST_INTERFACE(@"api/bean/selectBranchById")
 
+//网点一键布防,撤防,消警
+#define AlarmBranchBCF                      POST_INTERFACE(@"api/alarm/setBranchBCF")
+
+//设备单独布防,撤防,消警
+#define AlarmDeviceBCF                      POST_INTERFACE(@"api/alarm/setDeviceBCF")
 
 
 

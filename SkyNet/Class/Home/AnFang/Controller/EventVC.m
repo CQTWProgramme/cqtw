@@ -8,7 +8,10 @@
 
 #import "EventVC.h"
 #import "EventCell.h"
+#define kBottomViewHeight 150
 @interface EventVC ()
+@property (nonatomic, strong) UIView *backCoverView;
+@property (nonatomic, strong) UIView *bottomMessageView;
 
 @end
 
@@ -17,8 +20,90 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.myTableView];
+    [self addBackView];
+    [self addBottomView];
+    self.backCoverView.hidden = YES;
+    self.bottomMessageView.hidden = YES;
 }
 
+- (void)addBackView {
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.backCoverView];
+}
+
+- (void)addBottomView {
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.bottomMessageView];
+}
+
+-(UIView *)bottomMessageView {
+    if (nil == _bottomMessageView) {
+        _bottomMessageView = [[UIView alloc] init];
+        _bottomMessageView.backgroundColor = [UIColor whiteColor];
+        _bottomMessageView.frame = CGRectMake(0, SCREEN_HEIGHT - kBottomViewHeight - NavigationBar_HEIGHT, SCREEN_WIDTH, kBottomViewHeight);
+        
+        //添加子view
+        //1.名称
+        UILabel *headLabel = [[UILabel alloc] init];
+        headLabel.frame = CGRectMake(20, 10, 100, 16);
+        headLabel.font = [UIFont systemFontOfSize:14];
+        headLabel.text = @"异常情况1";
+        headLabel.textColor = [UIColor blackColor];
+        
+        UILabel *timeLabel = [[UILabel alloc] init];
+        timeLabel.frame = CGRectMake(20, 30, 180, 14);
+        timeLabel.font = [UIFont systemFontOfSize:10];
+        timeLabel.text = @"发生时间:2017-08-15 12:30";
+        timeLabel.textColor = [UIColor lightGrayColor];
+        
+        UIButton *cancellBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [cancellBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [cancellBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        cancellBtn.frame = CGRectMake(SCREEN_WIDTH - 44, 0, 44, 44);
+        [cancellBtn addTarget:self action:@selector(cancellAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIView *lineView = [[UIView alloc] init];
+        lineView.backgroundColor = [UIColor lightGrayColor];
+        lineView.frame = CGRectMake(0, 44, SCREEN_WIDTH, 1);
+        
+        UILabel *contentLabel = [[UILabel alloc] init];
+        contentLabel.frame = CGRectMake(10, 50, SCREEN_WIDTH - 20, 80);
+        contentLabel.numberOfLines = 0;
+        contentLabel.font = [UIFont systemFontOfSize:15];
+        contentLabel.textColor = [UIColor lightGrayColor];
+        contentLabel.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
+        
+        [_bottomMessageView addSubview:headLabel];
+        [_bottomMessageView addSubview:timeLabel];
+        [_bottomMessageView addSubview:cancellBtn];
+        [_bottomMessageView addSubview:lineView];
+        [_bottomMessageView addSubview:contentLabel];
+    }
+    return _bottomMessageView;
+}
+
+
+- (void)cancellAction {
+    [UIView animateWithDuration:1.0 animations:^{
+        self.backCoverView.hidden = YES;
+        self.bottomMessageView.hidden = YES;
+    }];
+}
+
+- (void)showMessageView {
+    [UIView animateWithDuration:1.0 animations:^{
+        self.backCoverView.hidden = NO;
+        self.bottomMessageView.hidden = NO;
+    }];
+}
+
+-(UIView *)backCoverView {
+    if (nil == _backCoverView) {
+        _backCoverView = [[UIView alloc] init];
+        _backCoverView.frame = CGRectMake(0, NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBar_HEIGHT - kBottomViewHeight);
+        _backCoverView.backgroundColor = [UIColor blackColor];
+        _backCoverView.alpha = 0.3;
+    }
+    return _backCoverView;
+}
 #pragma mark 下拉刷新
 -(void)reloadTableView{
     
@@ -116,19 +201,9 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self showMessageView];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

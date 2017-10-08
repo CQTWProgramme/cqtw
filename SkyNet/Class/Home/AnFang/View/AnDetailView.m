@@ -268,15 +268,22 @@ MDFlipCollectionViewDelegate>
     
     }
 
-
-    
-    
-    
-
 }
 
 
-
+- (void)btnClick:(UIButton *)btn {
+    BottomViewClickType type = BuFangType;
+    if (btn.tag == 1000) {
+        type = BuFangType;
+    }else if (btn.tag == 1001) {
+        type = CeFang;
+    }else if (btn.tag == 1002) {
+        type = XiaoJing;
+    }
+    if (self.delegate) {
+        [self.delegate bottomViewClickWithType:type];
+    }
+}
 
 -(void)createSegment{
     

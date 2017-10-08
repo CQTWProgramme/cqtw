@@ -355,6 +355,22 @@
     
 }
 
+-(void)alarmBranchBCFWithId:(NSString *)branchId type:(NSInteger)type {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"branchId": branchId,@"type":@(type)};
+    [[AFNetAPIClient sharedJsonClient].setRequest(AlarmBranchBCF).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        NSString *code = responseObject[@"code"];
+        super.returnBlock(code);
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+    }];
+}
 
 #pragma mark 渐变色
 +(CAGradientLayer *)getDefaultLayerWithFrame:(CGRect)frame{

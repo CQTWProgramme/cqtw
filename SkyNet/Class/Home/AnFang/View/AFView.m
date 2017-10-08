@@ -165,20 +165,17 @@
     
     NSString *itemId = nil;
     NSString *name = nil;
-    NSString *parentId = nil;
     if (indexPath.section == 0) {
         AFDistrictModel *model = _groupArr[indexPath.section][indexPath.row];
         itemId = model.districtId;
         name = model.qymc;
-        parentId = model.parentId;
     }else {
         AFModel * model =_groupArr[indexPath.section][indexPath.row];
         itemId = model.customId;
         name = model.fzmc;
-        parentId = model.parentId;
     }
     if (self.delegate) {
-        [self.delegate selectItem:itemId name:name section:indexPath.section parent:parentId];
+        [self.delegate selectItem:itemId name:name section:indexPath.section];
     }
     
     

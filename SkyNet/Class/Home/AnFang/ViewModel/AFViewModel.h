@@ -108,12 +108,20 @@
 
 
 /**
+ 网点一键布防,撤防,消警
+ 
+ @param branchId 网点id
+ @param type 操作类型;1=布防;2=撤防;3=消警
+
+ */
+-(void)alarmBranchBCFWithId:(NSString *)branchId type:(NSInteger)type;
+
+/**
  获取自定义分组下数据
  
  @param customId 自定义分组id
  */
 -(void)requestGroupData:(NSString *)customId;
-
 
 /**
  渐变色

@@ -10,5 +10,5 @@
 
 @interface AnDetailVC : BaseViewController
 @property (nonatomic, copy) NSString *branchId;
-@property (nonatomic, copy) NSString *customId;
+@property (nonatomic, copy) NSString *name;
 @end

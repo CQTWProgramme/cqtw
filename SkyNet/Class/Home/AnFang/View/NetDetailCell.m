@@ -89,18 +89,18 @@
     self.underlineView.backgroundColor = [UIColor lightGrayColor];
     
     
-//    //3、给容器containerView绑定左右滑动清扫手势
-//    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-//    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft; //设置向左清扫
-//    [self.containerView addGestureRecognizer:leftSwipe];
-//    
-//    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-//    rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;//设置向右清扫
-//    [self.containerView addGestureRecognizer:rightSwipe];
-//    self.rightSwipe = rightSwipe;
-//    
-//    self.selectionStyle = UITableViewCellSelectionStyleNone; //设置单元格选中样式
-//    [self.contentView bringSubviewToFront:self.containerView]; //设置containerView显示在最上层
+    //3、给容器containerView绑定左右滑动清扫手势
+    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft; //设置向左清扫
+    [self.containerView addGestureRecognizer:leftSwipe];
+    
+    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;//设置向右清扫
+    [self.containerView addGestureRecognizer:rightSwipe];
+    self.rightSwipe = rightSwipe;
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone; //设置单元格选中样式
+    [self.contentView bringSubviewToFront:self.containerView]; //设置containerView显示在最上层
     
     
 }

@@ -9,7 +9,8 @@
 #import "AnDetailVC.h"
 #import "AnDetailView.h"
 #import "LatticePointDetailVC.h"
-@interface AnDetailVC ()
+#import "AFViewModel.h"
+@interface AnDetailVC ()<AnDetailViewDelegate>
 @property(nonatomic,strong)AnDetailView * anDetailView;
 @end
 
@@ -28,11 +29,36 @@
 
 - (void)getData {
     
-    
+}
+
+-(void)bottomViewClickWithType:(BottomViewClickType)type {
+    AFViewModel *afViewModel = [AFViewModel new];
+    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+        NSString *code = returnValue;
+        if (code.integerValue == 1) {
+            if (type == BuFangType) {
+                [STTextHudTool showSuccessText:@"一键布防成功!"];
+            }else if (type == CeFang) {
+                [STTextHudTool showSuccessText:@"一键撤防成功!"];
+            }else if (type == XiaoJing) {
+                [STTextHudTool showSuccessText:@"一键消警成功!"];
+            }
+        }
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    if (type == BuFangType) {
+        [afViewModel alarmBranchBCFWithId:self.branchId type:1];
+    }else if (type == CeFang) {
+        [afViewModel alarmBranchBCFWithId:self.branchId type:2];
+    }else if (type == XiaoJing) {
+        [afViewModel alarmBranchBCFWithId:self.branchId type:3];
+    }
 }
 
 -(void)createRightItem{
-    
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
@@ -51,7 +77,8 @@
     MJWeakSelf
     if (!_anDetailView) {
        _anDetailView =[[AnDetailView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT) currentVC:self];
-        //_afView.delegate=self;
+        _anDetailView.delegate=self;
+        _anDetailView.headTitle.text = weakSelf.name;
         _anDetailView.latticePointDetailBlock = ^(){
             LatticePointDetailVC *latticeDetailVC = [[LatticePointDetailVC alloc] init];
             latticeDetailVC.branchId = weakSelf.branchId;
@@ -62,20 +89,5 @@
     return _anDetailView;
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -14,8 +14,8 @@
     if (customId == nil) {
         customId = @"";
     }
-    NSDictionary * param =@{@"branchId":customId,@"sbgn":@(1)};
-    [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDevicesData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary * param =@{@"branchId":customId,@"sbgn":@(1),@"currPage":@(0),@"pageSize":@(10)};
+    [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDevicePageByBranch).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];

@@ -27,6 +27,7 @@
 		88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C891F7CE12B0070067C /* PlayBackVC.xib */; };
 		88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88299C921F7CE1B40070067C /* PressSpeakVC.m */; };
 		88299C951F7CE1B40070067C /* PressSpeakVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C931F7CE1B40070067C /* PressSpeakVC.xib */; };
+		8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8845DED61F8A332A00AB8917 /* EditInstallerVC.m */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
 		88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */; };
@@ -209,6 +210,8 @@
 		88299C911F7CE1B40070067C /* PressSpeakVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PressSpeakVC.h; sourceTree = "<group>"; };
 		88299C921F7CE1B40070067C /* PressSpeakVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PressSpeakVC.m; sourceTree = "<group>"; };
 		88299C931F7CE1B40070067C /* PressSpeakVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PressSpeakVC.xib; sourceTree = "<group>"; };
+		8845DED51F8A332A00AB8917 /* EditInstallerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInstallerVC.h; sourceTree = "<group>"; };
+		8845DED61F8A332A00AB8917 /* EditInstallerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInstallerVC.m; sourceTree = "<group>"; };
 		88CE3F2A1F7AADBB0075DCD9 /* FacilityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailVC.h; sourceTree = "<group>"; };
 		88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailVC.m; sourceTree = "<group>"; };
 		88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityDetailVC.xib; sourceTree = "<group>"; };
@@ -705,6 +708,8 @@
 				88CE3F2F1F7AB46B0075DCD9 /* LatticePointDetailVC.h */,
 				88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */,
 				88CE3F311F7AB46B0075DCD9 /* LatticePointDetailVC.xib */,
+				8845DED51F8A332A00AB8917 /* EditInstallerVC.h */,
+				8845DED61F8A332A00AB8917 /* EditInstallerVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1478,6 +1483,7 @@
 				BF0C32641F67CE6C009FC882 /* AdvModel.m in Sources */,
 				BF34EEAF1F49CEBF00E05DF3 /* CityModel.m in Sources */,
 				BF3F8CFD1F6AC9BF000EA801 /* NextModel.m in Sources */,
+				8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */,
 				BF84BB011F5C5A14000FB4D8 /* UIImage+colorImage.m in Sources */,
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
 				88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */,

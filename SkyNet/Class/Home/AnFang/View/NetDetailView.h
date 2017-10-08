@@ -12,17 +12,17 @@ typedef void (^UpdateCellBlock)();
 typedef void (^ModifyNameBlock)(NSString * groupName);
 @protocol NetDetailViewDelegate <NSObject>
 
-//上拉刷新
--(void)reloadTableView;
+////上拉刷新
+//-(void)reloadTableView;
 
 //删除分组
 -(void)deleteAFItem:(NSString *)customId
     updateCellBlock:(UpdateCellBlock)block;
 
-//编辑分组
--(void)editAFItem:(NSString *)customId
-        groupName:(NSString *)groupName
-  modifyNameBlock:(ModifyNameBlock)block;
+////编辑分组
+//-(void)editAFItem:(NSString *)customId
+//        groupName:(NSString *)groupName
+//  modifyNameBlock:(ModifyNameBlock)block;
 
 //选择分组
 -(void)selectItem:(NetDetailModel *)netDetailModel;
@@ -32,7 +32,7 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
 @property(nonatomic,strong) UITableView       * myTableView;
 @property (nonatomic, strong) MJRefreshComponent *myRefreshView;
 @property(nonatomic,strong)   MJRefreshAutoFooter * myAutoFooter;
-@property(nonatomic,strong)   NSArray           * groupArr;
+@property(nonatomic,strong)   NSMutableArray           * groupArr;
 @property(nonatomic,strong) id<NetDetailViewDelegate> delegate;
 
 @end

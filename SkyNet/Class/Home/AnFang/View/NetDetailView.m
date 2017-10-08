@@ -25,7 +25,7 @@
 
 
 
--(void)setGroupArr:(NSArray *)groupArr{
+-(void)setGroupArr:(NSMutableArray *)groupArr{
     
     
     _groupArr=groupArr;
@@ -123,41 +123,41 @@
         __weak typeof(cell) tempCell = cell;
         
 //        //设置删除cell回调block
-//        cell.deleteAFItem = ^{
-//            
-//            if (tempSelf.delegate) {
-//                [tempSelf.delegate deleteAFItem:afModel.customId updateCellBlock:^{
-//                    
-//                    NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
-//                    [_groupArr removeObject:tempCell.model];
-//                    [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
-//                }];
-//            }
-//            
-//            
-//            
-//        };
-//        
-//        
+        cell.deleteAFItem = ^{
+            
+            if (tempSelf.delegate) {
+                [tempSelf.delegate deleteAFItem:afModel.customId updateCellBlock:^{
+                    
+                    NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
+                    [_groupArr removeObject:tempCell.model];
+                    [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
+                }];
+            }
+            
+            
+            
+        };
+        
+        
 //        cell.editAFItem = ^{
-//            
+//
 //            if (tempSelf.delegate) {
 //                [tempSelf.delegate editAFItem:afModel.customId groupName:afModel. modifyNameBlock:^(NSString * groupName){
-//                    
+//
 //                    [tempSelf.myTableView reloadData];
 //                }];
 //            }
-//            
-//            
-//            
+//
+//
+//
 //        };
-//        
-//        //设置当cell左滑时，关闭其他cell的左滑
-//        cell.closeOtherCellSwipe = ^{
-//            for (AFItemCell *item in tempSelf.myTableView.visibleCells) {
-//                if (item != tempCell) [item closeLeftSwipe];
-//            }
-//        };
+        
+        //设置当cell左滑时，关闭其他cell的左滑
+        cell.closeOtherCellSwipe = ^{
+            for (NetDetailCell *item in tempSelf.myTableView.visibleCells) {
+                if (item != tempCell) [item closeLeftSwipe];
+            }
+        };
         
     }
     
