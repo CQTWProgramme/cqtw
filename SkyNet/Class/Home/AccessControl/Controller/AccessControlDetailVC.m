@@ -8,10 +8,12 @@
 
 #import "AccessControlDetailVC.h"
 #import "ACDetailItemCell.h"
+#import "AddVisitorVC.h"
 
 static NSString *cellID = @"ACDetailItemCellID";
 @interface AccessControlDetailVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UICollectionView *myCollectionView;
+@property (strong, nonatomic) IBOutlet UIPageControl *myPageControl;
 
 @end
 
@@ -22,6 +24,26 @@ static NSString *cellID = @"ACDetailItemCellID";
     self.title=@"门禁";
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self setupColectionView];
+    [self createRightItem];
+}
+
+-(void)createRightItem{
+    
+    
+    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame=CGRectMake(0,0,25,25);
+    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
+    
+    [rightBtn addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
+- (void)addNewGroup {
+    AddVisitorVC *addVC = [[AddVisitorVC alloc] init];
+    [self.navigationController pushViewController:addVC animated:YES];
 }
 
 - (void)setupColectionView {
@@ -39,6 +61,13 @@ static NSString *cellID = @"ACDetailItemCellID";
     self.myCollectionView.delegate = self;
     self.myCollectionView.dataSource = self;
     [self.myCollectionView registerClass:[ACDetailItemCell class] forCellWithReuseIdentifier:cellID];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.myCollectionView) {
+        int page = scrollView.contentOffset.x / scrollView.frame.size.width;
+        self.myPageControl.currentPage = page;
+    }
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {

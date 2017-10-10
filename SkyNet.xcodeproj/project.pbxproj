@@ -27,6 +27,8 @@
 		88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C891F7CE12B0070067C /* PlayBackVC.xib */; };
 		88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88299C921F7CE1B40070067C /* PressSpeakVC.m */; };
 		88299C951F7CE1B40070067C /* PressSpeakVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C931F7CE1B40070067C /* PressSpeakVC.xib */; };
+		883354B51F8D0C67006FC522 /* AddVisitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883354B31F8D0C67006FC522 /* AddVisitorVC.m */; };
+		883354B61F8D0C67006FC522 /* AddVisitorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 883354B41F8D0C67006FC522 /* AddVisitorVC.xib */; };
 		8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8845DED61F8A332A00AB8917 /* EditInstallerVC.m */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
@@ -220,6 +222,9 @@
 		88299C911F7CE1B40070067C /* PressSpeakVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PressSpeakVC.h; sourceTree = "<group>"; };
 		88299C921F7CE1B40070067C /* PressSpeakVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PressSpeakVC.m; sourceTree = "<group>"; };
 		88299C931F7CE1B40070067C /* PressSpeakVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PressSpeakVC.xib; sourceTree = "<group>"; };
+		883354B21F8D0C67006FC522 /* AddVisitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddVisitorVC.h; sourceTree = "<group>"; };
+		883354B31F8D0C67006FC522 /* AddVisitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddVisitorVC.m; sourceTree = "<group>"; };
+		883354B41F8D0C67006FC522 /* AddVisitorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVisitorVC.xib; sourceTree = "<group>"; };
 		8845DED51F8A332A00AB8917 /* EditInstallerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInstallerVC.h; sourceTree = "<group>"; };
 		8845DED61F8A332A00AB8917 /* EditInstallerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInstallerVC.m; sourceTree = "<group>"; };
 		88CE3F2A1F7AADBB0075DCD9 /* FacilityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailVC.h; sourceTree = "<group>"; };
@@ -618,6 +623,9 @@
 				88F9C57C1F8CD16900039A08 /* AccessControlDetailVC.h */,
 				88F9C57D1F8CD16900039A08 /* AccessControlDetailVC.m */,
 				88F9C57E1F8CD16900039A08 /* AccessControlDetailVC.xib */,
+				883354B21F8D0C67006FC522 /* AddVisitorVC.h */,
+				883354B31F8D0C67006FC522 /* AddVisitorVC.m */,
+				883354B41F8D0C67006FC522 /* AddVisitorVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1449,6 +1457,7 @@
 				88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */,
 				BF0C32171F6772EC009FC882 /* STError@2x.png in Resources */,
 				BF34EEFE1F4B226E00E05DF3 /* icon.png in Resources */,
+				883354B61F8D0C67006FC522 /* AddVisitorVC.xib in Resources */,
 				88F9C5801F8CD16900039A08 /* AccessControlDetailVC.xib in Resources */,
 				88299C6E1F7CC44E0070067C /* MonitorVC.xib in Resources */,
 				88299C791F7CD2E10070067C /* MonitorDetailListVC.xib in Resources */,
@@ -1628,6 +1637,7 @@
 				BF34EB3D1F49CDB600E05DF3 /* ViewController.m in Sources */,
 				BF0C322B1F6774EB009FC882 /* CusMD5.m in Sources */,
 				BF34EEE61F49E58200E05DF3 /* SLTabBar.m in Sources */,
+				883354B51F8D0C67006FC522 /* AddVisitorVC.m in Sources */,
 				BF34EEF61F49E70100E05DF3 /* MyVC.m in Sources */,
 				BFFA0A091F7A684A0019CFA8 /* EquipCell.m in Sources */,
 				BF34EE001F49CEBF00E05DF3 /* WKWaitingProgressHUD.m in Sources */,
