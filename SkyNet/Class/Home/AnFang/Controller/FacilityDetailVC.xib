@@ -112,7 +112,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvU-VX-eQH">
-                    <rect key="frame" x="0.0" y="164" width="375" height="503"/>
+                    <rect key="frame" x="0.0" y="164" width="375" height="443"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foq-O7-ppD">
@@ -278,7 +278,7 @@
                 <constraint firstItem="0xD-mE-MWU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="TY4-tv-NfQ"/>
                 <constraint firstItem="3eZ-21-ybk" firstAttribute="top" secondItem="0xD-mE-MWU" secondAttribute="bottom" id="TyS-yD-fbY"/>
                 <constraint firstItem="0xD-mE-MWU" firstAttribute="top" secondItem="41p-5B-QZv" secondAttribute="bottom" id="VH5-Po-brt"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="kvU-VX-eQH" secondAttribute="bottom" id="VSN-9a-IxH"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="kvU-VX-eQH" secondAttribute="bottom" constant="60" id="VSN-9a-IxH"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="WJK-La-bYo" secondAttribute="trailing" id="aWW-tc-C5F"/>
                 <constraint firstItem="iKh-Xg-NcB" firstAttribute="top" secondItem="41p-5B-QZv" secondAttribute="bottom" id="cKV-5q-MfC"/>
                 <constraint firstItem="5ub-Ax-LrZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="cVL-MT-AUK"/>

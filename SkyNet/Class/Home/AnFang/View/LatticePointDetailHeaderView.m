@@ -198,12 +198,9 @@
     
     
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)setTitle:(NSString *)title {
+    _title = title;
+    self.headTitle.text = _title;
 }
-*/
 
 @end

@@ -29,11 +29,68 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设备详情";
+    [self createBottomView];
+    [self setNavBackButtonImage:ImageNamed(@"back")];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.backCoverView.hidden = YES;
     self.bottomMessageView.hidden = YES;
     //[self getData];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+}
+
+-(void)createBottomView{
+    UIView *_bottomView =[UIView new];
+    _bottomView.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:_bottomView];
+    [self.view insertSubview:_bottomView atIndex:0];
+    _bottomView.sd_layout
+    .leftEqualToView(self.view)
+    .bottomEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .heightIs(60);
+    
+    for (int i=0; i<3; i++) {
+        NSArray * titleA=@[@"布防",@"撤防",@"消警"];
+        NSArray * imageArr=@[@"bf",@"home_monitor",@"xj"];
+        UILabel * label =[UILabel new];
+        [_bottomView addSubview:label];
+        label.text=titleA[i];
+        label.textColor=[UIColor hexStringToColor:@"#3c3c3c"];
+        label.textAlignment=NSTextAlignmentCenter;
+        label.sd_layout
+        .leftSpaceToView(_bottomView, i*SCREEN_WIDTH/3)
+        .bottomSpaceToView(_bottomView, 10)
+        .widthIs(SCREEN_WIDTH/3)
+        .heightIs(15);
+        
+        
+        
+        UIButton * btn =[UIButton new];
+        [_bottomView addSubview:btn];
+        [btn setImage:[UIImage imageNamed:imageArr[i]] forState:UIControlStateNormal];
+        btn.tag =2000+ i;
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.sd_layout
+        .centerXEqualToView(label)
+        .widthIs(26)
+        .heightEqualToWidth();
+        btn.sd_cornerRadius=@(13);
+        
+        
+    }
+    
+}
+
+
+- (void)btnClick:(UIButton *)btn {
+    if (btn.tag == 2000) {
+        
+    }else if (btn.tag == 2001) {
+        
+    }else if (btn.tag == 2002) {
+        
+    }
 }
 
 - (IBAction)hideBottomMessageViewAction:(id)sender {

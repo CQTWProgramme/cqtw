@@ -34,6 +34,16 @@
 		88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F311F7AB46B0075DCD9 /* LatticePointDetailVC.xib */; };
 		88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D829E11F7DE8B3007A2406 /* EquipmentModel.m */; };
 		88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */; };
+		88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5681F8CC71500039A08 /* AccessControlVC.m */; };
+		88F9C56C1F8CC77300039A08 /* ACViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C56B1F8CC77300039A08 /* ACViewModel.m */; };
+		88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C56E1F8CC7A200039A08 /* ACVIew.m */; };
+		88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5711F8CC7E800039A08 /* ACItemCell.m */; };
+		88F9C5751F8CC95000039A08 /* ACModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5741F8CC95000039A08 /* ACModel.m */; };
+		88F9C5781F8CCA1200039A08 /* ACDistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5771F8CCA1200039A08 /* ACDistrictModel.m */; };
+		88F9C57B1F8CCA5900039A08 /* ACDistrictItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C57A1F8CCA5900039A08 /* ACDistrictItemCell.m */; };
+		88F9C57F1F8CD16900039A08 /* AccessControlDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C57D1F8CD16900039A08 /* AccessControlDetailVC.m */; };
+		88F9C5801F8CD16900039A08 /* AccessControlDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F9C57E1F8CD16900039A08 /* AccessControlDetailVC.xib */; };
+		88F9C5831F8CD60B00039A08 /* ACDetailItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5821F8CD60B00039A08 /* ACDetailItemCell.m */; };
 		8B39D7FCE5E32A09CC5526C7 /* libPods-SkyNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F39E4A5A3711AC45266AF99 /* libPods-SkyNet.a */; };
 		BF0C32141F6772EC009FC882 /* angle-mask@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0C32081F6772EC009FC882 /* angle-mask@3x.png */; };
 		BF0C32151F6772EC009FC882 /* GCLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0C320A1F6772EC009FC882 /* GCLoadingView.m */; };
@@ -222,6 +232,25 @@
 		88D829E11F7DE8B3007A2406 /* EquipmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EquipmentModel.m; sourceTree = "<group>"; };
 		88D829E31F7E00A9007A2406 /* LatticePointDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatticePointDetailModel.h; sourceTree = "<group>"; };
 		88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatticePointDetailModel.m; sourceTree = "<group>"; };
+		88F9C5671F8CC71500039A08 /* AccessControlVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessControlVC.h; sourceTree = "<group>"; };
+		88F9C5681F8CC71500039A08 /* AccessControlVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessControlVC.m; sourceTree = "<group>"; };
+		88F9C56A1F8CC77300039A08 /* ACViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACViewModel.h; sourceTree = "<group>"; };
+		88F9C56B1F8CC77300039A08 /* ACViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACViewModel.m; sourceTree = "<group>"; };
+		88F9C56D1F8CC7A200039A08 /* ACVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVIew.h; sourceTree = "<group>"; };
+		88F9C56E1F8CC7A200039A08 /* ACVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACVIew.m; sourceTree = "<group>"; };
+		88F9C5701F8CC7E800039A08 /* ACItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACItemCell.h; sourceTree = "<group>"; };
+		88F9C5711F8CC7E800039A08 /* ACItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACItemCell.m; sourceTree = "<group>"; };
+		88F9C5731F8CC95000039A08 /* ACModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACModel.h; sourceTree = "<group>"; };
+		88F9C5741F8CC95000039A08 /* ACModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACModel.m; sourceTree = "<group>"; };
+		88F9C5761F8CCA1200039A08 /* ACDistrictModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACDistrictModel.h; sourceTree = "<group>"; };
+		88F9C5771F8CCA1200039A08 /* ACDistrictModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACDistrictModel.m; sourceTree = "<group>"; };
+		88F9C5791F8CCA5900039A08 /* ACDistrictItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACDistrictItemCell.h; sourceTree = "<group>"; };
+		88F9C57A1F8CCA5900039A08 /* ACDistrictItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACDistrictItemCell.m; sourceTree = "<group>"; };
+		88F9C57C1F8CD16900039A08 /* AccessControlDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessControlDetailVC.h; sourceTree = "<group>"; };
+		88F9C57D1F8CD16900039A08 /* AccessControlDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessControlDetailVC.m; sourceTree = "<group>"; };
+		88F9C57E1F8CD16900039A08 /* AccessControlDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccessControlDetailVC.xib; sourceTree = "<group>"; };
+		88F9C5811F8CD60B00039A08 /* ACDetailItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACDetailItemCell.h; sourceTree = "<group>"; };
+		88F9C5821F8CD60B00039A08 /* ACDetailItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACDetailItemCell.m; sourceTree = "<group>"; };
 		8F39E4A5A3711AC45266AF99 /* libPods-SkyNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SkyNet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0C32081F6772EC009FC882 /* angle-mask@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "angle-mask@3x.png"; sourceTree = "<group>"; };
 		BF0C32091F6772EC009FC882 /* GCLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLoadingView.h; sourceTree = "<group>"; };
@@ -566,6 +595,64 @@
 		88299C691F7CC40D0070067C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		88F9C5621F8CC6DA00039A08 /* AccessControl */ = {
+			isa = PBXGroup;
+			children = (
+				88F9C5631F8CC6DA00039A08 /* Controller */,
+				88F9C5641F8CC6DA00039A08 /* Model */,
+				88F9C5651F8CC6DA00039A08 /* View */,
+				88F9C5661F8CC6DA00039A08 /* ViewModel */,
+			);
+			path = AccessControl;
+			sourceTree = "<group>";
+		};
+		88F9C5631F8CC6DA00039A08 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				88F9C5671F8CC71500039A08 /* AccessControlVC.h */,
+				88F9C5681F8CC71500039A08 /* AccessControlVC.m */,
+				88F9C57C1F8CD16900039A08 /* AccessControlDetailVC.h */,
+				88F9C57D1F8CD16900039A08 /* AccessControlDetailVC.m */,
+				88F9C57E1F8CD16900039A08 /* AccessControlDetailVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		88F9C5641F8CC6DA00039A08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88F9C5731F8CC95000039A08 /* ACModel.h */,
+				88F9C5741F8CC95000039A08 /* ACModel.m */,
+				88F9C5761F8CCA1200039A08 /* ACDistrictModel.h */,
+				88F9C5771F8CCA1200039A08 /* ACDistrictModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		88F9C5651F8CC6DA00039A08 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88F9C56D1F8CC7A200039A08 /* ACVIew.h */,
+				88F9C56E1F8CC7A200039A08 /* ACVIew.m */,
+				88F9C5701F8CC7E800039A08 /* ACItemCell.h */,
+				88F9C5711F8CC7E800039A08 /* ACItemCell.m */,
+				88F9C5791F8CCA5900039A08 /* ACDistrictItemCell.h */,
+				88F9C57A1F8CCA5900039A08 /* ACDistrictItemCell.m */,
+				88F9C5811F8CD60B00039A08 /* ACDetailItemCell.h */,
+				88F9C5821F8CD60B00039A08 /* ACDetailItemCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		88F9C5661F8CC6DA00039A08 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				88F9C56A1F8CC77300039A08 /* ACViewModel.h */,
+				88F9C56B1F8CC77300039A08 /* ACViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -992,6 +1079,7 @@
 		BF34EC031F49CEBE00E05DF3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				88F9C5621F8CC6DA00039A08 /* AccessControl */,
 				88299C651F7CC40D0070067C /* Monitor */,
 				BF0C32651F67F8D7009FC882 /* AnFang */,
 				BF0C32361F67CDDA009FC882 /* Home */,
@@ -1361,6 +1449,7 @@
 				88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */,
 				BF0C32171F6772EC009FC882 /* STError@2x.png in Resources */,
 				BF34EEFE1F4B226E00E05DF3 /* icon.png in Resources */,
+				88F9C5801F8CD16900039A08 /* AccessControlDetailVC.xib in Resources */,
 				88299C6E1F7CC44E0070067C /* MonitorVC.xib in Resources */,
 				88299C791F7CD2E10070067C /* MonitorDetailListVC.xib in Resources */,
 				88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */,
@@ -1444,6 +1533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F9C57B1F8CCA5900039A08 /* ACDistrictItemCell.m in Sources */,
 				BF0C32AC1F6A16F3009FC882 /* CollectviewChooseCell.m in Sources */,
 				BFFA09F91F7A60C40019CFA8 /* MDMultipleSegmentView.m in Sources */,
 				BF0C32BB1F6A16F4009FC882 /* SingleChooseTable.m in Sources */,
@@ -1468,6 +1558,7 @@
 				BFA8C7BC1F4BE1C5003A0BEE /* SDCycleScrollView.m in Sources */,
 				BF0C325E1F67CE48009FC882 /* MenuItem.m in Sources */,
 				BF0C32AE1F6A16F3009FC882 /* SingleChooseCollectview.m in Sources */,
+				88F9C5831F8CD60B00039A08 /* ACDetailItemCell.m in Sources */,
 				BFE3AF861F79E21F00C90C36 /* ModifyPasswordVC.m in Sources */,
 				BFA2EAC41F5EE61700C9039F /* RegisterViewModel.m in Sources */,
 				BF34EEF91F4A729A00E05DF3 /* LoginVC.m in Sources */,
@@ -1482,12 +1573,14 @@
 				BF0C325C1F67CE48009FC882 /* HomeCell.m in Sources */,
 				BF0C32641F67CE6C009FC882 /* AdvModel.m in Sources */,
 				BF34EEAF1F49CEBF00E05DF3 /* CityModel.m in Sources */,
+				88F9C57F1F8CD16900039A08 /* AccessControlDetailVC.m in Sources */,
 				BF3F8CFD1F6AC9BF000EA801 /* NextModel.m in Sources */,
 				8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */,
 				BF84BB011F5C5A14000FB4D8 /* UIImage+colorImage.m in Sources */,
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
 				88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */,
 				BF73387E1F77D3460000FB8A /* NetDetailView.m in Sources */,
+				88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */,
 				BF84BB061F5C5A14000FB4D8 /* UIViewAdditions.m in Sources */,
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
 				BF34EEFC1F4A72C600E05DF3 /* LoginView.m in Sources */,
@@ -1504,6 +1597,7 @@
 				BF0C32721F68C2D0009FC882 /* AFView.m in Sources */,
 				BFA8C7BA1F4BE1C5003A0BEE /* TAPageControl.m in Sources */,
 				BF0C32AD1F6A16F3009FC882 /* MulChooseCollectView.m in Sources */,
+				88F9C5751F8CC95000039A08 /* ACModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
 				BF34EDEA1F49CEBF00E05DF3 /* ClientTool.m in Sources */,
 				BF34EDFE1F49CEBF00E05DF3 /* WKMessageProgressHUD.m in Sources */,
@@ -1515,6 +1609,7 @@
 				88299C781F7CD2E10070067C /* MonitorDetailListVC.m in Sources */,
 				BF0C326C1F67FA8B009FC882 /* AnFangVC.m in Sources */,
 				BFA8C8DB1F4DEAEE003A0BEE /* MyView.m in Sources */,
+				88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */,
 				BF0C327E1F69365D009FC882 /* AddNewGroupVC.m in Sources */,
 				BF34EDEC1F49CEBF00E05DF3 /* KYAlertView.m in Sources */,
 				BF7338841F77D4230000FB8A /* NetDetailModel.m in Sources */,
@@ -1544,6 +1639,7 @@
 				BF34EDFF1F49CEBF00E05DF3 /* WKProgressHUD.m in Sources */,
 				BF3F8CF71F6A2E16000EA801 /* NetPointModel.m in Sources */,
 				BF34EEC31F49CEC000E05DF3 /* XWRegularExpression.m in Sources */,
+				88F9C5781F8CCA1200039A08 /* ACDistrictModel.m in Sources */,
 				BF0C32BC1F6A16F4009FC882 /* TableChooseCell.m in Sources */,
 				BFFA09ED1F7A43C30019CFA8 /* VHLNavigation.m in Sources */,
 				BFFA09EB1F7A43C30019CFA8 /* BaseViewController.m in Sources */,
@@ -1569,8 +1665,10 @@
 				BF34EEB01F49CEBF00E05DF3 /* CurrentLocation.m in Sources */,
 				BFA2EAC11F5EE4F400C9039F /* BaseViewModel.m in Sources */,
 				BFFA09F71F7A60C40019CFA8 /* MDFlipCollectionView.m in Sources */,
+				88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */,
 				BF84BAE81F5C5767000FB4D8 /* AlarmMsgVC.m in Sources */,
 				BFFA0A001F7A623B0019CFA8 /* EventVC.m in Sources */,
+				88F9C56C1F8CC77300039A08 /* ACViewModel.m in Sources */,
 				BF84BB041F5C5A14000FB4D8 /* UIView+FTCornerdious.m in Sources */,
 				881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */,
 				BF84BADF1F5C38C0000FB4D8 /* MyCell.m in Sources */,

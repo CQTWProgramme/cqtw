@@ -17,14 +17,9 @@
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
-            NSMutableArray *muArr = [NSMutableArray array];
-            NSArray * arr = responseObject[@"data"];
-//            for (NSDictionary *dic in arr) {
-//                EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic];
-//                [muArr addObject:model];
-//            }
-            
-            success(muArr);
+            NSDictionary * dic = responseObject[@"data"];
+            LatticePointDetailModel *model = [LatticePointDetailModel mj_objectWithKeyValues:dic];
+            success(model);
         }
         
     } progress:^(NSProgress *progress) {

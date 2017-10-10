@@ -135,11 +135,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    EquipmentModel *model = self.equipmentsArray[indexPath.row];
+//    EquipmentModel *model = self.equipmentsArray[indexPath.row];
     FacilityDetailVC *detailVC = [[FacilityDetailVC alloc] init];
-    
-    detailVC.deviceId = model.deviceId;
-    detailVC.view.backgroundColor = [UIColor whiteColor];
+//    
+//    detailVC.deviceId = model.deviceId;
+//    detailVC.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

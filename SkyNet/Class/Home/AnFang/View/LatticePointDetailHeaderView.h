@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LatticePointDetailHeaderView : UIView
-
+@property (nonatomic, copy) NSString *title;
 @end

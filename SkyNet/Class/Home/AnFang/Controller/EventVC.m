@@ -38,7 +38,7 @@
     if (nil == _bottomMessageView) {
         _bottomMessageView = [[UIView alloc] init];
         _bottomMessageView.backgroundColor = [UIColor whiteColor];
-        _bottomMessageView.frame = CGRectMake(0, SCREEN_HEIGHT - kBottomViewHeight - NavigationBar_HEIGHT, SCREEN_WIDTH, kBottomViewHeight);
+        _bottomMessageView.frame = CGRectMake(0, SCREEN_HEIGHT - kBottomViewHeight, SCREEN_WIDTH, kBottomViewHeight);
         
         //添加子view
         //1.名称
@@ -98,7 +98,7 @@
 -(UIView *)backCoverView {
     if (nil == _backCoverView) {
         _backCoverView = [[UIView alloc] init];
-        _backCoverView.frame = CGRectMake(0, NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBar_HEIGHT - kBottomViewHeight);
+        _backCoverView.frame = CGRectMake(0, NavigationBar_HEIGHT + STATUS_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBar_HEIGHT - kBottomViewHeight - STATUS_BAR_HEIGHT);
         _backCoverView.backgroundColor = [UIColor blackColor];
         _backCoverView.alpha = 0.3;
     }

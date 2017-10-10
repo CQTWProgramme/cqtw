@@ -12,6 +12,7 @@
 #import "AnFangVC.h"
 #import "MonitorVC.h"
 #import "MonitorDetailListVC.h"
+#import "AccessControlVC.h"
 @interface HomeVC ()<HomeViewDelegate>
 @property(nonatomic,strong)HomeView * homeView;
 @end
@@ -124,7 +125,9 @@
         
         case 2:
         {
-            
+            AccessControlVC *acVC = [[AccessControlVC alloc] init];
+            acVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:acVC animated:YES];
         }
             break;
             
