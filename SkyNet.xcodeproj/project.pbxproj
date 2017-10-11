@@ -12,6 +12,27 @@
 		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
 		8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8814733E1F7FD4980064DF4D /* AFDistrictModel.m */; };
 		881473421F8912F40064DF4D /* AFDistrictItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 881473411F8912F40064DF4D /* AFDistrictItemCell.m */; };
+		881547791F8DBE59000F2C84 /* PoliceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8847014C1F8DA99500B44D68 /* PoliceVC.m */; };
+		8815477D1F8DC048000F2C84 /* CommunityPoliceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8815477B1F8DC048000F2C84 /* CommunityPoliceVC.m */; };
+		8815477E1F8DC048000F2C84 /* CommunityPoliceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8815477C1F8DC048000F2C84 /* CommunityPoliceVC.xib */; };
+		881547811F8DC13D000F2C84 /* CommunityPoliceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547801F8DC13D000F2C84 /* CommunityPoliceCell.m */; };
+		881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547831F8DC3AB000F2C84 /* CommunityPoliceModel.m */; };
+		881547861F8DC64F000F2C84 /* CommunityPoliceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547851F8DC64F000F2C84 /* CommunityPoliceCell.xib */; };
+		8815478A1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547881F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m */; };
+		8815478B1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547891F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib */; };
+		8815478F1F8DCC10000F2C84 /* CueReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8815478D1F8DCC10000F2C84 /* CueReportVC.m */; };
+		881547901F8DCC10000F2C84 /* CueReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8815478E1F8DCC10000F2C84 /* CueReportVC.xib */; };
+		881547941F8DCC92000F2C84 /* CueReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547921F8DCC92000F2C84 /* CueReportCell.m */; };
+		881547951F8DCC92000F2C84 /* CueReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547931F8DCC92000F2C84 /* CueReportCell.xib */; };
+		881547991F8DD129000F2C84 /* ReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547971F8DD129000F2C84 /* ReportVC.m */; };
+		8815479A1F8DD129000F2C84 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547981F8DD129000F2C84 /* ReportVC.xib */; };
+		8815479E1F8DD656000F2C84 /* THCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8815479C1F8DD5D6000F2C84 /* THCTextView.m */; };
+		881547A21F8DD7BA000F2C84 /* PoliceInteractionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547A01F8DD7BA000F2C84 /* PoliceInteractionVC.m */; };
+		881547A31F8DD7BA000F2C84 /* PoliceInteractionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547A11F8DD7BA000F2C84 /* PoliceInteractionVC.xib */; };
+		881547A71F8DDA41000F2C84 /* PoliceInteractionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547A51F8DDA41000F2C84 /* PoliceInteractionCell.m */; };
+		881547A81F8DDA41000F2C84 /* PoliceInteractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547A61F8DDA41000F2C84 /* PoliceInteractionCell.xib */; };
+		881547AC1F8DDFE0000F2C84 /* PublicinteractionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 881547AA1F8DDFE0000F2C84 /* PublicinteractionVC.m */; };
+		881547AD1F8DDFE0000F2C84 /* PublicinteractionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 881547AB1F8DDFE0000F2C84 /* PublicinteractionVC.xib */; };
 		88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88299C6B1F7CC44E0070067C /* MonitorVC.m */; };
 		88299C6E1F7CC44E0070067C /* MonitorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C6C1F7CC44E0070067C /* MonitorVC.xib */; };
 		88299C711F7CC7150070067C /* MonitorItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88299C701F7CC7150070067C /* MonitorItemCell.m */; };
@@ -30,6 +51,10 @@
 		883354B51F8D0C67006FC522 /* AddVisitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883354B31F8D0C67006FC522 /* AddVisitorVC.m */; };
 		883354B61F8D0C67006FC522 /* AddVisitorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 883354B41F8D0C67006FC522 /* AddVisitorVC.xib */; };
 		8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8845DED61F8A332A00AB8917 /* EditInstallerVC.m */; };
+		884701501F8DAA6E00B44D68 /* PoliceHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8847014F1F8DAA6E00B44D68 /* PoliceHomeView.m */; };
+		884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */; };
+		884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701551F8DAD5800B44D68 /* PoliceHomeCell.m */; };
+		884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701581F8DB39600B44D68 /* PoliceHomeModel.m */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
 		88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */; };
@@ -112,7 +137,6 @@
 		BF34EEC31F49CEC000E05DF3 /* XWRegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34ED9A1F49CEBF00E05DF3 /* XWRegularExpression.m */; };
 		BF34EEC41F49CEC000E05DF3 /* YQImageCompressTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34EDA01F49CEBF00E05DF3 /* YQImageCompressTool.m */; };
 		BF34EEE61F49E58200E05DF3 /* SLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34EEE51F49E58200E05DF3 /* SLTabBar.m */; };
-		BF34EEF01F49E6E700E05DF3 /* PoliceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34EEEF1F49E6E700E05DF3 /* PoliceVC.m */; };
 		BF34EEF31F49E6F500E05DF3 /* MessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34EEF21F49E6F500E05DF3 /* MessageVC.m */; };
 		BF34EEF61F49E70100E05DF3 /* MyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34EEF51F49E70100E05DF3 /* MyVC.m */; };
 		BF34EEF91F4A729A00E05DF3 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34EEF81F4A729A00E05DF3 /* LoginVC.m */; };
@@ -198,6 +222,37 @@
 		8814733E1F7FD4980064DF4D /* AFDistrictModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDistrictModel.m; sourceTree = "<group>"; };
 		881473401F8912F40064DF4D /* AFDistrictItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFDistrictItemCell.h; sourceTree = "<group>"; };
 		881473411F8912F40064DF4D /* AFDistrictItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFDistrictItemCell.m; sourceTree = "<group>"; };
+		8815477A1F8DC048000F2C84 /* CommunityPoliceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityPoliceVC.h; sourceTree = "<group>"; };
+		8815477B1F8DC048000F2C84 /* CommunityPoliceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityPoliceVC.m; sourceTree = "<group>"; };
+		8815477C1F8DC048000F2C84 /* CommunityPoliceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityPoliceVC.xib; sourceTree = "<group>"; };
+		8815477F1F8DC13D000F2C84 /* CommunityPoliceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityPoliceCell.h; sourceTree = "<group>"; };
+		881547801F8DC13D000F2C84 /* CommunityPoliceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityPoliceCell.m; sourceTree = "<group>"; };
+		881547821F8DC3AB000F2C84 /* CommunityPoliceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityPoliceModel.h; sourceTree = "<group>"; };
+		881547831F8DC3AB000F2C84 /* CommunityPoliceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityPoliceModel.m; sourceTree = "<group>"; };
+		881547851F8DC64F000F2C84 /* CommunityPoliceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityPoliceCell.xib; sourceTree = "<group>"; };
+		881547871F8DCB4D000F2C84 /* CommunityPoliceDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityPoliceDetailVC.h; sourceTree = "<group>"; };
+		881547881F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityPoliceDetailVC.m; sourceTree = "<group>"; };
+		881547891F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityPoliceDetailVC.xib; sourceTree = "<group>"; };
+		8815478C1F8DCC10000F2C84 /* CueReportVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CueReportVC.h; sourceTree = "<group>"; };
+		8815478D1F8DCC10000F2C84 /* CueReportVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CueReportVC.m; sourceTree = "<group>"; };
+		8815478E1F8DCC10000F2C84 /* CueReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CueReportVC.xib; sourceTree = "<group>"; };
+		881547911F8DCC92000F2C84 /* CueReportCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CueReportCell.h; sourceTree = "<group>"; };
+		881547921F8DCC92000F2C84 /* CueReportCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CueReportCell.m; sourceTree = "<group>"; };
+		881547931F8DCC92000F2C84 /* CueReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CueReportCell.xib; sourceTree = "<group>"; };
+		881547961F8DD129000F2C84 /* ReportVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportVC.h; sourceTree = "<group>"; };
+		881547971F8DD129000F2C84 /* ReportVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportVC.m; sourceTree = "<group>"; };
+		881547981F8DD129000F2C84 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
+		8815479C1F8DD5D6000F2C84 /* THCTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THCTextView.m; sourceTree = "<group>"; };
+		8815479D1F8DD5D6000F2C84 /* THCTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THCTextView.h; sourceTree = "<group>"; };
+		8815479F1F8DD7BA000F2C84 /* PoliceInteractionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceInteractionVC.h; sourceTree = "<group>"; };
+		881547A01F8DD7BA000F2C84 /* PoliceInteractionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceInteractionVC.m; sourceTree = "<group>"; };
+		881547A11F8DD7BA000F2C84 /* PoliceInteractionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoliceInteractionVC.xib; sourceTree = "<group>"; };
+		881547A41F8DDA41000F2C84 /* PoliceInteractionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceInteractionCell.h; sourceTree = "<group>"; };
+		881547A51F8DDA41000F2C84 /* PoliceInteractionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceInteractionCell.m; sourceTree = "<group>"; };
+		881547A61F8DDA41000F2C84 /* PoliceInteractionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoliceInteractionCell.xib; sourceTree = "<group>"; };
+		881547A91F8DDFE0000F2C84 /* PublicinteractionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicinteractionVC.h; sourceTree = "<group>"; };
+		881547AA1F8DDFE0000F2C84 /* PublicinteractionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PublicinteractionVC.m; sourceTree = "<group>"; };
+		881547AB1F8DDFE0000F2C84 /* PublicinteractionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicinteractionVC.xib; sourceTree = "<group>"; };
 		88299C6A1F7CC44E0070067C /* MonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorVC.h; sourceTree = "<group>"; };
 		88299C6B1F7CC44E0070067C /* MonitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorVC.m; sourceTree = "<group>"; };
 		88299C6C1F7CC44E0070067C /* MonitorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonitorVC.xib; sourceTree = "<group>"; };
@@ -227,6 +282,16 @@
 		883354B41F8D0C67006FC522 /* AddVisitorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVisitorVC.xib; sourceTree = "<group>"; };
 		8845DED51F8A332A00AB8917 /* EditInstallerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInstallerVC.h; sourceTree = "<group>"; };
 		8845DED61F8A332A00AB8917 /* EditInstallerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInstallerVC.m; sourceTree = "<group>"; };
+		8847014B1F8DA99500B44D68 /* PoliceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceVC.h; sourceTree = "<group>"; };
+		8847014C1F8DA99500B44D68 /* PoliceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceVC.m; sourceTree = "<group>"; };
+		8847014E1F8DAA6E00B44D68 /* PoliceHomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeView.h; sourceTree = "<group>"; };
+		8847014F1F8DAA6E00B44D68 /* PoliceHomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeView.m; sourceTree = "<group>"; };
+		884701511F8DAC2800B44D68 /* PoliceHomeMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeMenuItem.h; sourceTree = "<group>"; };
+		884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeMenuItem.m; sourceTree = "<group>"; };
+		884701541F8DAD5800B44D68 /* PoliceHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeCell.h; sourceTree = "<group>"; };
+		884701551F8DAD5800B44D68 /* PoliceHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeCell.m; sourceTree = "<group>"; };
+		884701571F8DB39600B44D68 /* PoliceHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeModel.h; sourceTree = "<group>"; };
+		884701581F8DB39600B44D68 /* PoliceHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeModel.m; sourceTree = "<group>"; };
 		88CE3F2A1F7AADBB0075DCD9 /* FacilityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailVC.h; sourceTree = "<group>"; };
 		88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailVC.m; sourceTree = "<group>"; };
 		88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityDetailVC.xib; sourceTree = "<group>"; };
@@ -391,8 +456,6 @@
 		BF34EECE1F49CFE300E05DF3 /* SkyNet.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyNet.pch; sourceTree = "<group>"; };
 		BF34EEE41F49E58200E05DF3 /* SLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTabBar.h; sourceTree = "<group>"; };
 		BF34EEE51F49E58200E05DF3 /* SLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTabBar.m; sourceTree = "<group>"; };
-		BF34EEEE1F49E6E700E05DF3 /* PoliceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoliceVC.h; sourceTree = "<group>"; };
-		BF34EEEF1F49E6E700E05DF3 /* PoliceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoliceVC.m; sourceTree = "<group>"; };
 		BF34EEF11F49E6F500E05DF3 /* MessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageVC.h; sourceTree = "<group>"; };
 		BF34EEF21F49E6F500E05DF3 /* MessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageVC.m; sourceTree = "<group>"; };
 		BF34EEF41F49E70100E05DF3 /* MyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVC.h; sourceTree = "<group>"; };
@@ -602,6 +665,73 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		884701481F8DA99500B44D68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				884701571F8DB39600B44D68 /* PoliceHomeModel.h */,
+				884701581F8DB39600B44D68 /* PoliceHomeModel.m */,
+				881547821F8DC3AB000F2C84 /* CommunityPoliceModel.h */,
+				881547831F8DC3AB000F2C84 /* CommunityPoliceModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		884701491F8DA99500B44D68 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8847014A1F8DA99500B44D68 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8847014B1F8DA99500B44D68 /* PoliceVC.h */,
+				8847014C1F8DA99500B44D68 /* PoliceVC.m */,
+				8815477A1F8DC048000F2C84 /* CommunityPoliceVC.h */,
+				8815477B1F8DC048000F2C84 /* CommunityPoliceVC.m */,
+				8815477C1F8DC048000F2C84 /* CommunityPoliceVC.xib */,
+				881547871F8DCB4D000F2C84 /* CommunityPoliceDetailVC.h */,
+				881547881F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m */,
+				881547891F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib */,
+				8815478C1F8DCC10000F2C84 /* CueReportVC.h */,
+				8815478D1F8DCC10000F2C84 /* CueReportVC.m */,
+				8815478E1F8DCC10000F2C84 /* CueReportVC.xib */,
+				881547961F8DD129000F2C84 /* ReportVC.h */,
+				881547971F8DD129000F2C84 /* ReportVC.m */,
+				881547981F8DD129000F2C84 /* ReportVC.xib */,
+				8815479F1F8DD7BA000F2C84 /* PoliceInteractionVC.h */,
+				881547A01F8DD7BA000F2C84 /* PoliceInteractionVC.m */,
+				881547A11F8DD7BA000F2C84 /* PoliceInteractionVC.xib */,
+				881547A91F8DDFE0000F2C84 /* PublicinteractionVC.h */,
+				881547AA1F8DDFE0000F2C84 /* PublicinteractionVC.m */,
+				881547AB1F8DDFE0000F2C84 /* PublicinteractionVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8847014D1F8DA99500B44D68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8847014E1F8DAA6E00B44D68 /* PoliceHomeView.h */,
+				8847014F1F8DAA6E00B44D68 /* PoliceHomeView.m */,
+				884701511F8DAC2800B44D68 /* PoliceHomeMenuItem.h */,
+				884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */,
+				884701541F8DAD5800B44D68 /* PoliceHomeCell.h */,
+				884701551F8DAD5800B44D68 /* PoliceHomeCell.m */,
+				8815477F1F8DC13D000F2C84 /* CommunityPoliceCell.h */,
+				881547801F8DC13D000F2C84 /* CommunityPoliceCell.m */,
+				881547851F8DC64F000F2C84 /* CommunityPoliceCell.xib */,
+				881547911F8DCC92000F2C84 /* CueReportCell.h */,
+				881547921F8DCC92000F2C84 /* CueReportCell.m */,
+				881547931F8DCC92000F2C84 /* CueReportCell.xib */,
+				881547A41F8DDA41000F2C84 /* PoliceInteractionCell.h */,
+				881547A51F8DDA41000F2C84 /* PoliceInteractionCell.m */,
+				881547A61F8DDA41000F2C84 /* PoliceInteractionCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		88F9C5621F8CC6DA00039A08 /* AccessControl */ = {
@@ -1126,6 +1256,8 @@
 		BF34ED511F49CEBF00E05DF3 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				8815479D1F8DD5D6000F2C84 /* THCTextView.h */,
+				8815479C1F8DD5D6000F2C84 /* THCTextView.m */,
 				BF34ED521F49CEBF00E05DF3 /* Category */,
 				BF34ED5A1F49CEBF00E05DF3 /* Const */,
 				BF34ED5D1F49CEBF00E05DF3 /* Macros */,
@@ -1262,8 +1394,10 @@
 		BF34EEE91F49E67000E05DF3 /* Police */ = {
 			isa = PBXGroup;
 			children = (
-				BF34EEEE1F49E6E700E05DF3 /* PoliceVC.h */,
-				BF34EEEF1F49E6E700E05DF3 /* PoliceVC.m */,
+				8847014A1F8DA99500B44D68 /* Controller */,
+				884701481F8DA99500B44D68 /* Model */,
+				8847014D1F8DA99500B44D68 /* View */,
+				884701491F8DA99500B44D68 /* ViewModel */,
 			);
 			path = Police;
 			sourceTree = "<group>";
@@ -1453,22 +1587,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				88299C811F7CDEE10070067C /* MonitorPlayVC.xib in Resources */,
+				881547951F8DCC92000F2C84 /* CueReportCell.xib in Resources */,
 				BF34EB451F49CDB600E05DF3 /* LaunchScreen.storyboard in Resources */,
+				881547A31F8DD7BA000F2C84 /* PoliceInteractionVC.xib in Resources */,
 				88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */,
+				8815478B1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib in Resources */,
 				BF0C32171F6772EC009FC882 /* STError@2x.png in Resources */,
 				BF34EEFE1F4B226E00E05DF3 /* icon.png in Resources */,
 				883354B61F8D0C67006FC522 /* AddVisitorVC.xib in Resources */,
 				88F9C5801F8CD16900039A08 /* AccessControlDetailVC.xib in Resources */,
 				88299C6E1F7CC44E0070067C /* MonitorVC.xib in Resources */,
+				8815479A1F8DD129000F2C84 /* ReportVC.xib in Resources */,
 				88299C791F7CD2E10070067C /* MonitorDetailListVC.xib in Resources */,
+				881547861F8DC64F000F2C84 /* CommunityPoliceCell.xib in Resources */,
+				881547A81F8DDA41000F2C84 /* PoliceInteractionCell.xib in Resources */,
+				8815477E1F8DC048000F2C84 /* CommunityPoliceVC.xib in Resources */,
 				88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */,
 				BF34EB421F49CDB600E05DF3 /* Assets.xcassets in Resources */,
+				881547AD1F8DDFE0000F2C84 /* PublicinteractionVC.xib in Resources */,
 				BF34EB401F49CDB600E05DF3 /* Main.storyboard in Resources */,
 				88299C861F7CE0F40070067C /* PTZControlVC.xib in Resources */,
 				88299C951F7CE1B40070067C /* PressSpeakVC.xib in Resources */,
 				BF0C32181F6772EC009FC882 /* STSuccess@2x.png in Resources */,
 				BF0C32141F6772EC009FC882 /* angle-mask@3x.png in Resources */,
 				88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */,
+				881547901F8DCC10000F2C84 /* CueReportVC.xib in Resources */,
 				BF0C321A1F6772EC009FC882 /* STTextHud.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1542,6 +1685,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8815479E1F8DD656000F2C84 /* THCTextView.m in Sources */,
+				881547791F8DBE59000F2C84 /* PoliceVC.m in Sources */,
 				88F9C57B1F8CCA5900039A08 /* ACDistrictItemCell.m in Sources */,
 				BF0C32AC1F6A16F3009FC882 /* CollectviewChooseCell.m in Sources */,
 				BFFA09F91F7A60C40019CFA8 /* MDMultipleSegmentView.m in Sources */,
@@ -1584,6 +1729,7 @@
 				BF34EEAF1F49CEBF00E05DF3 /* CityModel.m in Sources */,
 				88F9C57F1F8CD16900039A08 /* AccessControlDetailVC.m in Sources */,
 				BF3F8CFD1F6AC9BF000EA801 /* NextModel.m in Sources */,
+				884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */,
 				8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */,
 				BF84BB011F5C5A14000FB4D8 /* UIImage+colorImage.m in Sources */,
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
@@ -1592,6 +1738,7 @@
 				88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */,
 				BF84BB061F5C5A14000FB4D8 /* UIViewAdditions.m in Sources */,
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
+				881547991F8DD129000F2C84 /* ReportVC.m in Sources */,
 				BF34EEFC1F4A72C600E05DF3 /* LoginView.m in Sources */,
 				BFA8C7B81F4BE1C5003A0BEE /* TAAnimatedDotView.m in Sources */,
 				88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */,
@@ -1607,7 +1754,9 @@
 				BFA8C7BA1F4BE1C5003A0BEE /* TAPageControl.m in Sources */,
 				BF0C32AD1F6A16F3009FC882 /* MulChooseCollectView.m in Sources */,
 				88F9C5751F8CC95000039A08 /* ACModel.m in Sources */,
+				881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
+				881547941F8DCC92000F2C84 /* CueReportCell.m in Sources */,
 				BF34EDEA1F49CEBF00E05DF3 /* ClientTool.m in Sources */,
 				BF34EDFE1F49CEBF00E05DF3 /* WKMessageProgressHUD.m in Sources */,
 				BF7338811F77D3F40000FB8A /* NetDetailCell.m in Sources */,
@@ -1620,13 +1769,14 @@
 				BFA8C8DB1F4DEAEE003A0BEE /* MyView.m in Sources */,
 				88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */,
 				BF0C327E1F69365D009FC882 /* AddNewGroupVC.m in Sources */,
+				8815478A1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m in Sources */,
 				BF34EDEC1F49CEBF00E05DF3 /* KYAlertView.m in Sources */,
 				BF7338841F77D4230000FB8A /* NetDetailModel.m in Sources */,
 				BF0C32BA1F6A16F4009FC882 /* MulChooseTable.m in Sources */,
 				88299C801F7CDEE00070067C /* MonitorPlayVC.m in Sources */,
 				BF34EEB11F49CEBF00E05DF3 /* ProvinceModel.m in Sources */,
+				884701501F8DAA6E00B44D68 /* PoliceHomeView.m in Sources */,
 				BFFA09FA1F7A60C40019CFA8 /* MDMultipleSegmentViewCell.m in Sources */,
-				BF34EEF01F49E6E700E05DF3 /* PoliceVC.m in Sources */,
 				BF34EDF91F49CEBF00E05DF3 /* SDWaitingView.m in Sources */,
 				BF0C322C1F6774EB009FC882 /* GTMBase64.m in Sources */,
 				BF0C325B1F67CE48009FC882 /* HeadCell.m in Sources */,
@@ -1644,6 +1794,9 @@
 				BF34EB3A1F49CDB600E05DF3 /* AppDelegate.m in Sources */,
 				BF84BAEB1F5C583E000FB4D8 /* MsgBaseVC.m in Sources */,
 				BF0C327B1F68C941009FC882 /* AFModel.m in Sources */,
+				8815477D1F8DC048000F2C84 /* CommunityPoliceVC.m in Sources */,
+				884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */,
+				8815478F1F8DCC10000F2C84 /* CueReportVC.m in Sources */,
 				BF34EEC41F49CEC000E05DF3 /* YQImageCompressTool.m in Sources */,
 				BF34EEA91F49CEBF00E05DF3 /* UIImage+ImageSize.m in Sources */,
 				BF34EDFF1F49CEBF00E05DF3 /* WKProgressHUD.m in Sources */,
@@ -1659,6 +1812,7 @@
 				BF0C322D1F6774EB009FC882 /* NSData+Base64.m in Sources */,
 				BFA8C7CC1F4C8ADC003A0BEE /* RegisterCell.m in Sources */,
 				8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */,
+				881547A21F8DD7BA000F2C84 /* PoliceInteractionVC.m in Sources */,
 				BF84BB021F5C5A14000FB4D8 /* UILabel+LXLabel.m in Sources */,
 				BFE3AF831F79E0AF00C90C36 /* MyInfo.m in Sources */,
 				88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */,
@@ -1667,10 +1821,13 @@
 				88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */,
 				BF34EB371F49CDB600E05DF3 /* main.m in Sources */,
 				BF34EEAB1F49CEBF00E05DF3 /* AFNetAPIClient.m in Sources */,
+				884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */,
 				BF84BAE51F5C5752000FB4D8 /* SystemMsgVC.m in Sources */,
+				881547811F8DC13D000F2C84 /* CommunityPoliceCell.m in Sources */,
 				BF0C325A1F67CE48009FC882 /* HomeViewModel.m in Sources */,
 				BF0C32781F68C931009FC882 /* AFViewModel.m in Sources */,
 				BF84BAFE1F5C5A14000FB4D8 /* LxButton.m in Sources */,
+				881547A71F8DDA41000F2C84 /* PoliceInteractionCell.m in Sources */,
 				BF84BB001F5C5A14000FB4D8 /* UIColor+Expanded.m in Sources */,
 				BF34EEB01F49CEBF00E05DF3 /* CurrentLocation.m in Sources */,
 				BFA2EAC11F5EE4F400C9039F /* BaseViewModel.m in Sources */,
@@ -1678,6 +1835,7 @@
 				88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */,
 				BF84BAE81F5C5767000FB4D8 /* AlarmMsgVC.m in Sources */,
 				BFFA0A001F7A623B0019CFA8 /* EventVC.m in Sources */,
+				881547AC1F8DDFE0000F2C84 /* PublicinteractionVC.m in Sources */,
 				88F9C56C1F8CC77300039A08 /* ACViewModel.m in Sources */,
 				BF84BB041F5C5A14000FB4D8 /* UIView+FTCornerdious.m in Sources */,
 				881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */,

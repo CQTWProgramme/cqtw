@@ -1,22 +1,22 @@
 //
-//  PoliceVC.m
+//  CommunityPoliceDetailVC.m
 //  SkyNet
 //
-//  Created by 冉思路 on 2017/8/20.
+//  Created by 魏乔森 on 2017/10/11.
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
-#import "PoliceVC.h"
+#import "CommunityPoliceDetailVC.h"
 
-@interface PoliceVC ()
+@interface CommunityPoliceDetailVC ()
 
 @end
 
-@implementation PoliceVC
+@implementation CommunityPoliceDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"警务平台";
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
