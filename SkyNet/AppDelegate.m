@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ClientTool.h"
-#import "ReportVC.h"
 @interface AppDelegate ()
 
 @end
@@ -20,8 +19,7 @@
     
     
     [ClientTool autoKeyboard];
-    self.window.rootViewController = [[ReportVC alloc] init];
-    //self.window.rootViewController= [ClientTool  setupLogVC];
+    self.window.rootViewController= [ClientTool  setupLogVC];
 //    if ([ClientTool getToken]) {
 //        UITabBarController * tabBar =[ClientTool setupTabBar];
 //        self.window.rootViewController = tabBar;

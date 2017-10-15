@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface MonitorDetailListVC : BaseViewController
-
+@property(nonatomic,strong)NSString * groupTitle;
+@property (nonatomic, copy) NSString *customId;
+@property (nonatomic, assign) NSInteger type;
 @end

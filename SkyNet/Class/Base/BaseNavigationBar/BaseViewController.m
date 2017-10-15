@@ -36,7 +36,7 @@
      [self vhl_setNavBarShadowImageHidden:YES];
      [self vhl_setNavBarBackgroundAlpha:1.0f];
      [self vhl_setNavBarTintColor:[UIColor blackColor]];
-     [self vhl_setNavBarTitleColor:[UIColor blackColor]];
+     [self vhl_setNavBarTitleColor:[UIColor whiteColor]];
      [self vhl_setStatusBarStyle:UIStatusBarStyleDefault];
    
     
@@ -127,6 +127,11 @@
 - (void)setNavBackButtonColor:(UIColor *)navBackButtonColor {
     _navBackButtonColor = navBackButtonColor;
     self.navigationItem.leftBarButtonItems = @[self.backBarButtonItem];
+}
+
+-(void)setNavBackColor:(UIColor *)navBackColor {
+    _navBackColor = navBackColor;
+    [self vhl_setNavBackgroundColor:_navBackColor];//颜色
 }
 
 @end

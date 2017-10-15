@@ -8,6 +8,7 @@
 
 #import "SLTabBar.h"
 #import "BaseNavigationC.h"
+#import "VHLNavigation.h"
 //RGB颜色
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 //title默认颜色

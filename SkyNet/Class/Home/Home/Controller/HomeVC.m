@@ -13,6 +13,7 @@
 #import "MonitorVC.h"
 #import "MonitorDetailListVC.h"
 #import "AccessControlVC.h"
+#import "VHLNavigation.h"
 @interface HomeVC ()<HomeViewDelegate>
 @property(nonatomic,strong)HomeView * homeView;
 @end
@@ -23,16 +24,26 @@
 #pragma mark 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.title = @"首页";
+    [self createRightItem];
+    self.navBackColor = [UIColor clearColor];
     [self.view addSubview:self.homeView];
     [self getAdverList];
-  
-    
 }
 
+-(void)createRightItem{
+    
+    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame=CGRectMake(0,0,25,25);
+    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
+     [rightBtn addTarget:self action:@selector(toSearchAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
 
-
-
+- (void)toSearchAction {
+    
+}
 
 #pragma mark 获取广告列表
 -(void)getAdverList{
@@ -141,7 +152,7 @@
 -(HomeView *)homeView{
     
     if (!_homeView) {
-        _homeView =[[HomeView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT-TABBAR_HEIGHT)];
+        _homeView =[[HomeView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT)];
         _homeView.delegate=self;
         
     }

@@ -7,6 +7,8 @@
 //
 
 #import "NetDetailCell.h"
+#import "NetDetailDistrictModel.h"
+
 #define CELLHEIGHT 70.f  //设置行高
 @interface NetDetailCell()
 
@@ -105,6 +107,14 @@
     
 }
 
+//设置要显示的数据
+- (void)setData:(NetDetailDistrictModel *)model{
+    _model = model;
+    
+    self.afImageView.image=ImageNamed(@"home_monitor");
+    self.afContentLabel.text =model.fzmc;
+}
+
 //子控件布局
 - (void)layoutSubviews{
     
@@ -123,16 +133,6 @@
     
     
 }
-
-
-//设置要显示的数据
-- (void)setData:(NetDetailModel *)model{
-    _model = model;
-    
-    self.afImageView.image=ImageNamed(@"home_monitor");
-    self.afContentLabel.text =model.wdmc;
-}
-
 
 #pragma  mark - 事件操作
 //拨打电话： 需要在真机测试效果

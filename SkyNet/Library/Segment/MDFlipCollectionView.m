@@ -109,7 +109,7 @@
        
     }else if ([vc isKindOfClass:[EquipmentVC class]]) {
         EquipmentVC * equipmentVC =(EquipmentVC *)vc;
-         equipmentVC.myTableView.frame=cell.bounds;
+         //equipmentVC.myTableView.frame=cell.bounds;
         
     }
     

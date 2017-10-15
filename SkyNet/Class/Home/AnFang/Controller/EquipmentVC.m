@@ -11,16 +11,19 @@
 #import "FacilityDetailVC.h"
 #import "EquipmentModel.h"
 @interface EquipmentVC ()
+@property (nonatomic, strong) MJRefreshComponent *myRefreshView;
+@property(nonatomic,strong) UITableView * myTableView;
 //设备数组
 @property (nonatomic, strong) NSMutableArray *equipmentsArray;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger pageSize;
 @end
 
 @implementation EquipmentVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [self.view addSubview:self.myTableView];
-     //[self loadData];
+    [self.view addSubview:self.myTableView];
 }
 
 -(NSMutableArray *)equipmentsArray {
@@ -32,49 +35,41 @@
 
 //加载设备数据
 - (void)loadData {
-    [EquipmentModel getListDevicesDataById:self.branchId success:^(id returnValue) {
-        
+    
+    MJWeakSelf
+    [EquipmentModel getListDevicesDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
+        if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
+            weakSelf.equipmentsArray = returnValue;
+            [weakSelf.myTableView.mj_header endRefreshing];
+            [weakSelf.myTableView reloadData];
+        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
+            if ([returnValue count]==0) {
+                
+                [STTextHudTool showText:@"暂无更多内容"];
+            }
+            [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
+            [weakSelf.myTableView.mj_footer endRefreshing];
+            [weakSelf.myTableView reloadData];
+        }
     } failure:^(id errorCode) {
         
     }];
 }
 
-#pragma mark 下拉刷新
--(void)reloadTableView{
-    
-    __weak typeof(self)weakSelf =self;
-    //[self getGroupData];
-    dispatch_async(dispatch_get_main_queue(), ^(){
-        
-        [weakSelf.myRefreshView endRefreshing];
-        
-    });
-    
-}
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 20;
+    return self.equipmentsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-   
-        
-        
-        static NSString *ID = @"EquipCell";
-        EquipCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-        
-        cell = [[EquipCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-       cell.equitTitle.text=[NSString stringWithFormat:@"设备%ld",indexPath.row];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-        
-        return cell;
-        
-    
+
+    static NSString *ID = @"EquipCell";
+    EquipCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    cell = [[EquipCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    EquipmentModel *model = self.equipmentsArray[indexPath.row];
+    cell.equitTitle.text = model.sbmc;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
     
@@ -92,42 +87,26 @@
         _myTableView.dataSource = self;
         _myTableView.rowHeight=44;
         _myTableView.tableFooterView=[[UIView alloc]init];
-//        [_myTableView setReloadBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-//            
-//                [weakSelf reloadTableView];
-//            
-//        }];
-        
-        
-        //_myTableView.tableHeaderView=_headView;
         //..下拉刷新
         _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            
-            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-            
-                [weakSelf reloadTableView];
-            
-            
+            weakSelf.myRefreshView = _myTableView.mj_header;
+            weakSelf.currentPage = 0;
+            weakSelf.pageSize = 10;
+            [weakSelf.equipmentsArray removeAllObjects];
+            [weakSelf loadData];
         }];
-        
         // 马上进入刷新状态
         [_myTableView.mj_header beginRefreshing];
-        
-        //        //..上拉刷新
-        //        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        //            weakSelf.myRefreshView = weakSelf.myTableView.mj_footer;
-        //            weakSelf.beginIndex = weakSelf.beginIndex + 5;
-        //            weakSelf.endIndex=weakSelf.endIndex+5;
-        //            [weakSelf refreshTableViewWithBeginIndex:weakSelf.beginIndex endIndex:weakSelf.endIndex];
-        //
-        //        }];
-        //
-        //        _myTableView.mj_footer.hidden = YES;
-        
-        
+
+        //..上拉刷新
+        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+             weakSelf.myRefreshView = _myTableView.mj_footer;
+            weakSelf.currentPage = weakSelf.currentPage + 1;
+            weakSelf.pageSize=weakSelf.pageSize + 10;
+            [weakSelf loadData];
+        }];
+        _myTableView.mj_footer.hidden = NO;
     }
-    
     return _myTableView;
     
     
@@ -135,30 +114,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    EquipmentModel *model = self.equipmentsArray[indexPath.row];
+    EquipmentModel *model = self.equipmentsArray[indexPath.row];
     FacilityDetailVC *detailVC = [[FacilityDetailVC alloc] init];
-//    
-//    detailVC.deviceId = model.deviceId;
-//    detailVC.view.backgroundColor = [UIColor whiteColor];
+    detailVC.deviceId = model.deviceId;
+    detailVC.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

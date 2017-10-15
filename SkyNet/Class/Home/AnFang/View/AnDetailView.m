@@ -294,6 +294,7 @@ MDFlipCollectionViewDelegate>
     equipVC.view.backgroundColor =[UIColor whiteColor];
     
     EventVC * eventVC = [[EventVC alloc]init];
+    eventVC.branchId = [self.currentVC valueForKeyPath:@"branchId"];
     eventVC.view.backgroundColor=[UIColor whiteColor];
     
     [self.currentVC addChildViewController:equipVC];
@@ -325,7 +326,6 @@ MDFlipCollectionViewDelegate>
 {
     [_collectView selectIndex:index];
 }
-
 
 - (void)flipToIndex:(NSInteger)index
 {

@@ -8,11 +8,15 @@
 
 #import "EventVC.h"
 #import "EventCell.h"
+#import "EvevtListModel.h"
+
 #define kBottomViewHeight 150
 @interface EventVC ()
 @property (nonatomic, strong) UIView *backCoverView;
 @property (nonatomic, strong) UIView *bottomMessageView;
-
+@property (nonatomic, strong) NSMutableArray *equipmentsArray;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger pageSize;
 @end
 
 @implementation EventVC
@@ -24,6 +28,36 @@
     [self addBottomView];
     self.backCoverView.hidden = YES;
     self.bottomMessageView.hidden = YES;
+}
+
+-(NSMutableArray *)equipmentsArray {
+    if (nil == _equipmentsArray) {
+        _equipmentsArray = [NSMutableArray array];
+    }
+    return _equipmentsArray;
+}
+
+//加载设备数据
+- (void)loadData {
+    
+    MJWeakSelf
+    [EvevtListModel getEventListDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
+        if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
+            weakSelf.equipmentsArray = returnValue;
+            [weakSelf.myTableView.mj_header endRefreshing];
+            [weakSelf.myTableView reloadData];
+        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
+            if ([returnValue count]==0) {
+                
+                [STTextHudTool showText:@"暂无更多内容"];
+            }
+            [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
+            [weakSelf.myTableView.mj_footer endRefreshing];
+            [weakSelf.myTableView reloadData];
+        }
+    } failure:^(id errorCode) {
+        
+    }];
 }
 
 - (void)addBackView {
@@ -104,47 +138,34 @@
     }
     return _backCoverView;
 }
-#pragma mark 下拉刷新
--(void)reloadTableView{
-    
-    __weak typeof(self)weakSelf =self;
-    //[self getGroupData];
-    dispatch_async(dispatch_get_main_queue(), ^(){
-        
-        [weakSelf.myRefreshView endRefreshing];
-        
-    });
-    
-}
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 20;
+    return self.equipmentsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
-    
     
     static NSString *ID = @"EventCell";
     EventCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     cell = [[EventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     cell.logoImageView.image=ImageNamed(@"home_monitor");
-    cell.eventTitle.text=[NSString stringWithFormat:@"标题%ld",indexPath.row];
-    cell.eventContent.text=[NSString stringWithFormat:@"内容内容内容%ld",indexPath.row];
-    cell.createTime.text=@"2012-02-12";
+    EvevtListModel *model = self.equipmentsArray[indexPath.row];
+    cell.eventTitle.text=model.alarmdesc;
+    cell.eventContent.text=model.alarmdesc;
+    NSDate *dateTime = [[NSDate alloc] initWithTimeIntervalSince1970:model.createtime /1000];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterNoStyle];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    NSLocale *formatterLocal = [[NSLocale alloc] initWithLocaleIdentifier:@"en_us"];
+    [formatter setLocale:formatterLocal];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [formatter stringFromDate:dateTime];
+    cell.createTime.text= dateString;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
+
     return cell;
-    
-    
-    
-   
     
 }
 
@@ -160,39 +181,26 @@
         _myTableView.dataSource = self;
         _myTableView.rowHeight=70;
         _myTableView.tableFooterView=[[UIView alloc]init];
-//        [_myTableView setReloadBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-//            
-//            [weakSelf reloadTableView];
-//            
-//        }];
-        
-        
-        //_myTableView.tableHeaderView=_headView;
+
         //..下拉刷新
         _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            
-            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-            
-            [weakSelf reloadTableView];
-            
-            
+            weakSelf.myRefreshView = _myTableView.mj_header;
+            weakSelf.currentPage = 0;
+            weakSelf.pageSize = 10;
+            [weakSelf.equipmentsArray removeAllObjects];
+            [weakSelf loadData];
         }];
-        
         // 马上进入刷新状态
         [_myTableView.mj_header beginRefreshing];
         
-        //        //..上拉刷新
-        //        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        //            weakSelf.myRefreshView = weakSelf.myTableView.mj_footer;
-        //            weakSelf.beginIndex = weakSelf.beginIndex + 5;
-        //            weakSelf.endIndex=weakSelf.endIndex+5;
-        //            [weakSelf refreshTableViewWithBeginIndex:weakSelf.beginIndex endIndex:weakSelf.endIndex];
-        //
-        //        }];
-        //
-        //        _myTableView.mj_footer.hidden = YES;
-        
+        //..上拉刷新
+        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            weakSelf.myRefreshView = _myTableView.mj_footer;
+            weakSelf.currentPage = weakSelf.currentPage + 1;
+            weakSelf.pageSize=10;
+            [weakSelf loadData];
+        }];
+        _myTableView.mj_footer.hidden = NO;
         
     }
     

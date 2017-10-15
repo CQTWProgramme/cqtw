@@ -11,4 +11,5 @@
 @interface EquipCell : UITableViewCell
 @property(nonatomic,strong)UIView * fontView;
 @property(nonatomic,strong)UILabel * equitTitle;
+@property(nonatomic,strong)UILabel * detailText;
 @end

@@ -37,7 +37,12 @@
  */
 -(void)requestDeleteGroup:(NSString *)customId;
 
-
+/**
+ 查询网点下设备状态分类数量
+ 
+ @param branchId 网点id
+ */
+-(void)requestDeviceStateByBranch:(NSString *)branchId;
 
 /**
  编辑自定义分组名字

@@ -17,7 +17,8 @@
 /** 导航栏返回按钮标题*/
 @property (nonatomic, strong) NSString *navBackButtonTitle;         // 导航栏返回按钮标题
 /** 导航栏返回按钮颜色*/
-@property (nonatomic, strong) UIColor  *navBackButtonColor;         // 导航栏返回按钮颜色
+@property (nonatomic, strong) UIColor  *navBackButtonColor;// 导航栏返回按钮颜色
+@property (nonatomic, strong) UIColor  *navBackColor;// 导航栏背景颜色
 
 // ** 导航栏点击事件 **
 - (void)navigationItemHandleBack:(UIButton *)button;

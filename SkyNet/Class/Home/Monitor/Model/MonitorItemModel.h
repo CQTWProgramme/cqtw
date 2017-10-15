@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface MonitorItemModel : NSObject
-@property (nonatomic, copy) NSString *fzmc;
+@property(nonatomic,strong)NSString * customId;
+@property(nonatomic,strong)NSString * fzmc;
+@property(nonatomic,strong)NSString * userId;
+@property(nonatomic,strong)NSString * parentId;
+@property(nonatomic,strong)NSString * fzgn;
 @end

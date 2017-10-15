@@ -12,6 +12,7 @@
 #import "NetPointModel.h"
 #import "NetDetailModel.h"
 #import "NetDetailModel.h"
+#import "NetDetailDistrictModel.h"
 @implementation AFViewModel
 
 #pragma mark  获取用户默认分组
@@ -299,28 +300,81 @@
     
 }
 
-
+#pragma mark  获取网点下设备状态分类数量
+-(void)requestDeviceStateByBranch:(NSString *)branchId {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"branchId": branchId,@"fzgn":@(1)};
+    [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDeviceStateByBranch).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        NSString * code=responseObject[@"code"];
+        if (code.integerValue==1) {
+//            NSMutableArray * sumArr =[NSMutableArray new];
+//            NSMutableArray * customArr =[NSMutableArray new];
+//            NSMutableArray * sysArr =[NSMutableArray new];
+//            
+//            NSDictionary * dataDic = responseObject[@"data"];
+//            NSArray *csArray = dataDic[@"customDataList"];
+//            NSArray *syArray = dataDic[@"sysCustomList"];
+//            if (csArray.count > 0) {
+//                for (NSDictionary * dic in csArray) {
+//                    NetDetailModel * model =[NetDetailModel mj_objectWithKeyValues:dic];
+//                    [customArr addObject:model];
+//                }
+//            }
+//            if (syArray.count > 0) {
+//                for (NSDictionary * dic in syArray) {
+//                    NetDetailDistrictModel * model =[NetDetailDistrictModel mj_objectWithKeyValues:dic];
+//                    [sysArr addObject:model];
+//                }
+//            }
+//            [sumArr addObject:customArr];
+//            [sumArr addObject:sysArr];
+//            super.returnBlock(sumArr);
+        }
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        
+        
+    }];
+}
 #pragma mark  获取自定义分组下数据
 -(void)requestGroupData:(NSString *)customId{
     
     [STTextHudTool loadingWithTitle:@"加载中..."];
-    NSDictionary * param =@{@"customId": customId};
+    NSDictionary * param =@{@"customId": customId,@"fzgn":@(1)};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTCUSTOMData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
-            NSMutableArray * modelArr =[NSMutableArray new];
-            NSArray * dataArr =responseObject[@"data"];
-            if (dataArr.count > 0) {
-                for (NSDictionary * dic in dataArr) {
-                    
+            NSMutableArray * sumArr =[NSMutableArray new];
+            NSMutableArray * customArr =[NSMutableArray new];
+            NSMutableArray * sysArr =[NSMutableArray new];
+            
+            NSDictionary * dataDic = responseObject[@"data"];
+            NSArray *csArray = dataDic[@"customDataList"];
+            NSArray *syArray = dataDic[@"sysCustomList"];
+            if (csArray.count > 0) {
+                for (NSDictionary * dic in csArray) {
                     NetDetailModel * model =[NetDetailModel mj_objectWithKeyValues:dic];
-                    [modelArr addObject:model];
+                    [customArr addObject:model];
                 }
             }
-            
-            super.returnBlock(modelArr);
+            if (syArray.count > 0) {
+                for (NSDictionary * dic in syArray) {
+                    NetDetailDistrictModel * model =[NetDetailDistrictModel mj_objectWithKeyValues:dic];
+                    [sysArr addObject:model];
+                }
+            }
+            [sumArr addObject:customArr];
+            [sumArr addObject:sysArr];
+            super.returnBlock(sumArr);
         }
         
     } progress:^(NSProgress *progress) {

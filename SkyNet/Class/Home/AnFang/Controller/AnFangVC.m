@@ -37,10 +37,6 @@
      [self.view addSubview:self.afView];
 }
 
-
-
-
-
 -(void)createRightItem{
     
     
@@ -68,12 +64,6 @@
         }
         [weakSelf getAfDistrictList];
     });
-    
-    dispatch_async(dispatch_get_main_queue(), ^(){
-        
-        [weakSelf.afView.myRefreshView endRefreshing];
-        
-    });
 
 }
 
@@ -87,9 +77,9 @@
         [weakSelf.dataArray addObject:returnValue];
         [weakSelf getAfList];
     } WithErrorBlock:^(id errorCode) {
-        
+        [weakSelf.afView.myRefreshView endRefreshing];
     } WithFailureBlock:^{
-        
+        [weakSelf.afView.myRefreshView endRefreshing];
     }];
     
     [afViewModel requestDistrictList];
@@ -98,7 +88,6 @@
 
 #pragma mark 查询安防自定义分组
 -(void)getAfList{
-    
     
     MJWeakSelf
     AFViewModel * afViewModel =[AFViewModel new];
@@ -113,9 +102,9 @@
             [weakSelf.afView.myRefreshView  endRefreshing];
         });
     } WithErrorBlock:^(id errorCode) {
-        
+        [weakSelf.afView.myRefreshView endRefreshing];
     } WithFailureBlock:^{
-        
+        [weakSelf.afView.myRefreshView endRefreshing];
     }];
     
     [afViewModel requestListWithType:@"1"];

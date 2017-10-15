@@ -24,9 +24,14 @@
         _equitTitle.textAlignment =NSTextAlignmentLeft;
         _equitTitle.textColor=[UIColor darkGrayColor];
         
+        _detailText=[UILabel new];
+        _detailText.font =[UIFont systemFontOfSize:14];
+        _detailText.textAlignment =NSTextAlignmentRight;
+        _detailText.textColor=[UIColor darkGrayColor];
         
         
-        [self.contentView sd_addSubviews:@[_fontView, _equitTitle]];
+        
+        [self.contentView sd_addSubviews:@[_fontView, _equitTitle,_detailText]];
         
         
         
@@ -42,10 +47,14 @@
         _equitTitle.sd_layout
         .centerYEqualToView(self.contentView)
         .leftSpaceToView(_fontView, 10)
-        .rightSpaceToView(self.contentView, 10)
+        .rightSpaceToView(self.contentView, 100)
         .heightIs(20);
         
-        
+        _detailText.sd_layout
+        .centerYEqualToView(self.contentView)
+        .widthIs(80)
+        .rightSpaceToView(self.contentView, 10)
+        .heightIs(20);
         
     }
     return self;

@@ -174,19 +174,19 @@
         
         //_myTableView.tableHeaderView=_headView;
         //..下拉刷新
-//        _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//            
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-//            
-//            if(weakSelf.delegate){
-//                
-//                [weakSelf.delegate reloadTableView];
-//            }
-//            
-//        }];
-//        
-//        // 马上进入刷新状态
-//        [_myTableView.mj_header beginRefreshing];
+        _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
+            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
+            
+            if(weakSelf.delegate){
+                
+                [weakSelf.delegate reloadTableView];
+            }
+            
+        }];
+//
+        // 马上进入刷新状态
+        [_myTableView.mj_header beginRefreshing];
         
         //        //..上拉刷新
         //        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{

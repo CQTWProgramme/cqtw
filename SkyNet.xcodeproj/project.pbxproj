@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */; };
+		880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F61F91E9C500A1A2F1 /* EvevtListModel.m */; };
+		880360FA1F921F2400A1A2F1 /* NetDetailDistrictCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F91F921F2400A1A2F1 /* NetDetailDistrictCell.m */; };
+		880360FD1F92208000A1A2F1 /* NetDetailCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360FC1F92208000A1A2F1 /* NetDetailCustomCell.m */; };
+		880361001F922AF800A1A2F1 /* NetDetailDistrictModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360FF1F922AF800A1A2F1 /* NetDetailDistrictModel.m */; };
+		880361031F9386D600A1A2F1 /* MonitorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361021F9386D600A1A2F1 /* MonitorViewModel.m */; };
+		880361061F93874B00A1A2F1 /* MonitorDistrictItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361051F93874B00A1A2F1 /* MonitorDistrictItemCell.m */; };
+		880361091F938B6B00A1A2F1 /* MonitorDistrictItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361081F938B6B00A1A2F1 /* MonitorDistrictItemModel.m */; };
+		8803610C1F93B12000A1A2F1 /* MonitorSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803610B1F93B12000A1A2F1 /* MonitorSecondVC.m */; };
+		8803610F1F93B20500A1A2F1 /* MonitorSecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803610E1F93B20500A1A2F1 /* MonitorSecondView.m */; };
+		880361121F93B2D500A1A2F1 /* MonitorSecondPointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361111F93B2D500A1A2F1 /* MonitorSecondPointModel.m */; };
+		880361151F93B2ED00A1A2F1 /* MonitorSecondGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361141F93B2ED00A1A2F1 /* MonitorSecondGroupModel.m */; };
+		880361181F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361171F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m */; };
+		8803611B1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803611A1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m */; };
+		8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803611D1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m */; };
 		881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F21F7B58D500AE83FF /* FacilityDetailModel.m */; };
 		881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F51F7B5DA600AE83FF /* BaseModel.m */; };
 		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
@@ -212,6 +227,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		880360F21F91D9FB00A1A2F1 /* FacilityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailListModel.h; sourceTree = "<group>"; };
+		880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailListModel.m; sourceTree = "<group>"; };
+		880360F51F91E9C500A1A2F1 /* EvevtListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvevtListModel.h; sourceTree = "<group>"; };
+		880360F61F91E9C500A1A2F1 /* EvevtListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EvevtListModel.m; sourceTree = "<group>"; };
+		880360F81F921F2400A1A2F1 /* NetDetailDistrictCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetDetailDistrictCell.h; sourceTree = "<group>"; };
+		880360F91F921F2400A1A2F1 /* NetDetailDistrictCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetDetailDistrictCell.m; sourceTree = "<group>"; };
+		880360FB1F92208000A1A2F1 /* NetDetailCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetDetailCustomCell.h; sourceTree = "<group>"; };
+		880360FC1F92208000A1A2F1 /* NetDetailCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetDetailCustomCell.m; sourceTree = "<group>"; };
+		880360FE1F922AF800A1A2F1 /* NetDetailDistrictModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetDetailDistrictModel.h; sourceTree = "<group>"; };
+		880360FF1F922AF800A1A2F1 /* NetDetailDistrictModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetDetailDistrictModel.m; sourceTree = "<group>"; };
+		880361011F9386D600A1A2F1 /* MonitorViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorViewModel.h; sourceTree = "<group>"; };
+		880361021F9386D600A1A2F1 /* MonitorViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorViewModel.m; sourceTree = "<group>"; };
+		880361041F93874B00A1A2F1 /* MonitorDistrictItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorDistrictItemCell.h; sourceTree = "<group>"; };
+		880361051F93874B00A1A2F1 /* MonitorDistrictItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorDistrictItemCell.m; sourceTree = "<group>"; };
+		880361071F938B6B00A1A2F1 /* MonitorDistrictItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorDistrictItemModel.h; sourceTree = "<group>"; };
+		880361081F938B6B00A1A2F1 /* MonitorDistrictItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorDistrictItemModel.m; sourceTree = "<group>"; };
+		8803610A1F93B12000A1A2F1 /* MonitorSecondVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondVC.h; sourceTree = "<group>"; };
+		8803610B1F93B12000A1A2F1 /* MonitorSecondVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondVC.m; sourceTree = "<group>"; };
+		8803610D1F93B20500A1A2F1 /* MonitorSecondView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondView.h; sourceTree = "<group>"; };
+		8803610E1F93B20500A1A2F1 /* MonitorSecondView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondView.m; sourceTree = "<group>"; };
+		880361101F93B2D500A1A2F1 /* MonitorSecondPointModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondPointModel.h; sourceTree = "<group>"; };
+		880361111F93B2D500A1A2F1 /* MonitorSecondPointModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondPointModel.m; sourceTree = "<group>"; };
+		880361131F93B2ED00A1A2F1 /* MonitorSecondGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondGroupModel.h; sourceTree = "<group>"; };
+		880361141F93B2ED00A1A2F1 /* MonitorSecondGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondGroupModel.m; sourceTree = "<group>"; };
+		880361161F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondDistrictPointCell.h; sourceTree = "<group>"; };
+		880361171F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondDistrictPointCell.m; sourceTree = "<group>"; };
+		880361191F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondCustomPointCell.h; sourceTree = "<group>"; };
+		8803611A1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondCustomPointCell.m; sourceTree = "<group>"; };
+		8803611C1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondCustomGroupCell.h; sourceTree = "<group>"; };
+		8803611D1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondCustomGroupCell.m; sourceTree = "<group>"; };
 		881322F11F7B58D500AE83FF /* FacilityDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailModel.h; sourceTree = "<group>"; };
 		881322F21F7B58D500AE83FF /* FacilityDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailModel.m; sourceTree = "<group>"; };
 		881322F41F7B5DA600AE83FF /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -621,6 +666,8 @@
 				88299C6A1F7CC44E0070067C /* MonitorVC.h */,
 				88299C6B1F7CC44E0070067C /* MonitorVC.m */,
 				88299C6C1F7CC44E0070067C /* MonitorVC.xib */,
+				8803610A1F93B12000A1A2F1 /* MonitorSecondVC.h */,
+				8803610B1F93B12000A1A2F1 /* MonitorSecondVC.m */,
 				88299C751F7CD2E10070067C /* MonitorDetailListVC.h */,
 				88299C761F7CD2E10070067C /* MonitorDetailListVC.m */,
 				88299C771F7CD2E10070067C /* MonitorDetailListVC.xib */,
@@ -645,6 +692,12 @@
 			children = (
 				88299C721F7CC80D0070067C /* MonitorItemModel.h */,
 				88299C731F7CC80D0070067C /* MonitorItemModel.m */,
+				880361071F938B6B00A1A2F1 /* MonitorDistrictItemModel.h */,
+				880361081F938B6B00A1A2F1 /* MonitorDistrictItemModel.m */,
+				880361101F93B2D500A1A2F1 /* MonitorSecondPointModel.h */,
+				880361111F93B2D500A1A2F1 /* MonitorSecondPointModel.m */,
+				880361131F93B2ED00A1A2F1 /* MonitorSecondGroupModel.h */,
+				880361141F93B2ED00A1A2F1 /* MonitorSecondGroupModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -656,6 +709,16 @@
 				88299C701F7CC7150070067C /* MonitorItemCell.m */,
 				88299C7A1F7CD3620070067C /* MonitorDetailListCell.h */,
 				88299C7B1F7CD3620070067C /* MonitorDetailListCell.m */,
+				880361041F93874B00A1A2F1 /* MonitorDistrictItemCell.h */,
+				880361051F93874B00A1A2F1 /* MonitorDistrictItemCell.m */,
+				8803610D1F93B20500A1A2F1 /* MonitorSecondView.h */,
+				8803610E1F93B20500A1A2F1 /* MonitorSecondView.m */,
+				880361161F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.h */,
+				880361171F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m */,
+				880361191F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.h */,
+				8803611A1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m */,
+				8803611C1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.h */,
+				8803611D1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -663,6 +726,8 @@
 		88299C691F7CC40D0070067C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				880361011F9386D600A1A2F1 /* MonitorViewModel.h */,
+				880361021F9386D600A1A2F1 /* MonitorViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -958,6 +1023,12 @@
 				88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */,
 				8814733D1F7FD4980064DF4D /* AFDistrictModel.h */,
 				8814733E1F7FD4980064DF4D /* AFDistrictModel.m */,
+				880360F21F91D9FB00A1A2F1 /* FacilityDetailListModel.h */,
+				880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */,
+				880360F51F91E9C500A1A2F1 /* EvevtListModel.h */,
+				880360F61F91E9C500A1A2F1 /* EvevtListModel.m */,
+				880360FE1F922AF800A1A2F1 /* NetDetailDistrictModel.h */,
+				880360FF1F922AF800A1A2F1 /* NetDetailDistrictModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -983,6 +1054,10 @@
 				881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */,
 				881473401F8912F40064DF4D /* AFDistrictItemCell.h */,
 				881473411F8912F40064DF4D /* AFDistrictItemCell.m */,
+				880360F81F921F2400A1A2F1 /* NetDetailDistrictCell.h */,
+				880360F91F921F2400A1A2F1 /* NetDetailDistrictCell.m */,
+				880360FB1F92208000A1A2F1 /* NetDetailCustomCell.h */,
+				880360FC1F92208000A1A2F1 /* NetDetailCustomCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1733,11 +1808,13 @@
 				8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */,
 				BF84BB011F5C5A14000FB4D8 /* UIImage+colorImage.m in Sources */,
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
+				880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */,
 				88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */,
 				BF73387E1F77D3460000FB8A /* NetDetailView.m in Sources */,
 				88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */,
 				BF84BB061F5C5A14000FB4D8 /* UIViewAdditions.m in Sources */,
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
+				880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */,
 				881547991F8DD129000F2C84 /* ReportVC.m in Sources */,
 				BF34EEFC1F4A72C600E05DF3 /* LoginView.m in Sources */,
 				BFA8C7B81F4BE1C5003A0BEE /* TAAnimatedDotView.m in Sources */,
@@ -1745,6 +1822,7 @@
 				BF73387B1F77D31E0000FB8A /* NetDetailVC.m in Sources */,
 				BF0C32191F6772EC009FC882 /* STTextHud.m in Sources */,
 				88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */,
+				880361091F938B6B00A1A2F1 /* MonitorDistrictItemModel.m in Sources */,
 				BFA8C7BB1F4BE1C5003A0BEE /* SDCollectionViewCell.m in Sources */,
 				88299C8A1F7CE12B0070067C /* PlayBackVC.m in Sources */,
 				BF0C32811F693A7A009FC882 /* AddGroupPointVC.m in Sources */,
@@ -1757,8 +1835,10 @@
 				881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
 				881547941F8DCC92000F2C84 /* CueReportCell.m in Sources */,
+				880361121F93B2D500A1A2F1 /* MonitorSecondPointModel.m in Sources */,
 				BF34EDEA1F49CEBF00E05DF3 /* ClientTool.m in Sources */,
 				BF34EDFE1F49CEBF00E05DF3 /* WKMessageProgressHUD.m in Sources */,
+				8803610C1F93B12000A1A2F1 /* MonitorSecondVC.m in Sources */,
 				BF7338811F77D3F40000FB8A /* NetDetailCell.m in Sources */,
 				BF0C325D1F67CE48009FC882 /* HomeView.m in Sources */,
 				BF0C32591F67CE48009FC882 /* HomeVC.m in Sources */,
@@ -1766,6 +1846,7 @@
 				BFFA09FD1F7A62090019CFA8 /* EquipmentVC.m in Sources */,
 				88299C781F7CD2E10070067C /* MonitorDetailListVC.m in Sources */,
 				BF0C326C1F67FA8B009FC882 /* AnFangVC.m in Sources */,
+				880361181F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m in Sources */,
 				BFA8C8DB1F4DEAEE003A0BEE /* MyView.m in Sources */,
 				88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */,
 				BF0C327E1F69365D009FC882 /* AddNewGroupVC.m in Sources */,
@@ -1774,6 +1855,8 @@
 				BF7338841F77D4230000FB8A /* NetDetailModel.m in Sources */,
 				BF0C32BA1F6A16F4009FC882 /* MulChooseTable.m in Sources */,
 				88299C801F7CDEE00070067C /* MonitorPlayVC.m in Sources */,
+				880361061F93874B00A1A2F1 /* MonitorDistrictItemCell.m in Sources */,
+				8803611B1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m in Sources */,
 				BF34EEB11F49CEBF00E05DF3 /* ProvinceModel.m in Sources */,
 				884701501F8DAA6E00B44D68 /* PoliceHomeView.m in Sources */,
 				BFFA09FA1F7A60C40019CFA8 /* MDMultipleSegmentViewCell.m in Sources */,
@@ -1783,7 +1866,9 @@
 				BFA8C7C61F4C88BA003A0BEE /* RegisterVC.m in Sources */,
 				BF0C326F1F68C254009FC882 /* AFItemCell.m in Sources */,
 				BF34EEAE1F49CEBF00E05DF3 /* AreaModel.m in Sources */,
+				880361001F922AF800A1A2F1 /* NetDetailDistrictModel.m in Sources */,
 				BF34EDF81F49CEBF00E05DF3 /* SDPhotoBrowser.m in Sources */,
+				8803610F1F93B20500A1A2F1 /* MonitorSecondView.m in Sources */,
 				BF34EB3D1F49CDB600E05DF3 /* ViewController.m in Sources */,
 				BF0C322B1F6774EB009FC882 /* CusMD5.m in Sources */,
 				BF34EEE61F49E58200E05DF3 /* SLTabBar.m in Sources */,
@@ -1797,7 +1882,9 @@
 				8815477D1F8DC048000F2C84 /* CommunityPoliceVC.m in Sources */,
 				884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */,
 				8815478F1F8DCC10000F2C84 /* CueReportVC.m in Sources */,
+				880361151F93B2ED00A1A2F1 /* MonitorSecondGroupModel.m in Sources */,
 				BF34EEC41F49CEC000E05DF3 /* YQImageCompressTool.m in Sources */,
+				880360FD1F92208000A1A2F1 /* NetDetailCustomCell.m in Sources */,
 				BF34EEA91F49CEBF00E05DF3 /* UIImage+ImageSize.m in Sources */,
 				BF34EDFF1F49CEBF00E05DF3 /* WKProgressHUD.m in Sources */,
 				BF3F8CF71F6A2E16000EA801 /* NetPointModel.m in Sources */,
@@ -1820,6 +1907,7 @@
 				88299C7C1F7CD3620070067C /* MonitorDetailListCell.m in Sources */,
 				88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */,
 				BF34EB371F49CDB600E05DF3 /* main.m in Sources */,
+				8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */,
 				BF34EEAB1F49CEBF00E05DF3 /* AFNetAPIClient.m in Sources */,
 				884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */,
 				BF84BAE51F5C5752000FB4D8 /* SystemMsgVC.m in Sources */,
@@ -1831,8 +1919,10 @@
 				BF84BB001F5C5A14000FB4D8 /* UIColor+Expanded.m in Sources */,
 				BF34EEB01F49CEBF00E05DF3 /* CurrentLocation.m in Sources */,
 				BFA2EAC11F5EE4F400C9039F /* BaseViewModel.m in Sources */,
+				880360FA1F921F2400A1A2F1 /* NetDetailDistrictCell.m in Sources */,
 				BFFA09F71F7A60C40019CFA8 /* MDFlipCollectionView.m in Sources */,
 				88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */,
+				880361031F9386D600A1A2F1 /* MonitorViewModel.m in Sources */,
 				BF84BAE81F5C5767000FB4D8 /* AlarmMsgVC.m in Sources */,
 				BFFA0A001F7A623B0019CFA8 /* EventVC.m in Sources */,
 				881547AC1F8DDFE0000F2C84 /* PublicinteractionVC.m in Sources */,

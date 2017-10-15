@@ -21,7 +21,6 @@ static NSString *cellID = @"MonitorDetailListCellID";
     [super viewDidLoad];
     self.title = @"监控详情列表";
     [self setupColectionView];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(NSArray *)dataArray {

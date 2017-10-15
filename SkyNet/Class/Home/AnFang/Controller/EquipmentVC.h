@@ -9,9 +9,5 @@
 #import "BaseViewController.h"
 
 @interface EquipmentVC : BaseViewController<UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic,strong) UITableView       * myTableView;
-@property (nonatomic, strong) MJRefreshComponent *myRefreshView;
-@property(nonatomic,strong)   MJRefreshAutoFooter * myAutoFooter;
-@property(nonatomic,assign)CGRect tableFrame;
 @property (nonatomic, copy) NSString *branchId;
 @end

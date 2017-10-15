@@ -14,7 +14,7 @@
 //// 服务器地址
 #define SERVER_TYPE  0// 0-测试环境,2-正式环境
 #if SERVER_TYPE == 0
-#define BASE_URL    @"http://bs.cqtianwang.com:1111/"
+#define BASE_URL    @"http://city.cqtianwang.com/"
 
 #define POST_INTERFACE(API)    [NSString stringWithFormat:@"%@%@",BASE_URL,API]
 
@@ -73,16 +73,27 @@
 
 
 //获取用户自定义分组下数据
-#define SELECTCUSTOMData                      POST_INTERFACE(@"api/basic/selectCustomData")
+#define SELECTCUSTOMData                      POST_INTERFACE(@"api/basic/selectCustomAndData")
 
 //根据网点查询用户拥有的设备及状态（分页加载）
 #define SELECTDevicePageByBranch                      POST_INTERFACE(@"api/basic/selectDevicePageByBranch")
 
+//查询网点下设备状态分类数量
+#define SELECTDeviceStateByBranch                      POST_INTERFACE(@"api/basic/selectDeviceStateByBranch")
+
 //更具网点ID查询设备类型及数量
 #define SELECTDevicesData                      POST_INTERFACE(@"api/basic/selectDeviceStateByBranch")
 
+//查询当前网点下最近(历史)报警记录
+#define SELECTBranchLatelyAlarmData                      POST_INTERFACE(@"api/alarm/getLatelyAlarm")
+
 //获取设备详情数据
 #define FacilityDetailData                      POST_INTERFACE(@"api/bean/selectDeviceById")
+//获取设备详情通道列表数据
+#define FacilityDetailBranchListData                      POST_INTERFACE(@"api/basic/selectChannelPageByDevice")
+
+//根据通道ID查询详情
+#define FacilityDetailChannelData                      POST_INTERFACE(@"api/bean/getChannelById")
 
 //获取网点详情数据
 #define LatticeDetailData                      POST_INTERFACE(@"api/bean/selectBranchById")

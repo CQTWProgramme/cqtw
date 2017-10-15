@@ -9,22 +9,20 @@
 #import "EquipmentModel.h"
 
 @implementation EquipmentModel
-+ (void)getListDevicesDataById:(NSString *)customId success:(BaseSuccessBlock)success failure:(BaseFailureBlock)failure {
++ (void)getListDevicesDataById:(NSString *)branchId currentPage:(NSInteger)currentPage pageSize:(NSInteger)pageSize success:(BaseSuccessBlock) success failure:(BaseFailureBlock) failure {
     [STTextHudTool loadingWithTitle:@"加载中..."];
-    if (customId == nil) {
-        customId = @"";
-    }
-    NSDictionary * param =@{@"branchId":customId,@"sbgn":@(1),@"currPage":@(0),@"pageSize":@(10)};
+    NSDictionary * param =@{@"branchId":branchId,@"sbgn":@(1),@"currPage":@(currentPage),@"pageSize":@(pageSize),@"state":@"602"};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDevicePageByBranch).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
             NSMutableArray *muArr = [NSMutableArray array];
-            NSArray * arr = responseObject[@"data"];
+            NSDictionary * dic = responseObject[@"data"];
+            NSArray *arr = dic[@"rows"];
             if (arr.count > 0) {
-                for (NSDictionary *dic in arr) {
-                    EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic];
+                for (NSDictionary *dic1 in arr) {
+                    EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
                     [muArr addObject:model];
                 }
             }

@@ -8,9 +8,11 @@
 
 #import "FacilityDetailVC.h"
 #import "FacilityDetailModel.h"
+#import "FacilityDetailListModel.h"
 
 @interface FacilityDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) FacilityDetailModel *detailModel;
+@property (nonatomic, strong) MJRefreshComponent *myRefreshView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -20,8 +22,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *messagetypeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *messageOnlineLabel;
 @property (strong, nonatomic) IBOutlet UILabel *messageStateLabel;
-
-
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, strong) NSMutableArray *equipmentsArray;
 @end
 
 @implementation FacilityDetailVC
@@ -34,9 +37,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.backCoverView.hidden = YES;
     self.bottomMessageView.hidden = YES;
-    //[self getData];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    [self getData];
+    [self setupTable];
+}
+
+-(NSMutableArray *)equipmentsArray {
+    if (nil == _equipmentsArray) {
+        _equipmentsArray = [NSMutableArray array];
+    }
+    return _equipmentsArray;
 }
 
 -(void)createBottomView{
@@ -93,6 +102,57 @@
     }
 }
 
+- (void)loadData {
+    MJWeakSelf
+    [FacilityDetailListModel getFacilityDetailListDataById:self.deviceId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
+        if (weakSelf.myRefreshView == weakSelf.tableView.mj_header) {
+            weakSelf.equipmentsArray = returnValue;
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView reloadData];
+        }else if (weakSelf.myRefreshView == weakSelf.tableView.mj_footer) {
+            if ([returnValue count]==0) {
+                
+                [STTextHudTool showText:@"暂无更多内容"];
+            }
+            [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
+            [weakSelf.tableView.mj_footer endRefreshing];
+            [weakSelf.tableView reloadData];
+        }
+    } failure:^(id errorCode) {
+        
+    }];
+}
+
+- (void)setupTable {
+    MJWeakSelf
+    self.tableView.backgroundColor = BACKGROUND_COLOR;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight=44;
+    self.tableView.tableFooterView=[[UIView alloc]init];
+    //..下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.myRefreshView = self.tableView.mj_header;
+        weakSelf.currentPage = 0;
+        weakSelf.pageSize = 10;
+        if (weakSelf.equipmentsArray.count > 0) {
+            [weakSelf.equipmentsArray removeAllObjects];
+        }
+        [weakSelf loadData];
+    }];
+    // 马上进入刷新状态
+    [self.tableView.mj_header beginRefreshing];
+    
+    //..上拉刷新
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        weakSelf.myRefreshView = self.tableView.mj_footer;
+        weakSelf.currentPage = weakSelf.currentPage + 1;
+        weakSelf.pageSize=weakSelf.pageSize + 10;
+        [weakSelf loadData];
+    }];
+    self.tableView.mj_footer.hidden = NO;
+}
+
 - (IBAction)hideBottomMessageViewAction:(id)sender {
     [UIView animateWithDuration:1.0 animations:^{
         self.backCoverView.hidden = YES;
@@ -110,15 +170,15 @@
 - (void)getData {
     [FacilityDetailModel getDetailDataById:self.deviceId 
                                    success:^(id returnValue) {
-        
                                        self.detailModel = returnValue;
+                                       self.nameLabel.text = self.detailModel.sbmc;
                                  } failure:^(id errorCode) {
                                        
                                  }];
 }
 #pragma tableviewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.equipmentsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,13 +187,23 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"通道的名称%@",@(indexPath.row)];
+    FacilityDetailListModel *model = self.equipmentsArray[indexPath.row];
+    cell.textLabel.text = model.jkmc;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self showMessageView];
+    FacilityDetailListModel *model = self.equipmentsArray[indexPath.row];
+    [self showMessageWithId:model];
+}
+
+- (void)showMessageWithId:(FacilityDetailListModel *)model {
+    [FacilityDetailListModel getChannelDetailWithChannelId:model.channelId success:^(id returnValue) {
+        [self showMessageView];
+    } failure:^(id errorCode) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

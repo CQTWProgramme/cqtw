@@ -9,24 +9,21 @@
 #import "NetDetailView.h"
 #import "NetDetailCell.h"
 #import "NetPointModel.h"
+#import "NetDetailCustomCell.h"
+#import "NetDetailDistrictCell.h"
+#import "NetDetailDistrictModel.h"
 @implementation NetDetailView
 
 -(instancetype)initWithFrame:(CGRect)frame{
     
     self =[super initWithFrame:frame];
     if (self) {
-        
-       // self.groupArr=[[NSMutableArray alloc]init];
         [self addSubview:self.myTableView];
     }
-    
     return self;
 }
 
-
-
 -(void)setGroupArr:(NSMutableArray *)groupArr{
-    
     
     _groupArr=groupArr;
     
@@ -35,7 +32,6 @@
 
 -(UITableView *)myTableView{
     
-    MJWeakSelf
     if (!_myTableView) {
         _myTableView = [[UITableView alloc]initWithFrame:self.bounds style:UITableViewStylePlain];
         _myTableView.backgroundColor = BACKGROUND_COLOR;
@@ -43,136 +39,123 @@
         _myTableView.dataSource = self;
         _myTableView.tableFooterView=[[UIView alloc]init];
         _myTableView.rowHeight=70;
-//        [_myTableView setReloadBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-//            
-//            if(weakSelf.delegate){
-//                
-//                [weakSelf.delegate reloadTableView];
-//            }
-//        }];
-        //_myTableView.tableHeaderView=_headView;
-        //..下拉刷新
-//        _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-//
-////            if(weakSelf.delegate){
-////
-////                [weakSelf.delegate reloadTableView];
-////            }
-//
-//        }];
-//        //..下拉刷新
-//        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_footer;
-////            if(weakSelf.delegate){
-////
-////                [weakSelf.delegate reloadTableView];
-////            }
-//
-//        }];
-         //_myTableView.mj_footer.hidden = NO;
-        // 马上进入刷新状态
-        //[_myTableView.mj_header beginRefreshing];
-        
-        //        //..上拉刷新
-        //        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        //            weakSelf.myRefreshView = weakSelf.myTableView.mj_footer;
-        //            weakSelf.beginIndex = weakSelf.beginIndex + 5;
-        //            weakSelf.endIndex=weakSelf.endIndex+5;
-        //            [weakSelf refreshTableViewWithBeginIndex:weakSelf.beginIndex endIndex:weakSelf.endIndex];
-        //
-        //        }];
-        //
-        //        _myTableView.mj_footer.hidden = YES;
-        
-        
     }
     
     return _myTableView;
-    
-    
 }
 
-
-
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.type == 0) {
+        return 1;
+    }else {
+        return 2;
+    }
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return self.groupArr.count;
+    if (self.type == 0) {
+        return self.groupArr.count;
+    }else {
+        return [self.groupArr[section] count];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
-    NetDetailCell *cell = [NetDetailCell cellWithTableView:tableView];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-    
-    if (_groupArr.count>0) {
-        
-        NetDetailModel * afModel =_groupArr[indexPath.row];
-        [cell setData:afModel]; //设置数据
-        
-        
-        __weak typeof(self) tempSelf = self;
-        __weak typeof(cell) tempCell = cell;
-        
-//        //设置删除cell回调block
-        cell.deleteAFItem = ^{
-            
-            if (tempSelf.delegate) {
-                [tempSelf.delegate deleteAFItem:afModel.customId updateCellBlock:^{
-                    
-                    NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
-                    [_groupArr removeObject:tempCell.model];
-                    [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
-                }];
+
+    if (self.type == 0) {
+        if (_groupArr.count>0) {
+            NetDetailDistrictCell *cell = [NetDetailDistrictCell cellWithTableView:tableView];
+            [cell setData:_groupArr[indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+    }else if (self.type == 1) {
+        if (_groupArr.count > 0) {
+            if ([_groupArr[indexPath.section] count] > 0) {
+                if (indexPath.section == 0) {
+                    NetDetailCustomCell *cell = [NetDetailCustomCell cellWithTableView:tableView];
+                    NetDetailModel * afModel =_groupArr[indexPath.section][indexPath.row];
+                    __weak typeof(self) tempSelf = self;
+                    __weak typeof(cell) tempCell = cell;
+                    [cell setData:afModel];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.deleteAFItem = ^{
+                        if (tempSelf.delegate) {
+                            [tempSelf.delegate deleteNetDetailItem:afModel.customId updateCellBlock:^{
+                                NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
+                                [_groupArr[indexPath.section] removeObject:tempCell.model];
+                                [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
+                            }];
+                        }
+                    };
+                    cell.closeOtherCellSwipe = ^{
+                        for (NetDetailCustomCell *item in tempSelf.myTableView.visibleCells) {
+                            [item closeLeftSwipe];
+                        }
+                    };
+                    return cell;
+                }else if (indexPath.section == 1) {
+                    NetDetailCell *cell = [NetDetailCell cellWithTableView:tableView];
+                    NetDetailDistrictModel * afModel =_groupArr[indexPath.section][indexPath.row];
+                    [cell setData:afModel];
+                    //设置删除cell回调block
+                    __weak typeof(self) tempSelf = self;
+                    __weak typeof(cell) tempCell = cell;
+                    cell.deleteAFItem = ^{
+                        if (tempSelf.delegate) {
+                            [tempSelf.delegate deleteNetDetailGroup:afModel.customId updateCellBlock:^{
+                                NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
+                                [_groupArr[indexPath.section] removeObject:tempCell.model];
+                                [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
+                            }];
+                        }
+                    };
+                    cell.editAFItem = ^{
+                        if (tempSelf.delegate) {
+                            [tempSelf.delegate editNetDetailGroup:afModel.customId groupName:afModel.fzmc modifyNameBlock:^(NSString * groupName){
+                                [tempSelf.myTableView reloadData];
+                            }];
+                        }
+                    };
+                    cell.closeOtherCellSwipe = ^{
+                        for (NetDetailCell *item in tempSelf.myTableView.visibleCells) {
+                            [item closeLeftSwipe];
+                        }
+                    };
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    return cell;
+                }
             }
-            
-            
-            
-        };
-        
-        
-//        cell.editAFItem = ^{
-//
-//            if (tempSelf.delegate) {
-//                [tempSelf.delegate editAFItem:afModel.customId groupName:afModel. modifyNameBlock:^(NSString * groupName){
-//
-//                    [tempSelf.myTableView reloadData];
-//                }];
-//            }
-//
-//
-//
-//        };
-        
-        //设置当cell左滑时，关闭其他cell的左滑
-        cell.closeOtherCellSwipe = ^{
-            for (NetDetailCell *item in tempSelf.myTableView.visibleCells) {
-                if (item != tempCell) [item closeLeftSwipe];
-            }
-        };
-        
+        }
     }
     
-    return cell;
-    
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    NetDetailModel * model =_groupArr[indexPath.row];
-    if (self.delegate) {
-        [self.delegate selectItem:model];
+    if (self.type == 0) {
+        if (_groupArr.count > 0) {
+            NetDetailModel * model =_groupArr[indexPath.row];
+            if (self.delegate) {
+                [self.delegate selectItem:model];
+            }
+        }
+    }else if (self.type == 1) {
+        if (_groupArr.count > 0) {
+            if ([_groupArr[indexPath.section] count] > 0) {
+                if (indexPath.section == 0) {
+                    NetDetailModel * model =_groupArr[indexPath.section][indexPath.row];
+                    if (self.delegate) {
+                        [self.delegate selectItem:model];
+                    }
+                }else if (indexPath.section == 1) {
+                    NetDetailDistrictModel *model = _groupArr[indexPath.section][indexPath.row];
+                    if (self.delegate) {
+                        [self.delegate districtSelectItem:model];
+                    }
+                }
+            }
+        }
     }
-    
-    
 }
 @end

@@ -59,7 +59,7 @@
             weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
             
             if(weakSelf.delegate){
-                [_myTableView.mj_header beginRefreshing];
+               // [_myTableView.mj_header beginRefreshing];
                 [weakSelf.delegate reloadTableView];
             }
             
