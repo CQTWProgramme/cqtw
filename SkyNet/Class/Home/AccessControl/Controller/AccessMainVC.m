@@ -1,54 +1,31 @@
 //
-//  AccessControlDetailVC.m
+//  AccessMainVC.m
 //  SkyNet
 //
-//  Created by 魏乔森 on 2017/10/10.
+//  Created by 魏乔森 on 2017/10/16.
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
-#import "AccessControlDetailVC.h"
-#import "ACDetailItemCell.h"
-#import "AddVisitorVC.h"
-#import "AccessManiTopCell.h"
+#import "AccessMainVC.h"
 #import "AccessMainBottomCell.h"
+#import "AccessManiTopCell.h"
 
-static NSString *topCellID = @"DetailAccessManiTopCellID";
-static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
-@interface AccessControlDetailVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (strong, nonatomic) IBOutlet UILabel *topTilteLabel;
+static NSString *topCellID = @"AccessManiTopCellID";
+static NSString *bottomCellID = @"AccessMainBottomCellID";
+@interface AccessMainVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UICollectionView *topCollectionView;
 @property (strong, nonatomic) IBOutlet UICollectionView *bottomCollectionView;
 @property (strong, nonatomic) IBOutlet UIPageControl *topPageControl;
+@property (strong, nonatomic) IBOutlet UILabel *topTitleLabel;
 
 @end
 
-@implementation AccessControlDetailVC
+@implementation AccessMainVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"门禁";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setNavBackButtonImage:ImageNamed(@"back")];
     [self setupColectionView];
-}
-
--(void)createRightItem{
-    
-    
-    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
-    
-    [rightBtn addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-}
-
-- (void)addNewGroup {
-    AddVisitorVC *addVC = [[AddVisitorVC alloc] init];
-    [self.navigationController pushViewController:addVC animated:YES];
 }
 
 - (void)setupColectionView {
@@ -75,6 +52,7 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
     [self.bottomCollectionView registerClass:[AccessMainBottomCell class] forCellWithReuseIdentifier:bottomCellID];
 }
 
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.topCollectionView) {
         int page = scrollView.contentOffset.x / scrollView.frame.size.width;
@@ -82,21 +60,22 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
     }
 }
 
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    //    if (collectionView == self.topCollectionView) {
-    //        return 3;
-    //    }else if (collectionView == self.bottomCollectionView) {
-    //        return 1;
-    //    }
+//    if (collectionView == self.topCollectionView) {
+//        return 3;
+//    }else if (collectionView == self.bottomCollectionView) {
+//        return 1;
+//    }
     return 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //    if (collectionView == self.topCollectionView) {
-    //        return 9;
-    //    }else if (collectionView == self.bottomCollectionView) {
-    //        return 3;
-    //    }
+//    if (collectionView == self.topCollectionView) {
+//        return 9;
+//    }else if (collectionView == self.bottomCollectionView) {
+//        return 3;
+//    }
     return 3;
 }
 
@@ -115,13 +94,12 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
+
     if (collectionView == self.topCollectionView) {
         NSLog(@"点击了top");
     }else if (collectionView == self.bottomCollectionView) {
         NSLog(@"点击了bottom");
     }
 }
-
 
 @end

@@ -4,7 +4,7 @@
 //
 //  Created by 魏乔森 on 2017/10/10.
 //  Copyright © 2017年 xrg. All rights reserved.
-//  添加访客VC
+//  访客录入VC
 
 #import "BaseViewController.h"
 

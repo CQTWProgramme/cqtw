@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface MonitorSecondGroupModel : NSObject
-
+@property (nonatomic, copy) NSString *customId;
+@property (nonatomic, copy) NSString *parentId;
+@property (nonatomic, copy) NSString *fzmc;
+@property (nonatomic, copy) NSString *userId;
+@property (nonatomic, assign) long fzgn;
 @end

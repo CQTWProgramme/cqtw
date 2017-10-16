@@ -1,52 +1,38 @@
 //
-//  MonitorSecondCustomGroupCell.m
+//  MemberControlCell.m
 //  SkyNet
 //
-//  Created by 魏乔森 on 2017/10/15.
+//  Created by 魏乔森 on 2017/10/16.
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
-#import "MonitorSecondCustomGroupCell.h"
-#import "MonitorSecondGroupModel.h"
-#define CELLHEIGHT 70.f  //设置行高
+#import "MemberControlCell.h"
 
-@interface MonitorSecondCustomGroupCell ()
-@property(nonatomic,strong)UILabel     * afContentLabel;
-@property (nonatomic, weak) UIButton *editBtn; //底层编辑按钮
+#define CELLHEIGHT 80.f  //设置行高
+@interface MemberControlCell ()
+@property(nonatomic,strong)UILabel     * contentLabel;
+@property(nonatomic,strong)UILabel     * detailLabel;
 @property (nonatomic, weak) UIButton *deleteBtn; //底层删除按钮
 @property (nonatomic, assign) BOOL isOpenLeft; //是否已经打开左滑动
 @property (nonatomic, weak) UISwipeGestureRecognizer *rightSwipe; //向右清扫手势
 @property (nonatomic, weak) UIView *containerView; //容器view
 @property (nonatomic, weak) UIView *underlineView; //下划线
-
-@property(nonatomic,strong)UIImageView * afImageView;
 @end
-
-@implementation MonitorSecondCustomGroupCell
+@implementation MemberControlCell
 
 + (instancetype)cellWithTableView:(UITableView *)tableView{
-    static NSString *reuseIdentity = @"MonitorSecondCustomGroupCell";
+    static NSString *reuseIdentity = @"MemberApplyCell";
     
-    MonitorSecondCustomGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity];
+    MemberControlCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity];
     
     if (cell == nil){
-        cell = [[MonitorSecondCustomGroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentity];
+        cell = [[MemberControlCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentity];
     }
     return cell;
 }
 
 //初始化子控件
 - (void)initSubControls{
-    
-    //1、添加底层层的电话和删除按钮
-    UIButton *editBtn = [[UIButton alloc] init];
-    [self.contentView addSubview:editBtn];
-    self.editBtn = editBtn;
-    [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [self.editBtn setBackgroundColor:[UIColor orangeColor]];
-    //绑定打电话事件
-    [self.editBtn addTarget:self action:@selector(editAfItem:) forControlEvents:UIControlEventTouchUpInside];
-    [self.containerView addSubview:self.editBtn];
     
     UIButton *deleteBtn = [[UIButton alloc] init];
     [self.contentView addSubview:deleteBtn];
@@ -63,16 +49,17 @@
     self.containerView = containerView;
     self.containerView.backgroundColor = [UIColor whiteColor];
     
+    _contentLabel=[UILabel new];
+    _contentLabel.textColor=[UIColor darkGrayColor];
+    _contentLabel.font= [UIFont systemFontOfSize:13];
+    _contentLabel.textAlignment= NSTextAlignmentLeft;
+    [self.containerView addSubview:_contentLabel];
     
-    _afImageView=[UIImageView new];
-    [self.containerView addSubview:_afImageView];
-    
-    _afContentLabel=[UILabel new];
-    _afContentLabel.textColor=[UIColor darkGrayColor];
-    _afContentLabel.font= [UIFont systemFontOfSize:13];
-    _afContentLabel.textAlignment= NSTextAlignmentLeft;
-    [self.containerView addSubview:_afContentLabel];
-    
+    _detailLabel=[UILabel new];
+    _detailLabel.textColor=[UIColor darkGrayColor];
+    _detailLabel.font= [UIFont systemFontOfSize:10];
+    _detailLabel.textAlignment= NSTextAlignmentLeft;
+    [self.containerView addSubview:_detailLabel];
     
     
     UIView *underlineView = [[UIView alloc] init];
@@ -93,14 +80,6 @@
     
     self.selectionStyle = UITableViewCellSelectionStyleNone; //设置单元格选中样式
     [self.contentView bringSubviewToFront:self.containerView]; //设置containerView显示在最上层
-    
-    
-}
-
-//设置要显示的数据
--(void)setModel:(MonitorSecondGroupModel *)model {
-    self.afImageView.image=ImageNamed(@"home_monitor");
-    self.afContentLabel.text =model.fzmc;
 }
 
 //子控件布局
@@ -110,24 +89,16 @@
     CGFloat telWidth = SCREEN_WIDTH * 0.2; //设置编辑按钮宽度
     CGFloat deleteWidth = SCREEN_WIDTH * 0.2; //设置删除按钮宽度
     
-    self.editBtn.frame = CGRectMake(SCREEN_WIDTH * 0.6, 0, telWidth, CELLHEIGHT);
     self.deleteBtn.frame = CGRectMake(SCREEN_WIDTH * 0.8, 0, deleteWidth, CELLHEIGHT);
     
     self.containerView.frame = self.contentView.bounds;
-    self.afImageView.frame = CGRectMake(10, 15, 40, 40);
-    self.afContentLabel.frame = CGRectMake(_afImageView.right+10, 25, SCREEN_WIDTH-_afImageView.right-20, 20);
+    self.contentLabel.frame = CGRectMake(10, 15, self.containerView.width - 20, 20);
+    self.detailLabel.frame = CGRectMake(10, self.contentLabel.bottom + 10, SCREEN_WIDTH-20, 15);
     
     self.underlineView.frame = CGRectMake(0, CELLHEIGHT - 0.5, SCREEN_WIDTH, 0.5);
 }
 
 #pragma  mark - 事件操作
-//拨打电话： 需要在真机测试效果
-- (void)editAfItem: (UIButton *)sender{
-    //如果实现了编辑block回调，则调用block
-    if (self.editAFItem)
-        self.editAFItem();
-}
-
 //删除会员
 - (void)deleteMember: (UIButton *)sender{
     //如果实现了删除block回调，则调用block
@@ -164,4 +135,5 @@
     }];
     self.isOpenLeft = NO;
 }
+
 @end

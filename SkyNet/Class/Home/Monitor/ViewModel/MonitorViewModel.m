@@ -166,7 +166,7 @@
 -(void)requestGroupData:(NSString *)customId{
     
     [STTextHudTool loadingWithTitle:@"加载中..."];
-    NSDictionary * param =@{@"customId": customId,@"fzgn":@(1)};
+    NSDictionary * param =@{@"customId": customId,@"fzgn":@(4)};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTCUSTOMData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];

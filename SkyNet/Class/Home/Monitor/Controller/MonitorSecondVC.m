@@ -14,6 +14,8 @@
 #import "MonitorViewModel.h"
 #import "MonitorDetailListVC.h"
 
+typedef void (^UpdateCellBlock)();
+typedef void (^ModifyNameBlock)(NSString * groupName);
 @interface MonitorSecondVC ()<MonitorSecondViewDelegate>
 @property(nonatomic,assign) NSInteger currPage;
 @property(nonatomic,assign) NSInteger pageSize;
@@ -86,7 +88,7 @@
             
         }else  if (index == 1) {
             AddNewGroupVC * addNewGroupVC =[AddNewGroupVC new];
-            addNewGroupVC.fzgn = 1;
+            addNewGroupVC.fzgn = 4;
             addNewGroupVC.fid = weakSelf.itemId;
             [weakSelf.navigationController pushViewController:addNewGroupVC animated:YES];
             
