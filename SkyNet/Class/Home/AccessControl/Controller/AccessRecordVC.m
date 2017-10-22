@@ -29,8 +29,36 @@
 }
 
 #pragma tableviewDataSource
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    if (section == 0) {
+        return 2;
+    }else {
+        return 4;
+    }
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = [UIColor lightGrayColor];
+    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
+    
+    UILabel *headlabel = [[UILabel alloc] init];
+    headlabel.frame = CGRectMake(10, 0, SCREEN_WIDTH - 10, 30);
+    headlabel.textColor = [UIColor blackColor];
+    headlabel.font = [UIFont systemFontOfSize:13];
+    
+    [headerView addSubview:headlabel];
+    if (section == 0) {
+        headlabel.text = @"住宅关联申请";
+    }else if (section == 1) {
+        headlabel.text = @"访客记录";
+    }
+    return headerView;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

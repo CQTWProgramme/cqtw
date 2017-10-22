@@ -76,6 +76,11 @@
 		88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F311F7AB46B0075DCD9 /* LatticePointDetailVC.xib */; };
 		88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D829E11F7DE8B3007A2406 /* EquipmentModel.m */; };
 		88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */; };
+		88DA3BB41F9CEDC30085F8FA /* ChooseDistrictFirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DA3BB31F9CEDC30085F8FA /* ChooseDistrictFirstVC.m */; };
+		88DA3BB71F9CEDF10085F8FA /* ChooseDistrictSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DA3BB61F9CEDF10085F8FA /* ChooseDistrictSecondVC.m */; };
+		88DA3BBA1F9CEE0C0085F8FA /* ChooseDistrictThirdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DA3BB91F9CEE0C0085F8FA /* ChooseDistrictThirdVC.m */; };
+		88DA3BBE1F9CF6260085F8FA /* DataEntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DA3BBC1F9CF6260085F8FA /* DataEntryVC.m */; };
+		88DA3BBF1F9CF6260085F8FA /* DataEntryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88DA3BBD1F9CF6260085F8FA /* DataEntryVC.xib */; };
 		88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5681F8CC71500039A08 /* AccessControlVC.m */; };
 		88F9C56C1F8CC77300039A08 /* ACViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C56B1F8CC77300039A08 /* ACViewModel.m */; };
 		88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C56E1F8CC7A200039A08 /* ACVIew.m */; };
@@ -363,6 +368,15 @@
 		88D829E11F7DE8B3007A2406 /* EquipmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EquipmentModel.m; sourceTree = "<group>"; };
 		88D829E31F7E00A9007A2406 /* LatticePointDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatticePointDetailModel.h; sourceTree = "<group>"; };
 		88D829E41F7E00A9007A2406 /* LatticePointDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatticePointDetailModel.m; sourceTree = "<group>"; };
+		88DA3BB21F9CEDC30085F8FA /* ChooseDistrictFirstVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseDistrictFirstVC.h; sourceTree = "<group>"; };
+		88DA3BB31F9CEDC30085F8FA /* ChooseDistrictFirstVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseDistrictFirstVC.m; sourceTree = "<group>"; };
+		88DA3BB51F9CEDF10085F8FA /* ChooseDistrictSecondVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseDistrictSecondVC.h; sourceTree = "<group>"; };
+		88DA3BB61F9CEDF10085F8FA /* ChooseDistrictSecondVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseDistrictSecondVC.m; sourceTree = "<group>"; };
+		88DA3BB81F9CEE0C0085F8FA /* ChooseDistrictThirdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseDistrictThirdVC.h; sourceTree = "<group>"; };
+		88DA3BB91F9CEE0C0085F8FA /* ChooseDistrictThirdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseDistrictThirdVC.m; sourceTree = "<group>"; };
+		88DA3BBB1F9CF6260085F8FA /* DataEntryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataEntryVC.h; sourceTree = "<group>"; };
+		88DA3BBC1F9CF6260085F8FA /* DataEntryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataEntryVC.m; sourceTree = "<group>"; };
+		88DA3BBD1F9CF6260085F8FA /* DataEntryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataEntryVC.xib; sourceTree = "<group>"; };
 		88F9C5671F8CC71500039A08 /* AccessControlVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessControlVC.h; sourceTree = "<group>"; };
 		88F9C5681F8CC71500039A08 /* AccessControlVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessControlVC.m; sourceTree = "<group>"; };
 		88F9C56A1F8CC77300039A08 /* ACViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACViewModel.h; sourceTree = "<group>"; };
@@ -878,6 +892,15 @@
 				883354B21F8D0C67006FC522 /* AddVisitorVC.h */,
 				883354B31F8D0C67006FC522 /* AddVisitorVC.m */,
 				883354B41F8D0C67006FC522 /* AddVisitorVC.xib */,
+				88DA3BB21F9CEDC30085F8FA /* ChooseDistrictFirstVC.h */,
+				88DA3BB31F9CEDC30085F8FA /* ChooseDistrictFirstVC.m */,
+				88DA3BB51F9CEDF10085F8FA /* ChooseDistrictSecondVC.h */,
+				88DA3BB61F9CEDF10085F8FA /* ChooseDistrictSecondVC.m */,
+				88DA3BB81F9CEE0C0085F8FA /* ChooseDistrictThirdVC.h */,
+				88DA3BB91F9CEE0C0085F8FA /* ChooseDistrictThirdVC.m */,
+				88DA3BBB1F9CF6260085F8FA /* DataEntryVC.h */,
+				88DA3BBC1F9CF6260085F8FA /* DataEntryVC.m */,
+				88DA3BBD1F9CF6260085F8FA /* DataEntryVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1736,6 +1759,7 @@
 				881547A31F8DD7BA000F2C84 /* PoliceInteractionVC.xib in Resources */,
 				88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */,
 				8815478B1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib in Resources */,
+				88DA3BBF1F9CF6260085F8FA /* DataEntryVC.xib in Resources */,
 				88FDD1F81F94C01100946C38 /* MemberControlVC.xib in Resources */,
 				BF0C32171F6772EC009FC882 /* STError@2x.png in Resources */,
 				BF34EEFE1F4B226E00E05DF3 /* icon.png in Resources */,
@@ -1837,6 +1861,7 @@
 				8815479E1F8DD656000F2C84 /* THCTextView.m in Sources */,
 				881547791F8DBE59000F2C84 /* PoliceVC.m in Sources */,
 				88F9C57B1F8CCA5900039A08 /* ACDistrictItemCell.m in Sources */,
+				88DA3BBA1F9CEE0C0085F8FA /* ChooseDistrictThirdVC.m in Sources */,
 				BF0C32AC1F6A16F3009FC882 /* CollectviewChooseCell.m in Sources */,
 				BFFA09F91F7A60C40019CFA8 /* MDMultipleSegmentView.m in Sources */,
 				BF0C32BB1F6A16F4009FC882 /* SingleChooseTable.m in Sources */,
@@ -1870,6 +1895,7 @@
 				BF84BB051F5C5A14000FB4D8 /* UIView+Toast.m in Sources */,
 				BF7338871F77DB090000FB8A /* AnDetailVC.m in Sources */,
 				BF34EEF31F49E6F500E05DF3 /* MessageVC.m in Sources */,
+				88DA3BBE1F9CF6260085F8FA /* DataEntryVC.m in Sources */,
 				BF0C322E1F6774EB009FC882 /* NSData+CommonCrypto.m in Sources */,
 				88FDD1D81F94634000946C38 /* AccessMainVC.m in Sources */,
 				BF0C321B1F6772EC009FC882 /* STTextHudTool.m in Sources */,
@@ -1927,6 +1953,7 @@
 				88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */,
 				BF0C327E1F69365D009FC882 /* AddNewGroupVC.m in Sources */,
 				8815478A1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m in Sources */,
+				88DA3BB71F9CEDF10085F8FA /* ChooseDistrictSecondVC.m in Sources */,
 				BF34EDEC1F49CEBF00E05DF3 /* KYAlertView.m in Sources */,
 				BF7338841F77D4230000FB8A /* NetDetailModel.m in Sources */,
 				BF0C32BA1F6A16F4009FC882 /* MulChooseTable.m in Sources */,
@@ -1991,6 +2018,7 @@
 				8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */,
 				BF34EEAB1F49CEBF00E05DF3 /* AFNetAPIClient.m in Sources */,
 				88FDD1FB1F94C1F500946C38 /* MemberApplyCell.m in Sources */,
+				88DA3BB41F9CEDC30085F8FA /* ChooseDistrictFirstVC.m in Sources */,
 				884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */,
 				BF84BAE51F5C5752000FB4D8 /* SystemMsgVC.m in Sources */,
 				88FDD1F71F94C01100946C38 /* MemberControlVC.m in Sources */,

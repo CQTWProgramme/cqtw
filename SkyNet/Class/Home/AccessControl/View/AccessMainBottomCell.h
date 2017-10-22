@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AccessMainBottomCell : UICollectionViewCell
-@property (nonatomic, strong) UIColor *backColor;
+@property (nonatomic, assign) BOOL isLastCell;
 @property (nonatomic, copy) NSString *content;
 @end

@@ -18,7 +18,6 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
 @property (strong, nonatomic) IBOutlet UILabel *topTilteLabel;
 @property (strong, nonatomic) IBOutlet UICollectionView *topCollectionView;
 @property (strong, nonatomic) IBOutlet UICollectionView *bottomCollectionView;
-@property (strong, nonatomic) IBOutlet UIPageControl *topPageControl;
 
 @end
 
@@ -26,24 +25,10 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"门禁";
+    self.title=@"访客登记";
     self.view.backgroundColor = [UIColor whiteColor];
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self setupColectionView];
-}
-
--(void)createRightItem{
-    
-    
-    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
-    
-    [rightBtn addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
 - (void)addNewGroup {
@@ -52,21 +37,27 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
 }
 
 - (void)setupColectionView {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake((SCREEN_WIDTH - 80) / 3, 80);
-    layout.minimumLineSpacing = 30;
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    UICollectionViewFlowLayout *topLayout = [[UICollectionViewFlowLayout alloc] init];
+    topLayout.itemSize = CGSizeMake(120, 80);
+    topLayout.minimumLineSpacing = 10;
+    topLayout.sectionInset = UIEdgeInsetsMake(0, 15, 15, 15);
+    topLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    [self.topCollectionView setCollectionViewLayout:layout];
-    self.topCollectionView.pagingEnabled = YES;
+    UICollectionViewFlowLayout *bottomLayout = [[UICollectionViewFlowLayout alloc] init];
+    bottomLayout.itemSize = CGSizeMake((SCREEN_WIDTH - 60) / 3, 60);
+    bottomLayout.minimumLineSpacing = 15;
+    bottomLayout.minimumInteritemSpacing = 15;
+    bottomLayout.sectionInset = UIEdgeInsetsMake(0, 15, 15, 15);
+    bottomLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
+    [self.topCollectionView setCollectionViewLayout:topLayout];
     self.topCollectionView.showsHorizontalScrollIndicator = NO;
-    self.topCollectionView.backgroundColor = [UIColor whiteColor];
+    self.topCollectionView.backgroundColor = [UIColor clearColor];
     self.topCollectionView.delegate = self;
     self.topCollectionView.dataSource = self;
     [self.topCollectionView registerClass:[AccessManiTopCell class] forCellWithReuseIdentifier:topCellID];
     
-    [self.bottomCollectionView setCollectionViewLayout:layout];
+    [self.bottomCollectionView setCollectionViewLayout:bottomLayout];
     self.bottomCollectionView.pagingEnabled = YES;
     self.bottomCollectionView.showsHorizontalScrollIndicator = NO;
     self.bottomCollectionView.backgroundColor = [UIColor whiteColor];
@@ -75,29 +66,22 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
     [self.bottomCollectionView registerClass:[AccessMainBottomCell class] forCellWithReuseIdentifier:bottomCellID];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.topCollectionView) {
-        int page = scrollView.contentOffset.x / scrollView.frame.size.width;
-        self.topPageControl.currentPage = page;
-    }
-}
-
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    //    if (collectionView == self.topCollectionView) {
-    //        return 3;
-    //    }else if (collectionView == self.bottomCollectionView) {
-    //        return 1;
-    //    }
-    return 2;
+        if (collectionView == self.topCollectionView) {
+            return 1;
+        }else if (collectionView == self.bottomCollectionView) {
+            return 1;
+        }
+    return 0;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //    if (collectionView == self.topCollectionView) {
-    //        return 9;
-    //    }else if (collectionView == self.bottomCollectionView) {
-    //        return 3;
-    //    }
-    return 3;
+        if (collectionView == self.topCollectionView) {
+            return 6;
+        }else if (collectionView == self.bottomCollectionView) {
+            return 5;
+        }
+    return 0;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,6 +92,7 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
     }else if (collectionView == self.bottomCollectionView) {
         AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
         cell.content = [NSString stringWithFormat:@"%@-%@小区",@(indexPath.section),@(indexPath.row)];
+        cell.isLastCell = NO;
         return cell;
     }
     return nil;
@@ -117,7 +102,8 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
     if (collectionView == self.topCollectionView) {
-        NSLog(@"点击了top");
+        AddVisitorVC *addVC = [[AddVisitorVC alloc] init];
+        [self.navigationController pushViewController:addVC animated:YES];
     }else if (collectionView == self.bottomCollectionView) {
         NSLog(@"点击了bottom");
     }

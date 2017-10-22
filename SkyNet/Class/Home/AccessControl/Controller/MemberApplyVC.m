@@ -43,6 +43,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"选中了第%@行",@(indexPath.row));
 }
 
 - (void)didReceiveMemoryWarning {

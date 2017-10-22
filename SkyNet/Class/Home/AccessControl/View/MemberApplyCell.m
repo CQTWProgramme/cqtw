@@ -33,6 +33,13 @@
     return cell;
 }
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+        [self initSubControls]; //初始化子控件
+    }
+    return self;
+}
+
 //初始化子控件
 - (void)initSubControls{
     
@@ -66,12 +73,14 @@
     _contentLabel.font= [UIFont systemFontOfSize:13];
     _contentLabel.textAlignment= NSTextAlignmentLeft;
     [self.containerView addSubview:_contentLabel];
+    _contentLabel.text = @"测试测试测试测试测试";
     
     _detailLabel=[UILabel new];
     _detailLabel.textColor=[UIColor darkGrayColor];
     _detailLabel.font= [UIFont systemFontOfSize:10];
     _detailLabel.textAlignment= NSTextAlignmentLeft;
     [self.containerView addSubview:_detailLabel];
+    _detailLabel.text = @"测试测试测试测试测试测试测试测试测试测试";
     
     
     UIView *underlineView = [[UIView alloc] init];
@@ -90,6 +99,7 @@
     [self.containerView addGestureRecognizer:rightSwipe];
     self.rightSwipe = rightSwipe;
     
+    self.containerView.userInteractionEnabled = YES;
     self.selectionStyle = UITableViewCellSelectionStyleNone; //设置单元格选中样式
     [self.contentView bringSubviewToFront:self.containerView]; //设置containerView显示在最上层
 }

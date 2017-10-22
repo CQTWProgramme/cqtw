@@ -11,9 +11,6 @@
 #import "AccessMainVC.h"
 #import "AccessRecordVC.h"
 #import "MemberManageVC.h"
-#import "AccessControlDetailVC.h"
-
-#define BottomButtonH 80
 
 @interface AccessControlVC ()<UIScrollViewDelegate,QBQuSegmentViewDelegate>
 @property(nonatomic,strong)QBQuSegmentView *segmentView;
@@ -30,27 +27,9 @@
     [self createRightItem];
     [self.view addSubview:self.mainScrollView];
     [self.view addSubview:self.segmentView];
-    [self setupBottomButton];
     
     [self setupChildVc:[AccessMainVC class] x:0];
     [self setupChildVc:[AccessRecordVC class] x:1  * SCREEN_WIDTH];
-}
-
-- (void)setupBottomButton {
-    UIButton *bottomButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    bottomButton.layer.cornerRadius = BottomButtonH / 2;
-    bottomButton.layer.masksToBounds = YES;
-    bottomButton.backgroundColor = [UIColor redColor];
-    bottomButton.frame = CGRectMake((SCREEN_WIDTH - BottomButtonH) / 2, SCREEN_HEIGHT - 90, BottomButtonH, BottomButtonH);
-    [bottomButton setTitle:@"访客" forState:UIControlStateNormal];
-    [bottomButton addTarget:self action:@selector(toDetailAction) forControlEvents:UIControlEventTouchUpInside];
-    [bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.view addSubview:bottomButton];
-}
-
-- (void)toDetailAction {
-    AccessControlDetailVC *detailVC = [[AccessControlDetailVC alloc] init];
-    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)setupChildVc:(Class)c x:(CGFloat)x
@@ -134,7 +113,7 @@
 
 -(UIScrollView *)mainScrollView{
     if (!_mainScrollView) {
-        _mainScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT - 100)];
+        _mainScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT-NavigationBar_HEIGHT)];
         _mainScrollView.contentSize = CGSizeMake(2 *SCREEN_WIDTH,0 );
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.bounces = NO;

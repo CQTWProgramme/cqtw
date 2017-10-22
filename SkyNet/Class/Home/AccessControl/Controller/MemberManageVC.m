@@ -68,15 +68,15 @@
     if (scrollView == self.mainScrollView) {
         // 计算滚动到哪一页
         NSInteger index = scrollView.contentOffset.x / scrollView.frame.size.width;
-        
+
         // 1.添加子控制器view
         [self showVc:index];
-        
-        
+
+
         // 2.把对应的标题选中
         [self.segmentView titleBtnSelectedWithScrollView:scrollView];
     }
-    
+
 }
 
 -(QBQuSegmentView *)segmentView{
@@ -97,6 +97,7 @@
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.bounces = NO;
         _mainScrollView.delegate = self;
+        _mainScrollView.scrollEnabled = NO;
         _mainScrollView.showsHorizontalScrollIndicator = NO;
         _mainScrollView.showsVerticalScrollIndicator = NO;
     }
