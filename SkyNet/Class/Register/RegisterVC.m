@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"用户注册";
-   
+   [self setNavBackButtonImage:ImageNamed(@"back")];
     [self.view addSubview:self.registerView];
 }
 

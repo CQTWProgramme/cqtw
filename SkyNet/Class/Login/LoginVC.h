@@ -6,8 +6,8 @@
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface LoginVC : UIViewController
+@interface LoginVC : BaseViewController
 
 @end

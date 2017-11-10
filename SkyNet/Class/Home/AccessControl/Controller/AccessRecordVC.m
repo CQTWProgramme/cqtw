@@ -44,7 +44,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] init];
-    headerView.backgroundColor = [UIColor lightGrayColor];
+    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
     
     UILabel *headlabel = [[UILabel alloc] init];

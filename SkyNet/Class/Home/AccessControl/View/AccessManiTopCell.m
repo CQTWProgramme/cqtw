@@ -7,6 +7,7 @@
 //
 
 #import "AccessManiTopCell.h"
+#import "ACVillageModel.h"
 
 @interface AccessManiTopCell ()
 @property (nonatomic, strong) UILabel *contentLabel;
@@ -51,8 +52,8 @@
     return _backImageView;
 }
 
--(void)setContent:(NSString *)content {
-    _content = content;
-    self.contentLabel.text = content;
+-(void)setModel:(ACVillageDoorModel *)model {
+    _model = model;
+    self.contentLabel.text = _model.name;
 }
 @end

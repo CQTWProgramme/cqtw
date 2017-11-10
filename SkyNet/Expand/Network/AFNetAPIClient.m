@@ -158,6 +158,7 @@
    
     switch (self.wRequestType) {
         case Get: {
+            
             [manager GET:self.url parameters:self.parameters progress:^(NSProgress * _Nonnull downloadProgress) {
 //                progress(downloadProgress.fractionCompleted)
                 Progress(downloadProgress);//downloadProgress.fractionCompleted

@@ -42,8 +42,6 @@
     return self;
 }
 
-
-
 //初始化子控件
 - (void)initSubControls{
     

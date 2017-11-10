@@ -18,7 +18,7 @@
     
     NSString * mdDlmm=[CusMD5 md5String:[NSString stringWithFormat:@"%@:%@",dlzh,dlmm]];
     NSDictionary * param =@{@"dlzh": dlzh,
-                            @"dlmm": [mdDlmm lowercaseString],
+                            @"dlmm": [mdDlmm uppercaseString],
                             @"code": code
                             };
     
@@ -38,6 +38,7 @@
         
     } progress:^(NSProgress *progress) {
         
+        NSLog(@"%@",progress);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

@@ -14,6 +14,7 @@
 #import "MonitorDetailListVC.h"
 #import "AccessControlVC.h"
 #import "VHLNavigation.h"
+#import <AVFoundation/AVFoundation.h>
 @interface HomeVC ()<HomeViewDelegate>
 @property(nonatomic,strong)HomeView * homeView;
 @end
@@ -34,15 +35,30 @@
 -(void)createRightItem{
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.tag = 0;
     rightBtn.frame=CGRectMake(0,0,25,25);
     [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
-     [rightBtn addTarget:self action:@selector(toSearchAction) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn addTarget:self action:@selector(toSearchAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
-- (void)toSearchAction {
-    
+- (void)toSearchAction:(UIButton *)sender {
+//    Class captureDevice = NSClassFromString(@"AVCaptureDevice");
+//    if (captureDevice != nil) {
+//        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//        if ([device hasTorch]) {
+//            [device lockForConfiguration:nil];
+//            if (sender.tag == 0) {
+//                sender.tag = 1;
+//                [device setTorchMode:AVCaptureTorchModeOn];
+//            }else {
+//                sender.tag = 0;
+//                [device setTorchMode:AVCaptureTorchModeOff];
+//            }
+//            [device unlockForConfiguration];
+//        }
+//    }
 }
 
 #pragma mark 获取广告列表

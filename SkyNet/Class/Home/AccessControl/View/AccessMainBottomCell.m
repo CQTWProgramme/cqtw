@@ -7,6 +7,8 @@
 //
 
 #import "AccessMainBottomCell.h"
+#import "ACVillageModel.h"
+
 @interface AccessMainBottomCell ()
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *centerImageView;
@@ -50,9 +52,9 @@
     return _centerImageView;
 }
 
--(void)setContent:(NSString *)content {
-    _content = content;
-    self.contentLabel.text = content;
+-(void)setModel:(ACVillageModel *)model {
+    _model = model;
+    self.contentLabel.text = _model.areaName;
 }
 
 -(void)setIsLastCell:(BOOL)isLastCell {
@@ -76,7 +78,8 @@
     
     border.fillColor = nil;
     
-    border.path = [UIBezierPath bezierPathWithRect:view.bounds].CGPath;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:3];
+    border.path = path.CGPath;
     
     border.frame = view.bounds;
     

@@ -22,6 +22,8 @@
 		880361181F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880361171F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m */; };
 		8803611B1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803611A1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m */; };
 		8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803611D1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m */; };
+		880623AA1FB5565100D89409 /* IDImagePickModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623A91FB5565000D89409 /* IDImagePickModel.m */; };
+		880623AD1FB59C4500D89409 /* CertificateInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623AC1FB59C4500D89409 /* CertificateInfoModel.m */; };
 		881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F21F7B58D500AE83FF /* FacilityDetailModel.m */; };
 		881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F51F7B5DA600AE83FF /* BaseModel.m */; };
 		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
@@ -65,11 +67,15 @@
 		88299C951F7CE1B40070067C /* PressSpeakVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88299C931F7CE1B40070067C /* PressSpeakVC.xib */; };
 		883354B51F8D0C67006FC522 /* AddVisitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 883354B31F8D0C67006FC522 /* AddVisitorVC.m */; };
 		883354B61F8D0C67006FC522 /* AddVisitorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 883354B41F8D0C67006FC522 /* AddVisitorVC.xib */; };
+		883EDBA01FB000BC00C84016 /* ACVillageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883EDB9F1FB000BC00C84016 /* ACVillageModel.m */; };
+		883EDBA31FB0013700C84016 /* ACVillageDoorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883EDBA21FB0013700C84016 /* ACVillageDoorModel.m */; };
 		8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8845DED61F8A332A00AB8917 /* EditInstallerVC.m */; };
 		884701501F8DAA6E00B44D68 /* PoliceHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8847014F1F8DAA6E00B44D68 /* PoliceHomeView.m */; };
 		884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */; };
 		884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701551F8DAD5800B44D68 /* PoliceHomeCell.m */; };
 		884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701581F8DB39600B44D68 /* PoliceHomeModel.m */; };
+		88BE42C41F9D8F3600FA0067 /* DataEntryIdCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */; };
+		88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
 		88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */; };
@@ -278,6 +284,10 @@
 		8803611A1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondCustomPointCell.m; sourceTree = "<group>"; };
 		8803611C1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorSecondCustomGroupCell.h; sourceTree = "<group>"; };
 		8803611D1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorSecondCustomGroupCell.m; sourceTree = "<group>"; };
+		880623A81FB5565000D89409 /* IDImagePickModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDImagePickModel.h; sourceTree = "<group>"; };
+		880623A91FB5565000D89409 /* IDImagePickModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDImagePickModel.m; sourceTree = "<group>"; };
+		880623AB1FB59C4500D89409 /* CertificateInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificateInfoModel.h; sourceTree = "<group>"; };
+		880623AC1FB59C4500D89409 /* CertificateInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateInfoModel.m; sourceTree = "<group>"; };
 		881322F11F7B58D500AE83FF /* FacilityDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailModel.h; sourceTree = "<group>"; };
 		881322F21F7B58D500AE83FF /* FacilityDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailModel.m; sourceTree = "<group>"; };
 		881322F41F7B5DA600AE83FF /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -346,6 +356,10 @@
 		883354B21F8D0C67006FC522 /* AddVisitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddVisitorVC.h; sourceTree = "<group>"; };
 		883354B31F8D0C67006FC522 /* AddVisitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddVisitorVC.m; sourceTree = "<group>"; };
 		883354B41F8D0C67006FC522 /* AddVisitorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVisitorVC.xib; sourceTree = "<group>"; };
+		883EDB9E1FB000BC00C84016 /* ACVillageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVillageModel.h; sourceTree = "<group>"; };
+		883EDB9F1FB000BC00C84016 /* ACVillageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACVillageModel.m; sourceTree = "<group>"; };
+		883EDBA11FB0013700C84016 /* ACVillageDoorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACVillageDoorModel.h; sourceTree = "<group>"; };
+		883EDBA21FB0013700C84016 /* ACVillageDoorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACVillageDoorModel.m; sourceTree = "<group>"; };
 		8845DED51F8A332A00AB8917 /* EditInstallerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditInstallerVC.h; sourceTree = "<group>"; };
 		8845DED61F8A332A00AB8917 /* EditInstallerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditInstallerVC.m; sourceTree = "<group>"; };
 		8847014B1F8DA99500B44D68 /* PoliceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceVC.h; sourceTree = "<group>"; };
@@ -358,6 +372,10 @@
 		884701551F8DAD5800B44D68 /* PoliceHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeCell.m; sourceTree = "<group>"; };
 		884701571F8DB39600B44D68 /* PoliceHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeModel.h; sourceTree = "<group>"; };
 		884701581F8DB39600B44D68 /* PoliceHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeModel.m; sourceTree = "<group>"; };
+		88BE42C21F9D8F3600FA0067 /* DataEntryIdCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataEntryIdCardCell.h; sourceTree = "<group>"; };
+		88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataEntryIdCardCell.m; sourceTree = "<group>"; };
+		88BE42C51F9D8F5C00FA0067 /* DataEntryImgPicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataEntryImgPicCell.h; sourceTree = "<group>"; };
+		88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataEntryImgPicCell.m; sourceTree = "<group>"; };
 		88CE3F2A1F7AADBB0075DCD9 /* FacilityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailVC.h; sourceTree = "<group>"; };
 		88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailVC.m; sourceTree = "<group>"; };
 		88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityDetailVC.xib; sourceTree = "<group>"; };
@@ -912,6 +930,14 @@
 				88F9C5741F8CC95000039A08 /* ACModel.m */,
 				88F9C5761F8CCA1200039A08 /* ACDistrictModel.h */,
 				88F9C5771F8CCA1200039A08 /* ACDistrictModel.m */,
+				883EDB9E1FB000BC00C84016 /* ACVillageModel.h */,
+				883EDB9F1FB000BC00C84016 /* ACVillageModel.m */,
+				883EDBA11FB0013700C84016 /* ACVillageDoorModel.h */,
+				883EDBA21FB0013700C84016 /* ACVillageDoorModel.m */,
+				880623A81FB5565000D89409 /* IDImagePickModel.h */,
+				880623A91FB5565000D89409 /* IDImagePickModel.m */,
+				880623AB1FB59C4500D89409 /* CertificateInfoModel.h */,
+				880623AC1FB59C4500D89409 /* CertificateInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -938,6 +964,10 @@
 				88FDD1FA1F94C1F500946C38 /* MemberApplyCell.m */,
 				88FDD1FC1F94C20F00946C38 /* MemberControlCell.h */,
 				88FDD1FD1F94C20F00946C38 /* MemberControlCell.m */,
+				88BE42C21F9D8F3600FA0067 /* DataEntryIdCardCell.h */,
+				88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */,
+				88BE42C51F9D8F5C00FA0067 /* DataEntryImgPicCell.h */,
+				88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1865,6 +1895,7 @@
 				BF0C32AC1F6A16F3009FC882 /* CollectviewChooseCell.m in Sources */,
 				BFFA09F91F7A60C40019CFA8 /* MDMultipleSegmentView.m in Sources */,
 				BF0C32BB1F6A16F4009FC882 /* SingleChooseTable.m in Sources */,
+				88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */,
 				BF73388A1F77DB6C0000FB8A /* AnDetailView.m in Sources */,
 				BF0C322F1F6774EB009FC882 /* NSString+Base64.m in Sources */,
 				BF34EEAC1F49CEBF00E05DF3 /* RequestParaTool.m in Sources */,
@@ -1882,6 +1913,7 @@
 				BF0C32611F67CE5D009FC882 /* ShortcutModel.m in Sources */,
 				881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */,
 				BF84BAFF1F5C5A14000FB4D8 /* UIButton+ImageTitleSpacing.m in Sources */,
+				880623AD1FB59C4500D89409 /* CertificateInfoModel.m in Sources */,
 				BF34EDF71F49CEBF00E05DF3 /* SDBrowserImageView.m in Sources */,
 				BFFA09EC1F7A43C30019CFA8 /* BaseNavigationC.m in Sources */,
 				BFA8C7BC1F4BE1C5003A0BEE /* SDCycleScrollView.m in Sources */,
@@ -1924,6 +1956,7 @@
 				BF73387B1F77D31E0000FB8A /* NetDetailVC.m in Sources */,
 				BF0C32191F6772EC009FC882 /* STTextHud.m in Sources */,
 				88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */,
+				883EDBA01FB000BC00C84016 /* ACVillageModel.m in Sources */,
 				880361091F938B6B00A1A2F1 /* MonitorDistrictItemModel.m in Sources */,
 				BFA8C7BB1F4BE1C5003A0BEE /* SDCollectionViewCell.m in Sources */,
 				88299C8A1F7CE12B0070067C /* PlayBackVC.m in Sources */,
@@ -1940,6 +1973,7 @@
 				880361121F93B2D500A1A2F1 /* MonitorSecondPointModel.m in Sources */,
 				BF34EDEA1F49CEBF00E05DF3 /* ClientTool.m in Sources */,
 				BF34EDFE1F49CEBF00E05DF3 /* WKMessageProgressHUD.m in Sources */,
+				883EDBA31FB0013700C84016 /* ACVillageDoorModel.m in Sources */,
 				8803610C1F93B12000A1A2F1 /* MonitorSecondVC.m in Sources */,
 				BF7338811F77D3F40000FB8A /* NetDetailCell.m in Sources */,
 				BF0C325D1F67CE48009FC882 /* HomeView.m in Sources */,
@@ -1951,6 +1985,7 @@
 				880361181F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m in Sources */,
 				BFA8C8DB1F4DEAEE003A0BEE /* MyView.m in Sources */,
 				88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */,
+				88BE42C41F9D8F3600FA0067 /* DataEntryIdCardCell.m in Sources */,
 				BF0C327E1F69365D009FC882 /* AddNewGroupVC.m in Sources */,
 				8815478A1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m in Sources */,
 				88DA3BB71F9CEDF10085F8FA /* ChooseDistrictSecondVC.m in Sources */,
@@ -1961,6 +1996,7 @@
 				880361061F93874B00A1A2F1 /* MonitorDistrictItemCell.m in Sources */,
 				8803611B1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m in Sources */,
 				BF34EEB11F49CEBF00E05DF3 /* ProvinceModel.m in Sources */,
+				880623AA1FB5565100D89409 /* IDImagePickModel.m in Sources */,
 				884701501F8DAA6E00B44D68 /* PoliceHomeView.m in Sources */,
 				88FDD1ED1F94BEE600946C38 /* MemberManageVC.m in Sources */,
 				88FDD1E41F94986400946C38 /* AccessMainBottomCell.m in Sources */,

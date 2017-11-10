@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ACVillageModel;
 @interface AccessMainBottomCell : UICollectionViewCell
 @property (nonatomic, assign) BOOL isLastCell;
-@property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) ACVillageModel *model;
 @end

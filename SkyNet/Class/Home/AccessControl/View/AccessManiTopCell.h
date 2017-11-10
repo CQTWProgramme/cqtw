@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ACVillageDoorModel;
 @interface AccessManiTopCell : UICollectionViewCell
-@property (nonatomic, strong) UIColor *backColor;
-@property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) ACVillageDoorModel *model;
 @end

@@ -11,6 +11,7 @@
 #import "AddVisitorVC.h"
 #import "AccessManiTopCell.h"
 #import "AccessMainBottomCell.h"
+#import "ACVillageModel.h"
 
 static NSString *topCellID = @"DetailAccessManiTopCellID";
 static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
@@ -87,11 +88,9 @@ static NSString *bottomCellID = @"DetailAccessMainBottomCellID";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == self.topCollectionView) {
         AccessManiTopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:topCellID forIndexPath:indexPath];
-        cell.content = [NSString stringWithFormat:@"%@-%@门",@(indexPath.section),@(indexPath.row)];
         return cell;
     }else if (collectionView == self.bottomCollectionView) {
         AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
-        cell.content = [NSString stringWithFormat:@"%@-%@小区",@(indexPath.section),@(indexPath.row)];
         cell.isLastCell = NO;
         return cell;
     }

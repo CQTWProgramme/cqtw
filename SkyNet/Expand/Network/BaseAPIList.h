@@ -104,6 +104,21 @@
 //设备单独布防,撤防,消警
 #define AlarmDeviceBCF                      POST_INTERFACE(@"api/alarm/setDeviceBCF")
 
+//获取用户拥有小区及门信息
+#define GetUserAndBranchData                      POST_INTERFACE(@"app/getUserAndBranchData")
+
+//验证登录用户是否需要实名认证
+#define IsNeedCertification                      POST_INTERFACE(@"app/isNeedCertification")
+
+//上传图片
+#define UploadImage                      POST_INTERFACE(@"app/uploadImg")
+
+//根据身份证正面获取信息
+#define GetIdCardInfo                      POST_INTERFACE(@"IdCardInfo/getIdCardInfo")
+
+//申请门禁用户基本信息认证接口
+#define SaveUserInfo                      POST_INTERFACE(@"app/saveUserInfo")
+
 
 
 //云Mark笔记操作相关接口   ********************************

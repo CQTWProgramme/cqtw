@@ -32,7 +32,6 @@
 
 //重置scrollerVIew
 - (void)resumeScrollerView {
-
     //添加选择图片按钮
     UIImageView *cameraImageView = [[UIImageView alloc] init];
     cameraImageView.frame = CGRectMake(10, 10, 40, 40);

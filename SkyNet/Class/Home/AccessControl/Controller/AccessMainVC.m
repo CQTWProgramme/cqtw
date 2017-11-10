@@ -11,25 +11,133 @@
 #import "AccessManiTopCell.h"
 #import "AccessControlDetailVC.h"
 #import "ChooseDistrictFirstVC.h"
+#import "DataEntryVC.h"
+#import <MapKit/MapKit.h>
+#import "ACViewModel.h"
+#import "ACVillageModel.h"
+#import "DataEntryVC.h"
 
 #define BottomButtonH 80
 
 static NSString *topCellID = @"AccessManiTopCellID";
 static NSString *bottomCellID = @"AccessMainBottomCellID";
-@interface AccessMainVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface AccessMainVC ()<UICollectionViewDelegate,UICollectionViewDataSource,CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *topCollectionView;
 @property (strong, nonatomic) IBOutlet UICollectionView *bottomCollectionView;
 @property (strong, nonatomic) IBOutlet UILabel *topTitleLabel;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) ACVillageModel *topModel;
 
 @end
 
 @implementation AccessMainVC
+
+-(NSMutableArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupColectionView];
     [self setupBottomButton];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self isNeedCertification];
+}
+
+- (void)isNeedCertification {
+    ACViewModel *viewModel = [ACViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        if ([returnValue isEqualToString:@"0"]) {
+            [self showCertificationAlert];
+        }else {
+            [self startLocation];
+        }
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    [viewModel IsNeedRealNameConfirm];
+}
+
+- (void)showCertificationAlert {
+    MJWeakSelf
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否现在上传身份信息,以便进行房屋认证?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+        DataEntryVC *dataVC = [[DataEntryVC alloc] init];
+        [weakSelf.navigationController pushViewController:dataVC animated:YES];
+    
+    }]];
+    
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [weakSelf startLocation];
+    }]];
+    
+    // 3.显示alertController:presentViewController
+    [self presentViewController:alertControl animated:YES completion:nil];
+}
+
+- (void)startLocation {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >8.0){
+        [self.locationManager requestAlwaysAuthorization];
+         [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined:
+            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [self.locationManager requestWhenInUseAuthorization];
+            }break;
+            default:break;
+    }
+}
+
+ - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+     if (locations) {
+         [self.locationManager stopUpdatingLocation];
+         CLLocation *newLocation = locations[0];
+         NSString *latitude = [NSString stringWithFormat:@"%@",@(newLocation.coordinate.latitude)];
+         NSString *longitude = [NSString stringWithFormat:@"%@",@(newLocation.coordinate.longitude)];
+         [self loadDataWithLatitude:latitude Longitude:longitude];
+     }else {
+         [STTextHudTool showErrorText:@"定位失败"];
+     }
+ }
+
+- (void)loadDataWithLatitude:(NSString *)latitude Longitude:(NSString *)longitude {
+    ACViewModel *viewModel = [ACViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        self.dataArray = returnValue;
+        if (self.dataArray.count > 0) {
+            self.topModel = self.dataArray[0];
+            self.topTitleLabel.text = self.topModel.areaName;
+            [self.topCollectionView reloadData];
+            [self.bottomCollectionView reloadData];
+        }
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    
+    [viewModel requestDataWithLatitude:latitude Longitude:longitude];
 }
 
 - (void)setupBottomButton {
@@ -88,9 +196,9 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == self.topCollectionView) {
-        return 6;
+        return self.topModel.doorInfo.count;
     }else if (collectionView == self.bottomCollectionView) {
-        return 6;
+        return self.dataArray.count + 1;
     }
     return 0;
 }
@@ -98,12 +206,12 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == self.topCollectionView) {
         AccessManiTopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:topCellID forIndexPath:indexPath];
-        cell.content = [NSString stringWithFormat:@"%@-%@门",@(indexPath.section),@(indexPath.row)];
+        cell.model = self.topModel.doorInfo[indexPath.row];
         return cell;
     }else if (collectionView == self.bottomCollectionView) {
         AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
-        if (indexPath.row < 5) {
-            cell.content = [NSString stringWithFormat:@"%@-%@小区",@(indexPath.section),@(indexPath.row)];
+        if (indexPath.row < self.dataArray.count) {
+            cell.model = self.dataArray[indexPath.row];
             cell.isLastCell = NO;
         }else {
             cell.isLastCell = YES;
@@ -117,10 +225,20 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 
     if (collectionView == self.topCollectionView) {
-        NSLog(@"点击了top");
+        DataEntryVC *entryVC = [[DataEntryVC alloc] init];
+        [self.navigationController pushViewController:entryVC animated:YES];
     }else if (collectionView == self.bottomCollectionView) {
-        ChooseDistrictFirstVC *firstVC = [[ChooseDistrictFirstVC alloc] init];
-        [self.navigationController pushViewController:firstVC animated:YES];
+        if (indexPath.row == (self.dataArray.count - 1)) {
+            ChooseDistrictFirstVC *firstVC = [[ChooseDistrictFirstVC alloc] init];
+            [self.navigationController pushViewController:firstVC animated:YES];
+        }else {
+            ACVillageModel *model = self.dataArray[indexPath.row];
+            [self.dataArray replaceObjectAtIndex:indexPath.row withObject:self.topModel];
+            self.topModel = model;
+            self.topTitleLabel.text = self.topModel.areaName;
+            [self.topCollectionView reloadData];
+            [self.bottomCollectionView reloadData];
+        }
     }
 }
 
