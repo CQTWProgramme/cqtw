@@ -32,4 +32,52 @@
  申请门禁用户基本信息认证接口
  */
 -(void)certificationConfirmWithName:(NSString *)name sex:(NSString *)sex peoples:(NSString *)peoples birth:(NSString *)birth address:(NSString *)address idCardNumber:(NSString *)idCardNumber cardType:(NSString *)cardType idCardPage:(NSString *)idCardPage idCardPage1:(NSString *)idCardPage1 lifePhoto:(NSString *)lifePhoto facePhotos:(NSString *)facePhotos;
+/**
+ 查询拥有小区及房屋信息
+ */
+-(void)selectBranchListDataWithDisName:(NSString *)disName;
+/**
+ 根据小区及扩张区域查询子级扩展区域数据接口
+ */
+-(void)selectChildListDataWithParentId:(NSString *)parentId;
+/**
+ 根据门id开门
+ */
+-(void)acOpenDoorWithDoorId:(NSString *)doorId;
+/**
+ 查询申请审核人详细信息
+ */
+-(void)getApplyUserInfoDataWithUserHouseId:(NSInteger)userHouseId;
+/**
+ 查询拥有小区及房屋信息
+ */
+-(void)getBranchAreasInfoData;
+/**
+ 房屋绑定申请审核接口
+ */
+-(void)getAuditApprovalOrRefusedToDataWithUserHouseId:(NSString *)userHouseId type:(NSInteger)type reason:(NSString *)reason;
+/**
+ 查询成员管理数据
+ */
+-(void)acGetMemberManagementData;
+/**
+ 查询待审核的申请房屋绑定数据
+ */
+-(void)acGetApplyAuditData;
+/**
+ 查询访客记录
+ */
+-(void)acGetVisitorsRecord;
+/**
+ 增加访客请求接口
+ */
+-(void)acCreateVisitorsWithAreasId:(NSString *)areasId name:(NSString *)name phone:(NSString *)phone startTime:(NSString *)startTime endTime:(NSString *)endTime bz:(NSString *)bz facePicture:(NSData *)facePicture;
+/**
+ 房屋绑定审核查询
+ */
+-(void)selectAppUserHouseData;
+/**
+ 用户申请房屋绑定请求接口
+ */
+-(void)acSaveUserHouseWithAreasId:(NSString *)areasId type:(NSInteger)type ly:(NSInteger)ly bz:(NSString *)bz;
 @end

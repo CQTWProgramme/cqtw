@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface ChooseDistrictSecondVC : BaseViewController
-
+@property (nonatomic, copy) NSString *parentId;
+@property (nonatomic, copy) NSString *disName;
+@property (nonatomic, copy) NSString *address;
 @end

@@ -24,6 +24,12 @@
 		8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8803611D1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m */; };
 		880623AA1FB5565100D89409 /* IDImagePickModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623A91FB5565000D89409 /* IDImagePickModel.m */; };
 		880623AD1FB59C4500D89409 /* CertificateInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623AC1FB59C4500D89409 /* CertificateInfoModel.m */; };
+		880623B01FB5F66500D89409 /* DistrictFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623AF1FB5F66500D89409 /* DistrictFirstCell.m */; };
+		880623B31FB5F88400D89409 /* SelectDistrictFirstModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623B21FB5F88400D89409 /* SelectDistrictFirstModel.m */; };
+		880623B61FB5FDE300D89409 /* DistrictSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623B51FB5FDE300D89409 /* DistrictSecondCell.m */; };
+		880623B91FB5FEB600D89409 /* SelectDistrictSecondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623B81FB5FEB600D89409 /* SelectDistrictSecondModel.m */; };
+		880623BD1FB753DE00D89409 /* SaveUserHouseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623BB1FB753DE00D89409 /* SaveUserHouseVC.m */; };
+		880623BE1FB753DE00D89409 /* SaveUserHouseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880623BC1FB753DE00D89409 /* SaveUserHouseVC.xib */; };
 		881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F21F7B58D500AE83FF /* FacilityDetailModel.m */; };
 		881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F51F7B5DA600AE83FF /* BaseModel.m */; };
 		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
@@ -74,6 +80,24 @@
 		884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */; };
 		884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701551F8DAD5800B44D68 /* PoliceHomeCell.m */; };
 		884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701581F8DB39600B44D68 /* PoliceHomeModel.m */; };
+		888EBF9B1FB7C987006F8CCE /* MemberControlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBF9A1FB7C987006F8CCE /* MemberControlModel.m */; };
+		888EBF9E1FB7CCCD006F8CCE /* RecordVisitorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBF9D1FB7CCCD006F8CCE /* RecordVisitorCell.m */; };
+		888EBFA11FB7CCCD006F8CCE /* VillageApplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFA01FB7CCCD006F8CCE /* VillageApplyModel.m */; };
+		888EBFA41FB7CCCD006F8CCE /* RecordVisitorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFA31FB7CCCD006F8CCE /* RecordVisitorModel.m */; };
+		888EBFA71FB7CE4C006F8CCE /* MemberApplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFA61FB7CE4C006F8CCE /* MemberApplyModel.m */; };
+		888EBFAA1FB7F32A006F8CCE /* AccessDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFA91FB7F32A006F8CCE /* AccessDetailModel.m */; };
+		888EBFAD1FB7F505006F8CCE /* AccessDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFAC1FB7F505006F8CCE /* AccessDetailCell.m */; };
+		888EBFBD1FB82E69006F8CCE /* NSBundle+PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFB01FB82E69006F8CCE /* NSBundle+PGDatePicker.m */; };
+		888EBFBE1FB82E69006F8CCE /* NSCalendar+PGCurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFB21FB82E69006F8CCE /* NSCalendar+PGCurrent.m */; };
+		888EBFBF1FB82E69006F8CCE /* NSDate+PGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFB41FB82E69006F8CCE /* NSDate+PGCategory.m */; };
+		888EBFC01FB82E69006F8CCE /* PGDatePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 888EBFB51FB82E69006F8CCE /* PGDatePicker.bundle */; };
+		888EBFC11FB82E69006F8CCE /* PGDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFB71FB82E69006F8CCE /* PGDatePicker.m */; };
+		888EBFC21FB82E69006F8CCE /* PGDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFBA1FB82E69006F8CCE /* PGDatePickerView.m */; };
+		888EBFC31FB82E69006F8CCE /* UIColor+PGHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFBC1FB82E69006F8CCE /* UIColor+PGHex.m */; };
+		888EBFCE1FB82F22006F8CCE /* PGPickerColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFC61FB82F21006F8CCE /* PGPickerColumnCell.m */; };
+		888EBFCF1FB82F22006F8CCE /* PGPickerColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFC81FB82F21006F8CCE /* PGPickerColumnView.m */; };
+		888EBFD01FB82F22006F8CCE /* PGPickerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFCA1FB82F21006F8CCE /* PGPickerTableView.m */; };
+		888EBFD11FB82F22006F8CCE /* PGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFCC1FB82F21006F8CCE /* PGPickerView.m */; };
 		88BE42C41F9D8F3600FA0067 /* DataEntryIdCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */; };
 		88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
@@ -288,6 +312,17 @@
 		880623A91FB5565000D89409 /* IDImagePickModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDImagePickModel.m; sourceTree = "<group>"; };
 		880623AB1FB59C4500D89409 /* CertificateInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificateInfoModel.h; sourceTree = "<group>"; };
 		880623AC1FB59C4500D89409 /* CertificateInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateInfoModel.m; sourceTree = "<group>"; };
+		880623AE1FB5F66500D89409 /* DistrictFirstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistrictFirstCell.h; sourceTree = "<group>"; };
+		880623AF1FB5F66500D89409 /* DistrictFirstCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistrictFirstCell.m; sourceTree = "<group>"; };
+		880623B11FB5F88400D89409 /* SelectDistrictFirstModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDistrictFirstModel.h; sourceTree = "<group>"; };
+		880623B21FB5F88400D89409 /* SelectDistrictFirstModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectDistrictFirstModel.m; sourceTree = "<group>"; };
+		880623B41FB5FDE300D89409 /* DistrictSecondCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistrictSecondCell.h; sourceTree = "<group>"; };
+		880623B51FB5FDE300D89409 /* DistrictSecondCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistrictSecondCell.m; sourceTree = "<group>"; };
+		880623B71FB5FEB600D89409 /* SelectDistrictSecondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectDistrictSecondModel.h; sourceTree = "<group>"; };
+		880623B81FB5FEB600D89409 /* SelectDistrictSecondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectDistrictSecondModel.m; sourceTree = "<group>"; };
+		880623BA1FB753DE00D89409 /* SaveUserHouseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveUserHouseVC.h; sourceTree = "<group>"; };
+		880623BB1FB753DE00D89409 /* SaveUserHouseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveUserHouseVC.m; sourceTree = "<group>"; };
+		880623BC1FB753DE00D89409 /* SaveUserHouseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveUserHouseVC.xib; sourceTree = "<group>"; };
 		881322F11F7B58D500AE83FF /* FacilityDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailModel.h; sourceTree = "<group>"; };
 		881322F21F7B58D500AE83FF /* FacilityDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailModel.m; sourceTree = "<group>"; };
 		881322F41F7B5DA600AE83FF /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -372,6 +407,43 @@
 		884701551F8DAD5800B44D68 /* PoliceHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeCell.m; sourceTree = "<group>"; };
 		884701571F8DB39600B44D68 /* PoliceHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeModel.h; sourceTree = "<group>"; };
 		884701581F8DB39600B44D68 /* PoliceHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeModel.m; sourceTree = "<group>"; };
+		888EBF991FB7C987006F8CCE /* MemberControlModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberControlModel.h; sourceTree = "<group>"; };
+		888EBF9A1FB7C987006F8CCE /* MemberControlModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberControlModel.m; sourceTree = "<group>"; };
+		888EBF9C1FB7CCCD006F8CCE /* RecordVisitorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordVisitorCell.h; sourceTree = "<group>"; };
+		888EBF9D1FB7CCCD006F8CCE /* RecordVisitorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordVisitorCell.m; sourceTree = "<group>"; };
+		888EBF9F1FB7CCCD006F8CCE /* VillageApplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VillageApplyModel.h; sourceTree = "<group>"; };
+		888EBFA01FB7CCCD006F8CCE /* VillageApplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VillageApplyModel.m; sourceTree = "<group>"; };
+		888EBFA21FB7CCCD006F8CCE /* RecordVisitorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordVisitorModel.h; sourceTree = "<group>"; };
+		888EBFA31FB7CCCD006F8CCE /* RecordVisitorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordVisitorModel.m; sourceTree = "<group>"; };
+		888EBFA51FB7CE4C006F8CCE /* MemberApplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberApplyModel.h; sourceTree = "<group>"; };
+		888EBFA61FB7CE4C006F8CCE /* MemberApplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberApplyModel.m; sourceTree = "<group>"; };
+		888EBFA81FB7F32A006F8CCE /* AccessDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessDetailModel.h; sourceTree = "<group>"; };
+		888EBFA91FB7F32A006F8CCE /* AccessDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessDetailModel.m; sourceTree = "<group>"; };
+		888EBFAB1FB7F505006F8CCE /* AccessDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessDetailCell.h; sourceTree = "<group>"; };
+		888EBFAC1FB7F505006F8CCE /* AccessDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessDetailCell.m; sourceTree = "<group>"; };
+		888EBFAF1FB82E69006F8CCE /* NSBundle+PGDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PGDatePicker.h"; sourceTree = "<group>"; };
+		888EBFB01FB82E69006F8CCE /* NSBundle+PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PGDatePicker.m"; sourceTree = "<group>"; };
+		888EBFB11FB82E69006F8CCE /* NSCalendar+PGCurrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+PGCurrent.h"; sourceTree = "<group>"; };
+		888EBFB21FB82E69006F8CCE /* NSCalendar+PGCurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+PGCurrent.m"; sourceTree = "<group>"; };
+		888EBFB31FB82E69006F8CCE /* NSDate+PGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PGCategory.h"; sourceTree = "<group>"; };
+		888EBFB41FB82E69006F8CCE /* NSDate+PGCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PGCategory.m"; sourceTree = "<group>"; };
+		888EBFB51FB82E69006F8CCE /* PGDatePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PGDatePicker.bundle; sourceTree = "<group>"; };
+		888EBFB61FB82E69006F8CCE /* PGDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePicker.h; sourceTree = "<group>"; };
+		888EBFB71FB82E69006F8CCE /* PGDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePicker.m; sourceTree = "<group>"; };
+		888EBFB81FB82E69006F8CCE /* PGDatePickerMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickerMacros.h; sourceTree = "<group>"; };
+		888EBFB91FB82E69006F8CCE /* PGDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDatePickerView.h; sourceTree = "<group>"; };
+		888EBFBA1FB82E69006F8CCE /* PGDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDatePickerView.m; sourceTree = "<group>"; };
+		888EBFBB1FB82E69006F8CCE /* UIColor+PGHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PGHex.h"; sourceTree = "<group>"; };
+		888EBFBC1FB82E69006F8CCE /* UIColor+PGHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PGHex.m"; sourceTree = "<group>"; };
+		888EBFC51FB82F21006F8CCE /* PGPickerColumnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnCell.h; sourceTree = "<group>"; };
+		888EBFC61FB82F21006F8CCE /* PGPickerColumnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerColumnCell.m; sourceTree = "<group>"; };
+		888EBFC71FB82F21006F8CCE /* PGPickerColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerColumnView.h; sourceTree = "<group>"; };
+		888EBFC81FB82F21006F8CCE /* PGPickerColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerColumnView.m; sourceTree = "<group>"; };
+		888EBFC91FB82F21006F8CCE /* PGPickerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerTableView.h; sourceTree = "<group>"; };
+		888EBFCA1FB82F21006F8CCE /* PGPickerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerTableView.m; sourceTree = "<group>"; };
+		888EBFCB1FB82F21006F8CCE /* PGPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerView.h; sourceTree = "<group>"; };
+		888EBFCC1FB82F21006F8CCE /* PGPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPickerView.m; sourceTree = "<group>"; };
+		888EBFCD1FB82F21006F8CCE /* PGPickerViewMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPickerViewMacros.h; sourceTree = "<group>"; };
 		88BE42C21F9D8F3600FA0067 /* DataEntryIdCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataEntryIdCardCell.h; sourceTree = "<group>"; };
 		88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataEntryIdCardCell.m; sourceTree = "<group>"; };
 		88BE42C51F9D8F5C00FA0067 /* DataEntryImgPicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataEntryImgPicCell.h; sourceTree = "<group>"; };
@@ -873,6 +945,43 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		888EBFAE1FB82E69006F8CCE /* PGDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				888EBFAF1FB82E69006F8CCE /* NSBundle+PGDatePicker.h */,
+				888EBFB01FB82E69006F8CCE /* NSBundle+PGDatePicker.m */,
+				888EBFB11FB82E69006F8CCE /* NSCalendar+PGCurrent.h */,
+				888EBFB21FB82E69006F8CCE /* NSCalendar+PGCurrent.m */,
+				888EBFB31FB82E69006F8CCE /* NSDate+PGCategory.h */,
+				888EBFB41FB82E69006F8CCE /* NSDate+PGCategory.m */,
+				888EBFB51FB82E69006F8CCE /* PGDatePicker.bundle */,
+				888EBFB61FB82E69006F8CCE /* PGDatePicker.h */,
+				888EBFB71FB82E69006F8CCE /* PGDatePicker.m */,
+				888EBFB81FB82E69006F8CCE /* PGDatePickerMacros.h */,
+				888EBFB91FB82E69006F8CCE /* PGDatePickerView.h */,
+				888EBFBA1FB82E69006F8CCE /* PGDatePickerView.m */,
+				888EBFBB1FB82E69006F8CCE /* UIColor+PGHex.h */,
+				888EBFBC1FB82E69006F8CCE /* UIColor+PGHex.m */,
+			);
+			path = PGDatePicker;
+			sourceTree = "<group>";
+		};
+		888EBFC41FB82F21006F8CCE /* PGPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				888EBFC51FB82F21006F8CCE /* PGPickerColumnCell.h */,
+				888EBFC61FB82F21006F8CCE /* PGPickerColumnCell.m */,
+				888EBFC71FB82F21006F8CCE /* PGPickerColumnView.h */,
+				888EBFC81FB82F21006F8CCE /* PGPickerColumnView.m */,
+				888EBFC91FB82F21006F8CCE /* PGPickerTableView.h */,
+				888EBFCA1FB82F21006F8CCE /* PGPickerTableView.m */,
+				888EBFCB1FB82F21006F8CCE /* PGPickerView.h */,
+				888EBFCC1FB82F21006F8CCE /* PGPickerView.m */,
+				888EBFCD1FB82F21006F8CCE /* PGPickerViewMacros.h */,
+			);
+			path = PGPickerView;
+			sourceTree = "<group>";
+		};
 		88F9C5621F8CC6DA00039A08 /* AccessControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +1028,9 @@
 				88DA3BBB1F9CF6260085F8FA /* DataEntryVC.h */,
 				88DA3BBC1F9CF6260085F8FA /* DataEntryVC.m */,
 				88DA3BBD1F9CF6260085F8FA /* DataEntryVC.xib */,
+				880623BA1FB753DE00D89409 /* SaveUserHouseVC.h */,
+				880623BB1FB753DE00D89409 /* SaveUserHouseVC.m */,
+				880623BC1FB753DE00D89409 /* SaveUserHouseVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -938,6 +1050,20 @@
 				880623A91FB5565000D89409 /* IDImagePickModel.m */,
 				880623AB1FB59C4500D89409 /* CertificateInfoModel.h */,
 				880623AC1FB59C4500D89409 /* CertificateInfoModel.m */,
+				880623B11FB5F88400D89409 /* SelectDistrictFirstModel.h */,
+				880623B21FB5F88400D89409 /* SelectDistrictFirstModel.m */,
+				880623B71FB5FEB600D89409 /* SelectDistrictSecondModel.h */,
+				880623B81FB5FEB600D89409 /* SelectDistrictSecondModel.m */,
+				888EBFA51FB7CE4C006F8CCE /* MemberApplyModel.h */,
+				888EBFA61FB7CE4C006F8CCE /* MemberApplyModel.m */,
+				888EBF991FB7C987006F8CCE /* MemberControlModel.h */,
+				888EBF9A1FB7C987006F8CCE /* MemberControlModel.m */,
+				888EBF9F1FB7CCCD006F8CCE /* VillageApplyModel.h */,
+				888EBFA01FB7CCCD006F8CCE /* VillageApplyModel.m */,
+				888EBFA21FB7CCCD006F8CCE /* RecordVisitorModel.h */,
+				888EBFA31FB7CCCD006F8CCE /* RecordVisitorModel.m */,
+				888EBFA81FB7F32A006F8CCE /* AccessDetailModel.h */,
+				888EBFA91FB7F32A006F8CCE /* AccessDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -960,6 +1086,8 @@
 				88FDD1E51F94BAE500946C38 /* AccessRecordCell.h */,
 				88FDD1E61F94BAE500946C38 /* AccessRecordCell.m */,
 				88FDD1E71F94BAE500946C38 /* AccessRecordCell.xib */,
+				888EBF9C1FB7CCCD006F8CCE /* RecordVisitorCell.h */,
+				888EBF9D1FB7CCCD006F8CCE /* RecordVisitorCell.m */,
 				88FDD1F91F94C1F500946C38 /* MemberApplyCell.h */,
 				88FDD1FA1F94C1F500946C38 /* MemberApplyCell.m */,
 				88FDD1FC1F94C20F00946C38 /* MemberControlCell.h */,
@@ -968,6 +1096,12 @@
 				88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */,
 				88BE42C51F9D8F5C00FA0067 /* DataEntryImgPicCell.h */,
 				88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */,
+				880623AE1FB5F66500D89409 /* DistrictFirstCell.h */,
+				880623AF1FB5F66500D89409 /* DistrictFirstCell.m */,
+				880623B41FB5FDE300D89409 /* DistrictSecondCell.h */,
+				880623B51FB5FDE300D89409 /* DistrictSecondCell.m */,
+				888EBFAB1FB7F505006F8CCE /* AccessDetailCell.h */,
+				888EBFAC1FB7F505006F8CCE /* AccessDetailCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1452,6 +1586,8 @@
 		BF34ED511F49CEBF00E05DF3 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				888EBFC41FB82F21006F8CCE /* PGPickerView */,
+				888EBFAE1FB82E69006F8CCE /* PGDatePicker */,
 				8815479D1F8DD5D6000F2C84 /* THCTextView.h */,
 				8815479C1F8DD5D6000F2C84 /* THCTextView.m */,
 				BF34ED521F49CEBF00E05DF3 /* Category */,
@@ -1784,6 +1920,7 @@
 			files = (
 				88299C811F7CDEE10070067C /* MonitorPlayVC.xib in Resources */,
 				881547951F8DCC92000F2C84 /* CueReportCell.xib in Resources */,
+				888EBFC01FB82E69006F8CCE /* PGDatePicker.bundle in Resources */,
 				BF34EB451F49CDB600E05DF3 /* LaunchScreen.storyboard in Resources */,
 				88FDD1DE1F94637D00946C38 /* AccessRecordVC.xib in Resources */,
 				881547A31F8DD7BA000F2C84 /* PoliceInteractionVC.xib in Resources */,
@@ -1791,6 +1928,7 @@
 				8815478B1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib in Resources */,
 				88DA3BBF1F9CF6260085F8FA /* DataEntryVC.xib in Resources */,
 				88FDD1F81F94C01100946C38 /* MemberControlVC.xib in Resources */,
+				880623BE1FB753DE00D89409 /* SaveUserHouseVC.xib in Resources */,
 				BF0C32171F6772EC009FC882 /* STError@2x.png in Resources */,
 				BF34EEFE1F4B226E00E05DF3 /* icon.png in Resources */,
 				883354B61F8D0C67006FC522 /* AddVisitorVC.xib in Resources */,
@@ -1912,6 +2050,8 @@
 				88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */,
 				BF0C32611F67CE5D009FC882 /* ShortcutModel.m in Sources */,
 				881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */,
+				888EBFAA1FB7F32A006F8CCE /* AccessDetailModel.m in Sources */,
+				888EBFCE1FB82F22006F8CCE /* PGPickerColumnCell.m in Sources */,
 				BF84BAFF1F5C5A14000FB4D8 /* UIButton+ImageTitleSpacing.m in Sources */,
 				880623AD1FB59C4500D89409 /* CertificateInfoModel.m in Sources */,
 				BF34EDF71F49CEBF00E05DF3 /* SDBrowserImageView.m in Sources */,
@@ -1924,8 +2064,10 @@
 				BFA2EAC41F5EE61700C9039F /* RegisterViewModel.m in Sources */,
 				BF34EEF91F4A729A00E05DF3 /* LoginVC.m in Sources */,
 				BF0C32151F6772EC009FC882 /* GCLoadingView.m in Sources */,
+				888EBFBE1FB82E69006F8CCE /* NSCalendar+PGCurrent.m in Sources */,
 				BF84BB051F5C5A14000FB4D8 /* UIView+Toast.m in Sources */,
 				BF7338871F77DB090000FB8A /* AnDetailVC.m in Sources */,
+				888EBFC21FB82E69006F8CCE /* PGDatePickerView.m in Sources */,
 				BF34EEF31F49E6F500E05DF3 /* MessageVC.m in Sources */,
 				88DA3BBE1F9CF6260085F8FA /* DataEntryVC.m in Sources */,
 				BF0C322E1F6774EB009FC882 /* NSData+CommonCrypto.m in Sources */,
@@ -1944,8 +2086,11 @@
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
 				880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */,
 				88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */,
+				888EBFBF1FB82E69006F8CCE /* NSDate+PGCategory.m in Sources */,
 				BF73387E1F77D3460000FB8A /* NetDetailView.m in Sources */,
+				888EBF9B1FB7C987006F8CCE /* MemberControlModel.m in Sources */,
 				88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */,
+				888EBFAD1FB7F505006F8CCE /* AccessDetailCell.m in Sources */,
 				BF84BB061F5C5A14000FB4D8 /* UIViewAdditions.m in Sources */,
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
 				880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */,
@@ -1954,28 +2099,38 @@
 				BFA8C7B81F4BE1C5003A0BEE /* TAAnimatedDotView.m in Sources */,
 				88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */,
 				BF73387B1F77D31E0000FB8A /* NetDetailVC.m in Sources */,
+				888EBFCF1FB82F22006F8CCE /* PGPickerColumnView.m in Sources */,
 				BF0C32191F6772EC009FC882 /* STTextHud.m in Sources */,
 				88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */,
 				883EDBA01FB000BC00C84016 /* ACVillageModel.m in Sources */,
 				880361091F938B6B00A1A2F1 /* MonitorDistrictItemModel.m in Sources */,
 				BFA8C7BB1F4BE1C5003A0BEE /* SDCollectionViewCell.m in Sources */,
+				888EBFC11FB82E69006F8CCE /* PGDatePicker.m in Sources */,
 				88299C8A1F7CE12B0070067C /* PlayBackVC.m in Sources */,
 				BF0C32811F693A7A009FC882 /* AddGroupPointVC.m in Sources */,
 				BF34EEA71F49CEBF00E05DF3 /* NSDate+Mcdate.m in Sources */,
 				BF0C322A1F6774EB009FC882 /* AESCrypt.m in Sources */,
 				BF0C32721F68C2D0009FC882 /* AFView.m in Sources */,
 				BFA8C7BA1F4BE1C5003A0BEE /* TAPageControl.m in Sources */,
+				888EBFD01FB82F22006F8CCE /* PGPickerTableView.m in Sources */,
 				BF0C32AD1F6A16F3009FC882 /* MulChooseCollectView.m in Sources */,
+				880623BD1FB753DE00D89409 /* SaveUserHouseVC.m in Sources */,
+				888EBFD11FB82F22006F8CCE /* PGPickerView.m in Sources */,
 				88F9C5751F8CC95000039A08 /* ACModel.m in Sources */,
+				888EBF9E1FB7CCCD006F8CCE /* RecordVisitorCell.m in Sources */,
 				881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
+				888EBFA71FB7CE4C006F8CCE /* MemberApplyModel.m in Sources */,
 				881547941F8DCC92000F2C84 /* CueReportCell.m in Sources */,
 				880361121F93B2D500A1A2F1 /* MonitorSecondPointModel.m in Sources */,
 				BF34EDEA1F49CEBF00E05DF3 /* ClientTool.m in Sources */,
+				888EBFC31FB82E69006F8CCE /* UIColor+PGHex.m in Sources */,
+				880623B31FB5F88400D89409 /* SelectDistrictFirstModel.m in Sources */,
 				BF34EDFE1F49CEBF00E05DF3 /* WKMessageProgressHUD.m in Sources */,
 				883EDBA31FB0013700C84016 /* ACVillageDoorModel.m in Sources */,
 				8803610C1F93B12000A1A2F1 /* MonitorSecondVC.m in Sources */,
 				BF7338811F77D3F40000FB8A /* NetDetailCell.m in Sources */,
+				880623B01FB5F66500D89409 /* DistrictFirstCell.m in Sources */,
 				BF0C325D1F67CE48009FC882 /* HomeView.m in Sources */,
 				BF0C32591F67CE48009FC882 /* HomeVC.m in Sources */,
 				BF34EDEE1F49CEBF00E05DF3 /* LSXButton.m in Sources */,
@@ -2016,6 +2171,7 @@
 				BF34EEE61F49E58200E05DF3 /* SLTabBar.m in Sources */,
 				883354B51F8D0C67006FC522 /* AddVisitorVC.m in Sources */,
 				BF34EEF61F49E70100E05DF3 /* MyVC.m in Sources */,
+				880623B61FB5FDE300D89409 /* DistrictSecondCell.m in Sources */,
 				BFFA0A091F7A684A0019CFA8 /* EquipCell.m in Sources */,
 				BF34EE001F49CEBF00E05DF3 /* WKWaitingProgressHUD.m in Sources */,
 				BF34EB3A1F49CDB600E05DF3 /* AppDelegate.m in Sources */,
@@ -2029,6 +2185,7 @@
 				88FDD1E81F94BAE500946C38 /* AccessRecordCell.m in Sources */,
 				880360FD1F92208000A1A2F1 /* NetDetailCustomCell.m in Sources */,
 				BF34EEA91F49CEBF00E05DF3 /* UIImage+ImageSize.m in Sources */,
+				888EBFA11FB7CCCD006F8CCE /* VillageApplyModel.m in Sources */,
 				BF34EDFF1F49CEBF00E05DF3 /* WKProgressHUD.m in Sources */,
 				BF3F8CF71F6A2E16000EA801 /* NetPointModel.m in Sources */,
 				BF34EEC31F49CEC000E05DF3 /* XWRegularExpression.m in Sources */,
@@ -2041,9 +2198,11 @@
 				88299C711F7CC7150070067C /* MonitorItemCell.m in Sources */,
 				BF0C322D1F6774EB009FC882 /* NSData+Base64.m in Sources */,
 				BFA8C7CC1F4C8ADC003A0BEE /* RegisterCell.m in Sources */,
+				888EBFBD1FB82E69006F8CCE /* NSBundle+PGDatePicker.m in Sources */,
 				88FDD1F21F94BFC800946C38 /* MemberApplyVC.m in Sources */,
 				8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */,
 				881547A21F8DD7BA000F2C84 /* PoliceInteractionVC.m in Sources */,
+				880623B91FB5FEB600D89409 /* SelectDistrictSecondModel.m in Sources */,
 				BF84BB021F5C5A14000FB4D8 /* UILabel+LXLabel.m in Sources */,
 				BFE3AF831F79E0AF00C90C36 /* MyInfo.m in Sources */,
 				88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */,
@@ -2067,6 +2226,7 @@
 				BF34EEB01F49CEBF00E05DF3 /* CurrentLocation.m in Sources */,
 				88FDD1FE1F94C20F00946C38 /* MemberControlCell.m in Sources */,
 				BFA2EAC11F5EE4F400C9039F /* BaseViewModel.m in Sources */,
+				888EBFA41FB7CCCD006F8CCE /* RecordVisitorModel.m in Sources */,
 				880360FA1F921F2400A1A2F1 /* NetDetailDistrictCell.m in Sources */,
 				BFFA09F71F7A60C40019CFA8 /* MDFlipCollectionView.m in Sources */,
 				88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */,

@@ -160,10 +160,9 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
             cell.isLast = YES;
         }else {
             cell.isLast = NO;
-        }
-        if (self.imgDataArray.count > 0) {
             cell.img = self.imgDataArray[indexPath.row];
         }
+        
         cell.deleteImg = ^{
             [weakSelf.imgDataArray removeObjectAtIndex:indexPath.row];
             [weakSelf.imgCollectionView reloadData];

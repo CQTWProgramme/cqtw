@@ -22,4 +22,16 @@
     return cell;
 }
 
+-(void)setModel:(VillageApplyModel *)model {
+    _model = model;
+    self.nameLabel.text = _model.disName;
+    self.addressLabel.text = _model.houseName;
+    if (_model.type == 1) {
+        self.stateLabel.text = @"审核中";
+    }else if (_model.type == 2) {
+        self.stateLabel.text = @"审核通过";
+    }else if (_model.type == 3) {
+        self.stateLabel.text = @"未通过";
+    }
+}
 @end

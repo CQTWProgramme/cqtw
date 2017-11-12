@@ -16,5 +16,5 @@
 @property (nonatomic, copy) NSString *wdmc;
 @property (nonatomic, copy) NSString *areaName;
 @property (nonatomic, copy) NSString *wdjd;
-@property (nonatomic, strong) NSArray<ACVillageDoorModel *> *doorInfo;
+@property (nonatomic, strong) NSArray *doorInfo;
 @end

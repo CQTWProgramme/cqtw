@@ -127,7 +127,7 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
         self.dataArray = returnValue;
         if (self.dataArray.count > 0) {
             self.topModel = self.dataArray[0];
-            self.topTitleLabel.text = self.topModel.areaName;
+            self.topTitleLabel.text = self.topModel.wdmc;
             [self.topCollectionView reloadData];
             [self.bottomCollectionView reloadData];
         }
@@ -198,7 +198,7 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
     if (collectionView == self.topCollectionView) {
         return self.topModel.doorInfo.count;
     }else if (collectionView == self.bottomCollectionView) {
-        return self.dataArray.count + 1;
+        return self.dataArray.count;
     }
     return 0;
 }
@@ -210,12 +210,14 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
         return cell;
     }else if (collectionView == self.bottomCollectionView) {
         AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
-        if (indexPath.row < self.dataArray.count) {
-            cell.model = self.dataArray[indexPath.row];
+        
+        if (indexPath.row < (self.dataArray.count - 1)) {
+            cell.model = self.dataArray[indexPath.row + 1];
             cell.isLastCell = NO;
         }else {
             cell.isLastCell = YES;
         }
+        
         return cell;
     }
     return nil;
@@ -225,21 +227,35 @@ static NSString *bottomCellID = @"AccessMainBottomCellID";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 
     if (collectionView == self.topCollectionView) {
-        DataEntryVC *entryVC = [[DataEntryVC alloc] init];
-        [self.navigationController pushViewController:entryVC animated:YES];
+        ACVillageDoorModel *model = self.topModel.doorInfo[indexPath.row];
+        [self openDoorWithModel:model];
     }else if (collectionView == self.bottomCollectionView) {
         if (indexPath.row == (self.dataArray.count - 1)) {
             ChooseDistrictFirstVC *firstVC = [[ChooseDistrictFirstVC alloc] init];
             [self.navigationController pushViewController:firstVC animated:YES];
         }else {
-            ACVillageModel *model = self.dataArray[indexPath.row];
-            [self.dataArray replaceObjectAtIndex:indexPath.row withObject:self.topModel];
-            self.topModel = model;
-            self.topTitleLabel.text = self.topModel.areaName;
+            
+            [self.dataArray exchangeObjectAtIndex:(indexPath.row + 1) withObjectAtIndex:0];
+            self.topModel = self.dataArray[0];
+            self.topTitleLabel.text = self.topModel.wdmc;
             [self.topCollectionView reloadData];
             [self.bottomCollectionView reloadData];
         }
     }
 }
 
+- (void)openDoorWithModel:(ACVillageDoorModel *)model {
+    ACViewModel *viewModel = [ACViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        NSString *code = returnValue;
+        if (code.integerValue == 1) {
+            [STTextHudTool showErrorText:@"解锁成功"];
+        }
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    [viewModel acOpenDoorWithDoorId:model.doorId];
+}
 @end

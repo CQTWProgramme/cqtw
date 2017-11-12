@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,6 +60,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="addressLabel" destination="trz-N3-x2J" id="euU-3Y-NuL"/>
+                <outlet property="nameLabel" destination="vIH-XG-kh8" id="pvC-TG-gaf"/>
+                <outlet property="stateLabel" destination="0R8-U0-epx" id="ngY-zY-4An"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

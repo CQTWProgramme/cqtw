@@ -119,7 +119,41 @@
 //申请门禁用户基本信息认证接口
 #define SaveUserInfo                      POST_INTERFACE(@"app/saveUserInfo")
 
+//模糊搜索小区接口
+#define selectBranchList                      POST_INTERFACE(@"app/selectBranchList")
 
+//根据小区及扩张区域查询子级扩展区域数据接口
+#define selectChildList                      POST_INTERFACE(@"app/selectChildList")
+
+//根据门ID开门
+#define openDoor                      POST_INTERFACE(@"app/openDoor")
+
+//用户申请房屋绑定请求接口
+#define saveUserHouse                      POST_INTERFACE(@"app/saveUserHouse")
+
+//房屋绑定审核查询
+#define selectAppUserHouse                      POST_INTERFACE(@"app/selectAppUserHouse")
+
+//增加访客请求接口
+#define createVisitors                      POST_INTERFACE(@"app/createVisitors")
+
+//查询访客记录
+#define getVisitorsRecord                      POST_INTERFACE(@"app/getVisitorsRecord")
+
+//查询待审核的申请房屋绑定数据
+#define getApplyAuditData                      POST_INTERFACE(@"app/getApplyAuditData")
+
+//查询成员管理数据
+#define getMemberManagementData                      POST_INTERFACE(@"app/getMemberManagementData")
+
+//房屋绑定申请审核接口
+#define auditApprovalOrRefusedTo                      POST_INTERFACE(@"app/auditApprovalOrRefusedTo")
+
+//查询拥有小区及房屋信息
+#define getBranchAreasInfo                      POST_INTERFACE(@"app/getBranchAreasInfo")
+
+//查询申请审核人详细信息
+#define getApplyUserInfo                      POST_INTERFACE(@"app/getApplyUserInfo")
 
 //云Mark笔记操作相关接口   ********************************
 

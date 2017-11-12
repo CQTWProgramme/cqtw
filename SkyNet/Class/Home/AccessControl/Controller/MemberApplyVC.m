@@ -8,9 +8,12 @@
 
 #import "MemberApplyVC.h"
 #import "MemberApplyCell.h"
+#import "ACViewModel.h"
+#import "MemberApplyModel.h"
 
 @interface MemberApplyVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @end
 
@@ -19,21 +22,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
-    // Do any additional setup after loading the view from its nib.
+    [self loadData];
+}
+
+-(NSMutableArray *)dataArray {
+    if (nil == _dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    
+    return _dataArray;
 }
 
 - (void)setupTableView {
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
+    self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)loadData {
+    ACViewModel *viewModel = [ACViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        [self.dataArray addObjectsFromArray:returnValue];
+        [self.myTableView reloadData];
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    
+    [viewModel acGetApplyAuditData];
 }
 
 #pragma tableviewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MemberApplyCell *cell = [MemberApplyCell cellWithTableView:tableView];
+    MemberApplyModel *model = self.dataArray[indexPath.row];
+    cell.model = model;
     return cell;
 }
 

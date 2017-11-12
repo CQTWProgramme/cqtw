@@ -54,7 +54,7 @@
 
 -(void)setModel:(ACVillageModel *)model {
     _model = model;
-    self.contentLabel.text = _model.areaName;
+    self.contentLabel.text = _model.wdmc;
 }
 
 -(void)setIsLastCell:(BOOL)isLastCell {

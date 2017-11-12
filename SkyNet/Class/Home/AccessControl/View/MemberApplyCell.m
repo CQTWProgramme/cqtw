@@ -166,4 +166,9 @@
     self.isOpenLeft = NO;
 }
 
+-(void)setModel:(MemberApplyModel *)model {
+    _model = model;
+    self.contentLabel.text = _model.name;
+    self.detailLabel.text = _model.houseName;
+}
 @end

@@ -7,10 +7,14 @@
 //
 
 #import "ChooseDistrictSecondVC.h"
-#import "ChooseDistrictThirdVC.h"
+#import "ACViewModel.h"
+#import "SelectDistrictSecondModel.h"
+#import "DistrictSecondCell.h"
+#import "SaveUserHouseVC.h"
 
 @interface ChooseDistrictSecondVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation ChooseDistrictSecondVC
@@ -22,7 +26,14 @@
     self.view.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:self.myTableView];
     [self setupHeaderView];
-    // Do any additional setup after loading the view.
+    [self setupData];
+}
+
+-(NSMutableArray *)dataArray {
+    if (nil == _dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 -(UITableView *)myTableView {
@@ -32,6 +43,7 @@
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.rowHeight=44;
+        _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _myTableView;
 }
@@ -41,12 +53,12 @@
     header.backgroundColor = [UIColor lightGrayColor];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 20, 25)];
-    titleLabel.text = @"天天小区";
+    titleLabel.text = self.disName;
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont systemFontOfSize:13];
     
     UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, titleLabel.bottom + 5, SCREEN_WIDTH - 20, 15)];
-    detailLabel.text = @"重庆市-巴南区";
+    detailLabel.text = self.address;
     detailLabel.textColor = [UIColor blackColor];
     detailLabel.font = [UIFont systemFontOfSize:10];
     
@@ -56,42 +68,48 @@
     self.myTableView.tableHeaderView = header;
 }
 
+- (void)setupData {
+    ACViewModel *viewModel = [ACViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        [self.dataArray addObjectsFromArray:returnValue];
+        [self.myTableView reloadData];
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    [viewModel selectChildListDataWithParentId:self.parentId];
+}
+
 #pragma tableviewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"ChooseDistrictSecondVCcellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    DistrictSecondCell *cell = [DistrictSecondCell districtSecondCellWithTableView:tableView];
+    if (self.dataArray.count > 0) {
+        cell.model = self.dataArray[indexPath.row];
     }
-    cell.textLabel.text = @"测试";
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ChooseDistrictThirdVC *thirdVC = [[ChooseDistrictThirdVC alloc] init];
-    [self.navigationController pushViewController:thirdVC animated:YES];
+    SelectDistrictSecondModel *model = self.dataArray[indexPath.row];
+    if (model.lx == 3) {
+        SaveUserHouseVC *vc = [[SaveUserHouseVC alloc] init];
+        vc.areasId = model.areasId;
+        vc.name = model.mc;
+        vc.address = [NSString stringWithFormat:@"%@-%@",self.address,model.mc];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        ChooseDistrictSecondVC *vc = [[ChooseDistrictSecondVC alloc] init];
+        vc.parentId = model.areasId;
+        vc.disName = model.mc;
+        vc.address = [NSString stringWithFormat:@"%@-%@",self.address,model.mc];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

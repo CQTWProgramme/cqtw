@@ -9,5 +9,11 @@
 #import "ACVillageModel.h"
 
 @implementation ACVillageModel
-
++ (NSDictionary *)mj_objectClassInArray
+{
+    return @{
+             
+              @"doorInfo":[ACVillageDoorModel class]
+             };
+}
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "VillageApplyModel.h"
 @interface AccessRecordCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
+@property (nonatomic, strong)VillageApplyModel *model;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (strong, nonatomic) IBOutlet UILabel *stateLabel;
+
 @end

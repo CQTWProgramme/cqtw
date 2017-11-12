@@ -7,6 +7,7 @@
 //
 
 #import "MemberControlCell.h"
+#import "MemberControlModel.h"
 
 #define CELLHEIGHT 80.f  //设置行高
 @interface MemberControlCell ()
@@ -132,6 +133,12 @@
     else if (sender.direction == UISwipeGestureRecognizerDirectionRight){
         [self closeLeftSwipe]; //关闭左滑
     }
+}
+
+-(void)setModel:(MemberControlModel *)model {
+    _model = model;
+    self.contentLabel.text = _model.name;
+    self.detailLabel.text = _model.houseName;
 }
 
 //关闭左滑，恢复原状
