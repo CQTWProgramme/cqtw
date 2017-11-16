@@ -25,7 +25,7 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     self.centerImageView.frame = CGRectMake((self.width - 15) / 2, (self.height - 15) / 2, 15, 15);
-    self.contentLabel.frame = CGRectMake(0, (self.contentView.height - 15) / 2, self.contentView.frame.size.width, 15);
+    self.contentLabel.frame = CGRectMake(5, 0, self.contentView.frame.size.width - 10, self.height);
 }
 
 - (void)setupViews {
@@ -38,7 +38,7 @@
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.textAlignment = NSTextAlignmentCenter;
         _contentLabel.font = [UIFont systemFontOfSize:14];
-        _contentLabel.textColor = [UIColor blackColor];
+        _contentLabel.numberOfLines = 0;
     }
     return _contentLabel;
 }
@@ -61,24 +61,26 @@
     _isLastCell = isLastCell;
     self.centerImageView.hidden = !isLastCell;
     self.contentLabel.hidden = isLastCell;
-    [self addBorderToLayer:self.contentView];
+    if (_isLastCell) {
+        self.contentView.layer.borderColor = [UIColor clearColor].CGColor;
+        [self addLastBorderToLayer:self.contentView];
+    }else {
+        self.contentView.layer.cornerRadius = 5;
+        self.contentView.layer.masksToBounds = YES;
+        self.contentView.layer.borderWidth = 1;
+    }
 }
 
-- (void)addBorderToLayer:(UIView *)view
-{
+- (void)addLastBorderToLayer:(UIView *)view {
     CAShapeLayer *border = [CAShapeLayer layer];
-    border.cornerRadius = 2;
+    border.cornerRadius = 5;
     border.masksToBounds = YES;
     //  线条颜色
-    if (_isLastCell) {
-        border.strokeColor = [UIColor blueColor].CGColor;
-    }else {
-        border.strokeColor = [UIColor lightGrayColor].CGColor;
-    }
+    border.strokeColor = NAVI_COLOR.CGColor;
     
     border.fillColor = nil;
     
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:3];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:5];
     border.path = path.CGPath;
     
     border.frame = view.bounds;
@@ -86,16 +88,21 @@
     // 不要设太大 不然看不出效果
     border.lineWidth = 1;
     
-    border.lineCap = @"round";
+    border.lineCap = @"square";
     
     //  第一个是 线条长度   第二个是间距    nil时为实线
-    if (_isLastCell) {
-        border.lineDashPattern = @[@9, @4];
-    }else {
-        border.lineDashPattern = nil;
-    }
-    
+    border.lineDashPattern = @[@9, @4];
+
     [view.layer addSublayer:border];
 }
 
+-(void)setSelected:(BOOL)selected {
+    if (selected) {
+        _contentLabel.textColor = NAVI_COLOR;
+        self.contentView.layer.borderColor = NAVI_COLOR.CGColor;
+    }else {
+        _contentLabel.textColor = [UIColor blackColor];
+        self.contentView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    }
+}
 @end

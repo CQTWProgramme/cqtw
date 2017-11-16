@@ -21,6 +21,10 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.loginView];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"]) {
+        [self loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:[[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+    }
 
 }
 
@@ -38,10 +42,15 @@
     MJWeakSelf
     LoginViewModel * loginViewModel =[LoginViewModel new];
     [loginViewModel setBlockWithReturnBlock:^(id returnValue) {
-        
         [ClientTool saveToken:returnValue];
-        UITabBarController * tabBar =[ClientTool setupTabBar];
+        UITabBarController * tabBar =[ClientTool setupCustomTabBarVC];
         [weakSelf presentViewController:tabBar animated:YES completion:nil];
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"]) {
+            
+        }else {
+            [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"password"];
+        }
         
     } WithErrorBlock:^(id errorCode) {
         

@@ -28,6 +28,7 @@
     [self.view addSubview:self.segmentView];
     [self setupChildVc:[MemberApplyVC class] x:0];
     [self setupChildVc:[MemberControlVC class] x:1  * SCREEN_WIDTH];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MemberManageVCNotification" object:nil userInfo:@{@"type":@(0)}];
 }
 
 - (void)setupChildVc:(Class)c x:(CGFloat)x
@@ -48,7 +49,7 @@
     // 2.给对应位置添加对应子控制器
     [self.mainScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     [self showVc:index];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MemberManageVCNotification" object:nil userInfo:@{@"type":@(index)}];
     
 }
 

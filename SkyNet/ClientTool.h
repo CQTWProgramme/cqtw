@@ -68,5 +68,8 @@
  *  移除taken
  */
 +(void)removeToken;
-
+/**
+ *  设置默认的tabbarVC
+ */
++(UITabBarController *)setupCustomTabBarVC;
 @end

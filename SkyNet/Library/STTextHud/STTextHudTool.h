@@ -78,5 +78,6 @@
  *  隐藏hud
  */
 + (void)hideSTHud;
+
 + (void)showTextTitle:(NSString *)title WithCustomVew:(UIView *)customView;
 @end

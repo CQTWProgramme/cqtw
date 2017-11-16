@@ -30,6 +30,8 @@
     
     [self setupChildVc:[AccessMainVC class] x:0];
     [self setupChildVc:[AccessRecordVC class] x:1  * SCREEN_WIDTH];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AccessControlVCNotification" object:nil userInfo:@{@"type":@(0)}];
 }
 
 - (void)setupChildVc:(Class)c x:(CGFloat)x
@@ -51,7 +53,7 @@
     [self.mainScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     [self showVc:index];
     
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AccessControlVCNotification" object:nil userInfo:@{@"type":@(index)}];
 }
 
 // 显示控制器的view
@@ -118,10 +120,14 @@
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.bounces = NO;
         _mainScrollView.delegate = self;
+        _mainScrollView.scrollEnabled = NO;
         _mainScrollView.showsHorizontalScrollIndicator = NO;
         _mainScrollView.showsVerticalScrollIndicator = NO;
     }
     return _mainScrollView;
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

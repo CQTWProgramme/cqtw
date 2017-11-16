@@ -80,6 +80,6 @@
 -(void)setModel:(RecordVisitorModel *)model {
     _model = model;
     self.nameLabel.text = _model.name;
-    self.addressLabel.text = _model.name;
+    self.addressLabel.text = _model.bz;
 }
 @end

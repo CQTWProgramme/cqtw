@@ -114,15 +114,18 @@
         [self.actIndicator startAnimating];
         self.titleLabel.text = text;
     }else if(self.hudStyle == STHudLoadingWithCustomView){
+        self.center = CGPointMake(kUIScreenWidth/2.0, kUIScreenHeight/2.0);
         if (self.customView) {
             self.loadView.hidden = NO;
             self.imageV.hidden = YES;
-            self.customView.frame = CGRectMake(0, 0, 90, 90);
+            self.customView.frame = CGRectMake(0, 0, self.loadView.width, self.loadView.height);
             [self.loadView addSubview:self.customView];
             if (text.length > 0 && text) {
-                self.labelTopContraint.constant = 30;
-                self.titleLabel.numberOfLines = 1;
-                self.bounds = CGRectMake(0, 0, 115, 125);
+                self.titleLabel.hidden = YES;
+//                self.labelTopContraint.constant = 30;
+//                self.titleLabel.numberOfLines = 1;
+//                self.bounds = CGRectMake(0, 0, 115, 125);
+                self.bounds = CGRectMake(0, 0, 100, 100);
             }else{
                 self.titleLabel.hidden = YES;
                 self.bounds = CGRectMake(0, 0, 90, 90);

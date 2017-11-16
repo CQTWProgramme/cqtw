@@ -37,21 +37,29 @@
 }
 
 - (void)setupTableView {
+    MJWeakSelf
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
 }
 
 -(void)loadData {
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        if (self.dataArray.count > 0) {
+            [self.dataArray removeAllObjects];
+        }
+        [self.myTableView.mj_header endRefreshing];
         [self.dataArray addObjectsFromArray:returnValue];
         [self.myTableView reloadData];
     } WithErrorBlock:^(id errorCode) {
-        
+        [self.myTableView.mj_header endRefreshing];
     } WithFailureBlock:^{
-        
+        [self.myTableView.mj_header endRefreshing];
     }];
     [viewModel getBranchAreasInfoData];
 }

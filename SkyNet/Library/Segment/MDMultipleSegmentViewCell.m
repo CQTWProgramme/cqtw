@@ -59,7 +59,7 @@
 - (void)drawRect:(CGRect)rect
 {
     if (_isSeleted) {
-        UIColor *circleColor = _tintColor;
+        UIColor *circleColor = NAVI_COLOR;
         
         UIBezierPath* linePath = [UIBezierPath bezierPath];
         CGFloat y = CGRectGetHeight(rect) - _bottomLineWidth;

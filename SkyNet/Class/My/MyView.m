@@ -19,24 +19,24 @@
     
     self =[super initWithFrame:frame];
     if (self) {
-       
-        UIImageView * imageView=[[UIImageView alloc]initWithFrame:frame];
+        self.backgroundColor = [UIColor whiteColor];
+        UIImageView * imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 80)];
         //imageView.image=ImageNamed(@"icon");
-        imageView.backgroundColor=[UIColor whiteColor];
+        imageView.backgroundColor=NAVI_COLOR;
         [self addSubview:imageView];
         
        // self.backgroundColor=NAVI_COLOR;
-        UIBezierPath * bPath = [UIBezierPath bezierPathWithRect:imageView.frame];
-        UIBezierPath * aPath = [UIBezierPath bezierPath];
-        [aPath moveToPoint:CGPointMake(0, HEAD_H)];
-        [aPath addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH, HEAD_H) controlPoint:CGPointMake(SCREEN_WIDTH/2, HEAD_H/2)];
-        [aPath addLineToPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT)];
-        [aPath addLineToPoint:CGPointMake(0, SCREEN_HEIGHT)];
-        [aPath addLineToPoint:CGPointMake(0, HEAD_H)];
-        CAShapeLayer * layer = [[CAShapeLayer alloc] init];
-        [bPath appendPath:[aPath bezierPathByReversingPath]];
-        layer.path = bPath.CGPath;
-        [imageView.layer setMask:layer];
+//        UIBezierPath * bPath = [UIBezierPath bezierPathWithRect:imageView.frame];
+//        UIBezierPath * aPath = [UIBezierPath bezierPath];
+//        [aPath moveToPoint:CGPointMake(0, HEAD_H)];
+//        [aPath addQuadCurveToPoint:CGPointMake(SCREEN_WIDTH, HEAD_H) controlPoint:CGPointMake(SCREEN_WIDTH/2, HEAD_H/2)];
+//        [aPath addLineToPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT)];
+//        [aPath addLineToPoint:CGPointMake(0, SCREEN_HEIGHT)];
+//        [aPath addLineToPoint:CGPointMake(0, HEAD_H)];
+//        CAShapeLayer * layer = [[CAShapeLayer alloc] init];
+//        [bPath appendPath:[aPath bezierPathByReversingPath]];
+//        layer.path = bPath.CGPath;
+//        [imageView.layer setMask:layer];
         
         _headView=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-HEAD_IMAGE_H/2, HEAD_H/2, HEAD_IMAGE_H, HEAD_IMAGE_H)];
         _headView.image=ImageNamed(@"user_icon");
@@ -56,7 +56,7 @@
         
         
         CGFloat tableY =CGRectGetMaxY(_nameLabel.frame)+44;
-        _myTableView=[[UITableView alloc]initWithFrame:CGRectMake(TABLE_MARGIN, tableY, SCREEN_WIDTH-2*TABLE_MARGIN, SCREEN_HEIGHT-tableY) style:UITableViewStylePlain];
+        _myTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, tableY, SCREEN_WIDTH, SCREEN_HEIGHT-tableY) style:UITableViewStylePlain];
         _myTableView.backgroundColor=[UIColor clearColor];
         _myTableView.delegate=self;
         _myTableView.dataSource=self;

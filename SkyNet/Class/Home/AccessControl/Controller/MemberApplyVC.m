@@ -22,7 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
-    [self loadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"MemberManageVCNotification" object:nil];
+}
+
+- (void)getResultAction:(NSNotification *)notification {
+    NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
+    if (type == 0) {
+        [self loadData];
+    }
 }
 
 -(NSMutableArray *)dataArray {
@@ -34,20 +41,28 @@
 }
 
 - (void)setupTableView {
+    MJWeakSelf
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
 }
 
 - (void)loadData {
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        if (self.dataArray.count > 0) {
+            [self.dataArray removeAllObjects];
+        }
+        [self.myTableView.mj_header endRefreshing];
         [self.dataArray addObjectsFromArray:returnValue];
         [self.myTableView reloadData];
     } WithErrorBlock:^(id errorCode) {
-        
+        [self.myTableView.mj_header endRefreshing];
     } WithFailureBlock:^{
-        
+        [self.myTableView.mj_header endRefreshing];
     }];
     
     [viewModel acGetApplyAuditData];

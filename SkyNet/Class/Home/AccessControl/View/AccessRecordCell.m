@@ -7,7 +7,8 @@
 //
 
 #import "AccessRecordCell.h"
-
+#define RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define LightGreenColor RGBColor(9.0f, 173.0f, 136.0f)
 @implementation AccessRecordCell
 
 + (instancetype)cellWithTableView:(UITableView *)tableView{
@@ -26,11 +27,12 @@
     _model = model;
     self.nameLabel.text = _model.disName;
     self.addressLabel.text = _model.houseName;
-    if (_model.type == 1) {
+    if (_model.auditState == 1) {
         self.stateLabel.text = @"审核中";
-    }else if (_model.type == 2) {
-        self.stateLabel.text = @"审核通过";
-    }else if (_model.type == 3) {
+    }else if (_model.auditState == 2) {
+        self.stateLabel.backgroundColor = LightGreenColor;
+        self.stateLabel.text = @"已通过";
+    }else if (_model.auditState == 3) {
         self.stateLabel.text = @"未通过";
     }
 }

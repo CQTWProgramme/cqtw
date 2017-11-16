@@ -19,13 +19,16 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // 重新响应侧滑返回手势
     self.interactivePopGestureRecognizer.delegate = self;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.interactivePopGestureRecognizer.enabled = YES;
+    if ([self isKindOfClass:NSClassFromString(@"MFMessageComposeViewController")]) {
+        self.interactivePopGestureRecognizer.enabled = NO;
+        return;
+    }
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];

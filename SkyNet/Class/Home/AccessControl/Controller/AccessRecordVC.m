@@ -25,13 +25,24 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupTableView];
-    [self setupSelectAppUserHouseData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"AccessControlVCNotification" object:nil];
+}
+
+- (void)getResultAction:(NSNotification *)notification {
+    NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
+    if (type == 1) {
+        [self setupSelectAppUserHouseData];
+    }
 }
 
 - (void)setupTableView {
+    MJWeakSelf
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf setupSelectAppUserHouseData];
+    }];
 }
 
 -(NSMutableArray *)areaDataArray {
@@ -51,12 +62,16 @@
 - (void)setupSelectAppUserHouseData {
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        if (self.areaDataArray.count > 0) {
+            [self.areaDataArray removeAllObjects];
+        }
+        [self.myTableView.mj_header endRefreshing];
         [self.areaDataArray addObjectsFromArray:returnValue];
         [self setupGetVisitorsRecordData];
     } WithErrorBlock:^(id errorCode) {
-        
+        [self.myTableView.mj_header endRefreshing];
     } WithFailureBlock:^{
-        
+        [self.myTableView.mj_header endRefreshing];
     }];
     [viewModel selectAppUserHouseData];
 }
@@ -64,6 +79,9 @@
 - (void)setupGetVisitorsRecordData {
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        if (self.visitorDataArray.count > 0) {
+            [self.visitorDataArray removeAllObjects];
+        }
         [self.visitorDataArray addObjectsFromArray:returnValue];
         [self.myTableView reloadData];
     } WithErrorBlock:^(id errorCode) {
@@ -110,11 +128,13 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         AccessRecordCell *cell = [AccessRecordCell cellWithTableView:tableView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         VillageApplyModel *model = self.areaDataArray[indexPath.row];
         cell.model = model;
         return cell;
     }else {
         RecordVisitorCell *cell = [RecordVisitorCell cellWithTableView:tableView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         RecordVisitorModel *model = self.visitorDataArray[indexPath.row];
         cell.model = model;
         return cell;

@@ -15,6 +15,7 @@
 #import "AccessControlVC.h"
 #import "VHLNavigation.h"
 #import <AVFoundation/AVFoundation.h>
+#import "HomeSearchVC.h"
 @interface HomeVC ()<HomeViewDelegate>
 @property(nonatomic,strong)HomeView * homeView;
 @end
@@ -27,7 +28,7 @@
     [super viewDidLoad];
     self.title = @"首页";
     [self createRightItem];
-    self.navBackColor = [UIColor clearColor];
+    //self.navBackColor = [UIColor clearColor];
     [self.view addSubview:self.homeView];
     [self getAdverList];
 }
@@ -44,6 +45,9 @@
 }
 
 - (void)toSearchAction:(UIButton *)sender {
+    HomeSearchVC *searchVC = [[HomeSearchVC alloc] init];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
 //    Class captureDevice = NSClassFromString(@"AVCaptureDevice");
 //    if (captureDevice != nil) {
 //        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];

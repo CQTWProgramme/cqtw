@@ -136,15 +136,23 @@ static const float scale=0.55;
 {
     if(controllerArrayay.count==0) NSLog(@"控制器数组为nil,请初始化");
     NSMutableArray *tabBarArr = [[NSMutableArray alloc]init];
-    for (NSString *className in controllerArrayay) {
+    for (NSInteger i = 0; i < controllerArrayay.count; i++) {
+        NSString *className = controllerArrayay[i];
         Class class = NSClassFromString(className);
         UIViewController *viewcontroller = [[class alloc]init];
         
         BaseNavigationC *nav = [[BaseNavigationC alloc]initWithRootViewController:viewcontroller];
-       
         [tabBarArr addObject:nav];
-        
     }
+//    for (NSString *className in controllerArrayay) {
+//        Class class = NSClassFromString(className);
+//        UIViewController *viewcontroller = [[class alloc]init];
+//
+//        BaseNavigationC *nav = [[BaseNavigationC alloc]initWithRootViewController:viewcontroller];
+//
+//        [tabBarArr addObject:nav];
+//
+//    }
     self.viewControllers = tabBarArr;
 }
 -(void)setTabBarLine

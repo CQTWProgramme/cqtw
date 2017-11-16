@@ -11,10 +11,11 @@
 #import "ACViewModel.h"
 #import "PGDatePicker.h"
 #import <MessageUI/MessageUI.h>
+#import <UMSocialCore/UMSocialCore.h>
 
 static NSString *imgCellID = @"AddVisitorVCImgCellID";
 
-@interface AddVisitorVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PGDatePickerDelegate,MFMessageComposeViewControllerDelegate>
+@interface AddVisitorVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PGDatePickerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *houseLabel;
 @property (strong, nonatomic) IBOutlet UITextField *visitorNameTextField;
@@ -33,6 +34,7 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
 @property (nonatomic, strong) NSMutableArray *imgDataArray;
 @property (nonatomic, copy) NSString *facePhotos;
 @property (nonatomic, strong)NSData *imgData;
+@property (nonatomic, copy) NSString *cardNumId;
 @end
 
 @implementation AddVisitorVC
@@ -240,7 +242,7 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
         NSDictionary *dataDic = returnValue;
         self.visitorPasswordLabel.text = dataDic[@"temporaryPword"];
         self.openDoorHrefLabel.text = dataDic[@"remoteConnection"];
-        NSString *cardNumId = dataDic[@"cardnumId"];
+        self.cardNumId = dataDic[@"cardnumId"];
         [self showViewAction];
     } WithErrorBlock:^(id errorCode) {
         
@@ -310,15 +312,10 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     }
 }
 
-- (BOOL)valiMobile:(NSString *)mobile
-
-{
+- (BOOL)valiMobile:(NSString *)mobile {
     
     mobile = [mobile stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    if (mobile.length != 11)
-        
-    {
+    if (mobile.length != 11) {
         
         return NO;
         
@@ -398,15 +395,77 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
 }
 //开门
 - (IBAction)openDoorAction:(id)sender {
+    
 }
 
 //微信分享
 - (IBAction)wxShareAction:(id)sender {
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    //创建网页内容对象
+    NSString *thumbURL =  @"AppIcon";
+    NSString *address = [NSString stringWithFormat:@"%@[%@]",self.model.disName,self.model.houseName];
+    NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,self.openDoorHrefLabel.text,address];
+    
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"" descr:descr thumImage:thumbURL];
+    //设置网页地址
+    shareObject.webpageUrl = @"https://city.cqtianwang.com/app/visitorsOpenDoor";
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatSession messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            [STTextHudTool showErrorText:[NSString stringWithFormat:@"错误代码:%@",@(error.code)]];
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                [STTextHudTool showSuccessText:resp.message];
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+    }];
 }
 
 //短信分享
 - (IBAction)mgShareAction:(id)sender {
-    [self sharedByMessage];
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    //创建网页内容对象
+    NSString *thumbURL =  @"AppIcon";
+    NSString *address = [NSString stringWithFormat:@"%@[%@]",self.model.disName,self.model.houseName];
+    NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,self.openDoorHrefLabel.text,address];
+    
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"" descr:descr thumImage:thumbURL];
+    //设置网页地址
+    shareObject.webpageUrl = @"https://city.cqtianwang.com/app/visitorsOpenDoor";
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatSession messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            [STTextHudTool showErrorText:[NSString stringWithFormat:@"错误代码:%@",@(error.code)]];
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                [STTextHudTool showSuccessText:resp.message];
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+    }];
 }
 
 //back点击隐藏
@@ -414,124 +473,4 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     [self hideViewAction];
 }
 
-//短信分享
-- (void)sharedByMessage
-{
-    /**正常来说，id myObj = [[NSClassFromString(@"MySpecialClass") alloc] init];和
-     id myObj = [[MySpecialClass alloc] init];是一样的。但是，如果你的程序中并不存在MySpecialClass这个类，下面的写法会出错，而上面的写法只是返回一个空对象而已。因此，在某些情况下，可以使用NSClassFromString来进行你不确定的类的初始化。
-     
-     */
-    
-    Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
-    
-    if (messageClass != nil) {
-        
-        /**MFMessageComposeViewController提供了操作界面
-         
-         使用前必须检查canSendText方法,若返回NO则不应将这个controller展现出来,而应该提示用户不支持发送短信功能.
-         
-         */
-        
-        if ([messageClass canSendText]) {
-            
-            [self displaySMSComposerSheet];
-            
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  
-                                  initWithTitle:@"提醒"
-                                  
-                                  message:@"您设备没有短信功能"
-                                  
-                                  delegate:self
-                                  
-                                  cancelButtonTitle:@"关闭"
-                                  
-                                  otherButtonTitles:nil];
-            
-            [alert show];
-            
-        }
-        
-    }
-    
-}
-
--(void)displaySMSComposerSheet
-
-{
-    
-    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc]init];
-    
-    picker.messageComposeDelegate =self;
-
-    picker.body =@"短信分享测试";
-    
-    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(dismissAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    [[[[picker viewControllers] lastObject] navigationItem] setTitle:NSLocalizedString(@"分享", nil)];
-    picker.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    [[[[picker viewControllers] lastObject] navigationItem] setRightBarButtonItem:rightBarButtonItem];
-    [self presentViewController:picker animated:YES completion:nil];
-    self.picker = picker;
-}
-
-- (void)dismissAction {
-    [self.picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark --MFMessageComposeViewControllerDelegate
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
-
-{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-    
-    if (result == MessageComposeResultCancelled){
-        
-        
-        
-    }else if (result == MessageComposeResultSent){
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提醒"
-                           
-                                                     message:@"短信发送成功，谢谢您对U箱的支持！"
-                           
-                                                    delegate:self
-                           
-                                           cancelButtonTitle:@"确定"
-                           
-                                           otherButtonTitles:nil];
-        
-        [av show];
-        
-    }else if(result == MessageComposeResultFailed){
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提醒"
-                           
-                                                     message:@"短信发送失败，是否重新发送？"
-                           
-                                                    delegate:self
-                           
-                                           cancelButtonTitle:@"取消"
-                           
-                                           otherButtonTitles:@"重新发送", nil];
-        
-        av.tag = 20;
-        
-        [av show];
-        
-    }
-    
-     [controller dismissViewControllerAnimated:YES completion:nil];
-    
-}
 @end

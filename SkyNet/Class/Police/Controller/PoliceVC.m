@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"警务平台";
+    self.title = @"警务平台";
     [self.view addSubview:self.homeView];
 }
 

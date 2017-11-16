@@ -30,6 +30,22 @@
 		880623B91FB5FEB600D89409 /* SelectDistrictSecondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623B81FB5FEB600D89409 /* SelectDistrictSecondModel.m */; };
 		880623BD1FB753DE00D89409 /* SaveUserHouseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880623BB1FB753DE00D89409 /* SaveUserHouseVC.m */; };
 		880623BE1FB753DE00D89409 /* SaveUserHouseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880623BC1FB753DE00D89409 /* SaveUserHouseVC.xib */; };
+		880EF0B51FBD232300776D11 /* HomeSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0B41FBD232300776D11 /* HomeSearchVC.m */; };
+		880EF0C51FBD247400776D11 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0B81FBD247400776D11 /* NSBundle+PYSearchExtension.m */; };
+		880EF0C61FBD247400776D11 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 880EF0B91FBD247400776D11 /* PYSearch.bundle */; };
+		880EF0C71FBD247400776D11 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0BC1FBD247400776D11 /* PYSearchConst.m */; };
+		880EF0C81FBD247400776D11 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0BE1FBD247400776D11 /* PYSearchSuggestionViewController.m */; };
+		880EF0C91FBD247400776D11 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0C01FBD247400776D11 /* PYSearchViewController.m */; };
+		880EF0CA1FBD247400776D11 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0C21FBD247400776D11 /* UIColor+PYSearchExtension.m */; };
+		880EF0CB1FBD247400776D11 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0C41FBD247400776D11 /* UIView+PYSearchExtension.m */; };
+		880EF0D11FBD2F8100776D11 /* THCSegmentedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0CD1FBD2F8000776D11 /* THCSegmentedView.m */; };
+		880EF0D21FBD2F8100776D11 /* THCSegmentedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0D01FBD2F8000776D11 /* THCSegmentedButton.m */; };
+		880EF0D51FBD2FC200776D11 /* HomeSearchAFVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0D41FBD2FC200776D11 /* HomeSearchAFVC.m */; };
+		880EF0D81FBD2FE200776D11 /* HomeSearchAFDevicesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0D71FBD2FE200776D11 /* HomeSearchAFDevicesVC.m */; };
+		880EF0DB1FBD300C00776D11 /* HomeSearchVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0DA1FBD300C00776D11 /* HomeSearchVideoVC.m */; };
+		880EF0DE1FBD302700776D11 /* HomeSearchAccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0DD1FBD302700776D11 /* HomeSearchAccessVC.m */; };
+		880EF0E31FBD31B600776D11 /* UIImage+THCAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0E21FBD31B500776D11 /* UIImage+THCAddtion.m */; };
+		880EF0E61FBD329300776D11 /* NSString+THCAddtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0E51FBD329300776D11 /* NSString+THCAddtion.m */; };
 		881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F21F7B58D500AE83FF /* FacilityDetailModel.m */; };
 		881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F51F7B5DA600AE83FF /* BaseModel.m */; };
 		881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 881322F91F7BE14E00AE83FF /* LatticePointDetailHeaderView.m */; };
@@ -100,6 +116,16 @@
 		888EBFD11FB82F22006F8CCE /* PGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFCC1FB82F21006F8CCE /* PGPickerView.m */; };
 		88BE42C41F9D8F3600FA0067 /* DataEntryIdCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */; };
 		88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */; };
+		88C192141FBC32AB0048DEF1 /* libSocialSMS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C192061FBC32AB0048DEF1 /* libSocialSMS.a */; };
+		88C192151FBC32AB0048DEF1 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C192091FBC32AB0048DEF1 /* libSocialWeChat.a */; };
+		88C192161FBC32AB0048DEF1 /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C1920C1FBC32AB0048DEF1 /* UMSocialCore.framework */; };
+		88C192171FBC32AB0048DEF1 /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C1920D1FBC32AB0048DEF1 /* UMSocialNetwork.framework */; };
+		88C192181FBC32AB0048DEF1 /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88C1920E1FBC32AB0048DEF1 /* UMSocialSDKPromptResources.bundle */; };
+		88C192191FBC32AB0048DEF1 /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C192101FBC32AB0048DEF1 /* libUMSocialLog.a */; };
+		88C1921A1FBC32AB0048DEF1 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88C192121FBC32AB0048DEF1 /* UMSocialSDKResources.bundle */; };
+		88C1921B1FBC32AB0048DEF1 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C192131FBC32AB0048DEF1 /* UShareUI.framework */; };
+		88C1921D1FBC33220048DEF1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C1921C1FBC33220048DEF1 /* libsqlite3.tbd */; };
+		88C1921F1FBC33450048DEF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C1921E1FBC33310048DEF1 /* CoreGraphics.framework */; };
 		88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */; };
 		88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */; };
 		88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CE3F301F7AB46B0075DCD9 /* LatticePointDetailVC.m */; };
@@ -323,6 +349,38 @@
 		880623BA1FB753DE00D89409 /* SaveUserHouseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveUserHouseVC.h; sourceTree = "<group>"; };
 		880623BB1FB753DE00D89409 /* SaveUserHouseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveUserHouseVC.m; sourceTree = "<group>"; };
 		880623BC1FB753DE00D89409 /* SaveUserHouseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveUserHouseVC.xib; sourceTree = "<group>"; };
+		880EF0B31FBD232300776D11 /* HomeSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchVC.h; sourceTree = "<group>"; };
+		880EF0B41FBD232300776D11 /* HomeSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchVC.m; sourceTree = "<group>"; };
+		880EF0B71FBD247400776D11 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
+		880EF0B81FBD247400776D11 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
+		880EF0B91FBD247400776D11 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
+		880EF0BA1FBD247400776D11 /* PYSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearch.h; sourceTree = "<group>"; };
+		880EF0BB1FBD247400776D11 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
+		880EF0BC1FBD247400776D11 /* PYSearchConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchConst.m; sourceTree = "<group>"; };
+		880EF0BD1FBD247400776D11 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		880EF0BE1FBD247400776D11 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
+		880EF0BF1FBD247400776D11 /* PYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchViewController.h; sourceTree = "<group>"; };
+		880EF0C01FBD247400776D11 /* PYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchViewController.m; sourceTree = "<group>"; };
+		880EF0C11FBD247400776D11 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
+		880EF0C21FBD247400776D11 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
+		880EF0C31FBD247400776D11 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
+		880EF0C41FBD247400776D11 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
+		880EF0CD1FBD2F8000776D11 /* THCSegmentedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCSegmentedView.m; sourceTree = "<group>"; };
+		880EF0CE1FBD2F8000776D11 /* THCSegmentedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCSegmentedView.h; sourceTree = "<group>"; };
+		880EF0CF1FBD2F8000776D11 /* THCSegmentedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCSegmentedButton.h; sourceTree = "<group>"; };
+		880EF0D01FBD2F8000776D11 /* THCSegmentedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCSegmentedButton.m; sourceTree = "<group>"; };
+		880EF0D31FBD2FC200776D11 /* HomeSearchAFVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchAFVC.h; sourceTree = "<group>"; };
+		880EF0D41FBD2FC200776D11 /* HomeSearchAFVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchAFVC.m; sourceTree = "<group>"; };
+		880EF0D61FBD2FE200776D11 /* HomeSearchAFDevicesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchAFDevicesVC.h; sourceTree = "<group>"; };
+		880EF0D71FBD2FE200776D11 /* HomeSearchAFDevicesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchAFDevicesVC.m; sourceTree = "<group>"; };
+		880EF0D91FBD300C00776D11 /* HomeSearchVideoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchVideoVC.h; sourceTree = "<group>"; };
+		880EF0DA1FBD300C00776D11 /* HomeSearchVideoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchVideoVC.m; sourceTree = "<group>"; };
+		880EF0DC1FBD302700776D11 /* HomeSearchAccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchAccessVC.h; sourceTree = "<group>"; };
+		880EF0DD1FBD302700776D11 /* HomeSearchAccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchAccessVC.m; sourceTree = "<group>"; };
+		880EF0E11FBD31B500776D11 /* UIImage+THCAddtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+THCAddtion.h"; sourceTree = "<group>"; };
+		880EF0E21FBD31B500776D11 /* UIImage+THCAddtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+THCAddtion.m"; sourceTree = "<group>"; };
+		880EF0E41FBD329300776D11 /* NSString+THCAddtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+THCAddtion.h"; sourceTree = "<group>"; };
+		880EF0E51FBD329300776D11 /* NSString+THCAddtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+THCAddtion.m"; sourceTree = "<group>"; };
 		881322F11F7B58D500AE83FF /* FacilityDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailModel.h; sourceTree = "<group>"; };
 		881322F21F7B58D500AE83FF /* FacilityDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailModel.m; sourceTree = "<group>"; };
 		881322F41F7B5DA600AE83FF /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -448,6 +506,18 @@
 		88BE42C31F9D8F3600FA0067 /* DataEntryIdCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataEntryIdCardCell.m; sourceTree = "<group>"; };
 		88BE42C51F9D8F5C00FA0067 /* DataEntryImgPicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataEntryImgPicCell.h; sourceTree = "<group>"; };
 		88BE42C61F9D8F5C00FA0067 /* DataEntryImgPicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataEntryImgPicCell.m; sourceTree = "<group>"; };
+		88C192061FBC32AB0048DEF1 /* libSocialSMS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSMS.a; sourceTree = "<group>"; };
+		88C192071FBC32AB0048DEF1 /* UMSocialSmsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSmsHandler.h; sourceTree = "<group>"; };
+		88C192091FBC32AB0048DEF1 /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
+		88C1920A1FBC32AB0048DEF1 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		88C1920C1FBC32AB0048DEF1 /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
+		88C1920D1FBC32AB0048DEF1 /* UMSocialNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialNetwork.framework; sourceTree = "<group>"; };
+		88C1920E1FBC32AB0048DEF1 /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
+		88C192101FBC32AB0048DEF1 /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
+		88C192121FBC32AB0048DEF1 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		88C192131FBC32AB0048DEF1 /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
+		88C1921C1FBC33220048DEF1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		88C1921E1FBC33310048DEF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		88CE3F2A1F7AADBB0075DCD9 /* FacilityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailVC.h; sourceTree = "<group>"; };
 		88CE3F2B1F7AADBB0075DCD9 /* FacilityDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailVC.m; sourceTree = "<group>"; };
 		88CE3F2C1F7AADBB0075DCD9 /* FacilityDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacilityDetailVC.xib; sourceTree = "<group>"; };
@@ -765,6 +835,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C1921F1FBC33450048DEF1 /* CoreGraphics.framework in Frameworks */,
+				88C192161FBC32AB0048DEF1 /* UMSocialCore.framework in Frameworks */,
+				88C192141FBC32AB0048DEF1 /* libSocialSMS.a in Frameworks */,
+				88C1921D1FBC33220048DEF1 /* libsqlite3.tbd in Frameworks */,
+				88C192171FBC32AB0048DEF1 /* UMSocialNetwork.framework in Frameworks */,
+				88C1921B1FBC32AB0048DEF1 /* UShareUI.framework in Frameworks */,
+				88C192191FBC32AB0048DEF1 /* libUMSocialLog.a in Frameworks */,
+				88C192151FBC32AB0048DEF1 /* libSocialWeChat.a in Frameworks */,
 				8B39D7FCE5E32A09CC5526C7 /* libPods-SkyNet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +871,27 @@
 				E35AFE70742AA3CFAACD74D0 /* Pods-SkyNet.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		880EF0B61FBD247400776D11 /* PYSearch */ = {
+			isa = PBXGroup;
+			children = (
+				880EF0B71FBD247400776D11 /* NSBundle+PYSearchExtension.h */,
+				880EF0B81FBD247400776D11 /* NSBundle+PYSearchExtension.m */,
+				880EF0B91FBD247400776D11 /* PYSearch.bundle */,
+				880EF0BA1FBD247400776D11 /* PYSearch.h */,
+				880EF0BB1FBD247400776D11 /* PYSearchConst.h */,
+				880EF0BC1FBD247400776D11 /* PYSearchConst.m */,
+				880EF0BD1FBD247400776D11 /* PYSearchSuggestionViewController.h */,
+				880EF0BE1FBD247400776D11 /* PYSearchSuggestionViewController.m */,
+				880EF0BF1FBD247400776D11 /* PYSearchViewController.h */,
+				880EF0C01FBD247400776D11 /* PYSearchViewController.m */,
+				880EF0C11FBD247400776D11 /* UIColor+PYSearchExtension.h */,
+				880EF0C21FBD247400776D11 /* UIColor+PYSearchExtension.m */,
+				880EF0C31FBD247400776D11 /* UIView+PYSearchExtension.h */,
+				880EF0C41FBD247400776D11 /* UIView+PYSearchExtension.m */,
+			);
+			path = PYSearch;
 			sourceTree = "<group>";
 		};
 		88299C651F7CC40D0070067C /* Monitor */ = {
@@ -982,6 +1081,71 @@
 			path = PGPickerView;
 			sourceTree = "<group>";
 		};
+		88C192031FBC32AB0048DEF1 /* UMSocial */ = {
+			isa = PBXGroup;
+			children = (
+				88C192041FBC32AB0048DEF1 /* SocialLibraries */,
+				88C1920B1FBC32AB0048DEF1 /* UMSocialSDK */,
+				88C1920F1FBC32AB0048DEF1 /* UMSocialSDKPlugin */,
+				88C192111FBC32AB0048DEF1 /* UMSocialUI */,
+			);
+			path = UMSocial;
+			sourceTree = "<group>";
+		};
+		88C192041FBC32AB0048DEF1 /* SocialLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				88C192051FBC32AB0048DEF1 /* SMS */,
+				88C192081FBC32AB0048DEF1 /* WeChat */,
+			);
+			path = SocialLibraries;
+			sourceTree = "<group>";
+		};
+		88C192051FBC32AB0048DEF1 /* SMS */ = {
+			isa = PBXGroup;
+			children = (
+				88C192061FBC32AB0048DEF1 /* libSocialSMS.a */,
+				88C192071FBC32AB0048DEF1 /* UMSocialSmsHandler.h */,
+			);
+			path = SMS;
+			sourceTree = "<group>";
+		};
+		88C192081FBC32AB0048DEF1 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				88C192091FBC32AB0048DEF1 /* libSocialWeChat.a */,
+				88C1920A1FBC32AB0048DEF1 /* UMSocialWechatHandler.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		88C1920B1FBC32AB0048DEF1 /* UMSocialSDK */ = {
+			isa = PBXGroup;
+			children = (
+				88C1920C1FBC32AB0048DEF1 /* UMSocialCore.framework */,
+				88C1920D1FBC32AB0048DEF1 /* UMSocialNetwork.framework */,
+				88C1920E1FBC32AB0048DEF1 /* UMSocialSDKPromptResources.bundle */,
+			);
+			path = UMSocialSDK;
+			sourceTree = "<group>";
+		};
+		88C1920F1FBC32AB0048DEF1 /* UMSocialSDKPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				88C192101FBC32AB0048DEF1 /* libUMSocialLog.a */,
+			);
+			path = UMSocialSDKPlugin;
+			sourceTree = "<group>";
+		};
+		88C192111FBC32AB0048DEF1 /* UMSocialUI */ = {
+			isa = PBXGroup;
+			children = (
+				88C192121FBC32AB0048DEF1 /* UMSocialSDKResources.bundle */,
+				88C192131FBC32AB0048DEF1 /* UShareUI.framework */,
+			);
+			path = UMSocialUI;
+			sourceTree = "<group>";
+		};
 		88F9C5621F8CC6DA00039A08 /* AccessControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1118,6 +1282,8 @@
 		A29BF69FCAF193BCDD4454C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88C1921E1FBC33310048DEF1 /* CoreGraphics.framework */,
+				88C1921C1FBC33220048DEF1 /* libsqlite3.tbd */,
 				8F39E4A5A3711AC45266AF99 /* libPods-SkyNet.a */,
 			);
 			name = Frameworks;
@@ -1178,6 +1344,16 @@
 			children = (
 				BF0C324A1F67CE48009FC882 /* HomeVC.h */,
 				BF0C324B1F67CE48009FC882 /* HomeVC.m */,
+				880EF0B31FBD232300776D11 /* HomeSearchVC.h */,
+				880EF0B41FBD232300776D11 /* HomeSearchVC.m */,
+				880EF0D31FBD2FC200776D11 /* HomeSearchAFVC.h */,
+				880EF0D41FBD2FC200776D11 /* HomeSearchAFVC.m */,
+				880EF0D61FBD2FE200776D11 /* HomeSearchAFDevicesVC.h */,
+				880EF0D71FBD2FE200776D11 /* HomeSearchAFDevicesVC.m */,
+				880EF0D91FBD300C00776D11 /* HomeSearchVideoVC.h */,
+				880EF0DA1FBD300C00776D11 /* HomeSearchVideoVC.m */,
+				880EF0DC1FBD302700776D11 /* HomeSearchAccessVC.h */,
+				880EF0DD1FBD302700776D11 /* HomeSearchAccessVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1442,6 +1618,8 @@
 		BF34EBB81F49CEBE00E05DF3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				880EF0B61FBD247400776D11 /* PYSearch */,
+				88C192031FBC32AB0048DEF1 /* UMSocial */,
 				BFFA09EE1F7A60C40019CFA8 /* Segment */,
 				BF0C32821F6A16F3009FC882 /* L2H_MulChoose */,
 				BF0C32071F6772EC009FC882 /* STTextHud */,
@@ -1586,6 +1764,14 @@
 		BF34ED511F49CEBF00E05DF3 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				880EF0E41FBD329300776D11 /* NSString+THCAddtion.h */,
+				880EF0E51FBD329300776D11 /* NSString+THCAddtion.m */,
+				880EF0E11FBD31B500776D11 /* UIImage+THCAddtion.h */,
+				880EF0E21FBD31B500776D11 /* UIImage+THCAddtion.m */,
+				880EF0CF1FBD2F8000776D11 /* THCSegmentedButton.h */,
+				880EF0D01FBD2F8000776D11 /* THCSegmentedButton.m */,
+				880EF0CE1FBD2F8000776D11 /* THCSegmentedView.h */,
+				880EF0CD1FBD2F8000776D11 /* THCSegmentedView.m */,
 				888EBFC41FB82F21006F8CCE /* PGPickerView */,
 				888EBFAE1FB82E69006F8CCE /* PGDatePicker */,
 				8815479D1F8DD5D6000F2C84 /* THCTextView.h */,
@@ -1925,6 +2111,7 @@
 				88FDD1DE1F94637D00946C38 /* AccessRecordVC.xib in Resources */,
 				881547A31F8DD7BA000F2C84 /* PoliceInteractionVC.xib in Resources */,
 				88299C8B1F7CE12B0070067C /* PlayBackVC.xib in Resources */,
+				880EF0C61FBD247400776D11 /* PYSearch.bundle in Resources */,
 				8815478B1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.xib in Resources */,
 				88DA3BBF1F9CF6260085F8FA /* DataEntryVC.xib in Resources */,
 				88FDD1F81F94C01100946C38 /* MemberControlVC.xib in Resources */,
@@ -1939,11 +2126,13 @@
 				881547861F8DC64F000F2C84 /* CommunityPoliceCell.xib in Resources */,
 				881547A81F8DDA41000F2C84 /* PoliceInteractionCell.xib in Resources */,
 				8815477E1F8DC048000F2C84 /* CommunityPoliceVC.xib in Resources */,
+				88C192181FBC32AB0048DEF1 /* UMSocialSDKPromptResources.bundle in Resources */,
 				88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */,
 				BF34EB421F49CDB600E05DF3 /* Assets.xcassets in Resources */,
 				881547AD1F8DDFE0000F2C84 /* PublicinteractionVC.xib in Resources */,
 				BF34EB401F49CDB600E05DF3 /* Main.storyboard in Resources */,
 				88299C861F7CE0F40070067C /* PTZControlVC.xib in Resources */,
+				88C1921A1FBC32AB0048DEF1 /* UMSocialSDKResources.bundle in Resources */,
 				88299C951F7CE1B40070067C /* PressSpeakVC.xib in Resources */,
 				BF0C32181F6772EC009FC882 /* STSuccess@2x.png in Resources */,
 				BF0C32141F6772EC009FC882 /* angle-mask@3x.png in Resources */,
@@ -2042,11 +2231,13 @@
 				BFA8C7B71F4BE1C5003A0BEE /* TAAbstractDotView.m in Sources */,
 				BF84BB031F5C5A14000FB4D8 /* UIView+Frame.m in Sources */,
 				88FDD1DD1F94637D00946C38 /* AccessRecordVC.m in Sources */,
+				880EF0D21FBD2F8100776D11 /* THCSegmentedButton.m in Sources */,
 				BF0C32161F6772EC009FC882 /* NSString+Size.m in Sources */,
 				BFFA0A0C1F7A685A0019CFA8 /* EventCell.m in Sources */,
 				BF3F8CFA1F6AC76A000EA801 /* NextGroupVC.m in Sources */,
 				88299C741F7CC80D0070067C /* MonitorItemModel.m in Sources */,
 				BFFA09F81F7A60C40019CFA8 /* MDMultipleSegmentLayout.m in Sources */,
+				880EF0D51FBD2FC200776D11 /* HomeSearchAFVC.m in Sources */,
 				88CE3F2D1F7AADBB0075DCD9 /* FacilityDetailVC.m in Sources */,
 				BF0C32611F67CE5D009FC882 /* ShortcutModel.m in Sources */,
 				881322FA1F7BE14E00AE83FF /* LatticePointDetailHeaderView.m in Sources */,
@@ -2073,6 +2264,7 @@
 				BF0C322E1F6774EB009FC882 /* NSData+CommonCrypto.m in Sources */,
 				88FDD1D81F94634000946C38 /* AccessMainVC.m in Sources */,
 				BF0C321B1F6772EC009FC882 /* STTextHudTool.m in Sources */,
+				880EF0C81FBD247400776D11 /* PYSearchSuggestionViewController.m in Sources */,
 				88299C851F7CE0F40070067C /* PTZControlVC.m in Sources */,
 				BF0C32321F67BC26009FC882 /* LoginViewModel.m in Sources */,
 				BF0C325C1F67CE48009FC882 /* HomeCell.m in Sources */,
@@ -2121,12 +2313,14 @@
 				881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
 				888EBFA71FB7CE4C006F8CCE /* MemberApplyModel.m in Sources */,
+				880EF0D81FBD2FE200776D11 /* HomeSearchAFDevicesVC.m in Sources */,
 				881547941F8DCC92000F2C84 /* CueReportCell.m in Sources */,
 				880361121F93B2D500A1A2F1 /* MonitorSecondPointModel.m in Sources */,
 				BF34EDEA1F49CEBF00E05DF3 /* ClientTool.m in Sources */,
 				888EBFC31FB82E69006F8CCE /* UIColor+PGHex.m in Sources */,
 				880623B31FB5F88400D89409 /* SelectDistrictFirstModel.m in Sources */,
 				BF34EDFE1F49CEBF00E05DF3 /* WKMessageProgressHUD.m in Sources */,
+				880EF0CA1FBD247400776D11 /* UIColor+PYSearchExtension.m in Sources */,
 				883EDBA31FB0013700C84016 /* ACVillageDoorModel.m in Sources */,
 				8803610C1F93B12000A1A2F1 /* MonitorSecondVC.m in Sources */,
 				BF7338811F77D3F40000FB8A /* NetDetailCell.m in Sources */,
@@ -2147,6 +2341,7 @@
 				BF34EDEC1F49CEBF00E05DF3 /* KYAlertView.m in Sources */,
 				BF7338841F77D4230000FB8A /* NetDetailModel.m in Sources */,
 				BF0C32BA1F6A16F4009FC882 /* MulChooseTable.m in Sources */,
+				880EF0C91FBD247400776D11 /* PYSearchViewController.m in Sources */,
 				88299C801F7CDEE00070067C /* MonitorPlayVC.m in Sources */,
 				880361061F93874B00A1A2F1 /* MonitorDistrictItemCell.m in Sources */,
 				8803611B1F93B4FD00A1A2F1 /* MonitorSecondCustomPointCell.m in Sources */,
@@ -2158,12 +2353,14 @@
 				BFFA09FA1F7A60C40019CFA8 /* MDMultipleSegmentViewCell.m in Sources */,
 				BF34EDF91F49CEBF00E05DF3 /* SDWaitingView.m in Sources */,
 				BF0C322C1F6774EB009FC882 /* GTMBase64.m in Sources */,
+				880EF0D11FBD2F8100776D11 /* THCSegmentedView.m in Sources */,
 				BF0C325B1F67CE48009FC882 /* HeadCell.m in Sources */,
 				BFA8C7C61F4C88BA003A0BEE /* RegisterVC.m in Sources */,
 				BF0C326F1F68C254009FC882 /* AFItemCell.m in Sources */,
 				88FDD1E11F94984B00946C38 /* AccessManiTopCell.m in Sources */,
 				BF34EEAE1F49CEBF00E05DF3 /* AreaModel.m in Sources */,
 				880361001F922AF800A1A2F1 /* NetDetailDistrictModel.m in Sources */,
+				880EF0E61FBD329300776D11 /* NSString+THCAddtion.m in Sources */,
 				BF34EDF81F49CEBF00E05DF3 /* SDPhotoBrowser.m in Sources */,
 				8803610F1F93B20500A1A2F1 /* MonitorSecondView.m in Sources */,
 				BF34EB3D1F49CDB600E05DF3 /* ViewController.m in Sources */,
@@ -2180,6 +2377,7 @@
 				8815477D1F8DC048000F2C84 /* CommunityPoliceVC.m in Sources */,
 				884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */,
 				8815478F1F8DCC10000F2C84 /* CueReportVC.m in Sources */,
+				880EF0E31FBD31B600776D11 /* UIImage+THCAddtion.m in Sources */,
 				880361151F93B2ED00A1A2F1 /* MonitorSecondGroupModel.m in Sources */,
 				BF34EEC41F49CEC000E05DF3 /* YQImageCompressTool.m in Sources */,
 				88FDD1E81F94BAE500946C38 /* AccessRecordCell.m in Sources */,
@@ -2189,6 +2387,7 @@
 				BF34EDFF1F49CEBF00E05DF3 /* WKProgressHUD.m in Sources */,
 				BF3F8CF71F6A2E16000EA801 /* NetPointModel.m in Sources */,
 				BF34EEC31F49CEC000E05DF3 /* XWRegularExpression.m in Sources */,
+				880EF0C51FBD247400776D11 /* NSBundle+PYSearchExtension.m in Sources */,
 				88F9C5781F8CCA1200039A08 /* ACDistrictModel.m in Sources */,
 				BF0C32BC1F6A16F4009FC882 /* TableChooseCell.m in Sources */,
 				BFFA09ED1F7A43C30019CFA8 /* VHLNavigation.m in Sources */,
@@ -2196,8 +2395,10 @@
 				881473421F8912F40064DF4D /* AFDistrictItemCell.m in Sources */,
 				BF34EEAA1F49CEBF00E05DF3 /* NotificationConst.m in Sources */,
 				88299C711F7CC7150070067C /* MonitorItemCell.m in Sources */,
+				880EF0DE1FBD302700776D11 /* HomeSearchAccessVC.m in Sources */,
 				BF0C322D1F6774EB009FC882 /* NSData+Base64.m in Sources */,
 				BFA8C7CC1F4C8ADC003A0BEE /* RegisterCell.m in Sources */,
+				880EF0B51FBD232300776D11 /* HomeSearchVC.m in Sources */,
 				888EBFBD1FB82E69006F8CCE /* NSBundle+PGDatePicker.m in Sources */,
 				88FDD1F21F94BFC800946C38 /* MemberApplyVC.m in Sources */,
 				8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */,
@@ -2206,9 +2407,11 @@
 				BF84BB021F5C5A14000FB4D8 /* UILabel+LXLabel.m in Sources */,
 				BFE3AF831F79E0AF00C90C36 /* MyInfo.m in Sources */,
 				88299C941F7CE1B40070067C /* PressSpeakVC.m in Sources */,
+				880EF0DB1FBD300C00776D11 /* HomeSearchVideoVC.m in Sources */,
 				BFA8C7BD1F4BE1C5003A0BEE /* UIView+SDExtension.m in Sources */,
 				88299C7C1F7CD3620070067C /* MonitorDetailListCell.m in Sources */,
 				88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */,
+				880EF0CB1FBD247400776D11 /* UIView+PYSearchExtension.m in Sources */,
 				BF34EB371F49CDB600E05DF3 /* main.m in Sources */,
 				8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */,
 				BF34EEAB1F49CEBF00E05DF3 /* AFNetAPIClient.m in Sources */,
@@ -2219,6 +2422,7 @@
 				88FDD1F71F94C01100946C38 /* MemberControlVC.m in Sources */,
 				881547811F8DC13D000F2C84 /* CommunityPoliceCell.m in Sources */,
 				BF0C325A1F67CE48009FC882 /* HomeViewModel.m in Sources */,
+				880EF0C71FBD247400776D11 /* PYSearchConst.m in Sources */,
 				BF0C32781F68C931009FC882 /* AFViewModel.m in Sources */,
 				BF84BAFE1F5C5A14000FB4D8 /* LxButton.m in Sources */,
 				881547A71F8DDA41000F2C84 /* PoliceInteractionCell.m in Sources */,
@@ -2393,6 +2597,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkyNet/Class/Home/View/Voice",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/UMSocialUI",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SkyNet/Expand/Macros/SkyNet.pch";
 				INFOPLIST_FILE = SkyNet/Info.plist;
@@ -2402,6 +2608,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkyNet/Class/Home/View/Voice/Vendor/AMR/lib",
 					"$(PROJECT_DIR)/SkyNet/Class/SelfCenter/myCircle/Chat/Record/voiceConvert/lib",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/UMSocialSDKPlugin",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rsl.SkyNet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2420,6 +2629,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkyNet/Class/Home/View/Voice",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/UMSocialUI",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SkyNet/Expand/Macros/SkyNet.pch";
 				INFOPLIST_FILE = SkyNet/Info.plist;
@@ -2429,6 +2640,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SkyNet/Class/Home/View/Voice/Vendor/AMR/lib",
 					"$(PROJECT_DIR)/SkyNet/Class/SelfCenter/myCircle/Chat/Record/voiceConvert/lib",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/SkyNet/Library/UMSocial/UMSocialSDKPlugin",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rsl.SkyNet;
 				PRODUCT_NAME = "$(TARGET_NAME)";

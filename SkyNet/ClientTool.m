@@ -9,6 +9,10 @@
 #import "ClientTool.h"
 #import "SLTabBar.h"
 #import "BaseNavigationC.h"
+#import "HomeVC.h"
+#import "PoliceVC.h"
+#import "MessageVC.h"
+#import "MyVC.h"
 @implementation ClientTool
 
 + (ClientTool *)sharedManager{
@@ -81,7 +85,53 @@
     
 }
 
-
++(UITabBarController *)setupCustomTabBarVC {
+    
+    UITabBarController *tabVC = [[UITabBarController alloc] init];
+    
+    HomeVC *homeVC = [[HomeVC alloc] init];
+    BaseNavigationC *homeNav = [[BaseNavigationC alloc] initWithRootViewController:homeVC];
+    
+    PoliceVC *policeVC = [[PoliceVC alloc] init];
+    BaseNavigationC *policeNav = [[BaseNavigationC alloc] initWithRootViewController:policeVC];
+    
+    MessageVC *messageVC = [[MessageVC alloc] init];
+    BaseNavigationC *messageNav = [[BaseNavigationC alloc] initWithRootViewController:messageVC];
+    
+    MyVC *myVC = [[MyVC alloc] init];
+    BaseNavigationC *myNav = [[BaseNavigationC alloc] initWithRootViewController:myVC];
+    
+    homeVC.title = @"首页";
+    policeVC.title = @"警务平台";
+    messageVC.title = @"消息";
+    myVC.title = @"我";
+    
+    //设置控制器图片(使用imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal,不被系统渲染成蓝色)
+    homeVC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_home_unselect"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    homeVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_home_selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    policeVC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_police_unselect"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    policeVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_police_selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    messageVC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_message_unselect"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    messageVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_message_selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    myVC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_my_unselect"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    myVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_my_selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    //改变tabbarController 文字选中颜色(默认渲染为蓝色)
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName:[UIColor lightGrayColor]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName:NAVI_COLOR} forState:UIControlStateSelected];
+    
+    //创建一个数组包含四个导航栏控制器
+    NSArray *vcArry = [NSArray arrayWithObjects:homeNav,policeNav,messageNav,myNav,nil];
+    
+    //将数组传给UITabBarController
+    tabVC.viewControllers = vcArry;
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
+    view.frame = tabVC.tabBar.bounds;
+    [tabVC.tabBar insertSubview:view atIndex:0];
+    return tabVC;
+}
 
 // 开始定位
 -(void)setupLocationManager{

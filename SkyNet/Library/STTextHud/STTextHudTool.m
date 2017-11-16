@@ -65,12 +65,13 @@
     }
     [hud showText:title withSecond:timeOut];
 }
+
 + (void)showTextTitle:(NSString *)title WithCustomVew:(UIView *)customView{
     STTextHud * hud = [[STTextHud alloc]init];
     hud.priority = Priority_Hight;
     hud.hudStyle = STHudLoadingWithCustomView;
     hud.customView = customView;
-    [hud showText:title withSecond:111];
+    [hud showText:title withSecond:defaultDely];
 }
 
 

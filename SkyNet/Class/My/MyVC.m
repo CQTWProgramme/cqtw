@@ -19,20 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"我的";
+    self.title=@"我";
     [self.view addSubview:self.myView];
 }
-
-//-(void)viewWillAppear:(BOOL)animated{
-//
-//    self.navigationController.navigationBarHidden=YES;
-//}
-//
-//-(void)viewWillDisappear:(BOOL)animated{
-//
-//    self.navigationController.navigationBarHidden=NO;
-//}
-
 
 -(void)selectRowWithIndex:(NSInteger)index{
     
@@ -60,7 +49,6 @@
             [self.navigationController pushViewController:aboutus animated:YES];
         }
             break;
-       
         default:
             break;
     }
@@ -74,14 +62,25 @@
 
 
 -(MyView *)myView{
-    
+    MJWeakSelf
     if (!_myView) {
         _myView=[[MyView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT)];
         _myView.delegate=self;
         _myView.logOutBlock = ^{
-            [ClientTool removeToken];
-            [STTextHudTool loadingWithTitle:@"退出"];
-            [[[UIApplication sharedApplication].delegate window] setRootViewController:[ClientTool  setupLogVC]];
+            UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认退出登录?" preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertControl addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+                [ClientTool removeToken];
+                [STTextHudTool loadingWithTitle:@"退出"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
+                [UIApplication sharedApplication].keyWindow.rootViewController= [ClientTool  setupLogVC];
+            }]];
+            
+            [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+            
+            // 3.显示alertController:presentViewController
+            [weakSelf presentViewController:alertControl animated:YES completion:nil];
         };
     }
     return _myView;

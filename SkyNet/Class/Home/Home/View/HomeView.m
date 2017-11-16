@@ -114,10 +114,10 @@
     CGFloat horizonMargin=20;
     CGFloat horizonEdgeInset =30;
     CGFloat itemW =(SCREEN_WIDTH-2*horizonEdgeInset-2*horizonMargin)/rowNumber;
-    NSArray * titleArr =@[@"安防",@"监控",@"门禁",@"安防",@"监控",@"门禁"];
-    NSArray * imageArr =@[@"home_security",@"home_monitor",@"home_door",@"home_security",@"home_monitor",@"home_door"];
+    NSArray * titleArr =@[@"安防",@"监控",@"门禁"];
+    NSArray * imageArr =@[@"home_security",@"home_monitor",@"home_door"];
     NSMutableArray *temp = [NSMutableArray new];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 3; i++) {
         
         MenuItem * item =[MenuItem new];
         item.backgroundColor=[UIColor clearColor];

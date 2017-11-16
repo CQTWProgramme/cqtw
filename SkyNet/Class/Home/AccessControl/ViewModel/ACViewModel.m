@@ -38,6 +38,8 @@
                 }
             }
             super.returnBlock(modelArr);
+        }else {
+            [STTextHudTool showErrorText:responseObject[@"message"]];
         }
         
     } progress:^(NSProgress *progress) {
@@ -55,11 +57,13 @@
     [[AFNetAPIClient sharedJsonClient].setRequest(IsNeedCertification).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
+        NSString *data = @"";
         if (code.integerValue==1) {
             long longData = [responseObject[@"data"] longValue];
-            NSString *data = [NSString stringWithFormat:@"%@",@(longData)];
-            super.returnBlock(data);
+            data = [NSString stringWithFormat:@"%@",@(longData)];
         }
+        NSDictionary *dic = @{@"request":code,@"data":data};
+        super.returnBlock(dic);
     } progress:^(NSProgress *progress) {
         
         
@@ -219,7 +223,9 @@
         
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
-        super.returnBlock(code);
+        NSString *message = responseObject[@"message"];
+        NSDictionary *dic = @{@"code":code,@"message":message};
+        super.returnBlock(dic);
         
     } progress:^(NSProgress *progress) {
         
@@ -280,6 +286,8 @@
                 }
             }
             super.returnBlock(mutableArr);
+        }else {
+            [STTextHudTool showErrorText:responseObject[@"message"]];
         }
         
     } progress:^(NSProgress *progress) {
@@ -341,6 +349,8 @@
                 }
             }
             super.returnBlock(mutableArr);
+        }else {
+            [STTextHudTool showErrorText:responseObject[@"message"]];
         }
         
     } progress:^(NSProgress *progress) {
@@ -371,6 +381,8 @@
                 }
             }
             super.returnBlock(mutableArr);
+        }else {
+            [STTextHudTool showErrorText:responseObject[@"message"]];
         }
         
     } progress:^(NSProgress *progress) {
@@ -464,6 +476,8 @@
                 }
             }
             super.returnBlock(mutableArr);
+        }else {
+            [STTextHudTool showErrorText:responseObject[@"message"]];
         }
         
     } progress:^(NSProgress *progress) {
