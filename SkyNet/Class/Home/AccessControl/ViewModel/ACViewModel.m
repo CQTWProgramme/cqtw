@@ -358,7 +358,7 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        [STTextHudTool showErrorText:@"开门失败"];
+        [STTextHudTool showErrorText:[NSString stringWithFormat:@"错误代码:%@",@(error.code)]];
         
     }];
 }
@@ -413,6 +413,8 @@
                 }
             }
             super.returnBlock(mutableArr);
+        }else {
+            [STTextHudTool showErrorText:responseObject[@"message"]];
         }
         
     } progress:^(NSProgress *progress) {

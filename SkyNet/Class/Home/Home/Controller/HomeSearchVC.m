@@ -25,7 +25,6 @@ typedef NS_ENUM(NSInteger, SearchType) {
 
 @interface HomeSearchVC ()<MDMultipleSegmentViewDeletegate,
 MDFlipCollectionViewDelegate>
-@property (nonatomic, copy)NSString *searchStr;
 @property (nonatomic, weak) UILabel *titleLabel;
 @property (nonatomic, strong)UIScrollView *mainScrollView;
 @property(nonatomic,strong)MDMultipleSegmentView *segView;
@@ -48,16 +47,16 @@ MDFlipCollectionViewDelegate>
 }
 
 - (void)setupTitleView {
-    UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(50, 10, SCREEN_WIDTH - 120, 30)];
+    UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(35, 10, SCREEN_WIDTH - 150, 30)];
     searchView.backgroundColor = [UIColor whiteColor];
-    searchView.layer.cornerRadius = 10;
+    searchView.layer.cornerRadius = 15;
     searchView.layer.masksToBounds = YES;
     searchView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleSearchAction:)];
     [searchView addGestureRecognizer:tap];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 20, 20)];
-    imageView.image = [UIImage imageNamed:@"home_search"];
+    imageView.image = [UIImage imageNamed:@"home_titlesearch"];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 10, 0, searchView.width - 40, searchView.height)];
     titleLabel.textColor = [UIColor lightGrayColor];
@@ -79,20 +78,33 @@ MDFlipCollectionViewDelegate>
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"清空" forState:UIControlStateNormal];
     [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(showSearchVC) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
+- (void)clearAction {
+    if ([self.titleLabel.text isEqualToString:@"请输入搜索关键词"]) {
+        [STTextHudTool showErrorText:@"搜索内容已清空"];
+        return;
+    }
+    self.titleLabel.text = @"请输入搜索关键词";
+}
+
 - (void)showSearchVC {
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"请输入搜索关键字" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        self.searchStr = searchText;
-        self.titleLabel.text = searchText;
+    MJWeakSelf
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"请输入搜索关键词" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         [searchViewController dismissViewControllerAnimated:YES completion:^{
+            if ([searchText isEqualToString:@""]) {
+                [STTextHudTool showErrorText:@"请输入搜索关键词"];
+                return;
+            }else {
+                weakSelf.titleLabel.text = searchText;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"GetSearchResultNotification" object:nil userInfo:@{@"searchText":self.titleLabel.text,@"type":@(self.mySearchType)}];
+            }
         }];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"GetSearchResultNotification" object:nil userInfo:@{@"searchText":searchText,@"type":@(self.mySearchType)}];
     }];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav animated:YES completion:nil];

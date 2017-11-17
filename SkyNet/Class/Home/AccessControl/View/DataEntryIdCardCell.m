@@ -31,7 +31,7 @@
     self.backImageView.frame = CGRectMake(0, 0, self.width, self.height);
     self.addImageView.frame = CGRectMake((self.width - 15) / 2, (self.height - 10) / 2 - 15, 15, 15);
     self.contentLabel.frame = CGRectMake(0, self.addImageView.bottom + 10, self.contentView.frame.size.width, 15);
-    self.deleteButton.frame = CGRectMake(self.width - 30, 0, 30, 30);
+    self.deleteButton.frame = CGRectMake(self.width - 15, 0, 15, 15);
 }
 
 - (void)setupViews {
@@ -80,12 +80,17 @@
 -(void)setModel:(IDImagePickModel *)model {
     _model = model;
     if (_model.isEmpty) {
+        self.contentView.layer.borderColor = [UIColor clearColor].CGColor;
         [self addBorderToLayer:self.contentView];
         self.addImageView.hidden = NO;
         self.contentLabel.hidden = NO;
         self.backImageView.hidden = YES;
         self.deleteButton.hidden = YES;
     }else {
+        self.contentView.layer.borderColor = NAVI_COLOR.CGColor;
+        self.contentView.layer.cornerRadius = 3;
+        self.contentView.layer.masksToBounds = YES;
+        self.contentView.layer.borderWidth = 1;
         self.addImageView.hidden = YES;
         self.contentLabel.hidden = YES;
         self.backImageView.hidden = NO;

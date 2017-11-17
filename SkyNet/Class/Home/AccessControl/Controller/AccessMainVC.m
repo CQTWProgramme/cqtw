@@ -46,7 +46,6 @@ static const NSString *doorKey = @"DoorKey";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.selectedIndex = 0;
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupBottomButton];
     [self setupLocation];
@@ -137,6 +136,7 @@ static const NSString *doorKey = @"DoorKey";
 - (void)loadDataWithLatitude:(NSString *)latitude Longitude:(NSString *)longitude {
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
+         self.selectedIndex = 0;
         [self.bottomCollectionView.mj_header endRefreshing];
         if (self.dataArray.count > 0) {
             [self.dataArray removeAllObjects];

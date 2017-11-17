@@ -107,7 +107,7 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (indexPath.row == self.imgDataArray.count) {
         if (self.imgDataArray.count >= 1) {
-            [STTextHudTool showErrorText:@"人脸照片已选取"];
+            [STTextHudTool showErrorText:@"目前只支持一张人脸照"];
             return;
         }else {
             
@@ -240,7 +240,7 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
         NSDictionary *dataDic = returnValue;
-        self.visitorPasswordLabel.text = dataDic[@"temporaryPword"];
+        self.visitorPasswordLabel.text = [NSString stringWithFormat:@"%@#",dataDic[@"temporaryPword"]];
         self.openDoorHrefLabel.text = dataDic[@"remoteConnection"];
         self.cardNumId = dataDic[@"cardnumId"];
         [self showViewAction];
@@ -316,33 +316,25 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     
     mobile = [mobile stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (mobile.length != 11) {
-        
         return NO;
-        
     }else{
-        
         /**
          
          * 移动号段正则表达式
          
          */
-        
         NSString *CM_NUM = @"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$";
-        
         /**
          
          * 联通号段正则表达式
          
          */
-        
         NSString *CU_NUM = @"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$";
-        
         /**
          
          * 电信号段正则表达式
          
          */
-        
         NSString *CT_NUM = @"^((133)|(153)|(177)|(18[0,1,9]))\\d{8}$";
         
         NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM_NUM];
@@ -357,8 +349,6 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
         
         BOOL isMatch3 = [pred3 evaluateWithObject:mobile];
         
-        
-        
         if (isMatch1 || isMatch2 || isMatch3) {
             
             return YES;
@@ -368,7 +358,6 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
             return NO;
             
         }
-        
     }
 }
 
@@ -405,11 +394,11 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     //创建网页内容对象
     NSString *thumbURL =  @"AppIcon";
     NSString *address = [NSString stringWithFormat:@"%@[%@]",self.model.disName,self.model.houseName];
-    NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,self.openDoorHrefLabel.text,address];
+    NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,@"https://city.cqtianwang.com/app/visitorsOpenDoor",address];
     
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"" descr:descr thumImage:thumbURL];
     //设置网页地址
-    shareObject.webpageUrl = @"https://city.cqtianwang.com/app/visitorsOpenDoor";
+    shareObject.webpageUrl = [NSString stringWithFormat:@"%@",self.openDoorHrefLabel.text];
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

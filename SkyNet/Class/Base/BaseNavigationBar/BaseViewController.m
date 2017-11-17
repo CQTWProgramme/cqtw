@@ -31,15 +31,27 @@
 
 -(void)setPublicConfig{
     
-     [self vhl_setNavBackgroundColor:NAVI_COLOR];//颜色
+//     [self vhl_setNavBackgroundColor:NAVI_COLOR];//颜色
+    self.navigationController.navigationBar.translucent = YES;
+    [self vhl_setNavBarBackgroundImage:[self createImageWithColor:NAVI_COLOR]];//颜色
      [self vhl_setNavigationSwitchStyle:VHLNavigationSwitchStyleFakeNavBar];//过度方式
      [self vhl_setNavBarShadowImageHidden:YES];
      [self vhl_setNavBarBackgroundAlpha:1.0f];
      [self vhl_setNavBarTintColor:[UIColor blackColor]];
      [self vhl_setNavBarTitleColor:[UIColor whiteColor]];
      [self vhl_setStatusBarStyle:UIStatusBarStyleDefault];
-   
-    
+}
+
+-(UIImage*)createImageWithColor:(UIColor*) color
+{
+    CGRect rect=CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

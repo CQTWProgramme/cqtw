@@ -26,10 +26,11 @@
 #pragma mark 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"首页";
-    [self createRightItem];
-    //self.navBackColor = [UIColor clearColor];
+    self.navigationItem.title = @"";
+    [self vhl_setNavBackgroundColor:[UIColor clearColor]];
+    [self vhl_setNavBarBackgroundAlpha:0];
     [self.view addSubview:self.homeView];
+    [self createRightItem];
     [self getAdverList];
 }
 
@@ -37,11 +38,12 @@
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.tag = 0;
-    rightBtn.frame=CGRectMake(0,0,25,25);
+    rightBtn.frame=CGRectMake(0 ,0,25,25);
     [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(toSearchAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+    //[self.view addSubview:rightBtn];
 }
 
 - (void)toSearchAction:(UIButton *)sender {

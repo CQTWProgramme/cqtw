@@ -27,7 +27,7 @@
     [super layoutSubviews];
     self.backImageView.frame = CGRectMake(0, 0, self.width, self.height);
     self.addImageView.frame = CGRectMake((self.width - 13) / 2, (self.height - 13) / 2, 13, 13);
-    self.deleteButton.frame = CGRectMake(self.width - 30, 0, 30, 30);
+    self.deleteButton.frame = CGRectMake(self.width - 15, 0, 15, 15);
 }
 
 - (void)setupViews {
@@ -65,15 +65,21 @@
 -(void)setIsLast:(BOOL)isLast {
     _isLast = isLast;
     if (_isLast) {
+        self.contentView.layer.borderColor = [UIColor clearColor].CGColor;
         [self addBorderToLayer:self.contentView];
         self.addImageView.hidden = NO;
         self.backImageView.hidden = YES;
         self.deleteButton.hidden = YES;
     }else {
+        self.contentView.layer.borderColor = NAVI_COLOR.CGColor;
+        self.contentView.layer.cornerRadius = 3;
+        self.contentView.layer.masksToBounds = YES;
+        self.contentView.layer.borderWidth = 1;
         self.addImageView.hidden = YES;
         self.backImageView.hidden = NO;
         self.deleteButton.hidden = NO;
     }
+    
 }
 
 - (void)deleteAction {

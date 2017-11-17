@@ -23,7 +23,7 @@
     NSString *searchText = [notification.userInfo objectForKey:@"searchText"];
     NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
     if (type == 0) {
-        NSLog(@"searchText------%@",searchText);
+        
     }
 }
 

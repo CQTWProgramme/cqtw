@@ -186,7 +186,7 @@
         }];
 //
         // 马上进入刷新状态
-        [_myTableView.mj_header beginRefreshing];
+        //[_myTableView.mj_header beginRefreshing];
         
         //        //..上拉刷新
         //        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
