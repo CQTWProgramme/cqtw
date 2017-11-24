@@ -29,12 +29,9 @@
     
     _currPage=0;
     _pageSize=10;
-    
-    
     self.view.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:self.mySearchBar];
     [self createRightItem];
-//     self.dataArr = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
     [self.view addSubview:self.myTable];
      [self setNavBackButtonImage:ImageNamed(@"back")];
     self.title=@"新增分组";
@@ -80,7 +77,7 @@
        
         NSString  *code =[NSString stringWithFormat:@"%@",returnValue[@"code"]];
         if ([code isEqualToString:@"1"]) {
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"AddGroupPointVCNotification" object:nil];
            [weakSelf.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1]animated:YES];
             
         }
@@ -90,20 +87,13 @@
     } WithFailureBlock:^{
         
     }];
-    
- [afViewModel requestAddCustomData:_customId dxlx:@"0" ids:[afViewModel componentsInput:self.selectArr]];
-    
-
-    
-    
-    
-    
+    NSString *type = [NSString stringWithFormat:@"%@",@(self.type)];
+    [afViewModel requestAddCustomData:_customId dxlx:type ids:[afViewModel componentsInput:self.selectArr]];
 }
 
 
 #pragma mark 下拉刷新，上拉加载
--(void)refreshMyTabel:(NSInteger)page pageSize:(NSInteger)pageSize{
-    
+-(void)refreshMyTabel:(NSInteger)page pageSize:(NSInteger)pageSize withQuery:(NSString *)query{
     
     MJWeakSelf
     AFViewModel * afViewModel =[AFViewModel new];
@@ -122,9 +112,6 @@
         if (weakSelf.myRefreshView == weakSelf.myTable.MyTable.mj_header) {
             [weakSelf.dataArr removeAllObjects];
             weakSelf.dataArr=arrayM;
-            weakSelf.currPage=0;
-            weakSelf.pageSize=10;
-            // weakSelf.mainView.myTableView.mj_footer.hidden =weakSelf.mainView.hotNewsArr.count==0?YES:NO;
             
         }else if(weakSelf.myRefreshView ==weakSelf.myTable.MyTable.mj_footer){
             
@@ -149,15 +136,10 @@
     } WithFailureBlock:^{
         
     }];
-    
-    [afViewModel requestBdcDataLike:@"0" gn:@"1" query:@"" currPage:page pageSize:pageSize];
-    
-    
-    
+    NSString *type = [NSString stringWithFormat:@"%@",@(self.type)];
+    NSString *gn = [NSString stringWithFormat:@"%@",@(self.gn)];
+    [afViewModel requestBdcDataLike:type gn:gn query:query currPage:page pageSize:pageSize];
 }
-
-
-
 
 #pragma mark 搜索框懒加载
 -(UISearchBar * )mySearchBar{
@@ -177,13 +159,16 @@
         _mySearchBar.showsCancelButton=YES;
 
     }
-    
-    
     return _mySearchBar;
-    
 }
 
-
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    if ([searchBar.text isEqualToString:@""]) {
+        [STTextHudTool showErrorText:@"请输入搜索内容"];
+        return;
+    }
+    [self.myTable.MyTable.mj_header beginRefreshing];
+}
 
 #pragma mark 表格懒加载
 -(MulChooseTable *)myTable{
@@ -193,28 +178,13 @@
         
         _myTable = [MulChooseTable ShareTableWithFrame:CGRectMake(0, self.mySearchBar.bottom, SCREEN_WIDTH, SCREEN_HEIGHT-self.mySearchBar.bottom) HeaderTitle:@"全选"];
         
-        
-        
-//        [_myTable.MyTable setReloadBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTable.MyTable.mj_header;
-//            
-//            weakSelf.currPage = 0;
-//            weakSelf.pageSize=10;
-//            
-//            
-//            [weakSelf refreshMyTabel:weakSelf.currPage pageSize:weakSelf.pageSize];
-//        }];
-        
         //..下拉刷新
         _myTable.MyTable.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             weakSelf.myRefreshView = _myTable.MyTable.mj_header;
             weakSelf.currPage = 0;
             weakSelf.pageSize=10;
-            
-            
-            [weakSelf refreshMyTabel:weakSelf.currPage pageSize:weakSelf.pageSize];
-            
-            
+        
+            [weakSelf refreshMyTabel:weakSelf.currPage pageSize:weakSelf.pageSize withQuery:self.mySearchBar.text];
         }];
         
         // 马上进入刷新状态
@@ -223,20 +193,16 @@
         //..上拉刷新
         _myTable.MyTable.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             weakSelf.myRefreshView = weakSelf.myTable.MyTable.mj_footer;
-            weakSelf.currPage = weakSelf.currPage + 5;
+            weakSelf.currPage = weakSelf.currPage + 1;
             weakSelf.pageSize=10;
-           [weakSelf refreshMyTabel:weakSelf.currPage pageSize:weakSelf.pageSize];
+           [weakSelf refreshMyTabel:weakSelf.currPage pageSize:weakSelf.pageSize withQuery:self.mySearchBar.text];
             
         }];
         
         _myTable.MyTable.mj_footer.hidden = NO;
-        
-
-        
     }
     
     return _myTable;
-    
 }
 
 
@@ -257,4 +223,7 @@
     return _selectArr;
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

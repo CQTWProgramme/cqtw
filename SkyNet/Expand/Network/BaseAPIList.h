@@ -92,6 +92,9 @@
 //获取设备详情通道列表数据
 #define FacilityDetailBranchListData                      POST_INTERFACE(@"api/basic/selectChannelPageByDevice")
 
+//根据网点查询用户所有设备通道
+#define SelectChannelPageByBranch                      POST_INTERFACE(@"api/basic/selectChannelPageByBranch")
+
 //根据通道ID查询详情
 #define FacilityDetailChannelData                      POST_INTERFACE(@"api/bean/getChannelById")
 

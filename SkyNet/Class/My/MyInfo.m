@@ -23,17 +23,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-     self.title=@"我的资料";
-    
+    self.title=@"我的资料";
+    [self setNavBackButtonImage:ImageNamed(@"back")];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self createRightItem];
+    [self createUI];
 }
 
+-(void)createRightItem{
+    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame=CGRectMake(0,0,25,25);
+    [rightBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(saveInfoAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
+-(void)saveInfoAction {
+    
+}
 
 -(void)createUI{
     
     UIScrollView * scollView=[UIScrollView new];
     [self.view addSubview:scollView];
-    scollView.sd_layout.spaceToSuperView(UIEdgeInsetsZero);
+    scollView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
     
     UILabel * phoneLabel =[UILabel new];
     phoneLabel.text=@"手机号";
@@ -109,10 +123,8 @@
     .topSpaceToView(_nicknameText, PADDING)
     .rightEqualToView(scollView)
     .heightIs(LINE_H);
-
-
-    //性别
     
+    //性别
     UILabel * sexLabel =[UILabel new];
     sexLabel.text=@"性别";
     sexLabel.textAlignment=NSTextAlignmentLeft;
@@ -178,7 +190,7 @@
     .heightIs(CONTROL_H);
     
     _signText=[UITextField new];
-    _signText.placeholder=@"请输入您的签名";
+    _signText.placeholder=@"请填写个性签名";
     [_signText setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     _signText.clearButtonMode=UITextFieldViewModeAlways;
     _signText.keyboardType=UITextBorderStyleNone;
@@ -199,9 +211,9 @@
     .topSpaceToView(_signText, PADDING)
     .rightEqualToView(scollView)
     .heightIs(LINE_H);
+}
 
-
-    
+- (void)sexSelect {
     
 }
 

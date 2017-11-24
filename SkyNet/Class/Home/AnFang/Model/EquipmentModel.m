@@ -14,27 +14,13 @@
     NSDictionary * param =@{@"branchId":branchId,@"sbgn":@(1),@"currPage":@(currentPage),@"pageSize":@(pageSize),@"state":@"602"};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDevicePageByBranch).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
-        [STTextHudTool hideSTHud];
-        NSString * code=responseObject[@"code"];
-        if (code.integerValue==1) {
-            NSMutableArray *muArr = [NSMutableArray array];
-            NSDictionary * dic = responseObject[@"data"];
-            NSArray *arr = dic[@"rows"];
-            if (arr.count > 0) {
-                for (NSDictionary *dic1 in arr) {
-                    EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
-                    [muArr addObject:model];
-                }
-            }
-            success(muArr);
-        }
-        
+        success(responseObject);
     } progress:^(NSProgress *progress) {
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(error);
-        [STTextHudTool hideSTHud];
+        [STTextHudTool showErrorText:@"请求失败"];
         
     }];
 }

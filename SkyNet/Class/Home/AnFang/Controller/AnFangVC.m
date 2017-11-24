@@ -29,11 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title=@"安防";
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self createRightItem];
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"AddGroupPointVCNotification" object:nil];
      [self.view addSubview:self.afView];
 }
 
@@ -56,24 +55,17 @@
 
 #pragma mark 下拉刷新
 -(void)reloadTableView{
-    
-    __weak typeof(self)weakSelf =self;
-    dispatch_sync(dispatch_queue_create("getSumDataQueue", DISPATCH_QUEUE_SERIAL), ^{
-        if (weakSelf.dataArray.count > 0) {
-            [weakSelf.dataArray removeAllObjects];
-        }
-        [weakSelf getAfDistrictList];
-    });
-
+    [self getAfDistrictList];
 }
 
 #pragma mark 查询安防默认分组
 -(void)getAfDistrictList{
-    
     MJWeakSelf
-    
     AFViewModel * afViewModel =[AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+        if (weakSelf.dataArray.count > 0) {
+            [weakSelf.dataArray removeAllObjects];
+        }
         [weakSelf.dataArray addObject:returnValue];
         [weakSelf getAfList];
     } WithErrorBlock:^(id errorCode) {
@@ -88,19 +80,15 @@
 
 #pragma mark 查询安防自定义分组
 -(void)getAfList{
-    
     MJWeakSelf
     AFViewModel * afViewModel =[AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
         
         [weakSelf.dataArray addObject:returnValue];
         
-        [weakSelf.afView setGroupArr:self.dataArray];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
-            [weakSelf.afView.myTableView reloadData];
-            [weakSelf.afView.myRefreshView  endRefreshing];
-        });
+        [weakSelf.afView setGroupArr:weakSelf.dataArray];
+        [weakSelf.afView.myTableView reloadData];
+        [weakSelf.afView.myRefreshView  endRefreshing];
     } WithErrorBlock:^(id errorCode) {
         [weakSelf.afView.myRefreshView endRefreshing];
     } WithFailureBlock:^{
@@ -125,7 +113,7 @@
         if ([code isEqualToString:@"1"]) {
           
             dispatch_async(dispatch_get_main_queue(), ^{
-               
+
                 block();
             });
         }
@@ -147,22 +135,16 @@
        groupName:(NSString *)groupName
  modifyNameBlock:(ModifyNameBlock)block
 {
-    
-    MJWeakSelf
     AFViewModel * afViewModel =[AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
         
         NSString  *code =[NSString stringWithFormat:@"%@",returnValue];
         if ([code isEqualToString:@"1"]) {
             
-           
-                
-                [weakSelf getAfList];
-//                block(groupName);
-           
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(groupName);
+            });
         }
-        
-        
     } WithErrorBlock:^(id errorCode) {
         
     } WithFailureBlock:^{
@@ -170,8 +152,6 @@
     }];
     
     [afViewModel requestEditGroup:groupName customId:customId];
-    
-    
 }
 
 
@@ -230,12 +210,9 @@
             }
             
         }
-        
     };
     
     [alert show];
-    
-    
 }
 
 
@@ -259,11 +236,9 @@
     
 }
 
-
 -(AFView *)afView{
-    
     if (!_afView) {
-        _afView =[[AFView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _afView =[[AFView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
         _afView.delegate=self;
     }
     

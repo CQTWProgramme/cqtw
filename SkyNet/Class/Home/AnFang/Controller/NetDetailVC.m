@@ -94,6 +94,8 @@
         }else if (index == 2) {
             AddGroupPointVC * adVC =[[AddGroupPointVC alloc]init];
             adVC.customId = weakSelf.itemId;
+            adVC.type = 1;
+            adVC.gn = 1;
             [weakSelf.navigationController pushViewController:adVC animated:YES];
             
         }
@@ -254,7 +256,9 @@
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
         NSString  *code =[NSString stringWithFormat:@"%@",returnValue];
         if ([code isEqualToString:@"1"]) {
-            [weakSelf getGroupDataWithPage:0 PageSize:0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(groupName);
+            });
         }
     } WithErrorBlock:^(id errorCode) {
         

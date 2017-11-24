@@ -209,4 +209,19 @@
     
 }
 
+-(void)requestBranchData:(NSString *)branchId currPage:(NSInteger)currPage pageSize:(NSInteger)pageSize{
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"branchId": branchId,@"iklx":@"4",@"currPage":@(currPage),@"pageSize":@(pageSize)};
+    [[AFNetAPIClient sharedJsonClient].setRequest(SelectChannelPageByBranch).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        super.returnBlock(responseObject);
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        
+    }];
+}
 @end

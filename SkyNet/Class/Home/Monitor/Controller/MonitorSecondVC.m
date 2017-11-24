@@ -13,6 +13,8 @@
 #import "AddGroupPointVC.h"
 #import "MonitorViewModel.h"
 #import "MonitorDetailListVC.h"
+#import "MonitorSecondGroupModel.h"
+#import "MonitorSecondPointModel.h"
 
 typedef void (^UpdateCellBlock)();
 typedef void (^ModifyNameBlock)(NSString * groupName);
@@ -160,8 +162,8 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
 #pragma mark 选择表格
 -(void)selectGroup:(MonitorSecondGroupModel *)groupModel{
     MonitorSecondVC * secondVC =[[MonitorSecondVC alloc]init];
-//    secondVC.groupTitle = netDetailModel.fzmc;
-//    secondVC.itemId = netDetailModel.customId;
+    secondVC.groupTitle = groupModel.fzmc;
+    secondVC.itemId = groupModel.customId;
     secondVC.type = self.type;
     [self.navigationController pushViewController:secondVC animated:YES];
     
@@ -169,6 +171,8 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
 
 -(void)selectPoint:(MonitorSecondPointModel *)pointModel {
     MonitorDetailListVC *listVC = [[MonitorDetailListVC alloc] init];
+    listVC.groupTitle = pointModel.wdmc;
+    listVC.customId = pointModel.branchId;
     [self.navigationController pushViewController:listVC animated:YES];
 }
 

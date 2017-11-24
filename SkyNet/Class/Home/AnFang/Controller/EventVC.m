@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.currentPage = 0;
+    self.pageSize = 10;
     [self.view addSubview:self.myTableView];
     [self addBackView];
     [self addBottomView];
@@ -43,17 +45,49 @@
     MJWeakSelf
     [EvevtListModel getEventListDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
-            weakSelf.equipmentsArray = returnValue;
-            [weakSelf.myTableView.mj_header endRefreshing];
-            [weakSelf.myTableView reloadData];
-        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
-            if ([returnValue count]==0) {
-                
-                [STTextHudTool showText:@"暂无更多内容"];
+            [STTextHudTool hideSTHud];
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSDictionary * dic = returnValue[@"data"];
+                NSArray *arr = dic[@"rows"];
+                if (arr.count > 0) {
+                    for (NSDictionary *dic1 in arr) {
+                        EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
+                        [muArr addObject:model];
+                    }
+                }
+                weakSelf.equipmentsArray = returnValue;
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [weakSelf.myTableView reloadData];
+            }else {
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [STTextHudTool showErrorText:@"message"];
             }
-            [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
-            [weakSelf.myTableView.mj_footer endRefreshing];
-            [weakSelf.myTableView reloadData];
+        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
+            [STTextHudTool hideSTHud];
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSDictionary * dic = returnValue[@"data"];
+                NSArray *arr = dic[@"rows"];
+                if (arr.count > 0) {
+                    for (NSDictionary *dic1 in arr) {
+                        EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
+                        [muArr addObject:model];
+                    }
+                }
+                if ([muArr count]==0) {
+                    
+                    [STTextHudTool showText:@"暂无更多内容"];
+                }
+                [weakSelf.equipmentsArray addObjectsFromArray:muArr];
+                [weakSelf.myTableView.mj_footer endRefreshing];
+                [weakSelf.myTableView reloadData];
+            }else {
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [STTextHudTool showErrorText:@"message"];
+            }
         }
     } failure:^(id errorCode) {
         

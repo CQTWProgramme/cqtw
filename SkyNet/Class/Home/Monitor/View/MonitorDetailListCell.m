@@ -7,6 +7,7 @@
 //
 
 #import "MonitorDetailListCell.h"
+#import "VideoListModel.h"
 @interface MonitorDetailListCell ()
 @property (nonatomic, strong) UIImageView *topImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -49,7 +50,6 @@
 -(UILabel *)nameLabell {
     if (nil == _nameLabel) {
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.text = @"我是视频名称两行的样式RS001CN";
         _nameLabel.numberOfLines = 0;
         _nameLabel.font = [UIFont systemFontOfSize:14];
         _nameLabel.textColor = [UIColor blackColor];
@@ -65,5 +65,11 @@
         _timeLabel.textColor = [UIColor lightGrayColor];
     }
     return _timeLabel;
+}
+
+-(void)setModel:(VideoListModel *)model {
+    _model = model;
+    self.nameLabel.text = _model.jkmc;
+    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:_model.play_img] placeholderImage:[UIImage imageNamed:@""]];
 }
 @end

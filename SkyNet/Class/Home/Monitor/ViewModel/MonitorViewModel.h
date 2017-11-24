@@ -43,4 +43,10 @@
  @param customId 自定义分组id
  */
 -(void)requestGroupData:(NSString *)customId;
+/**
+ 根据网点查询用户所有设备通道（分页）
+ 
+ @param branchId 网点id
+ */
+-(void)requestBranchData:(NSString *)branchId currPage:(NSInteger)currPage pageSize:(NSInteger)pageSize;
 @end

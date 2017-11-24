@@ -25,12 +25,18 @@ MDFlipCollectionViewDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"视频播放";
+    [self setNavBackButtonImage:ImageNamed(@"back")];
     [self setupPlayView];
     [self creatSegmentView];
 }
 
 - (void)setupPlayView {
-    [self.player play];
+    //[self.player play];
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@""]];
+    _player = [AVPlayer playerWithPlayerItem:playerItem];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+    playerLayer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 280);
+    [self.view.layer addSublayer:playerLayer];
 }
 
 -(AVPlayer *)player {
@@ -87,19 +93,6 @@ MDFlipCollectionViewDelegate>
     [_segView selectIndex:index];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

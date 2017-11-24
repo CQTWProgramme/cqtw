@@ -20,9 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"安防详情";
+    if (self.branchId == nil) {
+        self.branchId = @"";
+    }
      [self setNavBackButtonImage:ImageNamed(@"back")];
     [self createRightItem];
     [self.view addSubview:self.anDetailView];
+    
     [self getData];
     
 }

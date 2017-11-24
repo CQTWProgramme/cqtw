@@ -28,7 +28,6 @@
 
 -(void)createRightItem{
     
-    
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
     [rightBtn setTitle:@"下一步" forState:UIControlStateNormal];
@@ -63,8 +62,9 @@
                 
                 AddGroupPointVC * adVC =[[AddGroupPointVC alloc]init];
                 adVC.customId=returnValue[@"data"];
+                adVC.gn = self.fzgn;
+                adVC.type = 0;
                 [weakSelf.navigationController pushViewController:adVC animated:YES];
-                
             }
             
             

@@ -113,6 +113,7 @@
                     cell.editAFItem = ^{
                         if (tempSelf.delegate) {
                             [tempSelf.delegate editNetDetailGroup:afModel.customId groupName:afModel.fzmc modifyNameBlock:^(NSString * groupName){
+                                afModel.fzmc = groupName;
                                 [tempSelf.myTableView reloadData];
                             }];
                         }

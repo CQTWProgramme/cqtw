@@ -12,7 +12,7 @@ typedef void (^UpdateCellBlock)();
 typedef void (^ModifyNameBlock)(NSString * groupName);
 @protocol AFViewDelegate <NSObject>
 
-//上拉刷新
+//下拉刷新
 -(void)reloadTableView;
 
 //删除分组
@@ -23,9 +23,6 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
 -(void)editAFItem:(NSString *)customId
         groupName:(NSString *)groupName
   modifyNameBlock:(ModifyNameBlock)block;
-
-////选择分组
-//-(void)selectItem:(AFModel *)afModel;
 
 //选择分组传Id
 -(void)selectItem:(NSString *)itemId name:(NSString *)name section:(NSInteger )section;

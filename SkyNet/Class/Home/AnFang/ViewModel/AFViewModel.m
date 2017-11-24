@@ -20,7 +20,7 @@
     [STTextHudTool loadingWithTitle:@"加载中..."];
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDISTRICT).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
-        [STTextHudTool hideSTHud];
+        
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
             NSMutableArray * modelArr =[NSMutableArray new];
@@ -32,28 +32,27 @@
             }
             
             super.returnBlock(modelArr);
+        }else {
+            [STTextHudTool showErrorText:@"加载默认分组数据失败"];
         }
         
     } progress:^(NSProgress *progress) {
         
-        
+        [STTextHudTool hideSTHud];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        [STTextHudTool hideSTHud];
-        
-        
+        [STTextHudTool showErrorText:@"加载默认分组数据失败"];
     }];
 }
 
 #pragma mark  获取用户自定义分组
 -(void)requestDistrictDataWithDistrictId:(NSString *)districtId currentPage:(NSInteger)currentPage pageSize:(NSInteger)pageSize {
-    [STTextHudTool loadingWithTitle:@"加载中..."];
     NSDictionary * param =@{@"districtId": districtId,@"sbgn":@(1),@"currPage":@(currentPage),@"pageSize":@(pageSize)};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTDISTRICTDATA).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
-        [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
+            [STTextHudTool showSuccessText:@"加载成功"];
             NSMutableArray * modelArr =[NSMutableArray new];
             NSArray * dataArr =responseObject[@"data"];
             if (dataArr.count > 0) {
@@ -65,15 +64,16 @@
             }
             
             super.returnBlock(modelArr);
+        }else {
+            [STTextHudTool showErrorText:@"加载自定义分组数据失败"];
         }
         
     } progress:^(NSProgress *progress) {
-        
+        [STTextHudTool hideSTHud];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        [STTextHudTool hideSTHud];
-        
+        [STTextHudTool showErrorText:@"加载自定义分组数据失败"];
         
     }];
 }

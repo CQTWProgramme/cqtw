@@ -25,15 +25,11 @@
     return self;
 }
 
-
-
 -(void)setGroupArr:(NSMutableArray *)groupArr{
-    
     
     _groupArr=groupArr;
        
 }
-
 
 -(UITableView *)myTableView{
     
@@ -45,46 +41,18 @@
         _myTableView.dataSource = self;
         _myTableView.tableFooterView=[[UIView alloc]init];
         _myTableView.rowHeight=70;
-//        [_myTableView setReloadBlock:^{
-//            weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-//            
-//            if(weakSelf.delegate){
-//                
-//                [weakSelf.delegate reloadTableView];
-//            }
-//        }];
-        //_myTableView.tableHeaderView=_headView;
         //..下拉刷新
         _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-            
             if(weakSelf.delegate){
-               // [_myTableView.mj_header beginRefreshing];
                 [weakSelf.delegate reloadTableView];
             }
-            
         }];
         
         // 马上进入刷新状态
         [_myTableView.mj_header beginRefreshing];
-        
-        //        //..上拉刷新
-        //        _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        //            weakSelf.myRefreshView = weakSelf.myTableView.mj_footer;
-        //            weakSelf.beginIndex = weakSelf.beginIndex + 5;
-        //            weakSelf.endIndex=weakSelf.endIndex+5;
-        //            [weakSelf refreshTableViewWithBeginIndex:weakSelf.beginIndex endIndex:weakSelf.endIndex];
-        //
-        //        }];
-        //
-        //        _myTableView.mj_footer.hidden = YES;
-        
-        
     }
-    
     return _myTableView;
-    
-    
 }
 
 
@@ -99,7 +67,6 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if (indexPath.section == 0) {
         AFDistrictItemCell *cell = [AFDistrictItemCell districtCellWithTableView:tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -124,27 +91,20 @@
                     [tempSelf.delegate deleteAFItem:afModel.customId updateCellBlock:^{
                         
                         NSIndexPath *tempIndex = [tempSelf.myTableView indexPathForCell:tempCell];
-                        [_groupArr removeObject:tempCell.model];
+                        [_groupArr[indexPath.section] removeObject:tempCell.model];
                         [tempSelf.myTableView deleteRowsAtIndexPaths:@[tempIndex] withRowAnimation:UITableViewRowAnimationLeft];
                     }];
                 }
-                
-                
-                
             };
-            
-            
+        
             cell.editAFItem = ^{
                 
                 if (tempSelf.delegate) {
                     [tempSelf.delegate editAFItem:afModel.customId groupName:afModel.fzmc modifyNameBlock:^(NSString * groupName){
-                        
+                        afModel.fzmc = groupName;
                         [tempSelf.myTableView reloadData];
                     }];
                 }
-                
-                
-                
             };
             
             //设置当cell左滑时，关闭其他cell的左滑
@@ -177,7 +137,5 @@
     if (self.delegate) {
         [self.delegate selectItem:itemId name:name section:indexPath.section];
     }
-    
-    
 }
 @end

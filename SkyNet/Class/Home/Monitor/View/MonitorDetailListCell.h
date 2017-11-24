@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class VideoListModel;
 @interface MonitorDetailListCell : UICollectionViewCell
-
+@property (nonatomic, strong) VideoListModel *model;
 @end

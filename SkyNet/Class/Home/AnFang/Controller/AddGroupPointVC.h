@@ -10,4 +10,7 @@
 
 @interface AddGroupPointVC : BaseViewController
 @property(nonatomic,strong)NSString * customId;
+@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, assign) NSInteger gn;
+
 @end

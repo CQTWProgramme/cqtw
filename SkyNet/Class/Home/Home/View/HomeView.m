@@ -59,6 +59,8 @@
     
     [self setupFlowItemContentView];
     
+    [self setupHeaderView];
+    
     [self addSubview:self.myTableView];
 
     
@@ -77,8 +79,6 @@
     .topSpaceToView(_headView, 0)
     .rightSpaceToView(_headView, 0)
     .heightIs(HOME_ADVH);
-    
-    
 }
 
 
@@ -146,7 +146,7 @@
     
     MJWeakSelf
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,HOME_ADVH+HOME_MENU_H+10, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-(HOME_ADVH+HOME_MENU_H+10)) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,HOME_ADVH+HOME_MENU_H+45, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-(HOME_ADVH+HOME_MENU_H+45)) style:UITableViewStylePlain];
         _myTableView.backgroundColor = BACKGROUND_COLOR;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -192,10 +192,28 @@
     }
     
     return _myTableView;
-    
-    
 }
 
+-(void)setupHeaderView {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, HOME_ADVH+HOME_MENU_H + 5, SCREEN_WIDTH, 40)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 1)];
+    lineView.backgroundColor = [UIColor lightGrayColor];
+    [headerView addSubview:lineView];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 18, 18)];
+    imageView.image = [UIImage imageNamed:@"home_quick_blank"];
+    [headerView addSubview:imageView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 5, 0, 100, 39)];
+    label.textColor = [UIColor lightGrayColor];
+    label.text = @"快捷方式";
+    label.font = [UIFont systemFontOfSize:13];
+    [headerView addSubview:label];
+    
+    [self addSubview:headerView];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     

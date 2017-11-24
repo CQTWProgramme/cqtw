@@ -9,6 +9,13 @@
 #import "AppDelegate.h"
 #import "ClientTool.h"
 #import <UMSocialCore/UMSocialCore.h>
+
+//const static char* constStrServerAddrs = "223.4.33.127;54.84.132.236;112.124.0.188";
+//const static short constIntServerPort = 15010;
+//const static char*uuid = "63ff00caad684f7e99d451a0347a5378";
+//const static char*appkey = "a2975dc17b9d4bee95c812091f284397";
+//const static char*appSecret = "7e8bd859bba7486eb22e74adff4d3749";
+//const static short constIntApiMoveCard = 4;
 @interface AppDelegate ()
 
 @end
@@ -21,14 +28,52 @@
     
     [ClientTool autoKeyboard];
     self.window.rootViewController= [ClientTool  setupLogVC];
-//    if ([ClientTool getToken]) {
-//        UITabBarController * tabBar =[ClientTool setupTabBar];
-//        self.window.rootViewController = tabBar;
-//    }else {
-//        self.window.rootViewController= [ClientTool  setupLogVC];
-//    }
     [self initiaUMSDK];
+    [self initFunSdk];
     return YES;
+}
+
+- (void)initFunSdk {
+    [self funSDKSetting];
+}
+
+- (void)funSDKSetting {
+//    SInitParam pa;
+//    pa.nAppType = H264_DVR_LOGIN_TYPE_MOBILE;
+//    FUN_Init(0, &pa);
+//    FUN_InitNetSDK();
+////
+////    //设置用于存储设备信息等的数据配置文件
+////
+//    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//
+//    NSString *path = [pathArray lastObject];
+//
+//    //设置配置文件存储目录
+//
+//    FUN_InitNetSDK();
+//    FUN_SetFunStrAttr(EFUN_ATTR_CONFIG_PATH, [[path stringByAppendingString:@"/Configs/"] UTF8String]);
+//
+//    //设置升级文件存储目录
+//
+//    FUN_SetFunStrAttr(EFUN_ATTR_UPDATE_FILE_PATH,[[path stringByAppendingString:@"/Updates/"] UTF8String]);
+//
+//    //设置临时文件存储目录
+//
+//    FUN_SetFunStrAttr(EFUN_ATTR_TEMP_FILES_PATH,[[path stringByAppendingString:@"/Temps/"] UTF8String]);
+//
+//    //设置本地登录设备相关信息保存文件的位置
+//
+//    FUN_SysInit([[path stringByAppendingString:@"/LocalDevs.db"] UTF8String]);
+//
+//    //设置AP模式(app直连设备热点)下设置设备信息保存文件位置
+//
+//    FUN_SysInitAsAPModel([[path stringByAppendingString:@"/APDevs.db"] UTF8String]);
+//
+//    //设置云服务
+//    FUN_XMCloundPlatformInit(uuid, appkey, appSecret, constIntApiMoveCard);
+//
+//    FUN_SysInit(constStrServerAddrs, constIntServerPort);
 }
 
 - (void)initiaUMSDK {
