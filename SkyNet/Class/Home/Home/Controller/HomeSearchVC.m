@@ -41,9 +41,9 @@ MDFlipCollectionViewDelegate>
     [self createRightItem];
     [self setupTitleView];
     [self createSegment];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self showSearchVC];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self showSearchVC];
+//    });
 }
 
 - (void)setupTitleView {
@@ -112,7 +112,6 @@ MDFlipCollectionViewDelegate>
 
 -(void)createSegment{
     self.mySearchType = SearchAF;
-    
     [self.view addSubview:self.segView];
     
     HomeSearchAFVC *afVC = [[HomeSearchAFVC alloc]init];
@@ -137,7 +136,7 @@ MDFlipCollectionViewDelegate>
     _collectView = [[MDFlipCollectionView alloc] initWithFrame:CGRectMake(0,
                                                                           _segView.bottom,
                                                                           SCREEN_WIDTH,
-                                                                          SCREEN_HEIGHT-_segView.bottom-NavigationBar_HEIGHT-STATUS_BAR_HEIGHT) withArray:arr];
+                                                                          SCREEN_HEIGHT-_segView.bottom) withArray:arr];
     _collectView.delegate = self;
     [self.view addSubview:_collectView];
 }
@@ -165,6 +164,7 @@ MDFlipCollectionViewDelegate>
     }else {
         self.mySearchType = SearchAcess;
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GetSearchResultNotification" object:nil userInfo:@{@"searchText":self.titleLabel.text,@"type":@(self.mySearchType)}];
 }
 
 - (void)flipToIndex:(NSInteger)index

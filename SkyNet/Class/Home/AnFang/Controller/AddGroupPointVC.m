@@ -26,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _currPage=0;
     _pageSize=10;
     self.view.backgroundColor=[UIColor whiteColor];
@@ -35,13 +34,10 @@
     [self.view addSubview:self.myTable];
      [self setNavBackButtonImage:ImageNamed(@"back")];
     self.title=@"新增分组";
-    
-
 }
 
 -(void)createRightItem{
-    
-    
+
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
     [rightBtn setTitle:@"保存" forState:UIControlStateNormal];
@@ -51,8 +47,6 @@
     UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    
-    
 }
 
 
@@ -73,13 +67,10 @@
     MJWeakSelf
     AFViewModel * afViewModel =[AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
-        
-       
         NSString  *code =[NSString stringWithFormat:@"%@",returnValue[@"code"]];
         if ([code isEqualToString:@"1"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"AddGroupPointVCNotification" object:nil];
            [weakSelf.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1]animated:YES];
-            
         }
 
     } WithErrorBlock:^(id errorCode) {
@@ -105,7 +96,6 @@
             [arrayM addObject:model];
         }
         
-       
         weakSelf.totalPage=[returnValue[@"totalPage"] integerValue];
         
         //..下拉刷新
@@ -132,13 +122,12 @@
             
         });
     } WithErrorBlock:^(id errorCode) {
-        
+        [weakSelf.myRefreshView  endRefreshing];
     } WithFailureBlock:^{
-        
+        [weakSelf.myRefreshView  endRefreshing];
     }];
-    NSString *type = [NSString stringWithFormat:@"%@",@(self.type)];
     NSString *gn = [NSString stringWithFormat:@"%@",@(self.gn)];
-    [afViewModel requestBdcDataLike:type gn:gn query:query currPage:page pageSize:pageSize];
+    [afViewModel requestNoCustomBranchDataWithGn:gn query:self.mySearchBar.text currPage:self.currPage pageSize:self.pageSize];
 }
 
 #pragma mark 搜索框懒加载

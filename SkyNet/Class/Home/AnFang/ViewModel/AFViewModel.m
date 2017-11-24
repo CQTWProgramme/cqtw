@@ -220,44 +220,25 @@
 
 #pragma mark 根据功能(模糊)查询类型,功能查询网点,设备,通道数据
 
--(void)requestBdcDataLike:(NSString *)type
-                            gn:(NSString *)gn
-                            query:(NSString *)query
-                            currPage:(NSInteger)currPage
-                            pageSize:(NSInteger)pageSize
+-(void)requestNoCustomBranchDataWithGn:(NSString *)gn query:(NSString *)query currPage:(NSInteger)currPage pageSize:(NSInteger)pageSize
 {
     
-    
     [STTextHudTool loadingWithTitle:@"加载中..."];
-    NSDictionary * param =@{@"type":type,
+    NSDictionary * param =@{
                             @"gn":gn,
                             @"query":query,
                             @"currPage":[NSString stringWithFormat:@"%ld",currPage],
                             @"pageSize":[NSString stringWithFormat:@"%ld",pageSize]};
-    [[AFNetAPIClient sharedJsonClient].setRequest(BDCDATALIKE).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        
+    [[AFNetAPIClient sharedJsonClient].setRequest(GetNoCustomBranch).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [STTextHudTool hideSTHud];
-        NSString * code=responseObject[@"code"];
-        if (code.integerValue==1) {
-            
-            [STTextHudTool hideSTHud];
-            
-            self.returnBlock(responseObject[@"data"]);
-        }else{
-            [STTextHudTool hideSTHud];
-            [STTextHudTool showErrorText:@"加载失败" withSecond:HudDelay];
-            
-        }
-        
-        
+        self.returnBlock(responseObject[@"data"]);
     } progress:^(NSProgress *progress) {
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
         [STTextHudTool hideSTHud];
-        [STTextHudTool showErrorText:@"加载失败" withSecond:HudDelay];
-        
+        [STTextHudTool showErrorText:@"加载失败"];
+        self.failureBlock();
     }];
 
     

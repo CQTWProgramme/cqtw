@@ -21,4 +21,8 @@
  获取快捷方式列表
  */
 -(void)requestShortcutList;
+/**
+ 根据功能(模糊)查询类型,功能查询网点,设备,通道数据(分页)
+ */
+-(void)getBdcDataLikeWithType:(NSString *)type gn:(NSString *)gn query:(NSString *)query currPage:(NSString *)currPage pageSize:(NSString *)pageSize;
 @end

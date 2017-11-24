@@ -40,6 +40,11 @@
 //登录验证
 #define USER_LGOIN                        POST_INTERFACE(@"sso/login")
 
+//修改用户使用密码
+#define UPDATE_PWD                        POST_INTERFACE(@"api/bean/updatePwd")
+
+//修改用户信息
+#define UPDATE_USER                        POST_INTERFACE(@"api/bean/updateUser")
 
 //广告轮播图
 #define ADVER_LIST                        POST_INTERFACE(@"api/bean/getAdverList")
@@ -67,6 +72,9 @@
 
 //根据功能(模糊)查询类型,功能查询网点,设备,通道数据(分页)
 #define BDCDATALIKE                        POST_INTERFACE(@"api/bean/getBdcDataLike")
+
+//查询未自定义分组的网点数据(分页/可模糊)
+#define GetNoCustomBranch                        POST_INTERFACE(@"api/bean/getNoCustomBranch")
 
 //添加自定义分组下数据
 #define ADDCUSTOMDATA                        POST_INTERFACE(@"api/bean/addCustomData")

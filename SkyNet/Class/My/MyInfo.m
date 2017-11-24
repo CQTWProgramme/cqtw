@@ -7,6 +7,7 @@
 //
 
 #import "MyInfo.h"
+#import "LoginViewModel.h"
 #define MARGIN 10
 #define PADDING 7
 #define LABEL_W 70
@@ -17,6 +18,8 @@
 @property(nonatomic,strong) UITextField * nicknameText;
 @property(nonatomic,strong) UIButton    * sexBtn;
 @property(nonatomic,strong) UITextField * signText;
+@property(nonatomic,copy) NSString *yhxb;
+@property(nonatomic,copy) NSString *enablepushapp;
 @end
 
 @implementation MyInfo
@@ -40,7 +43,15 @@
 }
 
 -(void)saveInfoAction {
-    
+    LoginViewModel *viewModel = [LoginViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+//    [viewModel updateUserInfoWithYhxm:self.nicknameText.text yhxb:self.yhxb enablepushapp:self.enablepushapp bz:self.signText.text];
 }
 
 -(void)createUI{
@@ -140,7 +151,7 @@
     
     _sexBtn=[UIButton new];
     _sexBtn.titleLabel.font=[UIFont systemFontOfSize:14];
-    [_sexBtn setTitle:@"请选择性别" forState:UIControlStateNormal];
+    [_sexBtn setTitle:@"男" forState:UIControlStateNormal];
     [_sexBtn setTitleColor:RGBA(187, 186, 194, 1) forState:UIControlStateNormal];
     _sexBtn.backgroundColor=[UIColor clearColor];
     _sexBtn.titleLabel.font=[UIFont systemFontOfSize:14];
@@ -214,7 +225,16 @@
 }
 
 - (void)sexSelect {
+    LCActionSheet *actionSheet = [LCActionSheet sheetWithTitle:@"选择性别" cancelButtonTitle:@"取消" clicked:^(LCActionSheet *actionSheet, NSInteger buttonIndex) {
+        
+        if (buttonIndex==1) {
+            [_sexBtn setTitle:@"男" forState:UIControlStateNormal];
+        }else if (buttonIndex==2){
+            [_sexBtn setTitle:@"女" forState:UIControlStateNormal];
+        }
+    } otherButtonTitles:@"男", @"女",nil];
     
+    [actionSheet show];
 }
 
 - (void)didReceiveMemoryWarning {

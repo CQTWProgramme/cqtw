@@ -63,7 +63,7 @@
                 AddGroupPointVC * adVC =[[AddGroupPointVC alloc]init];
                 adVC.customId=returnValue[@"data"];
                 adVC.gn = self.fzgn;
-                adVC.type = 0;
+                adVC.type = self.type;
                 [weakSelf.navigationController pushViewController:adVC animated:YES];
             }
             

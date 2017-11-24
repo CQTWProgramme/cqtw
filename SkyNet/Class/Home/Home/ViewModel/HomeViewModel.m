@@ -83,5 +83,33 @@
     
 }
 
-
+-(void)getBdcDataLikeWithType:(NSString *)type gn:(NSString *)gn query:(NSString *)query currPage:(NSString *)currPage pageSize:(NSString *)pageSize {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"type":type,
+                            @"gn":gn,
+                            @"query":query,
+                            @"currPage":currPage,
+                            @"pageSize":pageSize};
+    [[AFNetAPIClient sharedJsonClient].setRequest(BDCDATALIKE).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        NSString * code=responseObject[@"code"];
+        if (code.integerValue==1) {
+            [STTextHudTool hideSTHud];
+            self.returnBlock(responseObject[@"data"]);
+        }else{
+            [STTextHudTool hideSTHud];
+            [STTextHudTool showErrorText:@"加载失败" withSecond:HudDelay];
+        }
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        [STTextHudTool showErrorText:@"加载失败" withSecond:HudDelay];
+        
+    }];
+}
 @end

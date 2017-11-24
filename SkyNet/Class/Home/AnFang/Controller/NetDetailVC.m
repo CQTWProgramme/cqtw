@@ -88,13 +88,14 @@
         }else  if (index == 1) {
             AddNewGroupVC * addNewGroupVC =[AddNewGroupVC new];
             addNewGroupVC.fzgn = 1;
+            addNewGroupVC.type = 0;
             addNewGroupVC.fid = weakSelf.itemId;
             [weakSelf.navigationController pushViewController:addNewGroupVC animated:YES];
             
         }else if (index == 2) {
             AddGroupPointVC * adVC =[[AddGroupPointVC alloc]init];
             adVC.customId = weakSelf.itemId;
-            adVC.type = 1;
+            adVC.type = 0;
             adVC.gn = 1;
             [weakSelf.navigationController pushViewController:adVC animated:YES];
             

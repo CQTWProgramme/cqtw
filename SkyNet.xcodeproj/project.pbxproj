@@ -103,6 +103,11 @@
 		884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701551F8DAD5800B44D68 /* PoliceHomeCell.m */; };
 		884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701581F8DB39600B44D68 /* PoliceHomeModel.m */; };
 		888864AF1FC7A6D500D1D9B4 /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864AE1FC7A6D500D1D9B4 /* VideoListModel.m */; };
+		888864B21FC7F88000D1D9B4 /* HomeSearchAFCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864B11FC7F88000D1D9B4 /* HomeSearchAFCell.m */; };
+		888864B51FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864B41FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m */; };
+		888864B81FC7F8B800D1D9B4 /* HomeSearchVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864B71FC7F8B800D1D9B4 /* HomeSearchVideoCell.m */; };
+		888864BB1FC7F8CD00D1D9B4 /* HomeSearchAcessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864BA1FC7F8CD00D1D9B4 /* HomeSearchAcessCell.m */; };
+		888864BE1FC7FF4000D1D9B4 /* SearchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864BD1FC7FF4000D1D9B4 /* SearchResultModel.m */; };
 		888EBF9B1FB7C987006F8CCE /* MemberControlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBF9A1FB7C987006F8CCE /* MemberControlModel.m */; };
 		888EBF9E1FB7CCCD006F8CCE /* RecordVisitorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBF9D1FB7CCCD006F8CCE /* RecordVisitorCell.m */; };
 		888EBFA11FB7CCCD006F8CCE /* VillageApplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888EBFA01FB7CCCD006F8CCE /* VillageApplyModel.m */; };
@@ -480,6 +485,16 @@
 		884701581F8DB39600B44D68 /* PoliceHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeModel.m; sourceTree = "<group>"; };
 		888864AD1FC7A6D500D1D9B4 /* VideoListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListModel.h; sourceTree = "<group>"; };
 		888864AE1FC7A6D500D1D9B4 /* VideoListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListModel.m; sourceTree = "<group>"; };
+		888864B01FC7F88000D1D9B4 /* HomeSearchAFCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchAFCell.h; sourceTree = "<group>"; };
+		888864B11FC7F88000D1D9B4 /* HomeSearchAFCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchAFCell.m; sourceTree = "<group>"; };
+		888864B31FC7F8A000D1D9B4 /* HomeSearchDevicesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchDevicesCell.h; sourceTree = "<group>"; };
+		888864B41FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchDevicesCell.m; sourceTree = "<group>"; };
+		888864B61FC7F8B800D1D9B4 /* HomeSearchVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchVideoCell.h; sourceTree = "<group>"; };
+		888864B71FC7F8B800D1D9B4 /* HomeSearchVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchVideoCell.m; sourceTree = "<group>"; };
+		888864B91FC7F8CD00D1D9B4 /* HomeSearchAcessCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchAcessCell.h; sourceTree = "<group>"; };
+		888864BA1FC7F8CD00D1D9B4 /* HomeSearchAcessCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchAcessCell.m; sourceTree = "<group>"; };
+		888864BC1FC7FF4000D1D9B4 /* SearchResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultModel.h; sourceTree = "<group>"; };
+		888864BD1FC7FF4000D1D9B4 /* SearchResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultModel.m; sourceTree = "<group>"; };
 		888EBF991FB7C987006F8CCE /* MemberControlModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberControlModel.h; sourceTree = "<group>"; };
 		888EBF9A1FB7C987006F8CCE /* MemberControlModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberControlModel.m; sourceTree = "<group>"; };
 		888EBF9C1FB7CCCD006F8CCE /* RecordVisitorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordVisitorCell.h; sourceTree = "<group>"; };
@@ -1407,6 +1422,14 @@
 				BF0C32551F67CE48009FC882 /* HomeView.m */,
 				BF0C32561F67CE48009FC882 /* MenuItem.h */,
 				BF0C32571F67CE48009FC882 /* MenuItem.m */,
+				888864B01FC7F88000D1D9B4 /* HomeSearchAFCell.h */,
+				888864B11FC7F88000D1D9B4 /* HomeSearchAFCell.m */,
+				888864B31FC7F8A000D1D9B4 /* HomeSearchDevicesCell.h */,
+				888864B41FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m */,
+				888864B61FC7F8B800D1D9B4 /* HomeSearchVideoCell.h */,
+				888864B71FC7F8B800D1D9B4 /* HomeSearchVideoCell.m */,
+				888864B91FC7F8CD00D1D9B4 /* HomeSearchAcessCell.h */,
+				888864BA1FC7F8CD00D1D9B4 /* HomeSearchAcessCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1418,6 +1441,8 @@
 				BF0C32601F67CE5D009FC882 /* ShortcutModel.m */,
 				BF0C32621F67CE6C009FC882 /* AdvModel.h */,
 				BF0C32631F67CE6C009FC882 /* AdvModel.m */,
+				888864BC1FC7FF4000D1D9B4 /* SearchResultModel.h */,
+				888864BD1FC7FF4000D1D9B4 /* SearchResultModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2296,6 +2321,7 @@
 				880EF0C81FBD247400776D11 /* PYSearchSuggestionViewController.m in Sources */,
 				88299C851F7CE0F40070067C /* PTZControlVC.m in Sources */,
 				BF0C32321F67BC26009FC882 /* LoginViewModel.m in Sources */,
+				888864B81FC7F8B800D1D9B4 /* HomeSearchVideoCell.m in Sources */,
 				BF0C325C1F67CE48009FC882 /* HomeCell.m in Sources */,
 				BF0C32641F67CE6C009FC882 /* AdvModel.m in Sources */,
 				BF34EEAF1F49CEBF00E05DF3 /* CityModel.m in Sources */,
@@ -2342,6 +2368,7 @@
 				881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
 				888EBFA71FB7CE4C006F8CCE /* MemberApplyModel.m in Sources */,
+				888864B51FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m in Sources */,
 				880EF0D81FBD2FE200776D11 /* HomeSearchAFDevicesVC.m in Sources */,
 				881547941F8DCC92000F2C84 /* CueReportCell.m in Sources */,
 				880361121F93B2D500A1A2F1 /* MonitorSecondPointModel.m in Sources */,
@@ -2356,6 +2383,7 @@
 				880623B01FB5F66500D89409 /* DistrictFirstCell.m in Sources */,
 				BF0C325D1F67CE48009FC882 /* HomeView.m in Sources */,
 				BF0C32591F67CE48009FC882 /* HomeVC.m in Sources */,
+				888864B21FC7F88000D1D9B4 /* HomeSearchAFCell.m in Sources */,
 				BF34EDEE1F49CEBF00E05DF3 /* LSXButton.m in Sources */,
 				BFFA09FD1F7A62090019CFA8 /* EquipmentVC.m in Sources */,
 				88299C781F7CD2E10070067C /* MonitorDetailListVC.m in Sources */,
@@ -2415,6 +2443,7 @@
 				888EBFA11FB7CCCD006F8CCE /* VillageApplyModel.m in Sources */,
 				BF34EDFF1F49CEBF00E05DF3 /* WKProgressHUD.m in Sources */,
 				BF3F8CF71F6A2E16000EA801 /* NetPointModel.m in Sources */,
+				888864BB1FC7F8CD00D1D9B4 /* HomeSearchAcessCell.m in Sources */,
 				BF34EEC31F49CEC000E05DF3 /* XWRegularExpression.m in Sources */,
 				880EF0C51FBD247400776D11 /* NSBundle+PYSearchExtension.m in Sources */,
 				88F9C5781F8CCA1200039A08 /* ACDistrictModel.m in Sources */,
@@ -2423,6 +2452,7 @@
 				BFFA09EB1F7A43C30019CFA8 /* BaseViewController.m in Sources */,
 				881473421F8912F40064DF4D /* AFDistrictItemCell.m in Sources */,
 				BF34EEAA1F49CEBF00E05DF3 /* NotificationConst.m in Sources */,
+				888864BE1FC7FF4000D1D9B4 /* SearchResultModel.m in Sources */,
 				88299C711F7CC7150070067C /* MonitorItemCell.m in Sources */,
 				880EF0DE1FBD302700776D11 /* HomeSearchAccessVC.m in Sources */,
 				BF0C322D1F6774EB009FC882 /* NSData+Base64.m in Sources */,

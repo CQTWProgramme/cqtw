@@ -13,4 +13,6 @@
 @property (nonatomic, copy) NSString *fid;
 //分组所属模块
 @property (nonatomic, assign) NSInteger fzgn;
+@property (nonatomic, assign) NSInteger type;
+
 @end

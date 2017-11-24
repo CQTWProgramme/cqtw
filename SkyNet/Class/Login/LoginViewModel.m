@@ -75,4 +75,51 @@
     }];
 
 }
+
+-(void)updatePasswordWithOldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword {
+    [STTextHudTool loadingWithTitle:@"修改中..."];
+    NSString * oldDlmm=[CusMD5 md5String:oldPassword];
+    NSString * newDlmm=[CusMD5 md5String:newPassword];
+    NSDictionary * param =@{@"oldDlmm": oldDlmm,
+                            @"newDlmm": newDlmm
+                            };
+    [[AFNetAPIClient sharedJsonClient].setRequest(UPDATE_PWD).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        super.returnBlock(responseObject[@"message"]);
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        [STTextHudTool showErrorText:@"登录失败" withSecond:HudDelay];
+        
+    }];
+}
+
+-(void)updateUserInfoWithYhxm:(NSString *)yhxm
+                         yhxb:(NSString *)yhxb
+                enablepushapp:(NSString *)enablepushapp
+                           bz:(NSString *)bz {
+    [STTextHudTool loadingWithTitle:@"保存中..."];
+    NSDictionary * param =@{@"yhxm": yhxm,
+                            @"yhxb": yhxb,
+                            @"enablepushapp": enablepushapp,
+                            @"bz": bz
+                            };
+    [[AFNetAPIClient sharedJsonClient].setRequest(UPDATE_USER).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        super.returnBlock(responseObject[@"message"]);
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        [STTextHudTool showErrorText:@"登录失败" withSecond:HudDelay];
+        
+    }];
+}
 @end

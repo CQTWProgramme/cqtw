@@ -222,6 +222,7 @@
     AddNewGroupVC * addNewGroupVC =[AddNewGroupVC new];
     addNewGroupVC.fzgn = 1;
     addNewGroupVC.fid = @"0";
+    addNewGroupVC.type = 0;
     [self.navigationController pushViewController:addNewGroupVC animated:YES];
 }
 

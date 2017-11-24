@@ -70,18 +70,15 @@
 
 /**
  根据功能(模糊)查询类型,功能查询网点,设备,通道数据(
-
- @param type 查询类型 0=网点;1=设备;2=通道
  @param gn 模块功能
  @param query 模糊条件/无条件查询所有
  @param currPage 数据页码;默认第一页
  @param pageSize 数据条数;默认10条
  */
--(void)requestBdcDataLike:(NSString *)type
-                       gn:(NSString *)gn
-                    query:(NSString *)query
-                 currPage:(NSInteger)currPage
-                 pageSize:(NSInteger)pageSize;
+-(void)requestNoCustomBranchDataWithGn:(NSString *)gn
+                                 query:(NSString *)query
+                              currPage:(NSInteger)currPage
+                              pageSize:(NSInteger)pageSize;
 
 
 

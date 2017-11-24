@@ -7,6 +7,7 @@
 //
 
 #import "ModifyPasswordVC.h"
+#import "LoginViewModel.h"
 
 #define MARGIN 10
 #define PADDING 7
@@ -41,7 +42,35 @@
 }
 
 -(void)saveInfoAction {
-    
+    if ([self.phoneText.text isEqualToString:@""]) {
+        [STTextHudTool showErrorText:@"请填写原密码"];
+        return;
+    }
+    if ([self.nicknameText.text isEqualToString:@""]) {
+        [STTextHudTool showErrorText:@"请填写新密码"];
+        return;
+    }
+    if (![self.nicknameText.text isEqualToString:self.signText.text]) {
+        [STTextHudTool showErrorText:@"两次新密码不一致"];
+        return;
+    }
+    LoginViewModel *viewModel = [LoginViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        NSString * code=returnValue[@"code"];
+        if (code.integerValue==1) {
+            [STTextHudTool hideSTHud];
+            [STTextHudTool showSuccessText:@"密码修改成功" withSecond:HudDelay];
+            [[NSUserDefaults standardUserDefaults] setObject:self.signText.text forKey:@"password"];
+        }else{
+            [STTextHudTool hideSTHud];
+            [STTextHudTool showErrorText:@"密码修改失败" withSecond:HudDelay];
+        }
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    [viewModel updatePasswordWithOldPassword:self.phoneText.text newPassword:self.nicknameText.text];
 }
 
 -(void)createUI{

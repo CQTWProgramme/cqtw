@@ -1,14 +1,14 @@
 //
-//  NetPointModel.h
+//  SearchResultModel.h
 //  SkyNet
 //
-//  Created by 冉思路 on 2017/9/14.
+//  Created by 魏乔森 on 2017/11/24.
 //  Copyright © 2017年 xrg. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NetPointModel : NSObject
+@interface SearchResultModel : NSObject
 @property(nonatomic,strong)NSString * branchId;
 @property(nonatomic,strong)NSString * wdmc;
 @property(nonatomic,strong)NSString * districtId;
@@ -22,6 +22,4 @@
 @property(nonatomic,strong)NSString * alarmchargeId;
 @property(nonatomic,strong)NSString * bz;
 @property(nonatomic,strong)NSString * xgsj;
-@property (nonatomic, copy) NSString *ly;
-@property (nonatomic, copy) NSString *streetId;
 @end
