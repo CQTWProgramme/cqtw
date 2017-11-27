@@ -254,7 +254,10 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
         NSString  *code =[NSString stringWithFormat:@"%@",returnValue];
         if ([code isEqualToString:@"1"]) {
-            [weakSelf getGroupDataWithPage:0 PageSize:0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                block(groupName);
+            });
         }
     } WithErrorBlock:^(id errorCode) {
         

@@ -115,6 +115,8 @@
                     cell.editAFItem = ^{
                         if (tempSelf.delegate) {
                             [tempSelf.delegate editMonitorSecondGroup:model.customId groupName:model.fzmc modifyNameBlock:^(NSString * groupName){
+                                model.customId = groupName;
+                                [tempCell closeLeftSwipe];
                                 [tempSelf.myTableView reloadData];
                             }];
                         }

@@ -102,6 +102,7 @@
                 if (tempSelf.delegate) {
                     [tempSelf.delegate editAFItem:afModel.customId groupName:afModel.fzmc modifyNameBlock:^(NSString * groupName){
                         afModel.fzmc = groupName;
+                        [tempCell closeLeftSwipe];
                         [tempSelf.myTableView reloadData];
                     }];
                 }

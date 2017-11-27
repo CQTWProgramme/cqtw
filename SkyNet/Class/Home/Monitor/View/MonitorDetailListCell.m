@@ -12,6 +12,7 @@
 @property (nonatomic, strong) UIImageView *topImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UIImageView *playImageView;
 
 @end
 
@@ -29,12 +30,14 @@
 -(void)layoutSubviews {
     [super layoutSubviews];
     self.topImageView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height *0.6);
+    self.playImageView.frame = CGRectMake((self.contentView.frame.size.width - 20) / 2, (self.contentView.frame.size.height *0.6 - 20) / 2, 20, 20);
     self.nameLabell.frame = CGRectMake(10, self.contentView.frame.size.height *0.6, self.contentView.frame.size.width - 20, self.contentView.frame.size.height *0.25);
     self.timeLabel.frame = CGRectMake(10, self.contentView.frame.size.height *0.85, self.contentView.frame.size.width - 20, self.contentView.frame.size.height *0.15);
 }
 
 - (void)setupViews {
     [self.contentView addSubview:self.topImageView];
+    [self.contentView addSubview:self.playImageView];
     [self.contentView addSubview:self.nameLabell];
     [self.contentView addSubview:self.timeLabel];
 }
@@ -45,6 +48,14 @@
         _topImageView.image = [UIImage imageNamed:@"test"];
     }
     return _topImageView;
+}
+
+-(UIImageView *)playImageView {
+    if (nil == _playImageView) {
+        _playImageView = [[UIImageView alloc] init];
+        _playImageView.image = [UIImage imageNamed:@"bofang-btn"];
+    }
+    return _playImageView;
 }
 
 -(UILabel *)nameLabell {
@@ -70,6 +81,6 @@
 -(void)setModel:(VideoListModel *)model {
     _model = model;
     self.nameLabel.text = _model.jkmc;
-    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:_model.play_img] placeholderImage:[UIImage imageNamed:@""]];
+    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:_model.play_img] placeholderImage:[UIImage imageNamed:@"test"]];
 }
 @end

@@ -142,6 +142,8 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
                 
                     cell.editAFItem = ^{
                         [tempSelf editAFItem:model.customId groupName:model.fzmc modifyNameBlock:^(NSString * groupName){
+                            [tempCell closeLeftSwipe];
+                            model.fzmc = groupName;
                             [tempSelf.mytableView reloadData];
                         }];
                     };

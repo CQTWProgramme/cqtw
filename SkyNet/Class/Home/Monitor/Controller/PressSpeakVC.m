@@ -8,6 +8,7 @@
 
 #import "PressSpeakVC.h"
 
+#define kViewHeight SCREEN_HEIGHT - NavigationBar_HEIGHT - STATUS_BAR_HEIGHT - 324
 @interface PressSpeakVC ()
 
 @end
@@ -16,7 +17,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setupViews];
+}
+
+- (void)setupViews {
+    UIButton *speakButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    speakButton.frame = CGRectMake((SCREEN_WIDTH - (kViewHeight - 80)) / 2, 40, kViewHeight - 80, kViewHeight - 80);
+    [self.view addSubview:speakButton];
+    [speakButton setBackgroundImage:[UIImage imageNamed:@"monitor_speak"] forState:UIControlStateNormal];
+    [speakButton addTarget:self action:@selector(spearkAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)spearkAction:(UIButton *)button {
+    [STTextHudTool showErrorText:@"该功能暂未开放"];
 }
 
 - (void)didReceiveMemoryWarning {

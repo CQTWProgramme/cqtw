@@ -111,7 +111,7 @@
 - (void)setData:(NetDetailDistrictModel *)model{
     _model = model;
     
-    self.afImageView.image=ImageNamed(@"home_monitor");
+    self.afImageView.image=ImageNamed(@"af_group");
     self.afContentLabel.text =model.fzmc;
 }
 

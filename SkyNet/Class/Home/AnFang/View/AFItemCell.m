@@ -132,7 +132,7 @@
 - (void)setData:(AFModel *)model{
     _model = model;
     
-    self.afImageView.image=ImageNamed(@"icon_af");
+    self.afImageView.image=ImageNamed(@"af_group");
     self.arrowImageView.image = ImageNamed(@"home_rightArrow");
     self.afContentLabel.text =model.fzmc;
 }

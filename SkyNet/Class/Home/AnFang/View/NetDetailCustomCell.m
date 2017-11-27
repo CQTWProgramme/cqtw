@@ -110,7 +110,7 @@
 - (void)setData:(NetDetailModel *)model{
     _model = model;
     
-    self.afImageView.image=ImageNamed(@"home_monitor");
+    self.afImageView.image=ImageNamed(@"home_security_sign");
     self.afContentLabel.text =model.wdmc;
 }
 

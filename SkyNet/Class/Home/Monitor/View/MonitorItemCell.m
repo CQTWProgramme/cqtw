@@ -120,7 +120,7 @@
     
     self.containerView.frame = self.contentView.bounds;
     self.afImageView.frame = CGRectMake(10, 15, 40, 40);
-    self.arrowImageView.frame = CGRectMake(SCREEN_WIDTH - 10, 22.5, 10, 15);
+    self.arrowImageView.frame = CGRectMake(SCREEN_WIDTH - 20, 22.5, 10, 15);
     self.afContentLabel.frame = CGRectMake(_afImageView.right+10, 25, SCREEN_WIDTH-_afImageView.right-20, 20);
     
     self.underlineView.frame = CGRectMake(0, CELLHEIGHT - 0.5, SCREEN_WIDTH, 0.5);
