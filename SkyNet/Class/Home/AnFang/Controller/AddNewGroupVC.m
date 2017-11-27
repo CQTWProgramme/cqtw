@@ -30,7 +30,7 @@
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setTitle:@"下一步" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"确定" forState:UIControlStateNormal];
     
     [rightBtn addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
     
@@ -86,7 +86,7 @@
         _inputText =[[UITextField alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT+10, SCREEN_WIDTH, 44)];
         _inputText.backgroundColor=[UIColor whiteColor];
         _inputText.borderStyle=UITextBorderStyleNone;
-        _inputText.placeholder =@"  常用安防";
+        _inputText.placeholder =@"  请输入分组名称";
     }
     
     return _inputText;

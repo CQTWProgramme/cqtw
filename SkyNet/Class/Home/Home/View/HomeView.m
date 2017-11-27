@@ -59,7 +59,7 @@
     
     [self setupFlowItemContentView];
     
-    [self setupHeaderView];
+    //[self setupHeaderView];
     
     [self addSubview:self.myTableView];
 
@@ -73,6 +73,7 @@
 -(void)setupAdScrollView{
     
     _adScrollView = [SDCycleScrollView new];
+    _adScrollView.placeholderImage = [UIImage imageNamed:@"home_plceholder"];
     [_headView addSubview:_adScrollView];
     _adScrollView.sd_layout
     .leftSpaceToView(_headView, 0)
@@ -146,7 +147,7 @@
     
     MJWeakSelf
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,HOME_ADVH+HOME_MENU_H+45, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-(HOME_ADVH+HOME_MENU_H+45)) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,HOME_ADVH+HOME_MENU_H+5, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-(HOME_ADVH+HOME_MENU_H+5)) style:UITableViewStylePlain];
         _myTableView.backgroundColor = BACKGROUND_COLOR;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -250,7 +251,7 @@
     if (_shortDataArr.count>0) {
         
         ShortcutModel * shortcutModel =_shortDataArr[indexPath.row -1];
-        cell.signImageView.image=ImageNamed(@"home_monitor");
+        cell.signImageView.image=ImageNamed(@"icon_af");
         cell.contentLabel.text =shortcutModel.name;
     }
    

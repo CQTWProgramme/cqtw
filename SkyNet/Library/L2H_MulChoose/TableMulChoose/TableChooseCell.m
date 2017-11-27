@@ -71,7 +71,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     if (!_logoImageView) {
         _logoImageView=[UIImageView new];
-        _logoImageView.image=ImageNamed(@"home_monitor");
+        _logoImageView.image=ImageNamed(@"home_security_sign");
     }
     return _logoImageView;
     

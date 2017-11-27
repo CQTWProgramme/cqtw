@@ -19,6 +19,7 @@
 @property (nonatomic, weak) UIView *underlineView; //下划线
 
 @property(nonatomic,strong)UIImageView * afImageView;
+@property(nonatomic,strong)UIImageView * arrowImageView;
 @end
 @implementation MonitorItemCell
 
@@ -74,6 +75,9 @@
     _afImageView=[UIImageView new];
     [self.containerView addSubview:_afImageView];
     
+    _arrowImageView=[UIImageView new];
+    [self.containerView addSubview:_arrowImageView];
+    
     _afContentLabel=[UILabel new];
     _afContentLabel.textColor=[UIColor darkGrayColor];
     _afContentLabel.font= [UIFont systemFontOfSize:13];
@@ -116,6 +120,7 @@
     
     self.containerView.frame = self.contentView.bounds;
     self.afImageView.frame = CGRectMake(10, 15, 40, 40);
+    self.arrowImageView.frame = CGRectMake(SCREEN_WIDTH - 10, 22.5, 10, 15);
     self.afContentLabel.frame = CGRectMake(_afImageView.right+10, 25, SCREEN_WIDTH-_afImageView.right-20, 20);
     
     self.underlineView.frame = CGRectMake(0, CELLHEIGHT - 0.5, SCREEN_WIDTH, 0.5);
@@ -129,6 +134,7 @@
     _model = model;
     
     self.afImageView.image=ImageNamed(@"home_monitor");
+    self.arrowImageView.image=ImageNamed(@"home_rightArrow");
     self.afContentLabel.text =model.fzmc;
 }
 

@@ -26,7 +26,7 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"监控";
+    self.title = @"监控列表";
     [self setupTableView];
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self createRightItem];
@@ -36,7 +36,7 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
+    [rightBtn setBackgroundImage:ImageNamed(@"title_add") forState:UIControlStateNormal];
     
     [rightBtn addTarget:self action:@selector(addNewGroup) forControlEvents:UIControlEventTouchUpInside];
     
@@ -234,7 +234,9 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
         NSString  *code =[NSString stringWithFormat:@"%@",returnValue];
         if ([code isEqualToString:@"1"]) {
         
-            [weakSelf loadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(groupName);
+            });
         }
         
         
