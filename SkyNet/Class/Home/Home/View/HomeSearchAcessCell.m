@@ -7,7 +7,7 @@
 //
 
 #import "HomeSearchAcessCell.h"
-#import "SearchResultModel.h"
+#import "SearchResultAccessModel.h"
 
 #define CELLHEIGHT 70.f  //设置行高
 @interface HomeSearchAcessCell()
@@ -70,7 +70,7 @@
     
 }
 
--(void)setModel:(SearchResultModel *)model {
+-(void)setModel:(SearchResultAccessModel *)model {
     _model = model;
     self.arrowImageView.image = ImageNamed(@"home_rightArrow");
     self.afImageView.image=ImageNamed(@"home_monitor");

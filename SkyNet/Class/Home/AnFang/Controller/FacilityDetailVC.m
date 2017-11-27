@@ -9,6 +9,8 @@
 #import "FacilityDetailVC.h"
 #import "FacilityDetailModel.h"
 #import "FacilityDetailListModel.h"
+#import "AFViewModel.h"
+#import "KYAlertView.h"
 
 @interface FacilityDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) FacilityDetailModel *detailModel;
@@ -31,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"设备详情";
+    self.title = @"通道详情";
     [self createBottomView];
     [self setNavBackButtonImage:ImageNamed(@"back")];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -93,13 +95,51 @@
 
 
 - (void)btnClick:(UIButton *)btn {
+    NSString *title = nil;
     if (btn.tag == 2000) {
-        
+        title = @"确认一键布防吗?";
     }else if (btn.tag == 2001) {
-        
+        title = @"确认一键撤防吗?";
     }else if (btn.tag == 2002) {
-        
+        title = @"确认一键消警吗?";
     }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    alert.alertViewClickedButtonAtIndexBlock = ^(UIAlertView *alert ,NSUInteger index) {
+        
+        if (index == 0) {
+            
+            
+        }else  if (index == 1) {
+            AFViewModel *afViewModel = [AFViewModel new];
+            [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+                NSString *code = returnValue[@"code"];
+                if (code.integerValue == 1) {
+                    if (btn.tag == 2000) {
+                        [STTextHudTool showSuccessText:@"一键布防成功!"];
+                    }else if (btn.tag == 2001) {
+                        [STTextHudTool showSuccessText:@"一键撤防成功!"];
+                    }else if (btn.tag == 2002) {
+                        [STTextHudTool showSuccessText:@"一键消警成功!"];
+                    }
+                }else {
+                    [STTextHudTool showErrorText:returnValue[@"message"]];
+                }
+            } WithErrorBlock:^(id errorCode) {
+                
+            } WithFailureBlock:^{
+                
+            }];
+            if (btn.tag == 2000) {
+                [afViewModel alarmDeviceBCFWithId:self.deviceId type:1];
+            }else if (btn.tag == 2001) {
+                [afViewModel alarmDeviceBCFWithId:self.deviceId type:2];
+            }else if (btn.tag == 2002) {
+                [afViewModel alarmDeviceBCFWithId:self.deviceId type:3];
+            }
+        }
+        
+    };
+    [alert show];
 }
 
 - (void)loadData {

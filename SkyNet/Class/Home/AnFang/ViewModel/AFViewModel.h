@@ -117,6 +117,14 @@
 
  */
 -(void)alarmBranchBCFWithId:(NSString *)branchId type:(NSInteger)type;
+/**
+ 设备单独布防,撤防,消警
+ 
+ @param deviceId 设备id
+ @param type 操作类型;1=布防;2=撤防;3=消警
+ 
+ */
+-(void)alarmDeviceBCFWithId:(NSString *)deviceId type:(NSInteger)type;
 
 /**
  获取自定义分组下数据
@@ -124,6 +132,14 @@
  @param customId 自定义分组id
  */
 -(void)requestGroupData:(NSString *)customId;
+/**
+ 获取自定义分组下数据
+ 
+ @param dataId 数据对象ID;网点,设备,通道
+ @param name 快捷名称;可用源数据名称
+ @param lx 快捷类型;1=网点,2=设备,3=通道
+ */
+-(void)addShortcutDataWithDataId:(NSString *)dataId name:(NSString *)name lx:(NSString *)lx;
 
 /**
  渐变色

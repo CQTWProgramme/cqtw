@@ -16,10 +16,12 @@
 @property(nonatomic,strong)NSString * wdjd;
 @property(nonatomic,strong)NSString * wdwd;
 @property(nonatomic,strong)NSString * wdwz;
-@property(nonatomic,strong)NSString * wdlx;
+@property(nonatomic,assign)long wdlx;
 @property(nonatomic,strong)NSString * azry;
 @property(nonatomic,strong)NSString * alarmoperId;
 @property(nonatomic,strong)NSString * alarmchargeId;
 @property(nonatomic,strong)NSString * bz;
 @property(nonatomic,strong)NSString * xgsj;
+@property (nonatomic, copy) NSString *ly;
+@property (nonatomic, copy) NSString *streetId;
 @end

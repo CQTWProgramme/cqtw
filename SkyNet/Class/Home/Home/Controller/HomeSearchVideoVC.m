@@ -9,7 +9,8 @@
 #import "HomeSearchVideoVC.h"
 #import "HomeViewModel.h"
 #import "HomeSearchVideoCell.h"
-#import "SearchResultModel.h"
+#import "SearchResultVideoModel.h"
+#import "MonitorPlayVC.h"
 @interface HomeSearchVideoVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) MJRefreshComponent *myRefreshView;
@@ -53,7 +54,7 @@
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
         NSMutableArray *arrayM=[NSMutableArray new];
         for (NSDictionary * dic in returnValue[@"rows"]) {
-            SearchResultModel * model =[SearchResultModel mj_objectWithKeyValues:dic];
+            SearchResultVideoModel * model =[SearchResultVideoModel mj_objectWithKeyValues:dic];
             [arrayM addObject:model];
         }
         //..下拉刷新
@@ -128,6 +129,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MonitorPlayVC *playVC = [[MonitorPlayVC alloc] init];
+    
+    [self.navigationController pushViewController:playVC animated:YES];
 }
 
 -(void)dealloc {

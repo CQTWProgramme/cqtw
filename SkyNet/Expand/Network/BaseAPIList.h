@@ -83,6 +83,9 @@
 //获取用户自定义分组下数据
 #define SELECTCUSTOMData                      POST_INTERFACE(@"api/basic/selectCustomAndData")
 
+//新增快捷按键
+#define ADDSHORTCUT                      POST_INTERFACE(@"api/bean/addShortcut")
+
 //根据网点查询用户拥有的设备及状态（分页加载）
 #define SELECTDevicePageByBranch                      POST_INTERFACE(@"api/basic/selectDevicePageByBranch")
 

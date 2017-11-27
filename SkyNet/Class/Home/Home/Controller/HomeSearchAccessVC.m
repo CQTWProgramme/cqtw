@@ -9,7 +9,7 @@
 #import "HomeSearchAccessVC.h"
 #import "HomeViewModel.h"
 #import "HomeSearchAcessCell.h"
-#import "SearchResultModel.h"
+#import "SearchResultAccessModel.h"
 
 @interface HomeSearchAccessVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -55,7 +55,7 @@
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
         NSMutableArray *arrayM=[NSMutableArray new];
         for (NSDictionary * dic in returnValue[@"rows"]) {
-            SearchResultModel * model =[SearchResultModel mj_objectWithKeyValues:dic];
+            SearchResultAccessModel * model =[SearchResultAccessModel mj_objectWithKeyValues:dic];
             [arrayM addObject:model];
         }
         //..下拉刷新

@@ -9,7 +9,8 @@
 #import "HomeSearchAFDevicesVC.h"
 #import "HomeViewModel.h"
 #import "HomeSearchDevicesCell.h"
-#import "SearchResultModel.h"
+#import "SearchResultDeviceModel.h"
+#import "FacilityDetailVC.h"
 @interface HomeSearchAFDevicesVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) MJRefreshComponent *myRefreshView;
@@ -53,7 +54,7 @@
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
         NSMutableArray *arrayM=[NSMutableArray new];
         for (NSDictionary * dic in returnValue[@"rows"]) {
-            SearchResultModel * model =[SearchResultModel mj_objectWithKeyValues:dic];
+            SearchResultDeviceModel * model =[SearchResultDeviceModel mj_objectWithKeyValues:dic];
             [arrayM addObject:model];
         }
         //..下拉刷新
@@ -128,6 +129,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SearchResultDeviceModel *model = self.dataArray[indexPath.row];
+    FacilityDetailVC *detailVC = [[FacilityDetailVC alloc] init];
+    detailVC.deviceId = model.deviceId;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 -(void)dealloc {

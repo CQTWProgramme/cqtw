@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SearchResultModel;
+@class SearchResultVideoModel;
 @interface HomeSearchVideoCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-@property (nonatomic, strong)SearchResultModel *model;
+@property (nonatomic, strong)SearchResultVideoModel *model;
 @end

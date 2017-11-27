@@ -240,8 +240,25 @@
         [STTextHudTool showErrorText:@"加载失败"];
         self.failureBlock();
     }];
+}
 
-    
+-(void)addShortcutDataWithDataId:(NSString *)dataId name:(NSString *)name lx:(NSString *)lx {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{
+                            @"dataId":dataId,
+                            @"name":name,
+                            @"lx":lx};
+    [[AFNetAPIClient sharedJsonClient].setRequest(ADDSHORTCUT).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [STTextHudTool hideSTHud];
+        self.returnBlock(responseObject[@"data"]);
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool hideSTHud];
+        [STTextHudTool showErrorText:@"加载失败"];
+        self.failureBlock();
+    }];
 }
 
 #pragma mark 添加自定义分组下数据
@@ -396,8 +413,7 @@
     [[AFNetAPIClient sharedJsonClient].setRequest(AlarmBranchBCF).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];
-        NSString *code = responseObject[@"code"];
-        super.returnBlock(code);
+        super.returnBlock(responseObject);
     } progress:^(NSProgress *progress) {
         
         
@@ -407,6 +423,21 @@
     }];
 }
 
+-(void)alarmDeviceBCFWithId:(NSString *)deviceId type:(NSInteger)type {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"deviceId": deviceId,@"type":@(type)};
+    [[AFNetAPIClient sharedJsonClient].setRequest(AlarmDeviceBCF).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+    }];
+}
 #pragma mark 渐变色
 +(CAGradientLayer *)getDefaultLayerWithFrame:(CGRect)frame{
     

@@ -16,6 +16,8 @@
 #import "VHLNavigation.h"
 #import <AVFoundation/AVFoundation.h>
 #import "HomeSearchVC.h"
+#import "AnDetailVC.h"
+#import "ShortcutModel.h"
 @interface HomeVC ()<HomeViewDelegate>
 @property(nonatomic,strong)HomeView * homeView;
 @end
@@ -171,6 +173,15 @@
     
     
 }
+
+-(void)cellClickWithShortcutModel:(ShortcutModel *)model {
+    AnDetailVC *detailVC = [[AnDetailVC alloc] init];
+    detailVC.branchId = model.dataId;
+    detailVC.name = model.name;
+    detailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
 -(HomeView *)homeView{
     
     if (!_homeView) {

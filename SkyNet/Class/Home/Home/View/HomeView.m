@@ -218,7 +218,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _shortDataArr.count;
+    return _shortDataArr.count + 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -234,7 +234,6 @@
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-            
             return cell;
         
     }
@@ -265,18 +264,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
     if (indexPath.row==0) {
         
         return 40;
     }
-    
-    
-    
-    
     return 70;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (_shortDataArr.count>0) {
+        ShortcutModel * shortcutModel =_shortDataArr[indexPath.row -1];
+        if (self.delegate) {
+            [self.delegate cellClickWithShortcutModel:shortcutModel];
+        }
+    }
+}
 
 #pragma mark 加载轮播图
 -(void)loadAdScrollImage:(NSArray *)imageUrlArr{
@@ -288,7 +291,6 @@
     for (AdvModel * model in imageUrlArr) {
         
         [imageArr addObject:model.tpdz];
-        
     }
     
     

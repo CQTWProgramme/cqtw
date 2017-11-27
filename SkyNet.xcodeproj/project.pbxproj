@@ -102,6 +102,9 @@
 		884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */; };
 		884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701551F8DAD5800B44D68 /* PoliceHomeCell.m */; };
 		884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701581F8DB39600B44D68 /* PoliceHomeModel.m */; };
+		8871C2F81FCC0D7800126E6A /* SearchResultDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8871C2F71FCC0D7800126E6A /* SearchResultDeviceModel.m */; };
+		8871C2FB1FCC0ECD00126E6A /* SearchResultVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8871C2FA1FCC0ECD00126E6A /* SearchResultVideoModel.m */; };
+		8871C2FE1FCC0F7C00126E6A /* SearchResultAccessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8871C2FD1FCC0F7C00126E6A /* SearchResultAccessModel.m */; };
 		888864AF1FC7A6D500D1D9B4 /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864AE1FC7A6D500D1D9B4 /* VideoListModel.m */; };
 		888864B21FC7F88000D1D9B4 /* HomeSearchAFCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864B11FC7F88000D1D9B4 /* HomeSearchAFCell.m */; };
 		888864B51FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 888864B41FC7F8A000D1D9B4 /* HomeSearchDevicesCell.m */; };
@@ -483,6 +486,12 @@
 		884701551F8DAD5800B44D68 /* PoliceHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeCell.m; sourceTree = "<group>"; };
 		884701571F8DB39600B44D68 /* PoliceHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeModel.h; sourceTree = "<group>"; };
 		884701581F8DB39600B44D68 /* PoliceHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeModel.m; sourceTree = "<group>"; };
+		8871C2F61FCC0D7800126E6A /* SearchResultDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultDeviceModel.h; sourceTree = "<group>"; };
+		8871C2F71FCC0D7800126E6A /* SearchResultDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultDeviceModel.m; sourceTree = "<group>"; };
+		8871C2F91FCC0ECD00126E6A /* SearchResultVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultVideoModel.h; sourceTree = "<group>"; };
+		8871C2FA1FCC0ECD00126E6A /* SearchResultVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultVideoModel.m; sourceTree = "<group>"; };
+		8871C2FC1FCC0F7C00126E6A /* SearchResultAccessModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultAccessModel.h; sourceTree = "<group>"; };
+		8871C2FD1FCC0F7C00126E6A /* SearchResultAccessModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultAccessModel.m; sourceTree = "<group>"; };
 		888864AD1FC7A6D500D1D9B4 /* VideoListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListModel.h; sourceTree = "<group>"; };
 		888864AE1FC7A6D500D1D9B4 /* VideoListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListModel.m; sourceTree = "<group>"; };
 		888864B01FC7F88000D1D9B4 /* HomeSearchAFCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchAFCell.h; sourceTree = "<group>"; };
@@ -1443,6 +1452,12 @@
 				BF0C32631F67CE6C009FC882 /* AdvModel.m */,
 				888864BC1FC7FF4000D1D9B4 /* SearchResultModel.h */,
 				888864BD1FC7FF4000D1D9B4 /* SearchResultModel.m */,
+				8871C2F61FCC0D7800126E6A /* SearchResultDeviceModel.h */,
+				8871C2F71FCC0D7800126E6A /* SearchResultDeviceModel.m */,
+				8871C2F91FCC0ECD00126E6A /* SearchResultVideoModel.h */,
+				8871C2FA1FCC0ECD00126E6A /* SearchResultVideoModel.m */,
+				8871C2FC1FCC0F7C00126E6A /* SearchResultAccessModel.h */,
+				8871C2FD1FCC0F7C00126E6A /* SearchResultAccessModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2279,6 +2294,7 @@
 				88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */,
 				BF73388A1F77DB6C0000FB8A /* AnDetailView.m in Sources */,
 				BF0C322F1F6774EB009FC882 /* NSString+Base64.m in Sources */,
+				8871C2F81FCC0D7800126E6A /* SearchResultDeviceModel.m in Sources */,
 				BF34EEAC1F49CEBF00E05DF3 /* RequestParaTool.m in Sources */,
 				BFE3AF891F79E22F00C90C36 /* AboutUsVC.m in Sources */,
 				BFA8C7B91F4BE1C5003A0BEE /* TADotView.m in Sources */,
@@ -2324,6 +2340,7 @@
 				888864B81FC7F8B800D1D9B4 /* HomeSearchVideoCell.m in Sources */,
 				BF0C325C1F67CE48009FC882 /* HomeCell.m in Sources */,
 				BF0C32641F67CE6C009FC882 /* AdvModel.m in Sources */,
+				8871C2FB1FCC0ECD00126E6A /* SearchResultVideoModel.m in Sources */,
 				BF34EEAF1F49CEBF00E05DF3 /* CityModel.m in Sources */,
 				88F9C57F1F8CD16900039A08 /* AccessControlDetailVC.m in Sources */,
 				BF3F8CFD1F6AC9BF000EA801 /* NextModel.m in Sources */,
@@ -2447,6 +2464,7 @@
 				BF34EEC31F49CEC000E05DF3 /* XWRegularExpression.m in Sources */,
 				880EF0C51FBD247400776D11 /* NSBundle+PYSearchExtension.m in Sources */,
 				88F9C5781F8CCA1200039A08 /* ACDistrictModel.m in Sources */,
+				8871C2FE1FCC0F7C00126E6A /* SearchResultAccessModel.m in Sources */,
 				BF0C32BC1F6A16F4009FC882 /* TableChooseCell.m in Sources */,
 				BFFA09ED1F7A43C30019CFA8 /* VHLNavigation.m in Sources */,
 				BFFA09EB1F7A43C30019CFA8 /* BaseViewController.m in Sources */,

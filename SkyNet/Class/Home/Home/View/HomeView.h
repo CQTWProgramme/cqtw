@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ShortcutModel;
 @protocol HomeViewDelegate <NSObject>
 
 //上拉刷新
 -(void)reloadTableView;
 
 -(void)menuClick:(NSInteger)tag;
+
+-(void)cellClickWithShortcutModel:(ShortcutModel *)model;
 
 @end
 

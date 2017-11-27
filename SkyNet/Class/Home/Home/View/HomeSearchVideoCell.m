@@ -7,7 +7,7 @@
 //
 
 #import "HomeSearchVideoCell.h"
-#import "SearchResultModel.h"
+#import "SearchResultVideoModel.h"
 
 #define CELLHEIGHT 70.f  //设置行高
 @interface HomeSearchVideoCell()
@@ -70,11 +70,11 @@
     
 }
 
--(void)setModel:(SearchResultModel *)model {
+-(void)setModel:(SearchResultVideoModel *)model {
     _model = model;
     self.arrowImageView.image = ImageNamed(@"home_rightArrow");
     self.afImageView.image=ImageNamed(@"home_monitor");
-    self.afContentLabel.text = _model.wdmc;
+    self.afContentLabel.text = _model.jkmc;
 }
 
 @end

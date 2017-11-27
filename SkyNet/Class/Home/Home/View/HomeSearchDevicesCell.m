@@ -7,7 +7,7 @@
 //
 
 #import "HomeSearchDevicesCell.h"
-#import "SearchResultModel.h"
+#import "SearchResultDeviceModel.h"
 #define CELLHEIGHT 70.f  //设置行高
 @interface HomeSearchDevicesCell()
 @property (nonatomic, weak) UIView *underlineView; //下划线
@@ -69,10 +69,10 @@
     
 }
 
--(void)setModel:(SearchResultModel *)model {
+-(void)setModel:(SearchResultDeviceModel *)model {
     _model = model;
     self.arrowImageView.image = ImageNamed(@"home_rightArrow");
     self.afImageView.image=ImageNamed(@"home_monitor");
-    self.afContentLabel.text = _model.wdmc;
+    self.afContentLabel.text = _model.sbmc;
 }
 @end
