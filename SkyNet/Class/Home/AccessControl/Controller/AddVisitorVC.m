@@ -15,7 +15,9 @@
 
 static NSString *imgCellID = @"AddVisitorVCImgCellID";
 
-@interface AddVisitorVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PGDatePickerDelegate>
+@interface AddVisitorVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PGDatePickerDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate> {
+    MFMessageComposeViewController *_messageController;
+}
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *houseLabel;
 @property (strong, nonatomic) IBOutlet UITextField *visitorNameTextField;
@@ -405,7 +407,10 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatSession messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
         if (error) {
-            [STTextHudTool showErrorText:[NSString stringWithFormat:@"错误代码:%@",@(error.code)]];
+            if([error.userInfo objectForKey:@"message"]) {
+                [STTextHudTool showErrorText:[error.userInfo objectForKey:@"message"]];
+            }
+            
         }else{
             if ([data isKindOfClass:[UMSocialShareResponse class]]) {
                 UMSocialShareResponse *resp = data;
@@ -424,36 +429,94 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
 
 //短信分享
 - (IBAction)mgShareAction:(id)sender {
-    //创建分享消息对象
-    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-    //创建网页内容对象
-    NSString *thumbURL =  @"AppIcon";
-    NSString *address = [NSString stringWithFormat:@"%@[%@]",self.model.disName,self.model.houseName];
-    NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,self.openDoorHrefLabel.text,address];
+//    //创建分享消息对象
+//    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+//    //创建网页内容对象
+//    NSString *thumbURL =  @"AppIcon";
+//    NSString *address = [NSString stringWithFormat:@"%@[%@]",self.model.disName,self.model.houseName];
+//    NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,self.openDoorHrefLabel.text,address];
+//
+//    UMShareSmsObject *shareObject = [[UMShareSmsObject alloc] init];
+//    shareObject.smsContent = descr;
+//    //分享消息对象设置分享内容对象
+//    messageObject.shareObject = shareObject;
+//    //调用分享接口
+//    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_Sms messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+//        if (error) {
+//            if([error.userInfo objectForKey:@"message"]) {
+//                [STTextHudTool showErrorText:[error.userInfo objectForKey:@"message"]];
+//            }
+//        }else{
+//            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+//                UMSocialShareResponse *resp = data;
+//                //分享结果消息
+//                UMSocialLogInfo(@"response message is %@",resp.message);
+//                [STTextHudTool showSuccessText:resp.message];
+//                //第三方原始返回的数据
+//                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+//
+//            }else{
+//                UMSocialLogInfo(@"response data is %@",data);
+//            }
+//        }
+//    }];
+    //用于判断是否有发送短信的功能（模拟器上就没有短信功能）
+    Class messageClass = (NSClassFromString(@"MFMessageComposeViewController"));
     
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"" descr:descr thumImage:thumbURL];
-    //设置网页地址
-    shareObject.webpageUrl = @"https://city.cqtianwang.com/app/visitorsOpenDoor";
+    //有短信功能
+    if ([messageClass canSendText]) {//发送短信
+        //实例化MFMessageComposeViewController,并设置委托
+        _messageController = [[MFMessageComposeViewController alloc] init];
+        _messageController.messageComposeDelegate = self;
+        _messageController.delegate = self;
+        UINavigationItem *navigationItem = [[[_messageController viewControllers] lastObject] navigationItem];
+        [navigationItem setTitle:@"开门密码分享"];
+        
+        UIButton* ButSign = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+        [ButSign setTitle:@"取消" forState:UIControlStateNormal];
+        ButSign.titleLabel.font = [UIFont systemFontOfSize:14];
+        [ButSign setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [ButSign addTarget:self action:@selector(msgBackFun) forControlEvents:UIControlEventTouchUpInside];
+        navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:ButSign];
     
-    //分享消息对象设置分享内容对象
-    messageObject.shareObject = shareObject;
-    //调用分享接口
-    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatSession messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-        if (error) {
-            [STTextHudTool showErrorText:[NSString stringWithFormat:@"错误代码:%@",@(error.code)]];
-        }else{
-            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
-                UMSocialShareResponse *resp = data;
-                //分享结果消息
-                UMSocialLogInfo(@"response message is %@",resp.message);
-                [STTextHudTool showSuccessText:resp.message];
-                //第三方原始返回的数据
-                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
-                
-            }else{
-                UMSocialLogInfo(@"response data is %@",data);
-            }
-        }
+        //拼接并设置短信内容
+        NSString *address = [NSString stringWithFormat:@"%@[%@]",self.model.disName,self.model.houseName];
+        NSString *descr = [NSString stringWithFormat:@"[智能人脸门禁]分享开门信息给你,门禁访问密码：%@,远程开门地址：%@。使用以上授权信息可以打开以下门禁：%@",self.visitorPasswordLabel.text,self.openDoorHrefLabel.text,address];
+        _messageController.body = descr;
+        
+        //推到发送试图控制器
+        [self presentViewController:_messageController animated:YES completion:^{
+            
+        }];
+    }else {
+        [STTextHudTool showErrorText:@"该设备没有发送短信的功能~"];
+    }
+}
+
+//发送短信后回调的方法
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    NSString *tipContent;
+    switch (result) {
+        case MessageComposeResultCancelled:
+            tipContent = @"发送短信已取消";
+            break;
+        case MessageComposeResultFailed:
+            tipContent = @"发送短信失败";
+            break;
+        case MessageComposeResultSent:
+            tipContent = @"发送成功";
+            break;
+        default:
+            break;
+    }
+    [controller dismissViewControllerAnimated:YES completion:^{
+        [STTextHudTool showErrorText:tipContent];
+    }];
+}
+
+-(void)msgBackFun {
+    [_messageController dismissViewControllerAnimated:YES completion:^{
+        [STTextHudTool showErrorText:@"发送短信已取消"];
     }];
 }
 
