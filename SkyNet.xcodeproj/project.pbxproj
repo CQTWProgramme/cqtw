@@ -102,6 +102,8 @@
 		884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701521F8DAC2800B44D68 /* PoliceHomeMenuItem.m */; };
 		884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701551F8DAD5800B44D68 /* PoliceHomeCell.m */; };
 		884701591F8DB39600B44D68 /* PoliceHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 884701581F8DB39600B44D68 /* PoliceHomeModel.m */; };
+		886AEC751FCCFEFA007E59E9 /* SearchHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886AEC741FCCFEFA007E59E9 /* SearchHistoryCell.m */; };
+		886AEC781FCD0D70007E59E9 /* MoreHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 886AEC771FCD0D70007E59E9 /* MoreHistoryVC.m */; };
 		8871C2F81FCC0D7800126E6A /* SearchResultDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8871C2F71FCC0D7800126E6A /* SearchResultDeviceModel.m */; };
 		8871C2FB1FCC0ECD00126E6A /* SearchResultVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8871C2FA1FCC0ECD00126E6A /* SearchResultVideoModel.m */; };
 		8871C2FE1FCC0F7C00126E6A /* SearchResultAccessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8871C2FD1FCC0F7C00126E6A /* SearchResultAccessModel.m */; };
@@ -486,6 +488,10 @@
 		884701551F8DAD5800B44D68 /* PoliceHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeCell.m; sourceTree = "<group>"; };
 		884701571F8DB39600B44D68 /* PoliceHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoliceHomeModel.h; sourceTree = "<group>"; };
 		884701581F8DB39600B44D68 /* PoliceHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoliceHomeModel.m; sourceTree = "<group>"; };
+		886AEC731FCCFEFA007E59E9 /* SearchHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchHistoryCell.h; sourceTree = "<group>"; };
+		886AEC741FCCFEFA007E59E9 /* SearchHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryCell.m; sourceTree = "<group>"; };
+		886AEC761FCD0D70007E59E9 /* MoreHistoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreHistoryVC.h; sourceTree = "<group>"; };
+		886AEC771FCD0D70007E59E9 /* MoreHistoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreHistoryVC.m; sourceTree = "<group>"; };
 		8871C2F61FCC0D7800126E6A /* SearchResultDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultDeviceModel.h; sourceTree = "<group>"; };
 		8871C2F71FCC0D7800126E6A /* SearchResultDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultDeviceModel.m; sourceTree = "<group>"; };
 		8871C2F91FCC0ECD00126E6A /* SearchResultVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultVideoModel.h; sourceTree = "<group>"; };
@@ -1087,6 +1093,8 @@
 				881547A41F8DDA41000F2C84 /* PoliceInteractionCell.h */,
 				881547A51F8DDA41000F2C84 /* PoliceInteractionCell.m */,
 				881547A61F8DDA41000F2C84 /* PoliceInteractionCell.xib */,
+				886AEC731FCCFEFA007E59E9 /* SearchHistoryCell.h */,
+				886AEC741FCCFEFA007E59E9 /* SearchHistoryCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1407,6 +1415,8 @@
 				880EF0DA1FBD300C00776D11 /* HomeSearchVideoVC.m */,
 				880EF0DC1FBD302700776D11 /* HomeSearchAccessVC.h */,
 				880EF0DD1FBD302700776D11 /* HomeSearchAccessVC.m */,
+				886AEC761FCD0D70007E59E9 /* MoreHistoryVC.h */,
+				886AEC771FCD0D70007E59E9 /* MoreHistoryVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2356,6 +2366,7 @@
 				88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */,
 				888EBFAD1FB7F505006F8CCE /* AccessDetailCell.m in Sources */,
 				BF84BB061F5C5A14000FB4D8 /* UIViewAdditions.m in Sources */,
+				886AEC781FCD0D70007E59E9 /* MoreHistoryVC.m in Sources */,
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
 				880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */,
 				881547991F8DD129000F2C84 /* ReportVC.m in Sources */,
@@ -2405,6 +2416,7 @@
 				BFFA09FD1F7A62090019CFA8 /* EquipmentVC.m in Sources */,
 				88299C781F7CD2E10070067C /* MonitorDetailListVC.m in Sources */,
 				BF0C326C1F67FA8B009FC882 /* AnFangVC.m in Sources */,
+				886AEC751FCCFEFA007E59E9 /* SearchHistoryCell.m in Sources */,
 				880361181F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m in Sources */,
 				BFA8C8DB1F4DEAEE003A0BEE /* MyView.m in Sources */,
 				88F9C5721F8CC7E800039A08 /* ACItemCell.m in Sources */,

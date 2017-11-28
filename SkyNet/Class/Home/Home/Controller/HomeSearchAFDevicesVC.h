@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface HomeSearchAFDevicesVC : BaseViewController
-
+@property (nonatomic, strong) UITableView *myTableView;
 @end

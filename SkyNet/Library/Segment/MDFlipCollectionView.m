@@ -9,6 +9,10 @@
 #import "MDFlipCollectionView.h"
 #import "EventVC.h"
 #import "EquipmentVC.h"
+#import "HomeSearchAFVC.h"
+#import "HomeSearchAFDevicesVC.h"
+#import "HomeSearchVideoVC.h"
+#import "HomeSearchAccessVC.h"
 @interface MDFlipCollectionView()<UICollectionViewDelegate,
                                   UICollectionViewDataSource>
 
@@ -25,11 +29,18 @@
     if (self) {
         _dataArray = [NSMutableArray arrayWithArray:contentArray];
         [self addSubview:self.collectionView];
-        self.collectionView.frame = self.bounds;
+        //self.collectionView.frame = self.bounds;
     }
     return self;
 }
 
+-(void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.collectionView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    self.flowLayout.itemSize = CGSizeMake(frame.size.width, frame.size.height);
+    self.collectionView.collectionViewLayout = self.flowLayout;
+    [self.collectionView reloadData];
+}
 
 #pragma mark - Getter
 - (UICollectionView *)collectionView
@@ -108,11 +119,25 @@
         eventVC.myTableView.frame=cell.bounds;
        
     }else if ([vc isKindOfClass:[EquipmentVC class]]) {
-        EquipmentVC * equipmentVC =(EquipmentVC *)vc;
+        //EquipmentVC * equipmentVC =(EquipmentVC *)vc;
          //equipmentVC.myTableView.frame=cell.bounds;
-        
+    }else if ([vc isKindOfClass:[HomeSearchAFVC class]]) {
+        HomeSearchAFVC *afVC = (HomeSearchAFVC *)vc;
+        afVC.view.frame = cell.bounds;
+        afVC.myTableView.frame = cell.bounds;
+    }else if ([vc isKindOfClass:[HomeSearchAFDevicesVC class]]) {
+        HomeSearchAFDevicesVC *afVC = (HomeSearchAFDevicesVC *)vc;
+        afVC.view.frame = cell.bounds;
+        afVC.myTableView.frame = cell.bounds;
+    }else if ([vc isKindOfClass:[HomeSearchVideoVC class]]) {
+        HomeSearchVideoVC *afVC = (HomeSearchVideoVC *)vc;
+        afVC.view.frame = cell.bounds;
+        afVC.myTableView.frame = cell.bounds;
+    }else if ([vc isKindOfClass:[HomeSearchAccessVC class]]) {
+        HomeSearchAccessVC *afVC = (HomeSearchAccessVC *)vc;
+        afVC.view.frame = cell.bounds;
+        afVC.myTableView.frame = cell.bounds;
     }
-    
     [cell.contentView addSubview:vc.view];
     return cell;
 }

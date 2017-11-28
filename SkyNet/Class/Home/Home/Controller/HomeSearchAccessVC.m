@@ -12,7 +12,6 @@
 #import "SearchResultAccessModel.h"
 
 @interface HomeSearchAccessVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) MJRefreshComponent *myRefreshView;
 @property (nonatomic, assign) NSInteger currPage;
 @property (nonatomic, assign) NSInteger pageSize;
@@ -92,7 +91,7 @@
     
     MJWeakSelf
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 108) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0) style:UITableViewStylePlain];
         _myTableView.backgroundColor = BACKGROUND_COLOR;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
