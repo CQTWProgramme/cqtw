@@ -17,7 +17,7 @@
 //const static char*appSecret = "7e8bd859bba7486eb22e74adff4d3749";
 //const static short constIntApiMoveCard = 4;
 @interface AppDelegate ()
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation AppDelegate
@@ -27,10 +27,19 @@
     
     
     [ClientTool autoKeyboard];
-    self.window.rootViewController= [ClientTool  setupLogVC];
+    [self initLocation];
     [self initiaUMSDK];
     [self initFunSdk];
+    self.window.rootViewController= [ClientTool  setupLogVC];
     return YES;
+}
+
+- (void)initLocation {
+    self.locationManager = [[CLLocationManager alloc] init];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >8.0){
+        [self.locationManager requestAlwaysAuthorization];
+        [self.locationManager requestWhenInUseAuthorization];
+    }
 }
 
 - (void)initFunSdk {
@@ -38,6 +47,7 @@
 }
 
 - (void)funSDKSetting {
+    
 //    SInitParam pa;
 //    pa.nAppType = H264_DVR_LOGIN_TYPE_MOBILE;
 //    FUN_Init(0, &pa);
