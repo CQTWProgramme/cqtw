@@ -105,10 +105,6 @@ static const NSString *doorKey = @"DoorKey";
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >8.0){
-        [self.locationManager requestAlwaysAuthorization];
-         [self.locationManager requestWhenInUseAuthorization];
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
