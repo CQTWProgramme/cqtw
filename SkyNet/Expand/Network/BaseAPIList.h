@@ -83,6 +83,9 @@
 //获取用户自定义分组下数据
 #define SELECTCUSTOMData                      POST_INTERFACE(@"api/basic/selectCustomAndData")
 
+//获取安防详情顶部数据展示
+#define AnDetailHeadData                      POST_INTERFACE(@"api/basic/selectDeviceStateByBranch")
+
 //新增快捷按键
 #define ADDSHORTCUT                      POST_INTERFACE(@"api/bean/addShortcut")
 
@@ -111,6 +114,9 @@
 
 //获取网点详情数据
 #define LatticeDetailData                      POST_INTERFACE(@"api/bean/selectBranchById")
+
+//获取网点详情顶部展示数据
+#define LatticeDetailHeadData                      POST_INTERFACE(@"api/bean/selectDeviceTypeCount")
 
 //网点一键布防,撤防,消警
 #define AlarmBranchBCF                      POST_INTERFACE(@"api/alarm/setBranchBCF")

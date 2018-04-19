@@ -27,8 +27,22 @@
     [self createRightItem];
     [self.view addSubview:self.anDetailView];
     
+    [self setupHeadData];
     [self getData];
     
+}
+
+//获取头部数据
+- (void)setupHeadData {
+    AFViewModel *afViewModel = [AFViewModel new];
+    [afViewModel setBlockWithReturnBlock:^(id returnValue) {
+        
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    [afViewModel requestAnDetailHeadData:self.branchId];
 }
 
 - (void)getData {

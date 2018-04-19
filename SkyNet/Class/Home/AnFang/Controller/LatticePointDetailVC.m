@@ -29,6 +29,7 @@
     self.title = @"网点详情";
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self createRightItem];
+    [self setupHeadData];
     [self setupdata];
 }
 
@@ -76,6 +77,15 @@
     //        self.name = @"";
     //    }
     //    [viewModel addShortcutDataWithDataId:self.branchId name:self.name lx:@"1"];
+}
+
+//获取头部数据
+-(void)setupHeadData {
+    [LatticePointDetailModel getLatticePointDetailHeadDataById:self.branchId success:^(id returnValue) {
+        
+    } failure:^(id errorCode) {
+        
+    }];
 }
 
 - (void)setupdata {

@@ -19,6 +19,7 @@
 @property(nonatomic,strong)UILabel * bfLabel;
 @property(nonatomic,strong)UILabel * cfLabel;
 @property(nonatomic,strong)UILabel * bjLabel;
+@property(nonatomic,strong)UILabel * yyLabel;
 @end
 @implementation LatticePointDetailHeaderView
 
@@ -101,9 +102,14 @@
     _bjLabel.font=[UIFont systemFontOfSize:15];
     _bjLabel.textColor = RGB(230, 155, 0);
     
+    _bjLabel =[UILabel new];
+    _bjLabel.textAlignment=NSTextAlignmentCenter;
+    _bjLabel.font=[UIFont systemFontOfSize:15];
+    _bjLabel.textColor = RGB(230, 155, 0);
+    
     
     UILabel * zxL =[UILabel new];
-    zxL.text=@"安防设备";
+    zxL.text=@"安防";
     zxL.textAlignment=NSTextAlignmentCenter;
     zxL.font=[UIFont systemFontOfSize:13];
     zxL.textColor =[UIColor grayColor];
@@ -115,7 +121,7 @@
     lxL.textColor =[UIColor grayColor];
     
     UILabel * bfL =[UILabel new];
-    bfL.text=@"监控";
+    bfL.text=@"视频";
     bfL.textAlignment=NSTextAlignmentCenter;
     bfL.font=[UIFont systemFontOfSize:13];
     bfL.textColor =[UIColor grayColor];
@@ -127,13 +133,19 @@
     cfL.textColor =[UIColor grayColor];
     
     UILabel * bjL =[UILabel new];
-    bjL.text=@"对讲";
+    bjL.text=@"WIFI";
     bjL.textAlignment=NSTextAlignmentCenter;
     bjL.font=[UIFont systemFontOfSize:13];
     bjL.textColor =[UIColor grayColor];
     
+    UILabel * yyL =[UILabel new];
+    yyL.text=@"语音";
+    yyL.textAlignment=NSTextAlignmentCenter;
+    yyL.font=[UIFont systemFontOfSize:13];
+    yyL.textColor =[UIColor grayColor];
     
-    [_numMenuView sd_addSubviews:@[_zxLabel,zxL,_lxLabel,lxL,_bfLabel,bfL,_cfLabel,cfL,_bjLabel,bjL]];
+    
+    [_numMenuView sd_addSubviews:@[_zxLabel,zxL,_lxLabel,lxL,_bfLabel,bfL,_cfLabel,cfL,_bjLabel,bjL,_yyLabel,yyL]];
     
     
     _zxLabel.sd_layout
@@ -162,6 +174,12 @@
     
     _bjLabel.sd_layout
     .leftSpaceToView(_cfLabel, 0)
+    .topSpaceToView(_numMenuView, 10)
+    .widthRatioToView(_numMenuView, 0.2)
+    .heightIs(20);
+    
+    _yyLabel.sd_layout
+    .leftSpaceToView(_bjLabel, 0)
     .topSpaceToView(_numMenuView, 10)
     .widthRatioToView(_numMenuView, 0.2)
     .heightIs(20);
@@ -195,6 +213,12 @@
     .topSpaceToView(_bjLabel, 0)
     .widthRatioToView(_bjLabel, 1)
     .heightRatioToView(_bjLabel, 1);
+    
+    yyL.sd_layout
+    .centerXEqualToView(_yyLabel)
+    .topSpaceToView(_yyLabel, 0)
+    .widthRatioToView(_yyLabel, 1)
+    .heightRatioToView(_yyLabel, 1);
     
     
 }

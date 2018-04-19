@@ -41,7 +41,6 @@
 
 //加载设备数据
 - (void)loadData {
-    NSLog(@"%@",@(self.currentPage));
     MJWeakSelf
     [EvevtListModel getEventListDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {

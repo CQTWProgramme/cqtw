@@ -25,4 +25,5 @@
 @property (nonatomic, copy) NSString *alarmoperMc;
 @property (nonatomic, copy) NSString *wdwd;
 + (void)getLatticePointDetailDataById:(NSString *)customId success:(BaseSuccessBlock) success failure:(BaseFailureBlock) failure;
++ (void)getLatticePointDetailHeadDataById:(NSString *)branchId success:(BaseSuccessBlock) success failure:(BaseFailureBlock) failure;
 @end

@@ -112,6 +112,34 @@
     
 }
 
+#pragma mark   获取安防详情顶部数据
+-(void)requestAnDetailHeadData:(NSString *)branchId {
+    [STTextHudTool loadingWithTitle:@"删除中..."];
+    NSDictionary * param =@{@"branchId": branchId};
+    [[AFNetAPIClient sharedJsonClient].setRequest(AnDetailHeadData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        NSString * code=responseObject[@"code"];
+        if (code.integerValue==1) {
+            [STTextHudTool hideSTHud];
+            self.returnBlock(code);
+        }else{
+            [STTextHudTool hideSTHud];
+            [STTextHudTool showErrorText:@"获取数据失败" withSecond:HudDelay];
+            
+        }
+        
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        [STTextHudTool hideSTHud];
+        [STTextHudTool showErrorText:@"获取数据失败" withSecond:HudDelay];
+        
+    }];
+}
 
 #pragma mark   删除自定义分组
 -(void)requestDeleteGroup:(NSString *)customId{

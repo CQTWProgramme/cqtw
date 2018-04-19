@@ -132,6 +132,13 @@
  @param customId 自定义分组id
  */
 -(void)requestGroupData:(NSString *)customId;
+
+/**
+ 获取自定义分组下数据
+ 
+ @param customId 自定义分组id
+ */
+-(void)requestAnDetailHeadData:(NSString *)branchId;
 /**
  获取自定义分组下数据
  
