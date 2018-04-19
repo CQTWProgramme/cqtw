@@ -11,6 +11,9 @@
 #import "LatticePointDetailModel.h"
 #import <MapKit/MapKit.h>
 #import "EditInstallerVC.h"
+#import "KYAlertView.h"
+#import "AFViewModel.h"
+
 @interface LatticePointDetailVC ()<UITableViewDelegate,UITableViewDataSource,MKMapViewDelegate> {
     MKMapView *_mapView;
 }
@@ -25,7 +28,54 @@
     [super viewDidLoad];
     self.title = @"网点详情";
     [self setNavBackButtonImage:ImageNamed(@"back")];
+    [self createRightItem];
     [self setupdata];
+}
+
+-(void)createRightItem{
+    
+    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame=CGRectMake(0,0,25,25);
+    [rightBtn setBackgroundImage:ImageNamed(@"sendfast") forState:UIControlStateNormal];
+    
+    [rightBtn addTarget:self action:@selector(creatFastAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
+- (void)creatFastAction {
+    NSString *title = [NSString stringWithFormat:@"请确认是否将当前网点添加到系统快捷方式?"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    alert.alertViewClickedButtonAtIndexBlock = ^(UIAlertView *alert ,NSUInteger index) {
+        
+        if (index == 0) {
+            
+            NSLog(@"取消");
+            
+        }else  if (index == 1) {
+            
+            [self addShortcut];
+        }
+        
+    };
+    [alert show];
+}
+
+- (void)addShortcut {
+    AFViewModel *viewModel = [AFViewModel new];
+    [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        
+    } WithErrorBlock:^(id errorCode) {
+        
+    } WithFailureBlock:^{
+        
+    }];
+    //    if (self.name == nil) {
+    //        self.name = @"";
+    //    }
+    //    [viewModel addShortcutDataWithDataId:self.branchId name:self.name lx:@"1"];
 }
 
 - (void)setupdata {
