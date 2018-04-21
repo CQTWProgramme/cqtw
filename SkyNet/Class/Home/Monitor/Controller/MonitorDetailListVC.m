@@ -33,13 +33,16 @@ static NSString *cellID = @"MonitorDetailListCellID";
     MJWeakSelf
     MonitorViewModel *viewModel = [MonitorViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
+        [STTextHudTool hideSTHud];
+        NSString * code=returnValue[@"code"];
         if (weakSelf.myRefreshView == weakSelf.myCollectionView.mj_header) {
-            [STTextHudTool hideSTHud];
-            NSString * code=returnValue[@"code"];
             if (code.integerValue==1) {
                 NSMutableArray *muArr = [NSMutableArray array];
                 NSDictionary * dic = returnValue[@"data"];
                 NSArray *arr = dic[@"rows"];
+                if (arr.count < weakSelf.pageSize) {
+                    [weakSelf.myCollectionView.mj_footer endRefreshingWithNoMoreData];
+                }
                 if (arr.count > 0) {
                     for (NSDictionary *dic1 in arr) {
                         VideoListModel *model = [VideoListModel mj_objectWithKeyValues:dic1];
@@ -54,8 +57,6 @@ static NSString *cellID = @"MonitorDetailListCellID";
                 [STTextHudTool showErrorText:@"message"];
             }
         }else if (weakSelf.myRefreshView == weakSelf.myCollectionView.mj_footer) {
-            [STTextHudTool hideSTHud];
-            NSString * code=returnValue[@"code"];
             if (code.integerValue==1) {
                 NSMutableArray *muArr = [NSMutableArray array];
                 NSDictionary * dic = returnValue[@"data"];
@@ -65,14 +66,12 @@ static NSString *cellID = @"MonitorDetailListCellID";
                         VideoListModel *model = [VideoListModel mj_objectWithKeyValues:dic1];
                         [muArr addObject:model];
                     }
+                    [weakSelf.dataArray addObjectsFromArray:muArr];
+                    [weakSelf.myCollectionView.mj_footer endRefreshing];
+                    [weakSelf.myCollectionView reloadData];
+                }else {
+                    [weakSelf.myCollectionView.mj_footer endRefreshingWithNoMoreData];
                 }
-                if ([muArr count]==0) {
-                    
-                    [STTextHudTool showText:@"暂无更多内容"];
-                }
-                [weakSelf.dataArray addObjectsFromArray:muArr];
-                [weakSelf.myCollectionView.mj_footer endRefreshing];
-                [weakSelf.myCollectionView reloadData];
             }else {
                 [weakSelf.myCollectionView.mj_footer endRefreshing];
                 [STTextHudTool showErrorText:@"message"];

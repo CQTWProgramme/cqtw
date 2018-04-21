@@ -278,13 +278,14 @@
                             @"lx":lx};
     [[AFNetAPIClient sharedJsonClient].setRequest(ADDSHORTCUT).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [STTextHudTool hideSTHud];
-        self.returnBlock(responseObject[@"data"]);
+        [STTextHudTool showSuccessText:@"操作成功"];
+        
     } progress:^(NSProgress *progress) {
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [STTextHudTool hideSTHud];
-        [STTextHudTool showErrorText:@"加载失败"];
+        [STTextHudTool showErrorText:@"操作失败"];
         self.failureBlock();
     }];
 }

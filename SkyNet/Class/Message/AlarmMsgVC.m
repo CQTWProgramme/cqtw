@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSMutableArray *array =[NSMutableArray array];
-    for ( int i = 0; i< 20; i++) {
-        [array addObject:@"告警消息"];
-    }
+//    for ( int i = 0; i< 20; i++) {
+//        [array addObject:@"告警消息"];
+//    }
     self.dataA = array;
 }
 

@@ -34,8 +34,8 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
 @property (strong, nonatomic) IBOutlet UICollectionView *imgCollectionView;
 @property (strong, nonatomic) IBOutlet UILabel *certificateTypeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sexLabel;
-@property (strong, nonatomic) IBOutlet UILabel *minzuLabel;
-@property (strong, nonatomic) IBOutlet UILabel *birthLabel;
+@property (weak, nonatomic) IBOutlet UITextField *minzuTextField;
+@property (weak, nonatomic) IBOutlet UITextField *birthTextField;
 @property (assign, nonatomic) ImagePickType imagePickType;
 @property (strong, nonatomic) CertificateInfoModel *infoModel;
 
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
     self.idCardPage = @"";
     [self setNavBackButtonImage:ImageNamed(@"back")];
     self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"实名认证";
+    self.title=@"资料录入";
     [self createRightItem];
     [self setupCollection];
 }
@@ -78,11 +78,11 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
 -(NSMutableArray *)idDataArray {
     if (nil == _idDataArray) {
         IDImagePickModel *model1 = [[IDImagePickModel alloc] init];
-        model1.content = @"身份证人像页";
+        model1.content = @"上传身份证正面";
         model1.pickImg = nil;
         model1.isEmpty = YES;
         IDImagePickModel *model2 = [[IDImagePickModel alloc] init];
-        model2.content = @"身份证国徽页";
+        model2.content = @"上传身份证背面";
         model2.pickImg = nil;
         model2.isEmpty = YES;
         _idDataArray = [NSMutableArray array];
@@ -93,6 +93,7 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
 }
 //设置scoller滚动范围
 - (void)setupScrollerContentSize {
+    self.backScroller.backgroundColor = [UIColor whiteColor];
     self.backScroller.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
@@ -118,7 +119,7 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
     
     [self.imgCollectionView setCollectionViewLayout:imgLayout];
     self.imgCollectionView.showsHorizontalScrollIndicator = NO;
-    self.imgCollectionView.backgroundColor = [UIColor clearColor];
+    self.imgCollectionView.backgroundColor = [UIColor whiteColor];
     self.imgCollectionView.delegate = self;
     self.imgCollectionView.dataSource = self;
     
@@ -175,10 +176,10 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
 
 - (void)resetViewData {
     self.nameTextField.text = @"";
-    self.minzuLabel.text = @"民族";
-    self.sexLabel.text = @"性别";
+    self.sexLabel.text = @"请选择性别";
     self.IdNumTextField.text = @"";
-    self.birthLabel.text = @"出生年月";
+    self.minzuTextField.text = @"";
+    self.birthTextField.text = @"";
     self.addressLabel.text = @"";
 }
 
@@ -306,8 +307,8 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
     self.nameTextField.text = self.infoModel.name;
     self.sexLabel.text = self.infoModel.sex;
     self.IdNumTextField.text = self.infoModel.num;
-    self.birthLabel.text = self.infoModel.birth;
-    self.minzuLabel.text = self.infoModel.nationality;
+    self.birthTextField.text = self.infoModel.birth;
+    self.minzuTextField.text = self.infoModel.nationality;
     self.addressLabel.text = self.infoModel.address;
 }
 
@@ -432,7 +433,7 @@ typedef NS_ENUM(NSInteger, ImagePickType) {
     } WithFailureBlock:^{
         
     }];
-    [viewModel certificationConfirmWithName:self.nameTextField.text sex:self.sexLabel.text peoples:self.minzuLabel.text birth:self.birthLabel.text address:self.addressLabel.text idCardNumber:self.IdNumTextField.text cardType:@"0" idCardPage:self.idCardPage idCardPage1:self.idCardPage1 lifePhoto:@"" facePhotos:self.facePhotos];
+    [viewModel certificationConfirmWithName:self.nameTextField.text sex:self.sexLabel.text peoples:self.minzuTextField.text birth:self.birthTextField.text address:self.addressLabel.text idCardNumber:self.IdNumTextField.text cardType:@"0" idCardPage:self.idCardPage idCardPage1:self.idCardPage1 lifePhoto:@"" facePhotos:self.facePhotos];
 }
 
 @end

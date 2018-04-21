@@ -52,7 +52,7 @@ MDFlipCollectionViewDelegate>
     
     _headImageView =[UIImageView new];
     [_headView addSubview:_headImageView];
-    _headImageView.image=ImageNamed(@"home_monitor");
+    _headImageView.image=ImageNamed(@"home_security");
     _headImageView.sd_layout
     .centerXEqualToView(_headView)
     .centerYEqualToView(_headView)

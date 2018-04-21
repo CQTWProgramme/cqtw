@@ -51,7 +51,7 @@
     } WithFailureBlock:^{
         
     }];
-//    [viewModel updateUserInfoWithYhxm:self.nicknameText.text yhxb:self.yhxb enablepushapp:self.enablepushapp bz:self.signText.text];
+    [viewModel updateUserInfoWithYhxm:self.nicknameText.text yhxb:self.yhxb enablepushapp:self.enablepushapp bz:self.signText.text];
 }
 
 -(void)createUI{

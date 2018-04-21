@@ -50,6 +50,9 @@
                 NSMutableArray *muArr = [NSMutableArray array];
                 NSDictionary * dic = returnValue[@"data"];
                 NSArray *arr = dic[@"rows"];
+                if (arr.count < weakSelf.pageSize) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
                 if (arr.count > 0) {
                     for (NSDictionary *dic1 in arr) {
                         EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
@@ -75,14 +78,12 @@
                         EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
                         [muArr addObject:model];
                     }
+                    [weakSelf.equipmentsArray addObjectsFromArray:muArr];
+                    [weakSelf.myTableView.mj_footer endRefreshing];
+                    [weakSelf.myTableView reloadData];
+                }else {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
                 }
-                if ([muArr count]==0) {
-                    
-                    [STTextHudTool showText:@"暂无更多内容"];
-                }
-                [weakSelf.equipmentsArray addObjectsFromArray:muArr];
-                [weakSelf.myTableView.mj_footer endRefreshing];
-                [weakSelf.myTableView reloadData];
             }else {
                 [weakSelf.myTableView.mj_header endRefreshing];
                 [STTextHudTool showErrorText:@"message"];

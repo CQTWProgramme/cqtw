@@ -2143,7 +2143,7 @@
 				TargetAttributes = {
 					BF34EB311F49CDB600E05DF3 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 88Q9U2W9DN;
+						DevelopmentTeam = K2473R8H6L;
 						ProvisioningStyle = Automatic;
 					};
 					BF34EB4A1F49CDB600E05DF3 = {
@@ -2688,7 +2688,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88Q9U2W9DN;
+				DEVELOPMENT_TEAM = K2473R8H6L;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2782,7 +2782,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 88Q9U2W9DN;
+				DEVELOPMENT_TEAM = K2473R8H6L;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -10,4 +10,10 @@
 
 @interface LatticePointDetailHeaderView : UIView
 @property (nonatomic, copy) NSString *title;
+@property(nonatomic,strong)UILabel * zxLabel;
+@property(nonatomic,strong)UILabel * lxLabel;
+@property(nonatomic,strong)UILabel * bfLabel;
+@property(nonatomic,strong)UILabel * cfLabel;
+@property(nonatomic,strong)UILabel * bjLabel;
+@property(nonatomic,strong)UILabel * yyLabel;
 @end

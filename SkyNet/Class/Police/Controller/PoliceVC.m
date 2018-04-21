@@ -12,6 +12,7 @@
 #import "CommunityPoliceVC.h"
 #import "CueReportVC.h"
 #import "PoliceInteractionVC.h"
+#import <WebKit/WebKit.h>
 @interface PoliceVC ()<PoliceHomeViewDelegate>
 @property (nonatomic, strong)PoliceHomeView *homeView;
 @end
@@ -21,7 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"警务平台";
-    [self.view addSubview:self.homeView];
+    WKWebView *webView = [[WKWebView alloc] init];
+    webView.frame =CGRectMake(0, 0, self.view.width, self.view.height);
+    [self.view addSubview:webView];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.cq.gov.cn/"]]];
+    //[self.view addSubview:self.homeView];
 }
 
 -(void)reloadTableView {

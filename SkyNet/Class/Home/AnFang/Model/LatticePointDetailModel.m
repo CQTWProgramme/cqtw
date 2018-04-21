@@ -40,9 +40,7 @@
         [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
-            NSDictionary * dic = responseObject[@"data"];
-            LatticePointDetailModel *model = [LatticePointDetailModel mj_objectWithKeyValues:dic];
-            success(model);
+            success(responseObject[@"data"]);
         }
         
     } progress:^(NSProgress *progress) {

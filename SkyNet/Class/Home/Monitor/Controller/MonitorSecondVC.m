@@ -113,6 +113,10 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
         if (self.type == 0) {
             //..下拉刷新
             if (weakSelf.netDetailView.myRefreshView == weakSelf.netDetailView.myTableView.mj_header) {
+                NSArray *dataArray = returnValue;
+                if (dataArray.count < weakSelf.pageSize) {
+                    [weakSelf.netDetailView.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
                 [weakSelf.dataArr removeAllObjects];
                 weakSelf.dataArr=returnValue;
                 weakSelf.netDetailView.groupArr = weakSelf.dataArr;
@@ -124,9 +128,9 @@ typedef void (^ModifyNameBlock)(NSString * groupName);
                 
             }else if(weakSelf.netDetailView.myRefreshView == weakSelf.netDetailView.myTableView.mj_footer){
                 
-                if ([returnValue count]==0) {
+                if ([returnValue count]<=0) {
                     
-                    [STTextHudTool showText:@"暂无更多内容"];
+                    [weakSelf.netDetailView.myTableView.mj_footer endRefreshingWithNoMoreData];
                     
                 }else {
                     [self.dataArr addObjectsFromArray:returnValue];

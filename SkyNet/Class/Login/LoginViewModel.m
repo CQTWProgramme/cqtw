@@ -54,7 +54,7 @@
         NSString * code=responseObject[@"code"];
         if (code.integerValue==1) {
             [STTextHudTool hideSTHud];
-            [STTextHudTool showErrorText:@"登录成功" withSecond:HudDelay];
+            [STTextHudTool showSuccessText:@"登录成功" withSecond:HudDelay];
             super.returnBlock(responseObject[@"message"]);
         }else{
             
@@ -93,7 +93,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         [STTextHudTool hideSTHud];
-        [STTextHudTool showErrorText:@"登录失败" withSecond:HudDelay];
+        [STTextHudTool showErrorText:@"操作失败" withSecond:HudDelay];
         
     }];
 }
@@ -118,7 +118,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         [STTextHudTool hideSTHud];
-        [STTextHudTool showErrorText:@"登录失败" withSecond:HudDelay];
+        [STTextHudTool showErrorText:@"操作失败" withSecond:HudDelay];
         
     }];
 }

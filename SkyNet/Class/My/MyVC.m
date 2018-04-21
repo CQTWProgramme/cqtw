@@ -29,12 +29,14 @@
         case 0:
         {
             MyInfo * myInfo =[[MyInfo  alloc]init];
+            myInfo.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myInfo animated:YES];
         }
             break;
         case 1:
         {
             ModifyPasswordVC * modify =[[ModifyPasswordVC alloc]init];
+            modify.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:modify animated:YES];
         }
             break;
@@ -45,8 +47,8 @@
             break;
         case 3:
         {
-            AboutUsVC * aboutus=[[AboutUsVC alloc]init];
-            [self.navigationController pushViewController:aboutus animated:YES];
+//            AboutUsVC * aboutus=[[AboutUsVC alloc]init];
+//            [self.navigationController pushViewController:aboutus animated:YES];
         }
             break;
         default:

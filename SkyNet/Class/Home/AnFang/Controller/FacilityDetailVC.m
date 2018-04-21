@@ -84,10 +84,10 @@
     } WithFailureBlock:^{
         
     }];
-//    if (self.name == nil) {
-//        self.name = @"";
-//    }
-//    [viewModel addShortcutDataWithDataId:self.branchId name:self.name lx:@"1"];
+    if (self.detailModel.sbmc == nil) {
+        self.detailModel.sbmc = @"";
+    }
+    [viewModel addShortcutDataWithDataId:self.deviceId name:self.detailModel.sbmc lx:@"3"];
 }
 
 -(NSMutableArray *)equipmentsArray {
@@ -193,17 +193,21 @@
     MJWeakSelf
     [FacilityDetailListModel getFacilityDetailListDataById:self.deviceId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
         if (weakSelf.myRefreshView == weakSelf.tableView.mj_header) {
+            NSArray *dataArray = returnValue;
+            if (dataArray.count < weakSelf.pageSize) {
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
             weakSelf.equipmentsArray = returnValue;
             [weakSelf.tableView.mj_header endRefreshing];
             [weakSelf.tableView reloadData];
         }else if (weakSelf.myRefreshView == weakSelf.tableView.mj_footer) {
-            if ([returnValue count]==0) {
-                
-                [STTextHudTool showText:@"暂无更多内容"];
+            if ([returnValue count]<=0) {
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }else {
+                [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
+                [weakSelf.tableView.mj_footer endRefreshing];
+                [weakSelf.tableView reloadData];
             }
-            [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
-            [weakSelf.tableView.mj_footer endRefreshing];
-            [weakSelf.tableView reloadData];
         }
     } failure:^(id errorCode) {
         
@@ -231,12 +235,12 @@
     [self.tableView.mj_header beginRefreshing];
     
     //..上拉刷新
-//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//        weakSelf.myRefreshView = self.tableView.mj_footer;
-//        weakSelf.currentPage = weakSelf.currentPage + 1;
-//        weakSelf.pageSize=weakSelf.pageSize + 10;
-//        [weakSelf loadData];
-//    }];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        weakSelf.myRefreshView = self.tableView.mj_footer;
+        weakSelf.currentPage = weakSelf.currentPage + 1;
+        weakSelf.pageSize=weakSelf.pageSize;
+        [weakSelf loadData];
+    }];
     self.tableView.mj_footer.hidden = YES;
 }
 
@@ -248,7 +252,7 @@
 }
 
 - (void)showMessageView {
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:1.5 animations:^{
         self.backCoverView.hidden = NO;
         self.bottomMessageView.hidden = NO;
     }];
@@ -259,6 +263,7 @@
                                    success:^(id returnValue) {
                                        self.detailModel = returnValue;
                                        self.nameLabel.text = self.detailModel.sbmc;
+                                       
                                  } failure:^(id errorCode) {
                                        
                                  }];
@@ -286,11 +291,13 @@
 }
 
 - (void)showMessageWithId:(FacilityDetailListModel *)model {
-    [FacilityDetailListModel getChannelDetailWithChannelId:model.channelId success:^(id returnValue) {
-        [self showMessageView];
-    } failure:^(id errorCode) {
-        
-    }];
+    self.messageTitleLabel.text = model.jkmc;
+    [self showMessageView];
+//    [FacilityDetailListModel getChannelDetailWithChannelId:model.channelId success:^(id returnValue) {
+//        [self showMessageView];
+//    } failure:^(id errorCode) {
+//
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {

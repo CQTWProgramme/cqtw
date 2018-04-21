@@ -58,14 +58,17 @@
         }
         //..下拉刷新
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
+            if (arrayM.count < weakSelf.pageSize) {
+                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+            }
             weakSelf.dataArray = arrayM;
         }else if(weakSelf.myRefreshView ==weakSelf.myTableView.mj_footer){
             
-            if (arrayM.count==0) {
-                
-                [STTextHudTool showText:@"暂无更多内容"];
+            if (arrayM.count<=0) {
+                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+            }else {
+                [weakSelf.dataArray addObjectsFromArray:arrayM];
             }
-            [self.dataArray addObjectsFromArray:arrayM];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^(){

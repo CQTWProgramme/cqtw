@@ -34,9 +34,14 @@
 
 //获取头部数据
 - (void)setupHeadData {
+    MJWeakSelf
     AFViewModel *afViewModel = [AFViewModel new];
     [afViewModel setBlockWithReturnBlock:^(id returnValue) {
-        
+        weakSelf.anDetailView.zxLabel.text = @"0";
+        weakSelf.anDetailView.lxLabel.text = @"0";
+        weakSelf.anDetailView.bfLabel.text = @"0";
+        weakSelf.anDetailView.cfLabel.text = @"0";
+        weakSelf.anDetailView.bjLabel.text = @"0";
     } WithErrorBlock:^(id errorCode) {
         
     } WithFailureBlock:^{

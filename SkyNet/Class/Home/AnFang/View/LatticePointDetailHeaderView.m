@@ -14,12 +14,7 @@
 @property(nonatomic,strong)UIImageView * headImageView;
 @property(nonatomic,strong)UILabel * headTitle;
 @property(nonatomic,strong)UIView * numMenuView;
-@property(nonatomic,strong)UILabel * zxLabel;
-@property(nonatomic,strong)UILabel * lxLabel;
-@property(nonatomic,strong)UILabel * bfLabel;
-@property(nonatomic,strong)UILabel * cfLabel;
-@property(nonatomic,strong)UILabel * bjLabel;
-@property(nonatomic,strong)UILabel * yyLabel;
+@property(nonatomic,strong)UIView * sectionView;
 @end
 @implementation LatticePointDetailHeaderView
 
@@ -27,6 +22,7 @@
     if (self = [super initWithFrame:frame]) {
         [self createHeadView];
         [self createNumMenuView];
+        [self createSectionView];
     }
     return self;
 }
@@ -102,10 +98,10 @@
     _bjLabel.font=[UIFont systemFontOfSize:15];
     _bjLabel.textColor = RGB(230, 155, 0);
     
-    _bjLabel =[UILabel new];
-    _bjLabel.textAlignment=NSTextAlignmentCenter;
-    _bjLabel.font=[UIFont systemFontOfSize:15];
-    _bjLabel.textColor = RGB(230, 155, 0);
+    _yyLabel =[UILabel new];
+    _yyLabel.textAlignment=NSTextAlignmentCenter;
+    _yyLabel.font=[UIFont systemFontOfSize:15];
+    _yyLabel.textColor = RGB(230, 155, 0);
     
     
     UILabel * zxL =[UILabel new];
@@ -151,37 +147,37 @@
     _zxLabel.sd_layout
     .leftEqualToView(_numMenuView)
     .topSpaceToView(_numMenuView, 10)
-    .widthRatioToView(_numMenuView, 0.2)
+    .widthIs(SCREEN_WIDTH / 6)
     .heightIs(20);
     
     _lxLabel.sd_layout
     .leftSpaceToView(_zxLabel, 0)
     .topSpaceToView(_numMenuView, 10)
-    .widthRatioToView(_numMenuView, 0.2)
+    .widthIs(SCREEN_WIDTH / 6)
     .heightIs(20);
     
     _bfLabel.sd_layout
     .leftSpaceToView(_lxLabel, 0)
     .topSpaceToView(_numMenuView, 10)
-    .widthRatioToView(_numMenuView, 0.2)
+    .widthIs(SCREEN_WIDTH / 6)
     .heightIs(20);
     
     _cfLabel.sd_layout
     .leftSpaceToView(_bfLabel, 0)
     .topSpaceToView(_numMenuView, 10)
-    .widthRatioToView(_numMenuView, 0.2)
+    .widthIs(SCREEN_WIDTH / 6)
     .heightIs(20);
     
     _bjLabel.sd_layout
     .leftSpaceToView(_cfLabel, 0)
     .topSpaceToView(_numMenuView, 10)
-    .widthRatioToView(_numMenuView, 0.2)
+    .widthIs(SCREEN_WIDTH / 6)
     .heightIs(20);
     
     _yyLabel.sd_layout
     .leftSpaceToView(_bjLabel, 0)
     .topSpaceToView(_numMenuView, 10)
-    .widthRatioToView(_numMenuView, 0.2)
+    .widthIs(SCREEN_WIDTH / 6)
     .heightIs(20);
     
     zxL.sd_layout
@@ -220,8 +216,20 @@
     .widthRatioToView(_yyLabel, 1)
     .heightRatioToView(_yyLabel, 1);
     
-    
 }
+
+-(void)createSectionView {
+    _sectionView =[UIView new];
+    _sectionView.backgroundColor=BACKGROUND_COLOR;
+    [self addSubview:_sectionView];
+    
+    _sectionView.sd_layout
+    .leftEqualToView(self)
+    .rightEqualToView(self)
+    .topSpaceToView(_numMenuView, 0)
+    .heightIs(10);
+}
+
 -(void)setTitle:(NSString *)title {
     _title = title;
     self.headTitle.text = _title;

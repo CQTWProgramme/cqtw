@@ -47,6 +47,9 @@
                 NSMutableArray *muArr = [NSMutableArray array];
                 NSDictionary * dic = returnValue[@"data"];
                 NSArray *arr = dic[@"rows"];
+                if (arr.count < weakSelf.pageSize) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
                 if (arr.count > 0) {
                     for (NSDictionary *dic1 in arr) {
                         EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
@@ -74,8 +77,7 @@
                     }
                 }
                 if ([muArr count]==0) {
-                    
-                    [STTextHudTool showText:@"暂无更多内容"];
+                   [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
                 }
                 [weakSelf.equipmentsArray addObjectsFromArray:muArr];
                 [weakSelf.myTableView.mj_footer endRefreshing];
@@ -136,7 +138,7 @@
         _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
              weakSelf.myRefreshView = _myTableView.mj_footer;
             weakSelf.currentPage = weakSelf.currentPage + 1;
-            weakSelf.pageSize=weakSelf.pageSize + 10;
+            weakSelf.pageSize=weakSelf.pageSize;
             [weakSelf loadData];
         }];
         _myTableView.mj_footer.hidden = NO;

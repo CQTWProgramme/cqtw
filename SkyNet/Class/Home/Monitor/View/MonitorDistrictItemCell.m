@@ -80,7 +80,7 @@
 - (void)setData:(MonitorDistrictItemModel *)model{
     _model = model;
     
-    self.afImageView.image=ImageNamed(@"home_monitor");
+    self.afImageView.image=ImageNamed(@"af_group");
     self.arrowImageView.image=ImageNamed(@"home_rightArrow");
     self.afContentLabel.text =model.qymc;
 }

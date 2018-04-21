@@ -73,7 +73,7 @@
 -(void)setModel:(SearchResultVideoModel *)model {
     _model = model;
     self.arrowImageView.image = ImageNamed(@"home_rightArrow");
-    self.afImageView.image=ImageNamed(@"home_monitor");
+    self.afImageView.image=ImageNamed(@"icon_af");
     self.afContentLabel.text = _model.jkmc;
 }
 

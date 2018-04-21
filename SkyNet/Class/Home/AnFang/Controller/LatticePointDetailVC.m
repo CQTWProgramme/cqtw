@@ -73,16 +73,39 @@
     } WithFailureBlock:^{
         
     }];
-    //    if (self.name == nil) {
-    //        self.name = @"";
-    //    }
-    //    [viewModel addShortcutDataWithDataId:self.branchId name:self.name lx:@"1"];
+    if (self.headerView.title == nil) {
+        self.headerView.title = @"";
+    }
+    [viewModel addShortcutDataWithDataId:self.branchId name:self.headerView.title lx:@"1"];
 }
 
 //获取头部数据
 -(void)setupHeadData {
+    MJWeakSelf
     [LatticePointDetailModel getLatticePointDetailHeadDataById:self.branchId success:^(id returnValue) {
         
+        for (NSDictionary *dic in returnValue) {
+            NSString *type = dic[@"type"];
+            long long count = [dic[@"count"] longLongValue];
+            if ([type containsString:@"安防"]) {
+                weakSelf.headerView.zxLabel.text = [NSString stringWithFormat:@"%@",@(count)];
+            }
+            if ([type containsString:@"门禁"]) {
+                weakSelf.headerView.lxLabel.text = [NSString stringWithFormat:@"%@",@(count)];
+            }
+            if ([type containsString:@"视频"]) {
+                weakSelf.headerView.bfLabel.text = [NSString stringWithFormat:@"%@",@(count)];
+            }
+            if ([type containsString:@"WIFI"]) {
+                weakSelf.headerView.bjLabel.text = [NSString stringWithFormat:@"%@",@(count)];
+            }
+            if ([type containsString:@"消防"]) {
+                weakSelf.headerView.cfLabel.text = [NSString stringWithFormat:@"%@",@(count)];
+            }
+            if ([type containsString:@"语音"]) {
+                weakSelf.headerView.yyLabel.text = [NSString stringWithFormat:@"%@",@(count)];
+            }
+        }
     } failure:^(id errorCode) {
         
     }];
@@ -100,7 +123,7 @@
 }
 
 - (void)setupHeaderView {
-    LatticePointDetailHeaderView *headerView = [[LatticePointDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+    LatticePointDetailHeaderView *headerView = [[LatticePointDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 250)];
     headerView.title = self.myModel.wdmc;
     self.headerView = headerView;
 }
@@ -113,7 +136,7 @@
 -(UITableView *)myTableView{
     
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, 6 * 44 + 200) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT+NavigationBar_HEIGHT, SCREEN_WIDTH, 6 * 44 + 250) style:UITableViewStylePlain];
         _myTableView.backgroundColor = BACKGROUND_COLOR;
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
@@ -172,7 +195,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.row == 0) {
         cell.textLabel.text = @"网点编号";
         cell.detailTextLabel.text = self.myModel.wdbh;
@@ -197,8 +220,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    EditInstallerVC *installerVC = [[EditInstallerVC alloc] init];
-    [self.navigationController pushViewController:installerVC animated:YES];
+//    EditInstallerVC *installerVC = [[EditInstallerVC alloc] init];
+//    [self.navigationController pushViewController:installerVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
