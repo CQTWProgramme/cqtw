@@ -43,7 +43,7 @@
     NSString * mdDlmm=[CusMD5 md5String:[NSString stringWithFormat:@"%@:%@",userName,password]];
     NSDictionary * param =@{@"dlzh": userName,
                             @"dlmm": [mdDlmm uppercaseString],
-                            @"dlxx": @"1"
+                            @"dllx": @"1"
                             };
     
     

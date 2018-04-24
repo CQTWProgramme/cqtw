@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5765AC208EC3DA004EC8AC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5765AB208EC3DA004EC8AC /* UserInfo.m */; };
 		880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */; };
 		880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F61F91E9C500A1A2F1 /* EvevtListModel.m */; };
 		880360FA1F921F2400A1A2F1 /* NetDetailDistrictCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F91F921F2400A1A2F1 /* NetDetailDistrictCell.m */; };
@@ -321,6 +322,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A5765AA208EC3DA004EC8AC /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		4A5765AB208EC3DA004EC8AC /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		880360F21F91D9FB00A1A2F1 /* FacilityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailListModel.h; sourceTree = "<group>"; };
 		880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailListModel.m; sourceTree = "<group>"; };
 		880360F51F91E9C500A1A2F1 /* EvevtListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvevtListModel.h; sourceTree = "<group>"; };
@@ -1984,6 +1987,8 @@
 				BFE3AF851F79E21F00C90C36 /* ModifyPasswordVC.m */,
 				BFE3AF871F79E22F00C90C36 /* AboutUsVC.h */,
 				BFE3AF881F79E22F00C90C36 /* AboutUsVC.m */,
+				4A5765AA208EC3DA004EC8AC /* UserInfo.h */,
+				4A5765AB208EC3DA004EC8AC /* UserInfo.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -2308,6 +2313,7 @@
 				BF34EEAC1F49CEBF00E05DF3 /* RequestParaTool.m in Sources */,
 				BFE3AF891F79E22F00C90C36 /* AboutUsVC.m in Sources */,
 				BFA8C7B91F4BE1C5003A0BEE /* TADotView.m in Sources */,
+				4A5765AC208EC3DA004EC8AC /* UserInfo.m in Sources */,
 				BFA8C7B71F4BE1C5003A0BEE /* TAAbstractDotView.m in Sources */,
 				BF84BB031F5C5A14000FB4D8 /* UIView+Frame.m in Sources */,
 				88FDD1DD1F94637D00946C38 /* AccessRecordVC.m in Sources */,
