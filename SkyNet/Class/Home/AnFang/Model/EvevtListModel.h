@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *branchId;
 @property (nonatomic, assign) long begintime;
 @property (nonatomic, assign) long branchType;
+@property (nonatomic, assign) long pushcount;
 @property (nonatomic, copy) NSString *cardnumId;
 @property (nonatomic, copy) NSString *channelId;
 @property (nonatomic, copy) NSString *channelJktdh;
@@ -26,7 +27,7 @@
 @property (nonatomic, copy) NSString *source;
 @property (nonatomic, copy) NSString *sourceInfo;
 @property (nonatomic, copy) NSString *sourceType;
-
+@property (nonatomic, copy) NSString *fromarea;
 
 + (void)getEventListDataById:(NSString *)branchId currentPage:(NSInteger)currentPage pageSize:(NSInteger)pageSize success:(BaseSuccessBlock) success failure:(BaseFailureBlock) failure;
 @end

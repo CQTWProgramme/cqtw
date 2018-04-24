@@ -118,6 +118,10 @@
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foq-O7-ppD">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="9o6-7K-QIO" appends="YES" id="LpT-Iq-UMl"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ub-Ax-LrZ">
                     <rect key="frame" x="0.0" y="517" width="375" height="150"/>
@@ -301,6 +305,11 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="111.5" y="278.5"/>
         </view>
+        <tapGestureRecognizer id="9o6-7K-QIO">
+            <connections>
+                <action selector="coverTap:" destination="-1" id="3KV-Ym-yZm"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="home_door_sign" width="40" height="40"/>

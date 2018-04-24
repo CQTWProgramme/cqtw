@@ -284,6 +284,13 @@
     return cell;
 }
 
+- (IBAction)coverTap:(id)sender {
+    [UIView animateWithDuration:1.0 animations:^{
+        self.backCoverView.hidden = YES;
+        self.bottomMessageView.hidden = YES;
+    }];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     FacilityDetailListModel *model = self.equipmentsArray[indexPath.row];

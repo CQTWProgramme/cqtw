@@ -10,13 +10,16 @@
 #import "EventCell.h"
 #import "EvevtListModel.h"
 
-#define kBottomViewHeight 150
+#define kBottomViewHeight 100
 @interface EventVC ()
 @property (nonatomic, strong) UIView *backCoverView;
 @property (nonatomic, strong) UIView *bottomMessageView;
 @property (nonatomic, strong) NSMutableArray *equipmentsArray;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, strong) EvevtListModel *model;
+@property (nonatomic, weak) UILabel *bottomTimeLabel;
+@property (nonatomic, weak) UILabel *bottomDecLabel;
 @end
 
 @implementation EventVC
@@ -43,50 +46,21 @@
 - (void)loadData {
     MJWeakSelf
     [EvevtListModel getEventListDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
+        NSMutableArray *dataArray = returnValue;
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
-            [STTextHudTool hideSTHud];
-            NSString * code=returnValue[@"code"];
-            if (code.integerValue==1) {
-                NSMutableArray *muArr = [NSMutableArray array];
-                NSDictionary * dic = returnValue[@"data"];
-                NSArray *arr = dic[@"rows"];
-                if (arr.count < weakSelf.pageSize) {
-                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
-                }
-                if (arr.count > 0) {
-                    for (NSDictionary *dic1 in arr) {
-                        EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
-                        [muArr addObject:model];
-                    }
-                }
-                weakSelf.equipmentsArray = returnValue;
-                [weakSelf.myTableView.mj_header endRefreshing];
+            if (dataArray.count < weakSelf.pageSize) {
+                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            weakSelf.equipmentsArray = dataArray;
+            [weakSelf.myTableView.mj_header endRefreshing];
+            [weakSelf.myTableView reloadData];
+        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
+            if (dataArray.count > 0) {
+                [weakSelf.equipmentsArray addObjectsFromArray:dataArray];
+                [weakSelf.myTableView.mj_footer endRefreshing];
                 [weakSelf.myTableView reloadData];
             }else {
-                [weakSelf.myTableView.mj_header endRefreshing];
-                [STTextHudTool showErrorText:@"message"];
-            }
-        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
-            [STTextHudTool hideSTHud];
-            NSString * code=returnValue[@"code"];
-            if (code.integerValue==1) {
-                NSMutableArray *muArr = [NSMutableArray array];
-                NSDictionary * dic = returnValue[@"data"];
-                NSArray *arr = dic[@"rows"];
-                if (arr.count > 0) {
-                    for (NSDictionary *dic1 in arr) {
-                        EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
-                        [muArr addObject:model];
-                    }
-                    [weakSelf.equipmentsArray addObjectsFromArray:muArr];
-                    [weakSelf.myTableView.mj_footer endRefreshing];
-                    [weakSelf.myTableView reloadData];
-                }else {
-                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
-                }
-            }else {
-                [weakSelf.myTableView.mj_header endRefreshing];
-                [STTextHudTool showErrorText:@"message"];
+                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
             }
         }
     } failure:^(id errorCode) {
@@ -111,16 +85,16 @@
         //添加子view
         //1.名称
         UILabel *headLabel = [[UILabel alloc] init];
-        headLabel.frame = CGRectMake(20, 10, 100, 16);
+        headLabel.frame = CGRectMake(20, 0, 100, 30);
         headLabel.font = [UIFont systemFontOfSize:14];
-        headLabel.text = @"异常情况1";
+        headLabel.text = @"一键布防";
         headLabel.textColor = [UIColor blackColor];
         
         UILabel *timeLabel = [[UILabel alloc] init];
-        timeLabel.frame = CGRectMake(20, 30, 180, 14);
+        timeLabel.frame = CGRectMake(20, 30, 180, 20);
         timeLabel.font = [UIFont systemFontOfSize:10];
-        timeLabel.text = @"发生时间:2017-08-15 12:30";
         timeLabel.textColor = [UIColor lightGrayColor];
+        self.bottomTimeLabel = timeLabel;
         
         UIButton *cancellBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [cancellBtn setTitle:@"取消" forState:UIControlStateNormal];
@@ -130,14 +104,14 @@
         
         UIView *lineView = [[UIView alloc] init];
         lineView.backgroundColor = [UIColor lightGrayColor];
-        lineView.frame = CGRectMake(0, 44, SCREEN_WIDTH, 1);
+        lineView.frame = CGRectMake(0, 59, SCREEN_WIDTH, 1);
         
         UILabel *contentLabel = [[UILabel alloc] init];
-        contentLabel.frame = CGRectMake(10, 50, SCREEN_WIDTH - 20, 80);
+        contentLabel.frame = CGRectMake(20, 60, SCREEN_WIDTH - 20, 40);
         contentLabel.numberOfLines = 0;
         contentLabel.font = [UIFont systemFontOfSize:15];
         contentLabel.textColor = [UIColor lightGrayColor];
-        contentLabel.text = @"测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试";
+        self.bottomDecLabel = contentLabel;
         
         [_bottomMessageView addSubview:headLabel];
         [_bottomMessageView addSubview:timeLabel];
@@ -167,10 +141,17 @@
     if (nil == _backCoverView) {
         _backCoverView = [[UIView alloc] init];
         _backCoverView.frame = CGRectMake(0, NavigationBar_HEIGHT + STATUS_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NavigationBar_HEIGHT - kBottomViewHeight - STATUS_BAR_HEIGHT);
+        _backCoverView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverTap:)];
+        [_backCoverView addGestureRecognizer:tap];
         _backCoverView.backgroundColor = [UIColor blackColor];
         _backCoverView.alpha = 0.3;
     }
     return _backCoverView;
+}
+
+-(void)coverTap:(UITapGestureRecognizer *)tap {
+    [self cancellAction];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -184,9 +165,9 @@
     EventCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     cell = [[EventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    cell.logoImageView.image=ImageNamed(@"home_monitor");
+    cell.logoImageView.image=ImageNamed(@"bufang");
     EvevtListModel *model = self.equipmentsArray[indexPath.row];
-    cell.eventTitle.text=model.alarmdesc;
+    cell.eventTitle.text=@"一键布防";
     cell.eventContent.text=model.alarmdesc;
     NSDate *dateTime = [[NSDate alloc] initWithTimeIntervalSince1970:model.createtime /1000];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -245,6 +226,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.model = self.equipmentsArray[indexPath.row];
+    NSDate *dateTime = [[NSDate alloc] initWithTimeIntervalSince1970:self.model.createtime /1000];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterNoStyle];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    NSLocale *formatterLocal = [[NSLocale alloc] initWithLocaleIdentifier:@"en_us"];
+    [formatter setLocale:formatterLocal];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [formatter stringFromDate:dateTime];
+    self.bottomDecLabel.text = self.model.alarmdesc;
+    self.bottomTimeLabel.text = dateString;
     [self showMessageView];
 }
 

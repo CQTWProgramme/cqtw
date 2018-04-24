@@ -13,7 +13,23 @@
     [STTextHudTool loadingWithTitle:@"加载中..."];
     NSDictionary * param =@{@"branchId": branchId,@"currPage":@(currentPage),@"pageSize":@(pageSize)};
     [[AFNetAPIClient sharedJsonClient].setRequest(SELECTBranchLatelyAlarmData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        success(responseObject);
+        [STTextHudTool hideSTHud];
+        NSString * code=responseObject[@"code"];
+        if (code.integerValue==1) {
+            NSArray *dataArray = responseObject[@"data"][@"rows"];
+            NSMutableArray *temp = [NSMutableArray array];
+            if (dataArray.count > 0) {
+                for (NSDictionary *dic in dataArray) {
+                    EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic];
+                    [temp addObject:model];
+                }
+                success(temp);
+            }else {
+                success([NSMutableArray array]);
+            }
+        }else {
+            [STTextHudTool showErrorText:@"操作失败"];
+        }
     } progress:^(NSProgress *progress) {
         
         
