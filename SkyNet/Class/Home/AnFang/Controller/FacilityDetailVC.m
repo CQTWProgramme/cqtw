@@ -193,24 +193,57 @@
     MJWeakSelf
     [FacilityDetailListModel getFacilityDetailListDataById:self.deviceId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
         if (weakSelf.myRefreshView == weakSelf.tableView.mj_header) {
-            NSArray *dataArray = returnValue;
-            if (dataArray.count < weakSelf.pageSize) {
-                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-            weakSelf.equipmentsArray = returnValue;
-            [weakSelf.tableView.mj_header endRefreshing];
-            [weakSelf.tableView reloadData];
-        }else if (weakSelf.myRefreshView == weakSelf.tableView.mj_footer) {
-            if ([returnValue count]<=0) {
-                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                long totalPage = [returnValue[@"data"][@"totalPage"] longValue];
+                if (totalPage <= weakSelf.currentPage) {
+                    [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSArray *arr = returnValue[@"data"][@"rows"];
+                NSInteger dataCount = arr.count;
+                if (dataCount > 0) {
+                    for (NSDictionary *dic in arr) {
+                        FacilityDetailModel *model = [FacilityDetailModel mj_objectWithKeyValues:dic];
+                        [muArr addObject:model];
+                    }
+                }
+                weakSelf.equipmentsArray = muArr;
+                [weakSelf.tableView.mj_header endRefreshing];
+                [weakSelf.tableView reloadData];
             }else {
-                [weakSelf.equipmentsArray addObjectsFromArray:returnValue];
+                [weakSelf.tableView.mj_header endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
+            }
+        }else if (weakSelf.myRefreshView == weakSelf.tableView.mj_footer) {
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSDictionary * dic = returnValue[@"data"];
+                NSArray *arr = dic[@"rows"];
+                if ([arr count] < weakSelf.pageSize) {
+                    [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                if (arr.count > 0) {
+                    for (NSDictionary *dic1 in arr) {
+                        FacilityDetailModel *model = [FacilityDetailModel mj_objectWithKeyValues:dic1];
+                        [muArr addObject:model];
+                    }
+                }
+                
+                [weakSelf.equipmentsArray addObjectsFromArray:muArr];
                 [weakSelf.tableView.mj_footer endRefreshing];
                 [weakSelf.tableView reloadData];
+            }else {
+                [weakSelf.tableView.mj_footer endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }
     } failure:^(id errorCode) {
-        
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        [STTextHudTool showErrorText:@"操作失败"];
     }];
 }
 
@@ -224,11 +257,8 @@
     //..下拉刷新
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.myRefreshView = self.tableView.mj_header;
-        weakSelf.currentPage = 0;
+        weakSelf.currentPage = 1;
         weakSelf.pageSize = 10;
-        if (weakSelf.equipmentsArray.count > 0) {
-            [weakSelf.equipmentsArray removeAllObjects];
-        }
         [weakSelf loadData];
     }];
     // 马上进入刷新状态
@@ -237,11 +267,10 @@
     //..上拉刷新
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.myRefreshView = self.tableView.mj_footer;
-        weakSelf.currentPage = weakSelf.currentPage + 1;
-        weakSelf.pageSize=weakSelf.pageSize;
+        weakSelf.currentPage += 1;
+        weakSelf.pageSize=10;
         [weakSelf loadData];
     }];
-    self.tableView.mj_footer.hidden = YES;
 }
 
 - (IBAction)hideBottomMessageViewAction:(id)sender {

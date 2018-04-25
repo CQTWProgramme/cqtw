@@ -10,31 +10,12 @@
 
 @implementation FacilityDetailListModel
 + (void)getFacilityDetailListDataById:(NSString *)deviceId currentPage:(NSInteger)currentPage pageSize:(NSInteger)pageSize success:(BaseSuccessBlock) success failure:(BaseFailureBlock) failure {
-    [STTextHudTool loadingWithTitle:@"加载中..."];
     NSDictionary * param =@{@"deviceId": deviceId,@"currPage":@(currentPage),@"pageSize":@(pageSize),@"jklx":@"1"};
     [[AFNetAPIClient sharedJsonClient].setRequest(FacilityDetailBranchListData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        [STTextHudTool hideSTHud];
-        NSString * code=responseObject[@"code"];
-        if (code.integerValue==1) {
-            NSMutableArray *muArr = [NSMutableArray array];
-            NSDictionary * dic = responseObject[@"data"];
-            NSArray *arr = dic[@"rows"];
-            if (arr.count > 0) {
-                for (NSDictionary *dic1 in arr) {
-                    FacilityDetailListModel *model = [FacilityDetailListModel mj_objectWithKeyValues:dic1];
-                    [muArr addObject:model];
-                }
-            }
-            success(muArr);
-        }
-        
+        success(responseObject);
     } progress:^(NSProgress *progress) {
         
-        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        failure(error);
-        [STTextHudTool hideSTHud];
         
     }];
 }

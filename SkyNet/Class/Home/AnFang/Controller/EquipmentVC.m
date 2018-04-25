@@ -15,16 +15,14 @@
 @property(nonatomic,strong) UITableView * myTableView;
 //设备数组
 @property (nonatomic, strong) NSMutableArray *equipmentsArray;
-@property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, assign) long currentPage;
+@property (nonatomic, assign) long pageSize;
 @end
 
 @implementation EquipmentVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.currentPage = 0;
-    self.pageSize = 10;
     [self.view addSubview:self.myTableView];
 }
 
@@ -41,18 +39,19 @@
     MJWeakSelf
     [EquipmentModel getListDevicesDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
-            [STTextHudTool hideSTHud];
             NSString * code=returnValue[@"code"];
             if (code.integerValue==1) {
-                NSMutableArray *muArr = [NSMutableArray array];
-                NSDictionary * dic = returnValue[@"data"];
-                NSArray *arr = dic[@"rows"];
-                if (arr.count < weakSelf.pageSize) {
+                long totalPage = [returnValue[@"data"][@"totalPage"] longValue];
+                if (totalPage <= weakSelf.currentPage) {
                     [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
                 }
-                if (arr.count > 0) {
-                    for (NSDictionary *dic1 in arr) {
-                        EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
+                
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSArray *arr = returnValue[@"data"][@"rows"];
+                NSInteger dataCount = arr.count;
+                if (dataCount > 0) {
+                    for (NSDictionary *dic in arr) {
+                        EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic];
                         [muArr addObject:model];
                     }
                 }
@@ -61,34 +60,36 @@
                 [weakSelf.myTableView reloadData];
             }else {
                 [weakSelf.myTableView.mj_header endRefreshing];
-                [STTextHudTool showErrorText:@"message"];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
-            [STTextHudTool hideSTHud];
             NSString * code=returnValue[@"code"];
             if (code.integerValue==1) {
                 NSMutableArray *muArr = [NSMutableArray array];
                 NSDictionary * dic = returnValue[@"data"];
                 NSArray *arr = dic[@"rows"];
+                if ([arr count] < weakSelf.pageSize) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
                 if (arr.count > 0) {
                     for (NSDictionary *dic1 in arr) {
                         EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
                         [muArr addObject:model];
                     }
                 }
-                if ([muArr count]==0) {
-                   [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
-                }
+                
                 [weakSelf.equipmentsArray addObjectsFromArray:muArr];
                 [weakSelf.myTableView.mj_footer endRefreshing];
                 [weakSelf.myTableView reloadData];
             }else {
-                [weakSelf.myTableView.mj_header endRefreshing];
-                [STTextHudTool showErrorText:@"message"];
+                [weakSelf.myTableView.mj_footer endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }
     } failure:^(id errorCode) {
-        
+        [weakSelf.myTableView.mj_header endRefreshing];
+        [weakSelf.myTableView.mj_footer endRefreshing];
+        [STTextHudTool showErrorText:@"操作失败"];
     }];
 }
 
@@ -126,7 +127,7 @@
         //..下拉刷新
         _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             weakSelf.myRefreshView = _myTableView.mj_header;
-            weakSelf.currentPage = 0;
+            weakSelf.currentPage = 1;
             weakSelf.pageSize = 10;
             [weakSelf.equipmentsArray removeAllObjects];
             [weakSelf loadData];
@@ -137,7 +138,7 @@
         //..上拉刷新
         _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
              weakSelf.myRefreshView = _myTableView.mj_footer;
-            weakSelf.currentPage = weakSelf.currentPage + 1;
+            weakSelf.currentPage += 1;
             weakSelf.pageSize=weakSelf.pageSize;
             [weakSelf loadData];
         }];

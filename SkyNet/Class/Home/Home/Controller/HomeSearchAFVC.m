@@ -52,42 +52,69 @@
     MJWeakSelf
     HomeViewModel *viewModel = [HomeViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
-        NSMutableArray *arrayM=[NSMutableArray new];
-        for (NSDictionary * dic in returnValue[@"rows"]) {
-            SearchResultModel * model =[SearchResultModel mj_objectWithKeyValues:dic];
-            [arrayM addObject:model];
-        }
-        //..下拉刷新
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
-            if (arrayM.count < weakSelf.pageSize) {
-                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
-            }
-            weakSelf.dataArray = arrayM;
-        }else if(weakSelf.myRefreshView ==weakSelf.myTableView.mj_footer){
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                long totalPage = [returnValue[@"data"][@"totalPage"] longValue];
+                if (totalPage <= weakSelf.currPage) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
             
-            if (arrayM.count<=0) {
-                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSArray *arr = returnValue[@"data"][@"rows"];
+                NSInteger dataCount = arr.count;
+                if (dataCount > 0) {
+                    for (NSDictionary *dic in arr) {
+                        SearchResultModel *model = [SearchResultModel mj_objectWithKeyValues:dic];
+                        [muArr addObject:model];
+                    }
+                }
+                weakSelf.dataArray = muArr;
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [weakSelf.myTableView reloadData];
             }else {
-                [weakSelf.dataArray addObjectsFromArray:arrayM];
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
+            }
+        }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSDictionary * dic = returnValue[@"data"];
+                NSArray *arr = dic[@"rows"];
+                if ([arr count] < weakSelf.pageSize) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                if (arr.count > 0) {
+                    for (NSDictionary *dic1 in arr) {
+                        SearchResultModel *model = [SearchResultModel mj_objectWithKeyValues:dic1];
+                        [muArr addObject:model];
+                    }
+                }
+                
+                [weakSelf.dataArray addObjectsFromArray:muArr];
+                [weakSelf.myTableView.mj_footer endRefreshing];
+                [weakSelf.myTableView reloadData];
+            }else {
+                [weakSelf.myTableView.mj_footer endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            [weakSelf.myTableView reloadData];
-            [weakSelf.myRefreshView  endRefreshing];
-            
-        });
     } WithErrorBlock:^(id errorCode) {
-        
+        [weakSelf.myTableView.mj_header endRefreshing];
+        [weakSelf.myTableView.mj_footer endRefreshing];
+        [STTextHudTool showErrorText:@"操作失败"];
     } WithFailureBlock:^{
-        
+        [weakSelf.myTableView.mj_header endRefreshing];
+        [weakSelf.myTableView.mj_footer endRefreshing];
+        [STTextHudTool showErrorText:@"操作失败"];
     }];
-    NSString *currPage = [NSString stringWithFormat:@"%@",@(self.currPage)];
-    NSString *pageSize = [NSString stringWithFormat:@"%@",@(self.pageSize)];
+
     if (self.searchText == nil) {
         self.searchText = @"";
     }
-    [viewModel getBdcDataLikeWithType:@"0" gn:@"1" query:self.searchText currPage:currPage pageSize:pageSize];
+    [viewModel getBdcDataLikeWithType:@"0" gn:@"1" query:self.searchText currPage:self.currPage pageSize:self.pageSize];
 }
 
 -(UITableView *)myTableView{
@@ -102,19 +129,20 @@
         //..下拉刷新
         _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             weakSelf.myRefreshView = weakSelf.myTableView.mj_header;
-            self.currPage = 0;
-            self.pageSize = 10;
-            [self loadData];
+            weakSelf.currPage = 1;
+            weakSelf.pageSize = 10;
+            [weakSelf loadData];
         }];
+        
+        // 马上进入刷新状态
+        [self.myTableView.mj_header beginRefreshing];
         
         _myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             weakSelf.myRefreshView = weakSelf.myTableView.mj_footer;
-            self.currPage += 1;
-            self.pageSize = 10;
-            [self loadData];
+            weakSelf.currPage += 1;
+            weakSelf.pageSize = 10;
+            [weakSelf loadData];
         }];
-        // 马上进入刷新状态
-        [self.myTableView.mj_header beginRefreshing];
     }
     return _myTableView;
 }

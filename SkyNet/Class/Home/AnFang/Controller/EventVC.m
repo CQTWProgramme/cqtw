@@ -26,8 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.currentPage = 0;
-    self.pageSize = 10;
     [self.view addSubview:self.myTableView];
     [self addBackView];
     [self addBottomView];
@@ -46,25 +44,58 @@
 - (void)loadData {
     MJWeakSelf
     [EvevtListModel getEventListDataById:self.branchId currentPage:self.currentPage pageSize:self.pageSize success:^(id returnValue) {
-        NSMutableArray *dataArray = returnValue;
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
-            if (dataArray.count < weakSelf.pageSize) {
-                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                long totalPage = [returnValue[@"data"][@"totalPage"] longValue];
+                if (totalPage <= weakSelf.currentPage) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSArray *arr = returnValue[@"data"][@"rows"];
+                NSInteger dataCount = arr.count;
+                if (dataCount > 0) {
+                    for (NSDictionary *dic in arr) {
+                        EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic];
+                        [muArr addObject:model];
+                    }
+                }
+                weakSelf.equipmentsArray = muArr;
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [weakSelf.myTableView reloadData];
+            }else {
+                [weakSelf.myTableView.mj_header endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
-            weakSelf.equipmentsArray = dataArray;
-            [weakSelf.myTableView.mj_header endRefreshing];
-            [weakSelf.myTableView reloadData];
         }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
-            if (dataArray.count > 0) {
-                [weakSelf.equipmentsArray addObjectsFromArray:dataArray];
+            NSString * code=returnValue[@"code"];
+            if (code.integerValue==1) {
+                NSMutableArray *muArr = [NSMutableArray array];
+                NSDictionary * dic = returnValue[@"data"];
+                NSArray *arr = dic[@"rows"];
+                if ([arr count] < weakSelf.pageSize) {
+                    [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                if (arr.count > 0) {
+                    for (NSDictionary *dic1 in arr) {
+                        EvevtListModel *model = [EvevtListModel mj_objectWithKeyValues:dic1];
+                        [muArr addObject:model];
+                    }
+                }
+                
+                [weakSelf.equipmentsArray addObjectsFromArray:muArr];
                 [weakSelf.myTableView.mj_footer endRefreshing];
                 [weakSelf.myTableView reloadData];
             }else {
-                [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                [weakSelf.myTableView.mj_footer endRefreshing];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }
     } failure:^(id errorCode) {
-        
+        [weakSelf.myTableView.mj_header endRefreshing];
+        [weakSelf.myTableView.mj_footer endRefreshing];
+        [STTextHudTool showErrorText:@"操作失败"];
     }];
 }
 
@@ -200,7 +231,7 @@
         //..下拉刷新
         _myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             weakSelf.myRefreshView = _myTableView.mj_header;
-            weakSelf.currentPage = 0;
+            weakSelf.currentPage = 1;
             weakSelf.pageSize = 10;
             [weakSelf.equipmentsArray removeAllObjects];
             [weakSelf loadData];
