@@ -12,7 +12,7 @@
 #import "AnFangVC.h"
 #import "MonitorVC.h"
 #import "MonitorDetailListVC.h"
-#import "AccessControlVC.h"
+#import "AccessMainVC.h"
 #import "VHLNavigation.h"
 #import <AVFoundation/AVFoundation.h>
 #import "HomeSearchVC.h"
@@ -160,7 +160,7 @@
         
         case 2:
         {
-            AccessControlVC *acVC = [[AccessControlVC alloc] init];
+            AccessMainVC *acVC = [[AccessMainVC alloc] init];
             acVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:acVC animated:YES];
         }

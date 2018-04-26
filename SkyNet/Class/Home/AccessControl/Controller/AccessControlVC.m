@@ -10,7 +10,7 @@
 #import "QBQuSegmentView.h"
 #import "AccessMainVC.h"
 #import "AccessRecordVC.h"
-#import "MemberManageVC.h"
+#import "MineAccessVC.h"
 
 @interface AccessControlVC ()<UIScrollViewDelegate,QBQuSegmentViewDelegate>
 @property(nonatomic,strong)QBQuSegmentView *segmentView;
@@ -87,7 +87,7 @@
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setTitle:@"成员管理" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"我的门禁" forState:UIControlStateNormal];
     [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(memberMangeAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -98,8 +98,8 @@
 
 //成员管理
 - (void)memberMangeAction {
-    MemberManageVC *manageVC = [[MemberManageVC alloc] init];
-    [self.navigationController pushViewController:manageVC animated:YES];
+    MineAccessVC *mineAccessVC = [[MineAccessVC alloc] init];
+    [self.navigationController pushViewController:mineAccessVC animated:YES];
 }
 
 -(QBQuSegmentView *)segmentView{

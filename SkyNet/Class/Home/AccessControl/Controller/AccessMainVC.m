@@ -15,6 +15,7 @@
 #import "ACViewModel.h"
 #import "ACVillageModel.h"
 #import "DataEntryVC.h"
+#import "MineAccessVC.h"
 
 #define BottomButtonH 80
 
@@ -46,18 +47,41 @@ static const NSString *doorKey = @"DoorKey";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"门禁";
+    [self setNavBackButtonImage:ImageNamed(@"back")];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self createRightItem];
     [self setupBottomButton];
     [self setupLocation];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"AccessControlVCNotification" object:nil];
+    [self isNeedCertification];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"AccessControlVCNotification" object:nil];
 }
 
-- (void)getResultAction:(NSNotification *)notification {
-    NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
-    if (type == 0) {
-        [self isNeedCertification];
-    }
+-(void)createRightItem{
+    
+    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame=CGRectMake(0,0,25,25);
+    [rightBtn setTitle:@"我的门禁" forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(memberMangeAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
+
+//成员管理
+- (void)memberMangeAction {
+    MineAccessVC *mineAccessVC = [[MineAccessVC alloc] init];
+    [self.navigationController pushViewController:mineAccessVC animated:YES];
+}
+
+//- (void)getResultAction:(NSNotification *)notification {
+//    NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
+//    if (type == 0) {
+//        [self isNeedCertification];
+//    }
+//}
 
 - (void)isNeedCertification {
     ACViewModel *viewModel = [ACViewModel new];
@@ -69,7 +93,8 @@ static const NSString *doorKey = @"DoorKey";
             if ([data isEqualToString:@"0"]) {
                 [self showCertificationAlert];
             }else {
-                [self.locationManager startUpdatingLocation];            }
+                [self.locationManager startUpdatingLocation];
+            }
         }else {
             [STTextHudTool showErrorText:@"是否需求实名认证请求失败"];
         }
@@ -93,7 +118,7 @@ static const NSString *doorKey = @"DoorKey";
     }]];
     
     [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        [self.locationManager startUpdatingLocation];
+        //[self.locationManager startUpdatingLocation];
     }]];
     
     // 3.显示alertController:presentViewController
@@ -207,7 +232,7 @@ static const NSString *doorKey = @"DoorKey";
     bottomButton.layer.cornerRadius = BottomButtonH / 2;
     bottomButton.layer.masksToBounds = YES;
     [bottomButton setBackgroundImage:[UIImage imageNamed:@"access_visitor"] forState:UIControlStateNormal];
-    bottomButton.frame = CGRectMake(SCREEN_WIDTH - BottomButtonH - 20, SCREEN_HEIGHT - 135 - NavigationBar_HEIGHT - STATUS_BAR_HEIGHT, BottomButtonH, BottomButtonH);
+    bottomButton.frame = CGRectMake(SCREEN_WIDTH - BottomButtonH - 20, SCREEN_HEIGHT - 20 - NavigationBar_HEIGHT - STATUS_BAR_HEIGHT - BottomButtonH, BottomButtonH, BottomButtonH);
     [bottomButton addTarget:self action:@selector(toDetailAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bottomButton];
 }
@@ -319,7 +344,7 @@ static const NSString *doorKey = @"DoorKey";
     [viewModel acOpenDoorWithDoorId:self.door.doorId];
 }
 
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+//-(void)dealloc {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 @end

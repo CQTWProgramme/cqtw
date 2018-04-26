@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A44174D20916AB7003F5234 /* MineAccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44174B20916AB7003F5234 /* MineAccessVC.m */; };
+		4A44174E20916AB7003F5234 /* MineAccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44174C20916AB7003F5234 /* MineAccessVC.xib */; };
+		4A44175120916B36003F5234 /* MineAccessBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44175020916B36003F5234 /* MineAccessBtnView.m */; };
 		4A5765AC208EC3DA004EC8AC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5765AB208EC3DA004EC8AC /* UserInfo.m */; };
 		880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */; };
 		880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F61F91E9C500A1A2F1 /* EvevtListModel.m */; };
@@ -322,6 +325,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A44174A20916AB7003F5234 /* MineAccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineAccessVC.h; sourceTree = "<group>"; };
+		4A44174B20916AB7003F5234 /* MineAccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineAccessVC.m; sourceTree = "<group>"; };
+		4A44174C20916AB7003F5234 /* MineAccessVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineAccessVC.xib; sourceTree = "<group>"; };
+		4A44174F20916B36003F5234 /* MineAccessBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineAccessBtnView.h; sourceTree = "<group>"; };
+		4A44175020916B36003F5234 /* MineAccessBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineAccessBtnView.m; sourceTree = "<group>"; };
 		4A5765AA208EC3DA004EC8AC /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		4A5765AB208EC3DA004EC8AC /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		880360F21F91D9FB00A1A2F1 /* FacilityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailListModel.h; sourceTree = "<group>"; };
@@ -1253,6 +1261,9 @@
 				880623BA1FB753DE00D89409 /* SaveUserHouseVC.h */,
 				880623BB1FB753DE00D89409 /* SaveUserHouseVC.m */,
 				880623BC1FB753DE00D89409 /* SaveUserHouseVC.xib */,
+				4A44174A20916AB7003F5234 /* MineAccessVC.h */,
+				4A44174B20916AB7003F5234 /* MineAccessVC.m */,
+				4A44174C20916AB7003F5234 /* MineAccessVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1324,6 +1335,8 @@
 				880623B51FB5FDE300D89409 /* DistrictSecondCell.m */,
 				888EBFAB1FB7F505006F8CCE /* AccessDetailCell.h */,
 				888EBFAC1FB7F505006F8CCE /* AccessDetailCell.m */,
+				4A44174F20916B36003F5234 /* MineAccessBtnView.h */,
+				4A44175020916B36003F5234 /* MineAccessBtnView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2225,6 +2238,7 @@
 				88FDD1E91F94BAE500946C38 /* AccessRecordCell.xib in Resources */,
 				88FDD1EE1F94BEE600946C38 /* MemberManageVC.xib in Resources */,
 				88FDD1D91F94634000946C38 /* AccessMainVC.xib in Resources */,
+				4A44174E20916AB7003F5234 /* MineAccessVC.xib in Resources */,
 				881547901F8DCC10000F2C84 /* CueReportVC.xib in Resources */,
 				BF0C321A1F6772EC009FC882 /* STTextHud.xib in Resources */,
 			);
@@ -2466,6 +2480,7 @@
 				BF34EB3A1F49CDB600E05DF3 /* AppDelegate.m in Sources */,
 				BF84BAEB1F5C583E000FB4D8 /* MsgBaseVC.m in Sources */,
 				BF0C327B1F68C941009FC882 /* AFModel.m in Sources */,
+				4A44175120916B36003F5234 /* MineAccessBtnView.m in Sources */,
 				8815477D1F8DC048000F2C84 /* CommunityPoliceVC.m in Sources */,
 				884701531F8DAC2800B44D68 /* PoliceHomeMenuItem.m in Sources */,
 				8815478F1F8DCC10000F2C84 /* CueReportVC.m in Sources */,
@@ -2520,6 +2535,7 @@
 				880EF0C71FBD247400776D11 /* PYSearchConst.m in Sources */,
 				BF0C32781F68C931009FC882 /* AFViewModel.m in Sources */,
 				BF84BAFE1F5C5A14000FB4D8 /* LxButton.m in Sources */,
+				4A44174D20916AB7003F5234 /* MineAccessVC.m in Sources */,
 				881547A71F8DDA41000F2C84 /* PoliceInteractionCell.m in Sources */,
 				BF84BB001F5C5A14000FB4D8 /* UIColor+Expanded.m in Sources */,
 				BF34EEB01F49CEBF00E05DF3 /* CurrentLocation.m in Sources */,
