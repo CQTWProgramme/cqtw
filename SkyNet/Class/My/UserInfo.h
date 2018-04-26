@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserInfo : NSObject<NSCoding>
+@interface UserInfo : NSObject
 +(instancetype)shareInstance;
 @property(nonatomic, copy)NSString *bz;
 @property(nonatomic, copy)NSString *cardnumId;
@@ -29,4 +29,7 @@
 @property(nonatomic, assign)long yhxb;
 @property(nonatomic, copy)NSString *yhxm;
 @property(nonatomic, assign)long yhzt;
+
+//+(void)saveUserInfo;
+//+(void)removeUserInfo;
 @end

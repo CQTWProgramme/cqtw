@@ -110,7 +110,7 @@
                             };
     [[AFNetAPIClient sharedJsonClient].setRequest(UPDATE_USER).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
-        super.returnBlock(responseObject[@"message"]);
+        super.returnBlock(responseObject);
         
     } progress:^(NSProgress *progress) {
         

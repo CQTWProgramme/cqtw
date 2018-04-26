@@ -42,6 +42,7 @@
     MJWeakSelf
     LoginViewModel * loginViewModel =[LoginViewModel new];
     [loginViewModel setBlockWithReturnBlock:^(id returnValue) {
+        
         [ClientTool saveToken:returnValue];
         UITabBarController * tabBar =[ClientTool setupCustomTabBarVC];
         [weakSelf presentViewController:tabBar animated:YES completion:nil];
