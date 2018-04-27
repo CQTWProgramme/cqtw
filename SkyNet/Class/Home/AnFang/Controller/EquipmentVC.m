@@ -41,9 +41,11 @@
         if (weakSelf.myRefreshView == weakSelf.myTableView.mj_header) {
             NSString * code=returnValue[@"code"];
             if (code.integerValue==1) {
-                long totalPage = [returnValue[@"data"][@"totalPage"] longValue];
+                NSInteger totalPage = [returnValue[@"data"][@"totalPage"] integerValue];
                 if (totalPage <= weakSelf.currentPage) {
                     [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
+                }else {
+                    [weakSelf.myTableView.mj_footer resetNoMoreData];
                 }
                 
                 NSMutableArray *muArr = [NSMutableArray array];
@@ -65,22 +67,26 @@
         }else if (weakSelf.myRefreshView == weakSelf.myTableView.mj_footer) {
             NSString * code=returnValue[@"code"];
             if (code.integerValue==1) {
-                NSMutableArray *muArr = [NSMutableArray array];
-                NSDictionary * dic = returnValue[@"data"];
-                NSArray *arr = dic[@"rows"];
-                if ([arr count] < weakSelf.pageSize) {
+                
+                NSInteger totalPage = [returnValue[@"data"][@"totalPage"] integerValue];
+                if (weakSelf.currentPage > totalPage) {
                     [weakSelf.myTableView.mj_footer endRefreshingWithNoMoreData];
-                }
-                if (arr.count > 0) {
-                    for (NSDictionary *dic1 in arr) {
-                        EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
-                        [muArr addObject:model];
+                }else {
+                    NSMutableArray *muArr = [NSMutableArray array];
+                    NSDictionary * dic = returnValue[@"data"];
+                    NSArray *arr = dic[@"rows"];
+                    if (arr.count > 0) {
+                        for (NSDictionary *dic1 in arr) {
+                            EquipmentModel *model = [EquipmentModel mj_objectWithKeyValues:dic1];
+                            [muArr addObject:model];
+                        }
                     }
+                    
+                    [weakSelf.equipmentsArray addObjectsFromArray:muArr];
+                    [weakSelf.myTableView.mj_footer endRefreshing];
+                    [weakSelf.myTableView reloadData];
                 }
                 
-                [weakSelf.equipmentsArray addObjectsFromArray:muArr];
-                [weakSelf.myTableView.mj_footer endRefreshing];
-                [weakSelf.myTableView reloadData];
             }else {
                 [weakSelf.myTableView.mj_footer endRefreshing];
                 [STTextHudTool showErrorText:returnValue[@"message"]];

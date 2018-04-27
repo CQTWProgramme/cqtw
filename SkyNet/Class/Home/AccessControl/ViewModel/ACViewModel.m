@@ -53,9 +53,7 @@
 }
 
 -(void)IsNeedRealNameConfirm {
-    [STTextHudTool loadingWithTitle:@"加载中..."];
     [[AFNetAPIClient sharedJsonClient].setRequest(IsNeedCertification).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        [STTextHudTool hideSTHud];
         NSString * code=responseObject[@"code"];
         NSString *data = @"";
         if (code.integerValue==1) {
@@ -66,10 +64,7 @@
         super.returnBlock(dic);
     } progress:^(NSProgress *progress) {
         
-        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        [STTextHudTool hideSTHud];
         
     }];
 }
@@ -458,6 +453,30 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [STTextHudTool showErrorText:@"生成失败"];
     }];
+}
+
+-(void)getOpenDoorHistoryData {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    [[AFNetAPIClient sharedJsonClient].setRequest(openDoorHistory).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+    } progress:^(NSProgress *progress) {
+        [STTextHudTool hideSTHud];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool hideSTHud];
+    }]; 
+}
+
+-(void)getMyHouseListData {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    [[AFNetAPIClient sharedJsonClient].setRequest(myHouseList).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+    } progress:^(NSProgress *progress) {
+        [STTextHudTool hideSTHud];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool hideSTHud];
+    }]; 
 }
 
 -(void)selectAppUserHouseData {

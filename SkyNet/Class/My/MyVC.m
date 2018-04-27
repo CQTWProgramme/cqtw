@@ -11,6 +11,7 @@
 #import "MyInfo.h"
 #import "ModifyPasswordVC.h"
 #import "AboutUsVC.h"
+#import "UserInfo.h"
 @interface MyVC ()<MyViewDelegate>
 @property(nonatomic,strong)MyView * myView;
 @end
@@ -67,6 +68,7 @@
     MJWeakSelf
     if (!_myView) {
         _myView=[[MyView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-STATUS_BAR_HEIGHT)];
+        _myView.nameLabel.text = [UserInfo shareInstance].yhxm;
         _myView.delegate=self;
         _myView.logOutBlock = ^{
             UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认退出登录?" preferredStyle:UIAlertControllerStyleAlert];

@@ -16,6 +16,7 @@
                 <outlet property="bottomCollectionView" destination="Y4v-JK-gqk" id="Mrw-at-mWD"/>
                 <outlet property="buttonScrollerView" destination="shX-q0-F4j" id="TX1-5N-hDj"/>
                 <outlet property="detailLabel" destination="Gdm-gh-Hms" id="Oua-wB-CHw"/>
+                <outlet property="topContentView" destination="CaI-2b-S51" id="AQZ-sz-Qf9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaI-2b-S51">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaI-2b-S51">
                     <rect key="frame" x="0.0" y="64" width="375" height="180"/>
                     <subviews>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="access_doorcard_back" translatesAutoresizingMaskIntoConstraints="NO" id="BYR-Lp-WQF">
@@ -58,6 +59,7 @@
                         </imageView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shX-q0-F4j">
                             <rect key="frame" x="0.0" y="135" width="375" height="45"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -78,7 +80,7 @@
                         <constraint firstItem="Gdm-gh-Hms" firstAttribute="trailing" secondItem="BYR-Lp-WQF" secondAttribute="trailing" constant="-5" id="zSb-ms-igM"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Y4v-JK-gqk">
+                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Y4v-JK-gqk">
                     <rect key="frame" x="0.0" y="244" width="375" height="423"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lPi-gx-Uk0">
@@ -100,7 +102,7 @@
                 <constraint firstAttribute="trailing" secondItem="Y4v-JK-gqk" secondAttribute="trailing" id="vTL-sE-VA5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="55" y="-39"/>
+            <point key="canvasLocation" x="196" y="-79"/>
         </view>
         <tapGestureRecognizer id="Xfx-k6-mb1" userLabel="openDoorTap">
             <connections>

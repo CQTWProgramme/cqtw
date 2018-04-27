@@ -72,6 +72,17 @@
  增加访客请求接口
  */
 -(void)acCreateVisitorsWithAreasId:(NSString *)areasId name:(NSString *)name phone:(NSString *)phone startTime:(NSString *)startTime endTime:(NSString *)endTime bz:(NSString *)bz facePicture:(NSData *)facePicture;
+
+/**
+ 开门记录
+ */
+-(void)getOpenDoorHistoryData;
+
+/**
+ 我的房屋
+ */
+-(void)getMyHouseListData;
+
 /**
  房屋绑定审核查询
  */

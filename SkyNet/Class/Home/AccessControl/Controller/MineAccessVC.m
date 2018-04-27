@@ -11,6 +11,8 @@
 #import "ACViewModel.h"
 #import "DataEntryVC.h"
 #import "AccessRecordVC.h"
+#import "MyFaceVC.h"
+#import "MyHousrListVC.h"
 
 @interface MineAccessVC ()
 @property(nonatomic, strong) NSArray *btnSourceArr;
@@ -21,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的门禁";
+    [self setNavBackButtonImage:ImageNamed(@"back")];
     self.view.backgroundColor = BACKGROUND_COLOR;
     [self setupUI];
 }
@@ -47,7 +50,7 @@
             btnView.btnActionBlock = ^{
                 switch ((i * col) + j) {
                     case 0:
-                        
+                        [weakSelf toMyFaceVC];
                         break;
                     case 1:
                         //点击进行实名认证
@@ -61,7 +64,7 @@
                         NSLog(@"点击了4");
                         break;
                     case 4:
-                        NSLog(@"点击了5");
+                        [weakSelf toHouseListVC];
                         break;
                     case 5:
                         NSLog(@"点击了6");
@@ -91,9 +94,19 @@
     return _btnSourceArr;
 }
 
+- (void)toMyFaceVC {
+    MyFaceVC *myfaceVC = [[MyFaceVC alloc] init];
+    [self.navigationController pushViewController:myfaceVC animated:YES];
+}
+
 - (void)toRecordVC {
     AccessRecordVC *recordVC = [[AccessRecordVC alloc] init];
     [self.navigationController pushViewController:recordVC animated:YES];
+}
+
+-(void)toHouseListVC {
+    MyHousrListVC *listVC = [[MyHousrListVC alloc] init];
+    [self.navigationController pushViewController:listVC animated:YES];
 }
 
 - (void)isNeedCertification {
@@ -112,9 +125,9 @@
             [STTextHudTool showErrorText:@"请求失败"];
         }
     } WithErrorBlock:^(id errorCode) {
-        
+        [STTextHudTool showErrorText:@"请求失败"];
     } WithFailureBlock:^{
-        
+        [STTextHudTool showErrorText:@"请求失败"];
     }];
     [viewModel IsNeedRealNameConfirm];
 }

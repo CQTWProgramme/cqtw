@@ -8,6 +8,7 @@
 
 #import "MyInfo.h"
 #import "LoginViewModel.h"
+#import "UserInfo.h"
 #define MARGIN 10
 #define PADDING 7
 #define LABEL_W 70
@@ -81,6 +82,7 @@
     _phoneText.font=[UIFont systemFontOfSize:14];
     _phoneText.keyboardType=UITextBorderStyleNone;
     _phoneText.textColor=[UIColor darkGrayColor];
+    _phoneText.text = [UserInfo shareInstance].dlzh;
     [scollView addSubview:_phoneText];
     _phoneText.sd_layout
     .leftSpaceToView(phoneLabel,MARGIN)
@@ -119,6 +121,7 @@
     _nicknameText.keyboardType=UITextBorderStyleNone;
     _nicknameText.font=[UIFont systemFontOfSize:14];
     _nicknameText.textColor=[UIColor darkGrayColor];
+    _nicknameText.text = [UserInfo shareInstance].yhxm;
     [scollView addSubview:_nicknameText];
     _nicknameText.sd_layout
     .leftSpaceToView(nicknameLabel,MARGIN)

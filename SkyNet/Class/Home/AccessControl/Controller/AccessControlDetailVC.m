@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"访客登记";
+    self.title=@"到访房屋选择";
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self setupTableView];

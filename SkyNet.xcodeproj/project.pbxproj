@@ -10,6 +10,13 @@
 		4A44174D20916AB7003F5234 /* MineAccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44174B20916AB7003F5234 /* MineAccessVC.m */; };
 		4A44174E20916AB7003F5234 /* MineAccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44174C20916AB7003F5234 /* MineAccessVC.xib */; };
 		4A44175120916B36003F5234 /* MineAccessBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44175020916B36003F5234 /* MineAccessBtnView.m */; };
+		4A54F482209303F4008A4589 /* MyFaceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F480209303F4008A4589 /* MyFaceVC.m */; };
+		4A54F483209303F4008A4589 /* MyFaceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A54F481209303F4008A4589 /* MyFaceVC.xib */; };
+		4A54F486209319EC008A4589 /* OpenDoorHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F485209319EC008A4589 /* OpenDoorHistoryModel.m */; };
+		4A54F48C20932ABC008A4589 /* MyHousrListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F48B20932ABC008A4589 /* MyHousrListVC.m */; };
+		4A54F48F20932B10008A4589 /* MyHouseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F48E20932B10008A4589 /* MyHouseListCell.m */; };
+		4A54F49220932B65008A4589 /* OpenDoorHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F49020932B64008A4589 /* OpenDoorHistoryCell.m */; };
+		4A54F49520932BB4008A4589 /* MyHouseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F49420932BB4008A4589 /* MyHouseListModel.m */; };
 		4A5765AC208EC3DA004EC8AC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5765AB208EC3DA004EC8AC /* UserInfo.m */; };
 		880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */; };
 		880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F61F91E9C500A1A2F1 /* EvevtListModel.m */; };
@@ -330,6 +337,19 @@
 		4A44174C20916AB7003F5234 /* MineAccessVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineAccessVC.xib; sourceTree = "<group>"; };
 		4A44174F20916B36003F5234 /* MineAccessBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineAccessBtnView.h; sourceTree = "<group>"; };
 		4A44175020916B36003F5234 /* MineAccessBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineAccessBtnView.m; sourceTree = "<group>"; };
+		4A54F47F209303F4008A4589 /* MyFaceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFaceVC.h; sourceTree = "<group>"; };
+		4A54F480209303F4008A4589 /* MyFaceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFaceVC.m; sourceTree = "<group>"; };
+		4A54F481209303F4008A4589 /* MyFaceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFaceVC.xib; sourceTree = "<group>"; };
+		4A54F484209319EC008A4589 /* OpenDoorHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenDoorHistoryModel.h; sourceTree = "<group>"; };
+		4A54F485209319EC008A4589 /* OpenDoorHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenDoorHistoryModel.m; sourceTree = "<group>"; };
+		4A54F48A20932ABC008A4589 /* MyHousrListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHousrListVC.h; sourceTree = "<group>"; };
+		4A54F48B20932ABC008A4589 /* MyHousrListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHousrListVC.m; sourceTree = "<group>"; };
+		4A54F48D20932B10008A4589 /* MyHouseListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseListCell.h; sourceTree = "<group>"; };
+		4A54F48E20932B10008A4589 /* MyHouseListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListCell.m; sourceTree = "<group>"; };
+		4A54F49020932B64008A4589 /* OpenDoorHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenDoorHistoryCell.m; sourceTree = "<group>"; };
+		4A54F49120932B65008A4589 /* OpenDoorHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenDoorHistoryCell.h; sourceTree = "<group>"; };
+		4A54F49320932BB4008A4589 /* MyHouseListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseListModel.h; sourceTree = "<group>"; };
+		4A54F49420932BB4008A4589 /* MyHouseListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListModel.m; sourceTree = "<group>"; };
 		4A5765AA208EC3DA004EC8AC /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		4A5765AB208EC3DA004EC8AC /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		880360F21F91D9FB00A1A2F1 /* FacilityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailListModel.h; sourceTree = "<group>"; };
@@ -1264,6 +1284,11 @@
 				4A44174A20916AB7003F5234 /* MineAccessVC.h */,
 				4A44174B20916AB7003F5234 /* MineAccessVC.m */,
 				4A44174C20916AB7003F5234 /* MineAccessVC.xib */,
+				4A54F47F209303F4008A4589 /* MyFaceVC.h */,
+				4A54F480209303F4008A4589 /* MyFaceVC.m */,
+				4A54F481209303F4008A4589 /* MyFaceVC.xib */,
+				4A54F48A20932ABC008A4589 /* MyHousrListVC.h */,
+				4A54F48B20932ABC008A4589 /* MyHousrListVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1297,6 +1322,10 @@
 				888EBFA31FB7CCCD006F8CCE /* RecordVisitorModel.m */,
 				888EBFA81FB7F32A006F8CCE /* AccessDetailModel.h */,
 				888EBFA91FB7F32A006F8CCE /* AccessDetailModel.m */,
+				4A54F484209319EC008A4589 /* OpenDoorHistoryModel.h */,
+				4A54F485209319EC008A4589 /* OpenDoorHistoryModel.m */,
+				4A54F49320932BB4008A4589 /* MyHouseListModel.h */,
+				4A54F49420932BB4008A4589 /* MyHouseListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1337,6 +1366,10 @@
 				888EBFAC1FB7F505006F8CCE /* AccessDetailCell.m */,
 				4A44174F20916B36003F5234 /* MineAccessBtnView.h */,
 				4A44175020916B36003F5234 /* MineAccessBtnView.m */,
+				4A54F49120932B65008A4589 /* OpenDoorHistoryCell.h */,
+				4A54F49020932B64008A4589 /* OpenDoorHistoryCell.m */,
+				4A54F48D20932B10008A4589 /* MyHouseListCell.h */,
+				4A54F48E20932B10008A4589 /* MyHouseListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2234,6 +2267,7 @@
 				BF0C32181F6772EC009FC882 /* STSuccess@2x.png in Resources */,
 				BF0C32141F6772EC009FC882 /* angle-mask@3x.png in Resources */,
 				88FDD1F31F94BFC800946C38 /* MemberApplyVC.xib in Resources */,
+				4A54F483209303F4008A4589 /* MyFaceVC.xib in Resources */,
 				88CE3F2E1F7AADBB0075DCD9 /* FacilityDetailVC.xib in Resources */,
 				88FDD1E91F94BAE500946C38 /* AccessRecordCell.xib in Resources */,
 				88FDD1EE1F94BEE600946C38 /* MemberManageVC.xib in Resources */,
@@ -2321,6 +2355,7 @@
 				BFFA09F91F7A60C40019CFA8 /* MDMultipleSegmentView.m in Sources */,
 				BF0C32BB1F6A16F4009FC882 /* SingleChooseTable.m in Sources */,
 				88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */,
+				4A54F48F20932B10008A4589 /* MyHouseListCell.m in Sources */,
 				BF73388A1F77DB6C0000FB8A /* AnDetailView.m in Sources */,
 				BF0C322F1F6774EB009FC882 /* NSString+Base64.m in Sources */,
 				8871C2F81FCC0D7800126E6A /* SearchResultDeviceModel.m in Sources */,
@@ -2403,15 +2438,19 @@
 				888EBFC11FB82E69006F8CCE /* PGDatePicker.m in Sources */,
 				88299C8A1F7CE12B0070067C /* PlayBackVC.m in Sources */,
 				BF0C32811F693A7A009FC882 /* AddGroupPointVC.m in Sources */,
+				4A54F48C20932ABC008A4589 /* MyHousrListVC.m in Sources */,
 				BF34EEA71F49CEBF00E05DF3 /* NSDate+Mcdate.m in Sources */,
 				BF0C322A1F6774EB009FC882 /* AESCrypt.m in Sources */,
 				BF0C32721F68C2D0009FC882 /* AFView.m in Sources */,
 				BFA8C7BA1F4BE1C5003A0BEE /* TAPageControl.m in Sources */,
 				888EBFD01FB82F22006F8CCE /* PGPickerTableView.m in Sources */,
 				BF0C32AD1F6A16F3009FC882 /* MulChooseCollectView.m in Sources */,
+				4A54F49520932BB4008A4589 /* MyHouseListModel.m in Sources */,
+				4A54F486209319EC008A4589 /* OpenDoorHistoryModel.m in Sources */,
 				880623BD1FB753DE00D89409 /* SaveUserHouseVC.m in Sources */,
 				888EBFD11FB82F22006F8CCE /* PGPickerView.m in Sources */,
 				88F9C5751F8CC95000039A08 /* ACModel.m in Sources */,
+				4A54F49220932B65008A4589 /* OpenDoorHistoryCell.m in Sources */,
 				888EBF9E1FB7CCCD006F8CCE /* RecordVisitorCell.m in Sources */,
 				881547841F8DC3AB000F2C84 /* CommunityPoliceModel.m in Sources */,
 				881322F31F7B58D500AE83FF /* FacilityDetailModel.m in Sources */,
@@ -2444,6 +2483,7 @@
 				BF0C327E1F69365D009FC882 /* AddNewGroupVC.m in Sources */,
 				8815478A1F8DCB4D000F2C84 /* CommunityPoliceDetailVC.m in Sources */,
 				88DA3BB71F9CEDF10085F8FA /* ChooseDistrictSecondVC.m in Sources */,
+				4A54F482209303F4008A4589 /* MyFaceVC.m in Sources */,
 				BF34EDEC1F49CEBF00E05DF3 /* KYAlertView.m in Sources */,
 				BF7338841F77D4230000FB8A /* NetDetailModel.m in Sources */,
 				BF0C32BA1F6A16F4009FC882 /* MulChooseTable.m in Sources */,

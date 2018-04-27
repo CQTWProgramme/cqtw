@@ -40,9 +40,13 @@ static NSString *cellID = @"MonitorDetailListCellID";
                 NSMutableArray *muArr = [NSMutableArray array];
                 NSDictionary * dic = returnValue[@"data"];
                 NSArray *arr = dic[@"rows"];
-                if (arr.count < weakSelf.pageSize) {
+                NSInteger totalPage = [returnValue[@"data"][@"totalPage"] integerValue];
+                if (weakSelf.currPage >= totalPage) {
                     [weakSelf.myCollectionView.mj_footer endRefreshingWithNoMoreData];
+                }else {
+                    [weakSelf.myCollectionView.mj_footer resetNoMoreData];
                 }
+
                 if (arr.count > 0) {
                     for (NSDictionary *dic1 in arr) {
                         VideoListModel *model = [VideoListModel mj_objectWithKeyValues:dic1];
@@ -54,27 +58,31 @@ static NSString *cellID = @"MonitorDetailListCellID";
                 [weakSelf.myCollectionView reloadData];
             }else {
                 [weakSelf.myCollectionView.mj_header endRefreshing];
-                [STTextHudTool showErrorText:@"message"];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }else if (weakSelf.myRefreshView == weakSelf.myCollectionView.mj_footer) {
             if (code.integerValue==1) {
-                NSMutableArray *muArr = [NSMutableArray array];
-                NSDictionary * dic = returnValue[@"data"];
-                NSArray *arr = dic[@"rows"];
-                if (arr.count > 0) {
-                    for (NSDictionary *dic1 in arr) {
-                        VideoListModel *model = [VideoListModel mj_objectWithKeyValues:dic1];
-                        [muArr addObject:model];
-                    }
-                    [weakSelf.dataArray addObjectsFromArray:muArr];
-                    [weakSelf.myCollectionView.mj_footer endRefreshing];
-                    [weakSelf.myCollectionView reloadData];
-                }else {
+                
+                NSInteger totalPage = [returnValue[@"data"][@"totalPage"] integerValue];
+                if (weakSelf.currPage > totalPage) {
                     [weakSelf.myCollectionView.mj_footer endRefreshingWithNoMoreData];
+                }else {
+                    NSMutableArray *muArr = [NSMutableArray array];
+                    NSDictionary * dic = returnValue[@"data"];
+                    NSArray *arr = dic[@"rows"];
+                    if (arr.count > 0) {
+                        for (NSDictionary *dic1 in arr) {
+                            VideoListModel *model = [VideoListModel mj_objectWithKeyValues:dic1];
+                            [muArr addObject:model];
+                        }
+                        [weakSelf.dataArray addObjectsFromArray:muArr];
+                        [weakSelf.myCollectionView.mj_footer endRefreshing];
+                        [weakSelf.myCollectionView reloadData];
+                    }
                 }
             }else {
                 [weakSelf.myCollectionView.mj_footer endRefreshing];
-                [STTextHudTool showErrorText:@"message"];
+                [STTextHudTool showErrorText:returnValue[@"message"]];
             }
         }
     } WithErrorBlock:^(id errorCode) {
@@ -82,6 +90,9 @@ static NSString *cellID = @"MonitorDetailListCellID";
     } WithFailureBlock:^{
         
     }];
+    if (self.customId == nil) {
+        self.customId = @"";
+    }
     [viewModel requestBranchData:self.customId currPage:self.currPage pageSize:self.pageSize];
 }
 
@@ -106,18 +117,18 @@ static NSString *cellID = @"MonitorDetailListCellID";
     self.myCollectionView.dataSource = self;
     [self.myCollectionView registerClass:[MonitorDetailListCell class] forCellWithReuseIdentifier:cellID];
     self.myCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        self.myRefreshView = self.myCollectionView.mj_header;
-        self.currPage = 0;
-        self.pageSize = 10;
+        weakSelf.myRefreshView = weakSelf.myCollectionView.mj_header;
+        weakSelf.currPage = 1;
+        weakSelf.pageSize = 10;
         [weakSelf loadData];
     }];
     
     [self.myCollectionView.mj_header beginRefreshing];
     
     self.myCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        self.myRefreshView = self.myCollectionView.mj_footer;
-        self.currPage += 1;
-        self.pageSize = 10;
+        weakSelf.myRefreshView = weakSelf.myCollectionView.mj_footer;
+        weakSelf.currPage += 1;
+        weakSelf.pageSize = 10;
         [weakSelf loadData];
     }];
 }

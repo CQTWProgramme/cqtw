@@ -34,6 +34,8 @@ static const NSString *doorKey = @"DoorKey";
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
+@property (weak, nonatomic) IBOutlet UIView *topContentView;
+
 @end
 
 @implementation AccessMainVC
@@ -45,6 +47,10 @@ static const NSString *doorKey = @"DoorKey";
     return _dataArray;
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [self isNeedCertification];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"门禁";
@@ -53,7 +59,6 @@ static const NSString *doorKey = @"DoorKey";
     [self createRightItem];
     [self setupBottomButton];
     [self setupLocation];
-    [self isNeedCertification];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"AccessControlVCNotification" object:nil];
 }
 
@@ -93,15 +98,17 @@ static const NSString *doorKey = @"DoorKey";
             if ([data isEqualToString:@"0"]) {
                 [self showCertificationAlert];
             }else {
+                self.topContentView.hidden = NO;
+                self.bottomCollectionView.hidden = NO;
                 [self.locationManager startUpdatingLocation];
             }
         }else {
-            [STTextHudTool showErrorText:@"是否需求实名认证请求失败"];
+            [STTextHudTool showErrorText:@"请求失败"];
         }
     } WithErrorBlock:^(id errorCode) {
-        
+        [STTextHudTool showErrorText:@"请求失败"];
     } WithFailureBlock:^{
-        
+        [STTextHudTool showErrorText:@"请求失败"];
     }];
     [viewModel IsNeedRealNameConfirm];
 }
@@ -144,10 +151,10 @@ static const NSString *doorKey = @"DoorKey";
 
  - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
      if (locations) {
-         [self.locationManager stopUpdatingLocation];
          CLLocation *newLocation = locations[0];
          self.latitude = [NSString stringWithFormat:@"%@",@(newLocation.coordinate.latitude)];
          self.longitude = [NSString stringWithFormat:@"%@",@(newLocation.coordinate.longitude)];
+         [self.locationManager stopUpdatingLocation];
          [self setupColectionView];
      }else {
          [STTextHudTool showErrorText:@"定位失败"];
@@ -207,7 +214,8 @@ static const NSString *doorKey = @"DoorKey";
                 [button setBackgroundColor:NAVI_COLOR];
                 self.selectButton = button;
                 self.TitleLabel.text = door.name;
-                self.detailLabel.text = [NSString stringWithFormat:@"%@|%@",self.village.areaName,door.azwz];
+                CGFloat distance = [door.meter integerValue] / 1000.000;
+                self.detailLabel.text = [NSString stringWithFormat:@"%03fkm|%@|%@",distance,self.village.wdmc,door.azwz];
                 self.door = door;
             }else {
                 [button setBackgroundColor:[UIColor lightGrayColor]];
@@ -221,7 +229,8 @@ static const NSString *doorKey = @"DoorKey";
     ACVillageDoorModel *door = objc_getAssociatedObject(button,&doorKey);
     self.door = door;
     self.TitleLabel.text = door.name;
-    self.detailLabel.text = [NSString stringWithFormat:@"%@|%@",self.village.areaName,door.azwz];
+     CGFloat distance = [door.meter integerValue] / 1000.000;
+    self.detailLabel.text = [NSString stringWithFormat:@"%03fkm|%@|%@",distance,self.village.wdmc,door.azwz];
     [button setBackgroundColor:NAVI_COLOR];
     [self.selectButton setBackgroundColor:[UIColor lightGrayColor]];
     self.selectButton = button;
@@ -232,7 +241,7 @@ static const NSString *doorKey = @"DoorKey";
     bottomButton.layer.cornerRadius = BottomButtonH / 2;
     bottomButton.layer.masksToBounds = YES;
     [bottomButton setBackgroundImage:[UIImage imageNamed:@"access_visitor"] forState:UIControlStateNormal];
-    bottomButton.frame = CGRectMake(SCREEN_WIDTH - BottomButtonH - 20, SCREEN_HEIGHT - 20 - NavigationBar_HEIGHT - STATUS_BAR_HEIGHT - BottomButtonH, BottomButtonH, BottomButtonH);
+    bottomButton.frame = CGRectMake(SCREEN_WIDTH - BottomButtonH - 20, SCREEN_HEIGHT - 20 - BottomButtonH, BottomButtonH, BottomButtonH);
     [bottomButton addTarget:self action:@selector(toDetailAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bottomButton];
 }
@@ -246,7 +255,7 @@ static const NSString *doorKey = @"DoorKey";
 
     MJWeakSelf
     UICollectionViewFlowLayout *bottomLayout = [[UICollectionViewFlowLayout alloc] init];
-    bottomLayout.itemSize = CGSizeMake((SCREEN_WIDTH - 30) / 3, (SCREEN_WIDTH - 30) / 3 * 0.9);
+    bottomLayout.itemSize = CGSizeMake((SCREEN_WIDTH - 20) / 2, 60);
     bottomLayout.minimumLineSpacing = 10;
     bottomLayout.minimumInteritemSpacing = 10;
     bottomLayout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5);
@@ -273,40 +282,69 @@ static const NSString *doorKey = @"DoorKey";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataArray.count + 1;
+    return self.dataArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
-    if (indexPath.row < self.dataArray.count) {
-        if (indexPath.row == self.selectedIndex) {
-            cell.selected = YES;
-        }else {
-            cell.selected = NO;
-        }
-        cell.model = self.dataArray[indexPath.row];
-        cell.isLastCell = NO;
+//    if (indexPath.row < self.dataArray.count) {
+//        if (indexPath.row == self.selectedIndex) {
+//            cell.selected = YES;
+//        }else {
+//            cell.selected = NO;
+//        }
+//        cell.model = self.dataArray[indexPath.row];
+//        cell.isLastCell = NO;
+//    }else {
+//        cell.isLastCell = YES;
+//    }
+    if (indexPath.row == self.selectedIndex) {
+        cell.selected = YES;
     }else {
-        cell.isLastCell = YES;
+        cell.selected = NO;
     }
+    cell.model = self.dataArray[indexPath.row];
+    cell.isLastCell = NO;
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == self.dataArray.count) {
-        ChooseDistrictFirstVC *firstVC = [[ChooseDistrictFirstVC alloc] init];
-        [self.navigationController pushViewController:firstVC animated:YES];
-    }else {
-        self.selectedIndex = indexPath.row;
-        [self setupScrollerViewWithIndex:indexPath.row];
-        [self.bottomCollectionView reloadData];
-    }
+//    if (indexPath.row == self.dataArray.count) {
+//        ChooseDistrictFirstVC *firstVC = [[ChooseDistrictFirstVC alloc] init];
+//        [self.navigationController pushViewController:firstVC animated:YES];
+//    }else {
+//        self.selectedIndex = indexPath.row;
+//        [self setupScrollerViewWithIndex:indexPath.row];
+//        [self.bottomCollectionView reloadData];
+//    }
+    self.selectedIndex = indexPath.row;
+    [self setupScrollerViewWithIndex:indexPath.row];
+    [self.bottomCollectionView reloadData];
 }
 
 //开门
 - (IBAction)openDoorAction:(id)sender {
+    MJWeakSelf
+    NSString *title = [NSString stringWithFormat:@"是否确认开启%@",self.door.name];
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+        [weakSelf sureOpenDoorAction];
+    }]];
+    
+    [alertControl addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }]];
+    
+    // 3.显示alertController:presentViewController
+    [self presentViewController:alertControl animated:YES completion:nil];
+
+}
+
+-(void)sureOpenDoorAction {
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
         NSDictionary *dic = returnValue;

@@ -157,6 +157,12 @@
 //增加访客请求接口
 #define createVisitors                      POST_INTERFACE(@"app/createVisitors")
 
+//开门记录
+#define openDoorHistory                      POST_INTERFACE(@"app/getOpenDoorRecord")
+
+//我的房屋
+#define myHouseList                      POST_INTERFACE(@"app/getHouseInfoList")
+
 //查询访客记录
 #define getVisitorsRecord                      POST_INTERFACE(@"app/getVisitorsRecord")
 
