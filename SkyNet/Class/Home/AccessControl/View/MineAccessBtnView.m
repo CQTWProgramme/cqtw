@@ -28,6 +28,15 @@
         self.accessLabel.font = [UIFont systemFontOfSize:15];
         [contentView addSubview:self.accessLabel];
         
+        self.remindLabel = [[UILabel alloc] init];
+        self.remindLabel.layer.cornerRadius = 10;
+        self.remindLabel.layer.masksToBounds = YES;
+        self.remindLabel.hidden = YES;
+        self.remindLabel.textAlignment = NSTextAlignmentCenter;
+        self.remindLabel.textColor = [UIColor whiteColor];
+        self.remindLabel.font = [UIFont systemFontOfSize:13];
+        [self addSubview:self.remindLabel];
+        
         [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self);
             make.centerY.equalTo(self);
@@ -35,7 +44,7 @@
 
         [self.accessImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(contentView);
-            make.top.equalTo(contentView).with.offset(0);
+            make.top.equalTo(contentView);
             make.width.equalTo(@(40));
             make.height.equalTo(@(40));
         }];
@@ -45,6 +54,13 @@
             make.left.equalTo(contentView).with.offset(0);
             make.right.equalTo(contentView).with.offset(0);
             make.bottom.equalTo(contentView).with.offset(0);
+        }];
+        
+        [self.remindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self).with.offset(5);
+            make.right.equalTo(self).with.offset(-5);
+            make.width.equalTo(@(50));
+            make.height.equalTo(@(20));
         }];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];

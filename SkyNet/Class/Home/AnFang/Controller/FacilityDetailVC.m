@@ -207,7 +207,7 @@
                 NSInteger dataCount = arr.count;
                 if (dataCount > 0) {
                     for (NSDictionary *dic in arr) {
-                        FacilityDetailModel *model = [FacilityDetailModel mj_objectWithKeyValues:dic];
+                        FacilityDetailListModel *model = [FacilityDetailListModel mj_objectWithKeyValues:dic];
                         [muArr addObject:model];
                     }
                 }
@@ -231,7 +231,7 @@
                     NSArray *arr = dic[@"rows"];
                     if (arr.count > 0) {
                         for (NSDictionary *dic1 in arr) {
-                            FacilityDetailModel *model = [FacilityDetailModel mj_objectWithKeyValues:dic1];
+                            FacilityDetailListModel *model = [FacilityDetailListModel mj_objectWithKeyValues:dic1];
                             [muArr addObject:model];
                         }
                     }

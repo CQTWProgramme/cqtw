@@ -93,6 +93,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyHouseListCell *listCell = [MyHouseListCell myHouseListCellWithTableView:tableView];
+    listCell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.dataArray.count > 0) {
         listCell.myHouseListModel = self.dataArray[indexPath.row];
         listCell.index = indexPath.row + 1;

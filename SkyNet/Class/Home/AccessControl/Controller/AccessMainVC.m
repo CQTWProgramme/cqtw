@@ -35,7 +35,7 @@ static const NSString *doorKey = @"DoorKey";
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
-
+@property (nonatomic, assign) BOOL isCertificate;
 @end
 
 @implementation AccessMainVC
@@ -78,6 +78,7 @@ static const NSString *doorKey = @"DoorKey";
 //成员管理
 - (void)memberMangeAction {
     MineAccessVC *mineAccessVC = [[MineAccessVC alloc] init];
+    mineAccessVC.isCertificate = self.isCertificate;
     [self.navigationController pushViewController:mineAccessVC animated:YES];
 }
 
@@ -96,8 +97,10 @@ static const NSString *doorKey = @"DoorKey";
         NSString *data = [dic objectForKey:@"data"];
         if (code.integerValue == 1) {
             if ([data isEqualToString:@"0"]) {
+                self.isCertificate = NO;
                 [self showCertificationAlert];
             }else {
+                self.isCertificate = YES;
                 self.topContentView.hidden = NO;
                 self.bottomCollectionView.hidden = NO;
                 [self.locationManager startUpdatingLocation];
@@ -215,7 +218,7 @@ static const NSString *doorKey = @"DoorKey";
                 self.selectButton = button;
                 self.TitleLabel.text = door.name;
                 CGFloat distance = [door.meter integerValue] / 1000.000;
-                self.detailLabel.text = [NSString stringWithFormat:@"%03fkm|%@|%@",distance,self.village.wdmc,door.azwz];
+                self.detailLabel.text = [NSString stringWithFormat:@"%fkm|%@|%@",distance,self.village.wdmc,door.azwz];
                 self.door = door;
             }else {
                 [button setBackgroundColor:[UIColor lightGrayColor]];
@@ -230,7 +233,7 @@ static const NSString *doorKey = @"DoorKey";
     self.door = door;
     self.TitleLabel.text = door.name;
      CGFloat distance = [door.meter integerValue] / 1000.000;
-    self.detailLabel.text = [NSString stringWithFormat:@"%03fkm|%@|%@",distance,self.village.wdmc,door.azwz];
+    self.detailLabel.text = [NSString stringWithFormat:@"%fkm|%@|%@",distance,self.village.wdmc,door.azwz];
     [button setBackgroundColor:NAVI_COLOR];
     [self.selectButton setBackgroundColor:[UIColor lightGrayColor]];
     self.selectButton = button;

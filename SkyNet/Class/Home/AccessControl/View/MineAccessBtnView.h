@@ -14,5 +14,6 @@ typedef void(^mineAccessBtnActionBlock) (void);
 @interface MineAccessBtnView : UIView
 @property (nonatomic, strong) UIImageView *accessImageView;
 @property (nonatomic, strong) UILabel *accessLabel;
+@property (nonatomic, strong) UILabel *remindLabel;
 @property (nonatomic, copy) mineAccessBtnActionBlock btnActionBlock;
 @end

@@ -56,9 +56,11 @@
         if (code.integerValue==1) {
             [STTextHudTool hideSTHud];
             [STTextHudTool showSuccessText:@"登录成功" withSecond:HudDelay];
+            [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"password"];
+            [ClientTool saveToken:responseObject[@"message"]];
             UserInfo *shareInstance = [UserInfo shareInstance];
             shareInstance = [UserInfo mj_objectWithKeyValues:responseObject[@"data"]];
-            NSLog(@"%@",[UserInfo shareInstance]);
             super.returnBlock(responseObject[@"message"]);
         }else{
             

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface MineAccessVC : BaseViewController
-
+@property (nonatomic, assign)BOOL isCertificate;
 @end

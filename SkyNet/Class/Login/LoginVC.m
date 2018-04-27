@@ -42,16 +42,8 @@
     MJWeakSelf
     LoginViewModel * loginViewModel =[LoginViewModel new];
     [loginViewModel setBlockWithReturnBlock:^(id returnValue) {
-        [ClientTool saveToken:returnValue];
         UITabBarController * tabBar =[ClientTool setupCustomTabBarVC];
         [weakSelf presentViewController:tabBar animated:YES completion:nil];
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"]) {
-            
-        }else {
-            [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
-            [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"password"];
-        }
-        
     } WithErrorBlock:^(id errorCode) {
         
    

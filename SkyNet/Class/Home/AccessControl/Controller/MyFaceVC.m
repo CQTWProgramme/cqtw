@@ -9,6 +9,9 @@
 #import "MyFaceVC.h"
 
 @interface MyFaceVC ()
+@property (weak, nonatomic) IBOutlet UIImageView *faceImageView;
+@property (weak, nonatomic) IBOutlet UILabel *qualityContentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *qualityEndLabel;
 
 @end
 
@@ -19,10 +22,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"我的人脸";
     [self setNavBackButtonImage:ImageNamed(@"back")];
-    [self setupUI];
 }
-
-- (void)setupUI {
+- (IBAction)updatePhotoAction:(id)sender {
     
 }
 

@@ -46,6 +46,16 @@
             NSDictionary *sourceDic = self.btnSourceArr[(i * col) + j];
             MineAccessBtnView *btnView = [[MineAccessBtnView alloc] init];
             btnView.accessImageView.image = [UIImage imageNamed:sourceDic[@"image"]];
+            if ((i==0) && (j==1)) {
+                btnView.remindLabel.hidden = NO;
+                if (self.isCertificate) {
+                    btnView.remindLabel.backgroundColor = RGB(114, 203, 80);
+                    btnView.remindLabel.text = @"已认证";
+                }else {
+                    btnView.remindLabel.backgroundColor = RGB(203, 80, 80);
+                    btnView.remindLabel.text = @"未认证";
+                }
+            }
             btnView.accessLabel.text = sourceDic[@"title"];
             btnView.btnActionBlock = ^{
                 switch ((i * col) + j) {
@@ -119,7 +129,7 @@
             if ([data isEqualToString:@"0"]) {
                 [self showCertificationAlert];
             }else {
-                
+                [STTextHudTool showSuccessText:@"已认证"];
             }
         }else {
             [STTextHudTool showErrorText:@"请求失败"];
