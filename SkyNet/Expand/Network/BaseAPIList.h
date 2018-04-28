@@ -154,6 +154,12 @@
 //用户申请房屋绑定请求接口
 #define getHouseDetail                      POST_INTERFACE(@"app/getMyHouseMembers")
 
+//根据经纬度获取离我最近的小区数据
+#define getNearbyAreaData                      POST_INTERFACE(@"app/getBranchInfoByLgLa")
+
+//根据经纬度获取离我最近的小区数据
+#define getAreaData                      POST_INTERFACE(@"app/getBranchInfoByLgLa")
+
 //房屋绑定审核查询
 #define selectAppUserHouse                      POST_INTERFACE(@"app/selectAppUserHouse")
 
@@ -162,6 +168,13 @@
 
 //开门记录
 #define openDoorHistory                      POST_INTERFACE(@"app/getOpenDoorRecord")
+
+//获取人脸信息
+#define getFaceData                      POST_INTERFACE(@"app/getLifePhoto")
+
+//更新人脸信息
+#define updateFaceData                      POST_INTERFACE(@"app/updateLifePhoto")
+
 
 //我的房屋
 #define myHouseList                      POST_INTERFACE(@"app/getHouseInfoList")

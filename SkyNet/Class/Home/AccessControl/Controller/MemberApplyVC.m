@@ -22,15 +22,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"MemberManageVCNotification" object:nil];
+    self.title = @"待审核列表";
+    [self setNavBackButtonImage:ImageNamed(@"back")];
+    self.view.backgroundColor = BACKGROUND_COLOR;
+    [self setupTableView];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getResultAction:) name:@"MemberManageVCNotification" object:nil];
 }
 
-- (void)getResultAction:(NSNotification *)notification {
-    NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
-    if (type == 0) {
-        [self loadData];
-    }
-}
+//- (void)getResultAction:(NSNotification *)notification {
+//    NSInteger type = [[notification.userInfo objectForKey:@"type"] integerValue];
+//    if (type == 0) {
+//        [self loadData];
+//    }
+//}
 
 -(NSMutableArray *)dataArray {
     if (nil == _dataArray) {
@@ -48,6 +52,8 @@
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadData];
     }];
+    
+    [self.myTableView.mj_header beginRefreshing];
 }
 
 - (void)loadData {
@@ -75,13 +81,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MemberApplyCell *cell = [MemberApplyCell cellWithTableView:tableView];
-    MemberApplyModel *model = self.dataArray[indexPath.row];
-    cell.model = model;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (self.dataArray.count > 0) {
+        MemberApplyModel *model = self.dataArray[indexPath.row];
+        cell.model = model;
+    }
+    
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 60;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

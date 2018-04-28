@@ -71,7 +71,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-Sh-VxK">
-                    <rect key="frame" x="35" y="94" width="305" height="381.5"/>
+                    <rect key="frame" x="35" y="40" width="305" height="435.5"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                     </userDefinedRuntimeAttributes>
@@ -93,7 +93,7 @@
                 <constraint firstItem="ONq-Bb-tQ0" firstAttribute="leading" secondItem="kFt-it-86W" secondAttribute="trailing" id="eJW-F5-REk"/>
                 <constraint firstItem="ONq-Bb-tQ0" firstAttribute="top" secondItem="8CK-Sh-VxK" secondAttribute="bottom" constant="15" id="f4g-mC-hX6"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="8CK-Sh-VxK" secondAttribute="trailing" constant="35" id="fLX-cW-VQ0"/>
-                <constraint firstItem="8CK-Sh-VxK" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="74" id="mJF-op-zLL"/>
+                <constraint firstItem="8CK-Sh-VxK" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="mJF-op-zLL"/>
                 <constraint firstItem="xHs-vU-4qm" firstAttribute="top" secondItem="slj-BH-TtS" secondAttribute="bottom" constant="10" id="mTe-Zy-JBN"/>
                 <constraint firstItem="slj-BH-TtS" firstAttribute="top" secondItem="ONq-Bb-tQ0" secondAttribute="bottom" constant="20" id="qjq-5x-w4K"/>
                 <constraint firstItem="8CK-Sh-VxK" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="35" id="rgS-5G-lkR"/>

@@ -11,6 +11,7 @@
 #import "MyHouseListCell.h"
 #import "ACViewModel.h"
 #import "MyHouseDetailVC.h"
+#import "AddHouseVC.h"
 
 @interface MyHousrListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -24,8 +25,28 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"我的房屋";
     [self setNavBackButtonImage:ImageNamed(@"back")];
+    [self createRightItem];
     [self.view addSubview:self.myTableView];
 }
+
+-(void)createRightItem{
+    
+    UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame=CGRectMake(0,0,25,25);
+    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
+    
+    [rightBtn addTarget:self action:@selector(addHouseAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
+- (void)addHouseAction {
+    AddHouseVC *addVC = [[AddHouseVC alloc] init];
+    [self.navigationController pushViewController:addVC animated:YES];
+}
+
 
 -(NSMutableArray *)dataArray {
     if (nil == _dataArray) {

@@ -101,6 +101,30 @@
     }];
 }
 
+-(void)uploadFaceImgWithFileImg:(NSData *)fileImg featureId:(NSString *)featureId{
+    [STTextHudTool loadingWithTitle:@"图片上传中..."];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 20;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
+    NSDictionary * param =@{@"featureId":featureId};
+    [manager POST:updateFaceData parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // 设置时间格式
+        [formatter setDateFormat:@"yyyyMMddHHmmss"];
+        NSString *dateString = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString  stringWithFormat:@"%@.jpg", dateString];
+        [formData appendPartWithFileData:fileImg name:@"fileImg" fileName:fileName mimeType:@"image/jpeg"]; //
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        super.returnBlock(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [STTextHudTool showErrorText:@"上传失败"];
+    }];
+}
+
 -(void)getMessageWithFileImg:(NSData *)fileImg {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 20;
@@ -467,6 +491,31 @@
     }]; 
 }
 
+-(void)acGetFaceImageData {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    [[AFNetAPIClient sharedJsonClient].setRequest(getFaceData).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+    } progress:^(NSProgress *progress) {
+        [STTextHudTool hideSTHud];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool hideSTHud];
+    }]; 
+}
+
+-(void)acUpdateFaceImageWithFeatureId:(NSString *)featureId FacePicture:(UIImage *)facePicture {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"featureId": featureId,@"facePicture":facePicture};
+    [[AFNetAPIClient sharedJsonClient].setRequest(updateFaceData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+    } progress:^(NSProgress *progress) {
+        [STTextHudTool hideSTHud];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool hideSTHud];
+    }]; 
+}
+
 -(void)getMyHouseListData {
     [STTextHudTool loadingWithTitle:@"加载中..."];
     [[AFNetAPIClient sharedJsonClient].setRequest(myHouseList).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
@@ -484,30 +533,13 @@
     [[AFNetAPIClient sharedJsonClient].setRequest(selectAppUserHouse).RequestType(Post).Parameters(nil) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];
-        NSString * code=responseObject[@"code"];
-        if (code.integerValue==1) {
-            NSMutableArray *mutableArr = [NSMutableArray array];
-            if (responseObject[@"data"] != [NSNull null]) {
-                NSArray *data = responseObject[@"data"];
-                if (data.count > 0) {
-                    for (NSDictionary *dic in data) {
-                        VillageApplyModel *model = [VillageApplyModel mj_objectWithKeyValues:dic];
-                        [mutableArr addObject:model];
-                    }
-                }
-            }
-            super.returnBlock(mutableArr);
-        }else {
-            [STTextHudTool showErrorText:responseObject[@"message"]];
-        }
+        super.returnBlock(responseObject);
         
     } progress:^(NSProgress *progress) {
-        
+        [STTextHudTool hideSTHud];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        [STTextHudTool showErrorText:@"获取住宅申请数据失败"];
-        
+        [STTextHudTool hideSTHud];
     }]; 
 }
 
@@ -542,6 +574,36 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [STTextHudTool showErrorText:@"开门失败"];
+    }];
+}
+
+-(void)acGetNearbyAreaDataWithLatitude:(NSString *)latitude longitude:(NSString *)longitude {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"latitude": latitude,@"longitude":longitude};
+    [[AFNetAPIClient sharedJsonClient].setRequest(getNearbyAreaData).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+        
+    } progress:^(NSProgress *progress) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool showErrorText:@"请求失败"];
+    }];
+}
+
+-(void)acGetAreaDataWithkey:(NSString *)disName {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"disName": disName};
+    [[AFNetAPIClient sharedJsonClient].setRequest(selectBranchList).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+        
+    } progress:^(NSProgress *progress) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    
     }];
 }
 @end

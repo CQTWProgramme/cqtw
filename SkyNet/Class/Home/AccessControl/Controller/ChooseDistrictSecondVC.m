@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavBackButtonImage:ImageNamed(@"back")];
-    self.title=@"门禁";
+    self.title=@"请选择";
     self.view.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:self.myTableView];
     [self setupHeaderView];
@@ -61,7 +61,7 @@
     detailLabel.text = self.address;
     detailLabel.textColor = [UIColor blackColor];
     detailLabel.font = [UIFont systemFontOfSize:10];
-    
+
     [header addSubview:titleLabel];
     [header addSubview:detailLabel];
     

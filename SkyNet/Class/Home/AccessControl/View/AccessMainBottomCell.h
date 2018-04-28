@@ -11,4 +11,5 @@
 @interface AccessMainBottomCell : UICollectionViewCell
 @property (nonatomic, assign) BOOL isLastCell;
 @property (nonatomic, strong) ACVillageModel *model;
+@property (nonatomic, assign) BOOL isShowLocation;
 @end

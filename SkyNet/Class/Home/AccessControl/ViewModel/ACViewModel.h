@@ -92,11 +92,27 @@
  */
 -(void)acSaveUserHouseWithAreasId:(NSString *)areasId type:(NSInteger)type ly:(NSInteger)ly bz:(NSString *)bz;
 /**
+ 获取人脸信息
+ */
+-(void)acGetFaceImageData;
+/**
  更新人脸信息
  */
 -(void)acUpdateFaceImageWithFeatureId:(NSString *)featureId FacePicture:(UIImage *)facePicture;
 /**
+ 上传人脸图片
+ */
+-(void)uploadFaceImgWithFileImg:(NSData *)fileImg featureId:(NSString *)featureId;
+/**
  根据房屋Id,查询房屋下成员信息
  */
 -(void)acGetHouseDetialWithAreasId:(NSString *)areasId;
+/**
+ 根据经纬度获取离我最近的小区数据
+ */
+-(void)acGetNearbyAreaDataWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
+/**
+ 模糊搜索小区接口
+ */
+-(void)acGetAreaDataWithkey:(NSString *)disName;
 @end

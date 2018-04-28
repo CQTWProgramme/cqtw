@@ -36,6 +36,7 @@ static const NSString *doorKey = @"DoorKey";
 @property (nonatomic, strong) NSString *longitude;
 @property (weak, nonatomic) IBOutlet UIView *topContentView;
 @property (nonatomic, assign) BOOL isCertificate;
+@property (nonatomic, strong) ACVillageModel *neareastVillage;
 @end
 
 @implementation AccessMainVC
@@ -165,18 +166,27 @@ static const NSString *doorKey = @"DoorKey";
  }
 
 - (void)loadDataWithLatitude:(NSString *)latitude Longitude:(NSString *)longitude {
+    MJWeakSelf
     ACViewModel *viewModel = [ACViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
-         self.selectedIndex = 0;
-        [self.bottomCollectionView.mj_header endRefreshing];
-        if (self.dataArray.count > 0) {
-            [self.dataArray removeAllObjects];
+         weakSelf.selectedIndex = 0;
+        [weakSelf.bottomCollectionView.mj_header endRefreshing];
+        if (weakSelf.dataArray.count > 0) {
+            [weakSelf.dataArray removeAllObjects];
         }
-        self.dataArray = returnValue;
-        if (self.dataArray.count > 0) {
-            [self setupScrollerViewWithIndex:0];
-            [self.bottomCollectionView reloadData];
+        weakSelf.dataArray = returnValue;
+        NSMutableArray *disArray = [NSMutableArray array];
+        if (weakSelf.dataArray.count > 0) {
+            for (ACVillageModel *model in weakSelf.dataArray) {
+                NSNumber *number = [NSNumber numberWithDouble:[weakSelf getDistanceWithLongitude:model.wdjd latitude:model.wdwd]];
+                [disArray addObject:number];
+            }
+            [weakSelf setupScrollerViewWithIndex:0];
+            [weakSelf.bottomCollectionView reloadData];
         }
+        NSNumber *neareast = [disArray valueForKeyPath:@"@min.doubleValue"];
+        NSInteger index = [disArray indexOfObject:neareast];
+        weakSelf.neareastVillage = weakSelf.dataArray[index];
     } WithErrorBlock:^(id errorCode) {
         
     } WithFailureBlock:^{
@@ -184,6 +194,13 @@ static const NSString *doorKey = @"DoorKey";
     }];
     
     [viewModel requestDataWithLatitude:latitude Longitude:longitude];
+}
+
+-(CLLocationDistance )getDistanceWithLongitude:(NSString *)longitude latitude:(NSString *)latitude {
+    CLLocation *orig = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
+    CLLocation *dist = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    
+    return [orig distanceFromLocation:dist];
 }
 
 - (void)setupScrollerViewWithIndex:(NSInteger)index {
@@ -307,6 +324,11 @@ static const NSString *doorKey = @"DoorKey";
         cell.selected = NO;
     }
     cell.model = self.dataArray[indexPath.row];
+    if (self.neareastVillage == self.dataArray[indexPath.row]) {
+        cell.isShowLocation = YES;
+    }else {
+        cell.isShowLocation = NO;
+    }
     cell.isLastCell = NO;
     return cell;
 }

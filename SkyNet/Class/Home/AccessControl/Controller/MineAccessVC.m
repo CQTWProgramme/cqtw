@@ -13,7 +13,8 @@
 #import "AccessRecordVC.h"
 #import "MyFaceVC.h"
 #import "MyHousrListVC.h"
-
+#import "HouseBindVC.h"
+#import "MemberApplyVC.h"
 @interface MineAccessVC ()
 @property(nonatomic, strong) NSArray *btnSourceArr;
 @end
@@ -71,13 +72,13 @@
                         [weakSelf toRecordVC];
                         break;
                     case 3:
-                        NSLog(@"点击了4");
+                        [weakSelf toMemberApplyVC];
                         break;
                     case 4:
                         [weakSelf toHouseListVC];
                         break;
                     case 5:
-                        NSLog(@"点击了6");
+                        [weakSelf toBindVC];
                         break;
                     default:
                         break;
@@ -104,9 +105,19 @@
     return _btnSourceArr;
 }
 
+- (void)toMemberApplyVC {
+    MemberApplyVC *vc = [[MemberApplyVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)toMyFaceVC {
     MyFaceVC *myfaceVC = [[MyFaceVC alloc] init];
     [self.navigationController pushViewController:myfaceVC animated:YES];
+}
+
+- (void)toBindVC {
+    HouseBindVC *bindVC = [[HouseBindVC alloc] init];
+    [self.navigationController pushViewController:bindVC animated:YES];
 }
 
 - (void)toRecordVC {

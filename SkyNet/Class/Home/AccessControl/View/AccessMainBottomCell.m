@@ -12,6 +12,7 @@
 @interface AccessMainBottomCell ()
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *centerImageView;
+@property (nonatomic, strong) UIImageView *locationImageView;
 @end
 @implementation AccessMainBottomCell
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -26,11 +27,13 @@
     [super layoutSubviews];
     self.centerImageView.frame = CGRectMake((self.width - 15) / 2, (self.height - 15) / 2, 15, 15);
     self.contentLabel.frame = CGRectMake(5, 0, self.contentView.frame.size.width - 10, self.height);
+    self.locationImageView.frame = CGRectMake(self.width - 30, self.height - 30, 20, 20);
 }
 
 - (void)setupViews {
     [self.contentView addSubview:self.contentLabel];
     [self.contentView addSubview:self.centerImageView];
+    [self.contentView addSubview:self.locationImageView];
 }
 
 -(UILabel *)contentLabel {
@@ -52,9 +55,24 @@
     return _centerImageView;
 }
 
+-(UIImageView *)locationImageView {
+    if (nil == _locationImageView) {
+        _locationImageView = [[UIImageView alloc] init];
+        _locationImageView.hidden = YES;
+        _locationImageView.image = [UIImage imageNamed:@"location"];
+        _locationImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _locationImageView;
+}
+
 -(void)setModel:(ACVillageModel *)model {
     _model = model;
     self.contentLabel.text = _model.wdmc;
+}
+
+-(void)setIsShowLocation:(BOOL)isShowLocation {
+    _isShowLocation = isShowLocation;
+    self.locationImageView.hidden = !_isShowLocation;
 }
 
 -(void)setIsLastCell:(BOOL)isLastCell {

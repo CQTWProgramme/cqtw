@@ -18,6 +18,15 @@
 		4A54F49220932B65008A4589 /* OpenDoorHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F49020932B64008A4589 /* OpenDoorHistoryCell.m */; };
 		4A54F49520932BB4008A4589 /* MyHouseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A54F49420932BB4008A4589 /* MyHouseListModel.m */; };
 		4A5765AC208EC3DA004EC8AC /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5765AB208EC3DA004EC8AC /* UserInfo.m */; };
+		4A6A241F20941E5B002B8B21 /* HouseBindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A241E20941E5B002B8B21 /* HouseBindVC.m */; };
+		4A6A242220941FEF002B8B21 /* HouseBindListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A242120941FEF002B8B21 /* HouseBindListCell.m */; };
+		4A6A242520942018002B8B21 /* HouseBindListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A242420942018002B8B21 /* HouseBindListModel.m */; };
+		4A6A242D20942A85002B8B21 /* HouseBindListDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A242C20942A85002B8B21 /* HouseBindListDetailVC.m */; };
+		4A6A243020944599002B8B21 /* AddHouseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A242F20944599002B8B21 /* AddHouseVC.m */; };
+		4A6A243320944ACD002B8B21 /* SearchNearbyListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A243220944ACD002B8B21 /* SearchNearbyListModel.m */; };
+		4A6A243620944B38002B8B21 /* SearchNearbtListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A243520944B38002B8B21 /* SearchNearbtListCell.m */; };
+		4A6A243920945574002B8B21 /* SearchListResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A243820945574002B8B21 /* SearchListResultModel.m */; };
+		4A6A243C20945652002B8B21 /* SearchListResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A243B20945652002B8B21 /* SearchListResultCell.m */; };
 		880360F41F91D9FB00A1A2F1 /* FacilityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */; };
 		880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F61F91E9C500A1A2F1 /* EvevtListModel.m */; };
 		880360FA1F921F2400A1A2F1 /* NetDetailDistrictCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880360F91F921F2400A1A2F1 /* NetDetailDistrictCell.m */; };
@@ -360,6 +369,24 @@
 		4A54F49420932BB4008A4589 /* MyHouseListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseListModel.m; sourceTree = "<group>"; };
 		4A5765AA208EC3DA004EC8AC /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		4A5765AB208EC3DA004EC8AC /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		4A6A241D20941E5B002B8B21 /* HouseBindVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseBindVC.h; sourceTree = "<group>"; };
+		4A6A241E20941E5B002B8B21 /* HouseBindVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseBindVC.m; sourceTree = "<group>"; };
+		4A6A242020941FEF002B8B21 /* HouseBindListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseBindListCell.h; sourceTree = "<group>"; };
+		4A6A242120941FEF002B8B21 /* HouseBindListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseBindListCell.m; sourceTree = "<group>"; };
+		4A6A242320942018002B8B21 /* HouseBindListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseBindListModel.h; sourceTree = "<group>"; };
+		4A6A242420942018002B8B21 /* HouseBindListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseBindListModel.m; sourceTree = "<group>"; };
+		4A6A242B20942A85002B8B21 /* HouseBindListDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseBindListDetailVC.h; sourceTree = "<group>"; };
+		4A6A242C20942A85002B8B21 /* HouseBindListDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseBindListDetailVC.m; sourceTree = "<group>"; };
+		4A6A242E20944599002B8B21 /* AddHouseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddHouseVC.h; sourceTree = "<group>"; };
+		4A6A242F20944599002B8B21 /* AddHouseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddHouseVC.m; sourceTree = "<group>"; };
+		4A6A243120944ACD002B8B21 /* SearchNearbyListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchNearbyListModel.h; sourceTree = "<group>"; };
+		4A6A243220944ACD002B8B21 /* SearchNearbyListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchNearbyListModel.m; sourceTree = "<group>"; };
+		4A6A243420944B38002B8B21 /* SearchNearbtListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchNearbtListCell.h; sourceTree = "<group>"; };
+		4A6A243520944B38002B8B21 /* SearchNearbtListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchNearbtListCell.m; sourceTree = "<group>"; };
+		4A6A243720945574002B8B21 /* SearchListResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchListResultModel.h; sourceTree = "<group>"; };
+		4A6A243820945574002B8B21 /* SearchListResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchListResultModel.m; sourceTree = "<group>"; };
+		4A6A243A20945652002B8B21 /* SearchListResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchListResultCell.h; sourceTree = "<group>"; };
+		4A6A243B20945652002B8B21 /* SearchListResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchListResultCell.m; sourceTree = "<group>"; };
 		880360F21F91D9FB00A1A2F1 /* FacilityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacilityDetailListModel.h; sourceTree = "<group>"; };
 		880360F31F91D9FB00A1A2F1 /* FacilityDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacilityDetailListModel.m; sourceTree = "<group>"; };
 		880360F51F91E9C500A1A2F1 /* EvevtListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvevtListModel.h; sourceTree = "<group>"; };
@@ -1321,6 +1348,12 @@
 				880DC1F02093E6B2008DB7DC /* FamilyMemberVC.m */,
 				880DC1F22093E6C7008DB7DC /* RenterVC.h */,
 				880DC1F32093E6C7008DB7DC /* RenterVC.m */,
+				4A6A241D20941E5B002B8B21 /* HouseBindVC.h */,
+				4A6A241E20941E5B002B8B21 /* HouseBindVC.m */,
+				4A6A242B20942A85002B8B21 /* HouseBindListDetailVC.h */,
+				4A6A242C20942A85002B8B21 /* HouseBindListDetailVC.m */,
+				4A6A242E20944599002B8B21 /* AddHouseVC.h */,
+				4A6A242F20944599002B8B21 /* AddHouseVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1362,6 +1395,12 @@
 				880DC1F62093EAB9008DB7DC /* MyHouseDetailModel.m */,
 				880DC1F82093EBB2008DB7DC /* HouseDetailMemberModel.h */,
 				880DC1F92093EBB2008DB7DC /* HouseDetailMemberModel.m */,
+				4A6A242320942018002B8B21 /* HouseBindListModel.h */,
+				4A6A242420942018002B8B21 /* HouseBindListModel.m */,
+				4A6A243120944ACD002B8B21 /* SearchNearbyListModel.h */,
+				4A6A243220944ACD002B8B21 /* SearchNearbyListModel.m */,
+				4A6A243720945574002B8B21 /* SearchListResultModel.h */,
+				4A6A243820945574002B8B21 /* SearchListResultModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1408,6 +1447,12 @@
 				4A54F48E20932B10008A4589 /* MyHouseListCell.m */,
 				880DC1FB2093F3AD008DB7DC /* HouseDetailMemberCell.h */,
 				880DC1FC2093F3AD008DB7DC /* HouseDetailMemberCell.m */,
+				4A6A242020941FEF002B8B21 /* HouseBindListCell.h */,
+				4A6A242120941FEF002B8B21 /* HouseBindListCell.m */,
+				4A6A243420944B38002B8B21 /* SearchNearbtListCell.h */,
+				4A6A243520944B38002B8B21 /* SearchNearbtListCell.m */,
+				4A6A243A20945652002B8B21 /* SearchListResultCell.h */,
+				4A6A243B20945652002B8B21 /* SearchListResultCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2397,10 +2442,12 @@
 				88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */,
 				4A54F48F20932B10008A4589 /* MyHouseListCell.m in Sources */,
 				BF73388A1F77DB6C0000FB8A /* AnDetailView.m in Sources */,
+				4A6A242D20942A85002B8B21 /* HouseBindListDetailVC.m in Sources */,
 				BF0C322F1F6774EB009FC882 /* NSString+Base64.m in Sources */,
 				8871C2F81FCC0D7800126E6A /* SearchResultDeviceModel.m in Sources */,
 				880DC1F12093E6B2008DB7DC /* FamilyMemberVC.m in Sources */,
 				BF34EEAC1F49CEBF00E05DF3 /* RequestParaTool.m in Sources */,
+				4A6A243920945574002B8B21 /* SearchListResultModel.m in Sources */,
 				BFE3AF891F79E22F00C90C36 /* AboutUsVC.m in Sources */,
 				BFA8C7B91F4BE1C5003A0BEE /* TADotView.m in Sources */,
 				4A5765AC208EC3DA004EC8AC /* UserInfo.m in Sources */,
@@ -2411,6 +2458,7 @@
 				BF0C32161F6772EC009FC882 /* NSString+Size.m in Sources */,
 				BFFA0A0C1F7A685A0019CFA8 /* EventCell.m in Sources */,
 				BF3F8CFA1F6AC76A000EA801 /* NextGroupVC.m in Sources */,
+				4A6A243320944ACD002B8B21 /* SearchNearbyListModel.m in Sources */,
 				88299C741F7CC80D0070067C /* MonitorItemModel.m in Sources */,
 				BFFA09F81F7A60C40019CFA8 /* MDMultipleSegmentLayout.m in Sources */,
 				880EF0D51FBD2FC200776D11 /* HomeSearchAFVC.m in Sources */,
@@ -2445,6 +2493,7 @@
 				BF0C32321F67BC26009FC882 /* LoginViewModel.m in Sources */,
 				888864B81FC7F8B800D1D9B4 /* HomeSearchVideoCell.m in Sources */,
 				BF0C325C1F67CE48009FC882 /* HomeCell.m in Sources */,
+				4A6A243C20945652002B8B21 /* SearchListResultCell.m in Sources */,
 				BF0C32641F67CE6C009FC882 /* AdvModel.m in Sources */,
 				8871C2FB1FCC0ECD00126E6A /* SearchResultVideoModel.m in Sources */,
 				BF34EEAF1F49CEBF00E05DF3 /* CityModel.m in Sources */,
@@ -2456,11 +2505,13 @@
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
 				880360F71F91E9C500A1A2F1 /* EvevtListModel.m in Sources */,
 				88299C6D1F7CC44E0070067C /* MonitorVC.m in Sources */,
+				4A6A243620944B38002B8B21 /* SearchNearbtListCell.m in Sources */,
 				888EBFBF1FB82E69006F8CCE /* NSDate+PGCategory.m in Sources */,
 				BF73387E1F77D3460000FB8A /* NetDetailView.m in Sources */,
 				888EBF9B1FB7C987006F8CCE /* MemberControlModel.m in Sources */,
 				88F9C5691F8CC71500039A08 /* AccessControlVC.m in Sources */,
 				888EBFAD1FB7F505006F8CCE /* AccessDetailCell.m in Sources */,
+				4A6A242220941FEF002B8B21 /* HouseBindListCell.m in Sources */,
 				BF84BB061F5C5A14000FB4D8 /* UIViewAdditions.m in Sources */,
 				886AEC781FCD0D70007E59E9 /* MoreHistoryVC.m in Sources */,
 				BFA8C7C91F4C8A89003A0BEE /* RegisterView.m in Sources */,
@@ -2471,6 +2522,7 @@
 				88D829E51F7E00A9007A2406 /* LatticePointDetailModel.m in Sources */,
 				BF73387B1F77D31E0000FB8A /* NetDetailVC.m in Sources */,
 				888EBFCF1FB82F22006F8CCE /* PGPickerColumnView.m in Sources */,
+				4A6A242520942018002B8B21 /* HouseBindListModel.m in Sources */,
 				BF0C32191F6772EC009FC882 /* STTextHud.m in Sources */,
 				88CE3F321F7AB46B0075DCD9 /* LatticePointDetailVC.m in Sources */,
 				883EDBA01FB000BC00C84016 /* ACVillageModel.m in Sources */,
@@ -2608,6 +2660,7 @@
 				88D829E21F7DE8B3007A2406 /* EquipmentModel.m in Sources */,
 				880EF0CB1FBD247400776D11 /* UIView+PYSearchExtension.m in Sources */,
 				BF34EB371F49CDB600E05DF3 /* main.m in Sources */,
+				4A6A243020944599002B8B21 /* AddHouseVC.m in Sources */,
 				8803611E1F93B52200A1A2F1 /* MonitorSecondCustomGroupCell.m in Sources */,
 				BF34EEAB1F49CEBF00E05DF3 /* AFNetAPIClient.m in Sources */,
 				88FDD1FB1F94C1F500946C38 /* MemberApplyCell.m in Sources */,
@@ -2632,6 +2685,7 @@
 				BFFA09F71F7A60C40019CFA8 /* MDFlipCollectionView.m in Sources */,
 				88F9C56F1F8CC7A200039A08 /* ACVIew.m in Sources */,
 				880361031F9386D600A1A2F1 /* MonitorViewModel.m in Sources */,
+				4A6A241F20941E5B002B8B21 /* HouseBindVC.m in Sources */,
 				BF84BAE81F5C5767000FB4D8 /* AlarmMsgVC.m in Sources */,
 				BFFA0A001F7A623B0019CFA8 /* EventVC.m in Sources */,
 				881547AC1F8DDFE0000F2C84 /* PublicinteractionVC.m in Sources */,
