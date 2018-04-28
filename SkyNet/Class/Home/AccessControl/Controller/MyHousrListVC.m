@@ -10,6 +10,7 @@
 #import "MyHouseListModel.h"
 #import "MyHouseListCell.h"
 #import "ACViewModel.h"
+#import "MyHouseDetailVC.h"
 
 @interface MyHousrListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -99,5 +100,13 @@
         listCell.index = indexPath.row + 1;
     }
     return listCell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MyHouseListModel *model = self.dataArray[indexPath.row];
+    MyHouseDetailVC *detailVC = [[MyHouseDetailVC alloc] init];
+    detailVC.areasId = model.areasId;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 @end

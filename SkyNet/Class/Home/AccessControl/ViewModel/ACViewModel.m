@@ -529,4 +529,19 @@
         
     }]; 
 }
+
+-(void)acGetHouseDetialWithAreasId:(NSString *)areasId {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"areasId": areasId};
+    [[AFNetAPIClient sharedJsonClient].setRequest(getHouseDetail).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+        
+    } progress:^(NSProgress *progress) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [STTextHudTool showErrorText:@"开门失败"];
+    }];
+}
 @end

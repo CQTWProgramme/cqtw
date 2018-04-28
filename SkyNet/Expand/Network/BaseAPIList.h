@@ -151,6 +151,9 @@
 //用户申请房屋绑定请求接口
 #define saveUserHouse                      POST_INTERFACE(@"app/saveUserHouse")
 
+//用户申请房屋绑定请求接口
+#define getHouseDetail                      POST_INTERFACE(@"app/getMyHouseMembers")
+
 //房屋绑定审核查询
 #define selectAppUserHouse                      POST_INTERFACE(@"app/selectAppUserHouse")
 

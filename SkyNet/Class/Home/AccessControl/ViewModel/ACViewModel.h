@@ -91,4 +91,12 @@
  用户申请房屋绑定请求接口
  */
 -(void)acSaveUserHouseWithAreasId:(NSString *)areasId type:(NSInteger)type ly:(NSInteger)ly bz:(NSString *)bz;
+/**
+ 更新人脸信息
+ */
+-(void)acUpdateFaceImageWithFeatureId:(NSString *)featureId FacePicture:(UIImage *)facePicture;
+/**
+ 根据房屋Id,查询房屋下成员信息
+ */
+-(void)acGetHouseDetialWithAreasId:(NSString *)areasId;
 @end

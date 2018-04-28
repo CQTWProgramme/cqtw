@@ -23,6 +23,7 @@
     self.title = @"我的人脸";
     [self setNavBackButtonImage:ImageNamed(@"back")];
 }
+
 - (IBAction)updatePhotoAction:(id)sender {
     
 }

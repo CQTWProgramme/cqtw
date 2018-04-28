@@ -47,6 +47,14 @@
 		8806FA2D1FC51D5A00906D67 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8806FA2C1FC51D5A00906D67 /* libbz2.tbd */; };
 		8806FA2F1FC51D6A00906D67 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8806FA2E1FC51D6A00906D67 /* libz.tbd */; };
 		8806FA311FC51D7E00906D67 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8806FA301FC51D7E00906D67 /* libstdc++.6.0.9.tbd */; };
+		880DC1EA2093E2BF008DB7DC /* MyHouseDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1E82093E2BF008DB7DC /* MyHouseDetailVC.m */; };
+		880DC1EB2093E2BF008DB7DC /* MyHouseDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880DC1E92093E2BF008DB7DC /* MyHouseDetailVC.xib */; };
+		880DC1EE2093E68B008DB7DC /* HouseOwnerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1ED2093E68B008DB7DC /* HouseOwnerVC.m */; };
+		880DC1F12093E6B2008DB7DC /* FamilyMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1F02093E6B2008DB7DC /* FamilyMemberVC.m */; };
+		880DC1F42093E6C7008DB7DC /* RenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1F32093E6C7008DB7DC /* RenterVC.m */; };
+		880DC1F72093EAB9008DB7DC /* MyHouseDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1F62093EAB9008DB7DC /* MyHouseDetailModel.m */; };
+		880DC1FA2093EBB2008DB7DC /* HouseDetailMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1F92093EBB2008DB7DC /* HouseDetailMemberModel.m */; };
+		880DC1FD2093F3AD008DB7DC /* HouseDetailMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 880DC1FC2093F3AD008DB7DC /* HouseDetailMemberCell.m */; };
 		880EF0B51FBD232300776D11 /* HomeSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0B41FBD232300776D11 /* HomeSearchVC.m */; };
 		880EF0C51FBD247400776D11 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 880EF0B81FBD247400776D11 /* NSBundle+PYSearchExtension.m */; };
 		880EF0C61FBD247400776D11 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 880EF0B91FBD247400776D11 /* PYSearch.bundle */; };
@@ -403,6 +411,21 @@
 		8806FA2C1FC51D5A00906D67 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		8806FA2E1FC51D6A00906D67 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8806FA301FC51D7E00906D67 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		880DC1E72093E2BF008DB7DC /* MyHouseDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseDetailVC.h; sourceTree = "<group>"; };
+		880DC1E82093E2BF008DB7DC /* MyHouseDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseDetailVC.m; sourceTree = "<group>"; };
+		880DC1E92093E2BF008DB7DC /* MyHouseDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHouseDetailVC.xib; sourceTree = "<group>"; };
+		880DC1EC2093E68B008DB7DC /* HouseOwnerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseOwnerVC.h; sourceTree = "<group>"; };
+		880DC1ED2093E68B008DB7DC /* HouseOwnerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseOwnerVC.m; sourceTree = "<group>"; };
+		880DC1EF2093E6B2008DB7DC /* FamilyMemberVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FamilyMemberVC.h; sourceTree = "<group>"; };
+		880DC1F02093E6B2008DB7DC /* FamilyMemberVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FamilyMemberVC.m; sourceTree = "<group>"; };
+		880DC1F22093E6C7008DB7DC /* RenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenterVC.h; sourceTree = "<group>"; };
+		880DC1F32093E6C7008DB7DC /* RenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RenterVC.m; sourceTree = "<group>"; };
+		880DC1F52093EAB9008DB7DC /* MyHouseDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHouseDetailModel.h; sourceTree = "<group>"; };
+		880DC1F62093EAB9008DB7DC /* MyHouseDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHouseDetailModel.m; sourceTree = "<group>"; };
+		880DC1F82093EBB2008DB7DC /* HouseDetailMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetailMemberModel.h; sourceTree = "<group>"; };
+		880DC1F92093EBB2008DB7DC /* HouseDetailMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetailMemberModel.m; sourceTree = "<group>"; };
+		880DC1FB2093F3AD008DB7DC /* HouseDetailMemberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseDetailMemberCell.h; sourceTree = "<group>"; };
+		880DC1FC2093F3AD008DB7DC /* HouseDetailMemberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseDetailMemberCell.m; sourceTree = "<group>"; };
 		880EF0B31FBD232300776D11 /* HomeSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchVC.h; sourceTree = "<group>"; };
 		880EF0B41FBD232300776D11 /* HomeSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchVC.m; sourceTree = "<group>"; };
 		880EF0B71FBD247400776D11 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
@@ -1289,6 +1312,15 @@
 				4A54F481209303F4008A4589 /* MyFaceVC.xib */,
 				4A54F48A20932ABC008A4589 /* MyHousrListVC.h */,
 				4A54F48B20932ABC008A4589 /* MyHousrListVC.m */,
+				880DC1E72093E2BF008DB7DC /* MyHouseDetailVC.h */,
+				880DC1E82093E2BF008DB7DC /* MyHouseDetailVC.m */,
+				880DC1E92093E2BF008DB7DC /* MyHouseDetailVC.xib */,
+				880DC1EC2093E68B008DB7DC /* HouseOwnerVC.h */,
+				880DC1ED2093E68B008DB7DC /* HouseOwnerVC.m */,
+				880DC1EF2093E6B2008DB7DC /* FamilyMemberVC.h */,
+				880DC1F02093E6B2008DB7DC /* FamilyMemberVC.m */,
+				880DC1F22093E6C7008DB7DC /* RenterVC.h */,
+				880DC1F32093E6C7008DB7DC /* RenterVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1326,6 +1358,10 @@
 				4A54F485209319EC008A4589 /* OpenDoorHistoryModel.m */,
 				4A54F49320932BB4008A4589 /* MyHouseListModel.h */,
 				4A54F49420932BB4008A4589 /* MyHouseListModel.m */,
+				880DC1F52093EAB9008DB7DC /* MyHouseDetailModel.h */,
+				880DC1F62093EAB9008DB7DC /* MyHouseDetailModel.m */,
+				880DC1F82093EBB2008DB7DC /* HouseDetailMemberModel.h */,
+				880DC1F92093EBB2008DB7DC /* HouseDetailMemberModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1370,6 +1406,8 @@
 				4A54F49020932B64008A4589 /* OpenDoorHistoryCell.m */,
 				4A54F48D20932B10008A4589 /* MyHouseListCell.h */,
 				4A54F48E20932B10008A4589 /* MyHouseListCell.m */,
+				880DC1FB2093F3AD008DB7DC /* HouseDetailMemberCell.h */,
+				880DC1FC2093F3AD008DB7DC /* HouseDetailMemberCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2258,6 +2296,7 @@
 				8815477E1F8DC048000F2C84 /* CommunityPoliceVC.xib in Resources */,
 				88C192181FBC32AB0048DEF1 /* UMSocialSDKPromptResources.bundle in Resources */,
 				88CE3F331F7AB46B0075DCD9 /* LatticePointDetailVC.xib in Resources */,
+				880DC1EB2093E2BF008DB7DC /* MyHouseDetailVC.xib in Resources */,
 				BF34EB421F49CDB600E05DF3 /* Assets.xcassets in Resources */,
 				881547AD1F8DDFE0000F2C84 /* PublicinteractionVC.xib in Resources */,
 				BF34EB401F49CDB600E05DF3 /* Main.storyboard in Resources */,
@@ -2352,6 +2391,7 @@
 				88F9C57B1F8CCA5900039A08 /* ACDistrictItemCell.m in Sources */,
 				88DA3BBA1F9CEE0C0085F8FA /* ChooseDistrictThirdVC.m in Sources */,
 				BF0C32AC1F6A16F3009FC882 /* CollectviewChooseCell.m in Sources */,
+				880DC1F72093EAB9008DB7DC /* MyHouseDetailModel.m in Sources */,
 				BFFA09F91F7A60C40019CFA8 /* MDMultipleSegmentView.m in Sources */,
 				BF0C32BB1F6A16F4009FC882 /* SingleChooseTable.m in Sources */,
 				88BE42C71F9D8F5C00FA0067 /* DataEntryImgPicCell.m in Sources */,
@@ -2359,6 +2399,7 @@
 				BF73388A1F77DB6C0000FB8A /* AnDetailView.m in Sources */,
 				BF0C322F1F6774EB009FC882 /* NSString+Base64.m in Sources */,
 				8871C2F81FCC0D7800126E6A /* SearchResultDeviceModel.m in Sources */,
+				880DC1F12093E6B2008DB7DC /* FamilyMemberVC.m in Sources */,
 				BF34EEAC1F49CEBF00E05DF3 /* RequestParaTool.m in Sources */,
 				BFE3AF891F79E22F00C90C36 /* AboutUsVC.m in Sources */,
 				BFA8C7B91F4BE1C5003A0BEE /* TADotView.m in Sources */,
@@ -2474,6 +2515,7 @@
 				BF34EDEE1F49CEBF00E05DF3 /* LSXButton.m in Sources */,
 				BFFA09FD1F7A62090019CFA8 /* EquipmentVC.m in Sources */,
 				88299C781F7CD2E10070067C /* MonitorDetailListVC.m in Sources */,
+				880DC1FD2093F3AD008DB7DC /* HouseDetailMemberCell.m in Sources */,
 				BF0C326C1F67FA8B009FC882 /* AnFangVC.m in Sources */,
 				886AEC751FCCFEFA007E59E9 /* SearchHistoryCell.m in Sources */,
 				880361181F93B4DF00A1A2F1 /* MonitorSecondDistrictPointCell.m in Sources */,
@@ -2499,8 +2541,10 @@
 				BFFA09FA1F7A60C40019CFA8 /* MDMultipleSegmentViewCell.m in Sources */,
 				BF34EDF91F49CEBF00E05DF3 /* SDWaitingView.m in Sources */,
 				BF0C322C1F6774EB009FC882 /* GTMBase64.m in Sources */,
+				880DC1FA2093EBB2008DB7DC /* HouseDetailMemberModel.m in Sources */,
 				880EF0D11FBD2F8100776D11 /* THCSegmentedView.m in Sources */,
 				BF0C325B1F67CE48009FC882 /* HeadCell.m in Sources */,
+				880DC1EA2093E2BF008DB7DC /* MyHouseDetailVC.m in Sources */,
 				BFA8C7C61F4C88BA003A0BEE /* RegisterVC.m in Sources */,
 				BF0C326F1F68C254009FC882 /* AFItemCell.m in Sources */,
 				88FDD1E11F94984B00946C38 /* AccessManiTopCell.m in Sources */,
@@ -2509,6 +2553,7 @@
 				880EF0E61FBD329300776D11 /* NSString+THCAddtion.m in Sources */,
 				BF34EDF81F49CEBF00E05DF3 /* SDPhotoBrowser.m in Sources */,
 				8803610F1F93B20500A1A2F1 /* MonitorSecondView.m in Sources */,
+				880DC1EE2093E68B008DB7DC /* HouseOwnerVC.m in Sources */,
 				BF34EB3D1F49CDB600E05DF3 /* ViewController.m in Sources */,
 				BF0C322B1F6774EB009FC882 /* CusMD5.m in Sources */,
 				BF34EEE61F49E58200E05DF3 /* SLTabBar.m in Sources */,
@@ -2590,6 +2635,7 @@
 				BF84BAE81F5C5767000FB4D8 /* AlarmMsgVC.m in Sources */,
 				BFFA0A001F7A623B0019CFA8 /* EventVC.m in Sources */,
 				881547AC1F8DDFE0000F2C84 /* PublicinteractionVC.m in Sources */,
+				880DC1F42093E6C7008DB7DC /* RenterVC.m in Sources */,
 				88F9C56C1F8CC77300039A08 /* ACViewModel.m in Sources */,
 				BF84BB041F5C5A14000FB4D8 /* UIView+FTCornerdious.m in Sources */,
 				881322F61F7B5DA600AE83FF /* BaseModel.m in Sources */,
