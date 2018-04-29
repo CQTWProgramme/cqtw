@@ -46,16 +46,28 @@
 -(void)saveInfoAction {
     LoginViewModel *viewModel = [LoginViewModel new];
     [viewModel setBlockWithReturnBlock:^(id returnValue) {
-        
+        NSString * code=returnValue[@"code"];
+        if (code.integerValue==1) {
+            [STTextHudTool showSuccessText:@"修改成功"];
+            [UserInfo shareInstance].yhxb = [self.yhxb integerValue];
+            [UserInfo shareInstance].bz = self.signText.text;
+            [UserInfo shareInstance].yhxm = self.nicknameText.text;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoChangeSuccess" object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else {
+            [STTextHudTool showErrorText:returnValue[@"message"]];
+        }
     } WithErrorBlock:^(id errorCode) {
-        
+        [STTextHudTool showErrorText:@"操作失败"];
     } WithFailureBlock:^{
-        
+        [STTextHudTool showErrorText:@"操作失败"];
     }];
     [viewModel updateUserInfoWithYhxm:self.nicknameText.text yhxb:self.yhxb enablepushapp:self.enablepushapp bz:self.signText.text];
 }
 
 -(void)createUI{
+    
+    self.enablepushapp = [NSString stringWithFormat:@"%@",@([UserInfo shareInstance].enablepushapp)];
     
     UIScrollView * scollView=[UIScrollView new];
     [self.view addSubview:scollView];
@@ -154,7 +166,12 @@
     
     _sexBtn=[UIButton new];
     _sexBtn.titleLabel.font=[UIFont systemFontOfSize:14];
-    [_sexBtn setTitle:@"男" forState:UIControlStateNormal];
+    if ([UserInfo shareInstance].yhxb == 0) {
+        [_sexBtn setTitle:@"男" forState:UIControlStateNormal];
+    }else {
+        [_sexBtn setTitle:@"女" forState:UIControlStateNormal];
+    }
+    self.yhxb = [NSString stringWithFormat:@"%@",@([UserInfo shareInstance].yhxb)];
     [_sexBtn setTitleColor:RGBA(187, 186, 194, 1) forState:UIControlStateNormal];
     _sexBtn.backgroundColor=[UIColor clearColor];
     _sexBtn.titleLabel.font=[UIFont systemFontOfSize:14];
@@ -210,6 +227,7 @@
     _signText.keyboardType=UITextBorderStyleNone;
     _signText.font=[UIFont systemFontOfSize:14];
     _signText.textColor=[UIColor darkGrayColor];
+    _signText.text = [UserInfo shareInstance].bz;
     [scollView addSubview:_signText];
     _signText.sd_layout
     .leftSpaceToView(signLabel,MARGIN)
@@ -232,8 +250,10 @@
         
         if (buttonIndex==1) {
             [_sexBtn setTitle:@"男" forState:UIControlStateNormal];
+            self.yhxb = @"0";
         }else if (buttonIndex==2){
             [_sexBtn setTitle:@"女" forState:UIControlStateNormal];
+            self.yhxb = @"1";
         }
     } otherButtonTitles:@"男", @"女",nil];
     
@@ -243,6 +263,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*

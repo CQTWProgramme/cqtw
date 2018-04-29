@@ -45,19 +45,30 @@
 }
 
 - (void)setupUI {
-    UITextField *searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 74, SCREEN_WIDTH - 70, 30)];
+    UIView *backView = [[UIView alloc] init];
+    backView.frame = CGRectMake(10, 74, SCREEN_WIDTH - 80, 30);
+    backView.layer.borderWidth = 1.0;
+    backView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    backView.layer.masksToBounds = YES;
+    backView.layer.cornerRadius = 15;
+    backView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backView];
+    
+    UIImageView *searchImageView = [[UIImageView alloc] init];
+    searchImageView.frame = CGRectMake(10, 7.5, 15, 15);
+    searchImageView.image = [UIImage imageNamed:@"home_titlesearch"];
+    [backView addSubview:searchImageView];
+    
+    UITextField *searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, SCREEN_WIDTH - 110, 30)];
     searchTextField.placeholder = @"输入小区名称";
-    searchTextField.layer.borderWidth = 1.0;
-    searchTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    searchTextField.layer.masksToBounds = YES;
-    searchTextField.layer.cornerRadius = 5.0;
-    [self.view addSubview:searchTextField];
+    [backView addSubview:searchTextField];
     self.searchTextField = searchTextField;
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    searchBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [searchBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    searchBtn.layer.cornerRadius = 5;
+    searchBtn.layer.cornerRadius = 15;
     searchBtn.layer.masksToBounds = YES;
     searchBtn.layer.borderColor = [UIColor blueColor].CGColor;
     searchBtn.layer.borderWidth = 1.0;

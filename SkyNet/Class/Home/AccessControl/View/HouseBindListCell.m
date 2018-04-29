@@ -38,8 +38,8 @@
 //子控件布局
 - (void)layoutSubviews{
     self.areaLabel.frame = CGRectMake(10, 10, 200, 20);
-    self.houseLabel.frame = CGRectMake(10, 35, 200, 20);
-    self.stateLabel.frame = CGRectMake(SCREEN_WIDTH - 50, 20, 40, 20);
+    self.houseLabel.frame = CGRectMake(10, 35, SCREEN_WIDTH - 75, 20);
+    self.stateLabel.frame = CGRectMake(SCREEN_WIDTH - 60, 20, 50, 20);
     self.underlineView.frame = CGRectMake(0, 59.5, SCREEN_WIDTH, 0.5);
 }
 
@@ -76,10 +76,16 @@
     self.houseLabel.text =_model.houseName;
     if (_model.auditState == 1) {
         self.stateLabel.text = @"审核中";
-    }else if (_model.auditState == 2) {
+        self.stateLabel.backgroundColor = RGB(76, 155, 245);
+        self.stateLabel.frame = CGRectMake(SCREEN_WIDTH - 60, 20, 50, 20);
+    }else if(_model.auditState == 2) {
         self.stateLabel.text = @"已通过";
+        self.stateLabel.backgroundColor = RGB(73, 213, 116);
+        self.stateLabel.frame = CGRectMake(SCREEN_WIDTH - 60, 20, 50, 20);
     }else if (_model.auditState == 3) {
         self.stateLabel.text = @"未通过";
+        self.stateLabel.backgroundColor = RGB(245, 175, 76);
+        self.stateLabel.frame = CGRectMake(SCREEN_WIDTH - 60, 20, 50, 20);
     }
 }
 

@@ -81,6 +81,6 @@
 -(void)setModel:(SearchNearbyListModel *)model {
     _model = model;
     self.nameLabel.text = _model.disName;
-    self.meterLabel.text = [NSString stringWithFormat:@"(%@)",_model.meter];
+    self.meterLabel.text = [NSString stringWithFormat:@"(%@)",@([_model.meter floatValue]/1000)];
 }
 @end

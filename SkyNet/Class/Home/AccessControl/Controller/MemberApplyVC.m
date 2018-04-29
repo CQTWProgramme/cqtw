@@ -10,6 +10,7 @@
 #import "MemberApplyCell.h"
 #import "ACViewModel.h"
 #import "MemberApplyModel.h"
+#import "AuditDetailVC.h"
 
 @interface MemberApplyVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
@@ -96,7 +97,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"选中了第%@行",@(indexPath.row));
+    AuditDetailVC *detailVC = [[AuditDetailVC alloc] init];
+    MemberApplyModel *model = self.dataArray[indexPath.row];
+    detailVC.model = model;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

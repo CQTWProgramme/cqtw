@@ -31,11 +31,15 @@
     [self.view addSubview:topBackImageView];
     
     UILabel *topTitleLabel = [[UILabel alloc] init];
+    topTitleLabel.font = [UIFont systemFontOfSize:15];
+    topTitleLabel.textColor = [UIColor darkGrayColor];
     topTitleLabel.textAlignment = NSTextAlignmentCenter;
     [topBackImageView addSubview:topTitleLabel];
     topTitleLabel.text = self.model.disName;
     
     UILabel *topContentLabel = [[UILabel alloc] init];
+    topContentLabel.font = [UIFont systemFontOfSize:13];
+    topContentLabel.textColor = [UIColor lightGrayColor];
     topContentLabel.textAlignment = NSTextAlignmentCenter;
     [topBackImageView addSubview:topContentLabel];
     topContentLabel.text = self.model.houseName;
@@ -91,9 +95,12 @@
         [self.view addSubview:contentView];
         
         UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.font = [UIFont systemFontOfSize:15];
+        titleLabel.textColor = [UIColor darkGrayColor];
         [contentView addSubview:titleLabel];
         
         UILabel *contentLabel = [[UILabel alloc] init];
+        contentLabel.font = [UIFont systemFontOfSize:13];
         [contentView addSubview:contentLabel];
         
         [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -149,13 +156,13 @@
             titleLabel.text = @"审核状态:";
             if (self.model.auditState == 1) {
                 contentLabel.text = @"审核中";
-                contentLabel.backgroundColor = RGB(114, 203, 80);
+                contentLabel.backgroundColor = RGB(76, 155, 245);
             }else if (self.model.auditState == 2) {
                 contentLabel.text = @"已通过";
-                contentLabel.backgroundColor = RGB(203, 80, 80);
+                contentLabel.backgroundColor = RGB(73, 213, 116);
             }else {
                 contentLabel.text = @"未通过";
-                contentLabel.backgroundColor = RGB(114, 203, 80);
+                contentLabel.backgroundColor = RGB(245, 175, 76);
             }
             contentLabel.textAlignment = NSTextAlignmentCenter;
             contentLabel.textColor = [UIColor whiteColor];
@@ -176,7 +183,7 @@
     
     [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view).with.offset(20);
-        make.right.equalTo(weakSelf.view).with.offset(20);
+        make.right.equalTo(weakSelf.view).with.offset(-20);
         make.height.equalTo(@(40));
         make.top.equalTo(sectionLabel.mas_bottom).with.offset(6 * 41 + 30);
     }];

@@ -192,6 +192,8 @@
 		88F9C57F1F8CD16900039A08 /* AccessControlDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C57D1F8CD16900039A08 /* AccessControlDetailVC.m */; };
 		88F9C5801F8CD16900039A08 /* AccessControlDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F9C57E1F8CD16900039A08 /* AccessControlDetailVC.xib */; };
 		88F9C5831F8CD60B00039A08 /* ACDetailItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F9C5821F8CD60B00039A08 /* ACDetailItemCell.m */; };
+		88FB041D2094A0830037A658 /* AuditDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FB041C2094A0830037A658 /* AuditDetailVC.m */; };
+		88FB04202094B32E0037A658 /* AuditDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FB041F2094B32E0037A658 /* AuditDetailModel.m */; };
 		88FDD1D81F94634000946C38 /* AccessMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FDD1D61F94634000946C38 /* AccessMainVC.m */; };
 		88FDD1D91F94634000946C38 /* AccessMainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FDD1D71F94634000946C38 /* AccessMainVC.xib */; };
 		88FDD1DD1F94637D00946C38 /* AccessRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FDD1DB1F94637D00946C38 /* AccessRecordVC.m */; };
@@ -682,6 +684,10 @@
 		88F9C57E1F8CD16900039A08 /* AccessControlDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccessControlDetailVC.xib; sourceTree = "<group>"; };
 		88F9C5811F8CD60B00039A08 /* ACDetailItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACDetailItemCell.h; sourceTree = "<group>"; };
 		88F9C5821F8CD60B00039A08 /* ACDetailItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACDetailItemCell.m; sourceTree = "<group>"; };
+		88FB041B2094A0830037A658 /* AuditDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuditDetailVC.h; sourceTree = "<group>"; };
+		88FB041C2094A0830037A658 /* AuditDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuditDetailVC.m; sourceTree = "<group>"; };
+		88FB041E2094B32E0037A658 /* AuditDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuditDetailModel.h; sourceTree = "<group>"; };
+		88FB041F2094B32E0037A658 /* AuditDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuditDetailModel.m; sourceTree = "<group>"; };
 		88FDD1D51F94634000946C38 /* AccessMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccessMainVC.h; sourceTree = "<group>"; };
 		88FDD1D61F94634000946C38 /* AccessMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccessMainVC.m; sourceTree = "<group>"; };
 		88FDD1D71F94634000946C38 /* AccessMainVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccessMainVC.xib; sourceTree = "<group>"; };
@@ -1354,6 +1360,8 @@
 				4A6A242C20942A85002B8B21 /* HouseBindListDetailVC.m */,
 				4A6A242E20944599002B8B21 /* AddHouseVC.h */,
 				4A6A242F20944599002B8B21 /* AddHouseVC.m */,
+				88FB041B2094A0830037A658 /* AuditDetailVC.h */,
+				88FB041C2094A0830037A658 /* AuditDetailVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1401,6 +1409,8 @@
 				4A6A243220944ACD002B8B21 /* SearchNearbyListModel.m */,
 				4A6A243720945574002B8B21 /* SearchListResultModel.h */,
 				4A6A243820945574002B8B21 /* SearchListResultModel.m */,
+				88FB041E2094B32E0037A658 /* AuditDetailModel.h */,
+				88FB041F2094B32E0037A658 /* AuditDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2500,6 +2510,7 @@
 				88F9C57F1F8CD16900039A08 /* AccessControlDetailVC.m in Sources */,
 				BF3F8CFD1F6AC9BF000EA801 /* NextModel.m in Sources */,
 				884701561F8DAD5800B44D68 /* PoliceHomeCell.m in Sources */,
+				88FB041D2094A0830037A658 /* AuditDetailVC.m in Sources */,
 				8845DED71F8A332A00AB8917 /* EditInstallerVC.m in Sources */,
 				BF84BB011F5C5A14000FB4D8 /* UIImage+colorImage.m in Sources */,
 				BF84BAE21F5C56F7000FB4D8 /* QBQuSegmentView.m in Sources */,
@@ -2650,6 +2661,7 @@
 				88FDD1F21F94BFC800946C38 /* MemberApplyVC.m in Sources */,
 				8814733F1F7FD4980064DF4D /* AFDistrictModel.m in Sources */,
 				881547A21F8DD7BA000F2C84 /* PoliceInteractionVC.m in Sources */,
+				88FB04202094B32E0037A658 /* AuditDetailModel.m in Sources */,
 				880623B91FB5FEB600D89409 /* SelectDistrictSecondModel.m in Sources */,
 				BF84BB021F5C5A14000FB4D8 /* UILabel+LXLabel.m in Sources */,
 				BFE3AF831F79E0AF00C90C36 /* MyInfo.m in Sources */,

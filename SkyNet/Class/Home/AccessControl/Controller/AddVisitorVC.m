@@ -21,6 +21,8 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *houseLabel;
 @property (strong, nonatomic) IBOutlet UITextField *visitorNameTextField;
+@property (weak, nonatomic) IBOutlet UIView *bottomContentView;
+
 @property (strong, nonatomic) IBOutlet UITextField *visitorNumTextField;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
@@ -56,7 +58,34 @@ static NSString *imgCellID = @"AddVisitorVCImgCellID";
     self.nameLabel.text = self.model.disName;
     self.houseLabel.text = self.model.houseName;
     [self setNavBackButtonImage:ImageNamed(@"back")];
+    [self setupBottomContentView];
     [self setupCollectionView];
+}
+
+-(void)setupBottomContentView {
+    for (NSInteger i = 0; i < 4; i++) {
+        UILabel *contentLabel = [[UILabel alloc] init];
+        contentLabel.textColor = [UIColor whiteColor];
+        contentLabel.font = [UIFont systemFontOfSize:13];
+        contentLabel.layer.cornerRadius = 10;
+        contentLabel.layer.masksToBounds = YES;
+        contentLabel.textAlignment = NSTextAlignmentCenter;
+        contentLabel.backgroundColor = RGB(73, 213, 116);
+        if (i == 0) {
+            contentLabel.text = @"玩";
+            contentLabel.frame = CGRectMake(10, 10, 25, 20);
+        }else if (i == 1) {
+            contentLabel.text = @"串门";
+            contentLabel.frame = CGRectMake(40, 10, 40, 20);
+        }else if (i == 2) {
+            contentLabel.text = @"聚会";
+            contentLabel.frame = CGRectMake(85, 10, 40, 20);
+        }else {
+            contentLabel.text = @"有事";
+            contentLabel.frame = CGRectMake(130, 10, 40, 20);
+        }
+        [self.bottomContentView addSubview:contentLabel];
+    }
 }
 
 -(NSMutableArray *)imgDataArray {

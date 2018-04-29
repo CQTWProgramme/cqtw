@@ -12,7 +12,7 @@
 
 +(BOOL)isPhoneNumber:(NSString *)patternStr{
     
-    NSString *pattern = @"^1[34578]\\d{9}$";
+    NSString *pattern = @"^1[345789]\\d{9}$";
     NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil];
     NSArray *results = [regex matchesInString:patternStr options:0 range:NSMakeRange(0, patternStr.length)];
     return results.count > 0;

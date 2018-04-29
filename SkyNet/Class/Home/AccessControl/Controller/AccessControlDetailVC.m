@@ -26,7 +26,6 @@
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self setNavBackButtonImage:ImageNamed(@"back")];
     [self setupTableView];
-    [self loadData];
 }
 
 -(NSMutableArray *)dataArray {
@@ -45,6 +44,8 @@
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadData];
     }];
+    
+    [self.myTableView.mj_header beginRefreshing];
 }
 
 -(void)loadData {
@@ -54,7 +55,27 @@
             [self.dataArray removeAllObjects];
         }
         [self.myTableView.mj_header endRefreshing];
-        [self.dataArray addObjectsFromArray:returnValue];
+        NSMutableArray *dataArray = returnValue;
+        
+        if (dataArray.count > 0) {
+            for (NSInteger i = 0; i < dataArray.count; i++) {
+                AccessDetailModel *model = dataArray[i];
+                NSMutableArray *tempArray = [NSMutableArray array];
+                [tempArray addObject:model];
+                
+                for (NSInteger j = i+1; j < dataArray.count; j++) {
+                    AccessDetailModel *jmodel = dataArray[j];
+                    
+                    if ([model.disName isEqualToString:jmodel.disName]) {
+                        [tempArray addObject:jmodel];
+                        [dataArray removeObjectAtIndex:j];
+                        j -= 1;
+                    }
+                }
+                
+                [self.dataArray addObject:tempArray];
+            }
+        }
         [self.myTableView reloadData];
     } WithErrorBlock:^(id errorCode) {
         [self.myTableView.mj_header endRefreshing];
@@ -65,13 +86,32 @@
 }
 
 #pragma tableviewDataSource
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataArray.count;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.dataArray[section] count];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 35)];
+    headerView.backgroundColor = BACKGROUND_COLOR;
+    
+    AccessDetailModel *model = self.dataArray[section][0];
+    
+    UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH - 10, 35)];
+    headLabel.font = [UIFont systemFontOfSize:13];
+    headLabel.textColor = [UIColor lightGrayColor];
+    headLabel.text = [NSString stringWithFormat:@"%@(%@)",model.disName,@([self.dataArray[section] count])];
+    [headerView addSubview:headLabel];
+    return headerView;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AccessDetailCell *cell = [AccessDetailCell cellWithTableView:tableView];
-    AccessDetailModel *model = self.dataArray[indexPath.row];
+    AccessDetailModel *model = self.dataArray[indexPath.section][indexPath.row];
     cell.model = model;
     return cell;
 }
@@ -82,7 +122,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    AccessDetailModel *model = self.dataArray[indexPath.row];
+    AccessDetailModel *model = self.dataArray[indexPath.section][indexPath.row];
     AddVisitorVC *addVC = [[AddVisitorVC alloc] init];
     addVC.model = model;
     [self.navigationController pushViewController:addVC animated:YES];

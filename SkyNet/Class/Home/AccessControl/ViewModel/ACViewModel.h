@@ -47,7 +47,7 @@
 /**
  查询申请审核人详细信息
  */
--(void)getApplyUserInfoDataWithUserHouseId:(NSInteger)userHouseId;
+-(void)getApplyUserInfoDataWithUserHouseId:(NSString *)userHouseId;
 /**
  查询拥有小区及房屋信息
  */
@@ -115,4 +115,8 @@
  模糊搜索小区接口
  */
 -(void)acGetAreaDataWithkey:(NSString *)disName;
+/**
+ 房屋绑定申请审核接口
+ */
+-(void)acAuditApprovalOrRefusedToWithUserHouseId:(NSString *)userHouseId type:(NSString *)type reason:(NSString *)reason;
 @end

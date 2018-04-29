@@ -46,7 +46,7 @@
     
     [self.arrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(weakSelf.contentView);
-        make.left.equalTo(weakSelf.nameLabel.mas_right).with.offset(0);
+        make.left.equalTo(weakSelf.nameLabel.mas_right).with.offset(5);
     }];
 }
 

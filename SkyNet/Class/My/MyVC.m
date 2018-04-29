@@ -22,6 +22,11 @@
     [super viewDidLoad];
     self.title=@"我";
     [self.view addSubview:self.myView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetUserName) name:@"UserInfoChangeSuccess" object:nil];
+}
+
+-(void)resetUserName {
+    self.myView.nameLabel.text = [UserInfo shareInstance].yhxm;
 }
 
 -(void)selectRowWithIndex:(NSInteger)index{
@@ -78,6 +83,7 @@
                 [STTextHudTool loadingWithTitle:@"退出"];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
+                [ClientTool removeToken];
                 [UIApplication sharedApplication].keyWindow.rootViewController= [ClientTool  setupLogVC];
             }]];
             
@@ -89,6 +95,11 @@
     }
     return _myView;
 }
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

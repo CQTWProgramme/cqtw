@@ -256,26 +256,13 @@
     }];
 }
 
--(void)getApplyUserInfoDataWithUserHouseId:(NSInteger)userHouseId {
+-(void)getApplyUserInfoDataWithUserHouseId:(NSString *)userHouseId {
     [STTextHudTool loadingWithTitle:@"加载中..."];
-    NSDictionary * param =@{@"userHouseId": @(userHouseId)};
+    NSDictionary * param =@{@"userHouseId": userHouseId};
     [[AFNetAPIClient sharedJsonClient].setRequest(getApplyUserInfo).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         
         [STTextHudTool hideSTHud];
-        NSString * code=responseObject[@"code"];
-        if (code.integerValue==1) {
-            //            NSMutableArray *mutableArr = [NSMutableArray array];
-            //            if (responseObject[@"data"][@"entranceAreasChildList"] != [NSNull null]) {
-            //                NSArray *data = responseObject[@"data"][@"entranceAreasChildList"];
-            //                if (data.count > 0) {
-            //                    for (NSDictionary *dic in data) {
-            //                        SelectDistrictSecondModel *model = [SelectDistrictSecondModel mj_objectWithKeyValues:dic];
-            //                        [mutableArr addObject:model];
-            //                    }
-            //                }
-            //            }
-            //            super.returnBlock(mutableArr);
-        }
+        super.returnBlock(responseObject);
         
     } progress:^(NSProgress *progress) {
         
@@ -604,6 +591,21 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
     
+    }];
+}
+
+-(void)acAuditApprovalOrRefusedToWithUserHouseId:(NSString *)userHouseId type:(NSString *)type reason:(NSString *)reason {
+    [STTextHudTool loadingWithTitle:@"加载中..."];
+    NSDictionary * param =@{@"userHouseId": userHouseId,@"type":type,@"reason":reason};
+    [[AFNetAPIClient sharedJsonClient].setRequest(auditApprovalOrRefusedTo).RequestType(Post).Parameters(param) startRequestWithSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [STTextHudTool hideSTHud];
+        super.returnBlock(responseObject);
+        
+    } progress:^(NSProgress *progress) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 @end

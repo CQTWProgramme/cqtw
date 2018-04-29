@@ -33,7 +33,7 @@
     
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame=CGRectMake(0,0,25,25);
-    [rightBtn setBackgroundImage:ImageNamed(@"home_search") forState:UIControlStateNormal];
+    [rightBtn setBackgroundImage:ImageNamed(@"title_add") forState:UIControlStateNormal];
     
     [rightBtn addTarget:self action:@selector(addHouseAction) forControlEvents:UIControlEventTouchUpInside];
     

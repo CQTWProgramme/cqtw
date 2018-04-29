@@ -39,7 +39,7 @@
 -(UITableView *)myTableView {
     if (nil == _myTableView) {
         _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT + NavigationBar_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT - NavigationBar_HEIGHT) style:UITableViewStylePlain];
-        _myTableView.backgroundColor = BACKGROUND_COLOR;
+        _myTableView.backgroundColor = [UIColor whiteColor];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.rowHeight=44;
@@ -50,7 +50,7 @@
 
 -(void)setupHeaderView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 70)];
-    header.backgroundColor = [UIColor lightGrayColor];
+    header.backgroundColor = BACKGROUND_COLOR;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 20, 25)];
     titleLabel.text = self.disName;

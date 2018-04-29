@@ -8,6 +8,7 @@
 
 #import "AccessMainVC.h"
 #import "AccessMainBottomCell.h"
+#import "AccessManiTopCell.h"
 #import "AccessControlDetailVC.h"
 #import "ChooseDistrictFirstVC.h"
 #import "DataEntryVC.h"
@@ -20,14 +21,19 @@
 #define BottomButtonH 80
 
 static NSString *bottomCellID = @"AccessMainBottomCellID";
+static NSString *topCellID = @"AccessMainTopCellID";
 static const NSString *doorKey = @"DoorKey";
 @interface AccessMainVC ()<UICollectionViewDelegate,UICollectionViewDataSource,CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *buttonScrollerView;
 @property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *topCollectionView;
+@property (weak, nonatomic) IBOutlet UIScrollView *doorScrollerView;
+
 @property (strong, nonatomic) IBOutlet UICollectionView *bottomCollectionView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *topDataArray;
 @property (nonatomic, strong) ACVillageDoorModel *door;
 @property (nonatomic, strong) ACVillageModel *village;
 @property (nonatomic, strong) UIButton *selectButton;
@@ -48,6 +54,13 @@ static const NSString *doorKey = @"DoorKey";
     return _dataArray;
 }
 
+-(NSMutableArray *)topDataArray {
+    if (nil == _topDataArray) {
+        _topDataArray = [NSMutableArray array];
+    }
+    return _topDataArray;
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [self isNeedCertification];
 }
@@ -57,6 +70,7 @@ static const NSString *doorKey = @"DoorKey";
     self.title = @"门禁";
     [self setNavBackButtonImage:ImageNamed(@"back")];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.buttonScrollerView.showsHorizontalScrollIndicator = NO;
     [self createRightItem];
     [self setupBottomButton];
     [self setupLocation];
@@ -159,6 +173,7 @@ static const NSString *doorKey = @"DoorKey";
          self.latitude = [NSString stringWithFormat:@"%@",@(newLocation.coordinate.latitude)];
          self.longitude = [NSString stringWithFormat:@"%@",@(newLocation.coordinate.longitude)];
          [self.locationManager stopUpdatingLocation];
+         [self setupTopCollectionView];
          [self setupColectionView];
      }else {
          [STTextHudTool showErrorText:@"定位失败"];
@@ -213,6 +228,9 @@ static const NSString *doorKey = @"DoorKey";
     //添加按钮
     ACVillageModel *model = self.dataArray[index];
     self.village = model;
+    [self.topDataArray removeAllObjects];
+    [self.topDataArray addObjectsFromArray:self.village.doorInfo];
+    [self.topCollectionView reloadData];
     if (model.doorInfo.count > 0) {
         CGFloat sumWidth = 5.0f;
         for (NSInteger i = 0;i<model.doorInfo.count;i++) {
@@ -221,9 +239,10 @@ static const NSString *doorKey = @"DoorKey";
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [button setTitle:door.name forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont systemFontOfSize:13];
+            button.tag = i;
             button.layer.cornerRadius = 10;
             button.layer.masksToBounds = YES;
-            objc_setAssociatedObject(button, &doorKey, door, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            //objc_setAssociatedObject(button, &doorKey, door, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             [button addTarget:self action:@selector(chooseDoorAction:) forControlEvents:UIControlEventTouchUpInside];
             CGSize size = [door.name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName,nil]];
             button.frame = CGRectMake(sumWidth, 10, size.width + 10, 25);
@@ -233,27 +252,50 @@ static const NSString *doorKey = @"DoorKey";
             if (i == 0) {
                 [button setBackgroundColor:NAVI_COLOR];
                 self.selectButton = button;
-                self.TitleLabel.text = door.name;
-                CGFloat distance = [door.meter integerValue] / 1000.000;
-                self.detailLabel.text = [NSString stringWithFormat:@"%fkm|%@|%@",distance,self.village.wdmc,door.azwz];
                 self.door = door;
             }else {
                 [button setBackgroundColor:[UIColor lightGrayColor]];
             }
         }
     }
-    
 }
 
 - (void)chooseDoorAction:(UIButton *)button {
-    ACVillageDoorModel *door = objc_getAssociatedObject(button,&doorKey);
-    self.door = door;
-    self.TitleLabel.text = door.name;
-     CGFloat distance = [door.meter integerValue] / 1000.000;
-    self.detailLabel.text = [NSString stringWithFormat:@"%fkm|%@|%@",distance,self.village.wdmc,door.azwz];
+    if (button == self.selectButton) {
+        return;
+    }
+    //ACVillageDoorModel *door = objc_getAssociatedObject(button,&doorKey);
+    self.door = self.village.doorInfo[button.tag];
     [button setBackgroundColor:NAVI_COLOR];
     [self.selectButton setBackgroundColor:[UIColor lightGrayColor]];
     self.selectButton = button;
+    
+    [self.buttonScrollerView setContentOffset:CGPointMake(button.left - 10, 0) animated:YES];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:button.tag inSection:0];
+    [self.topCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.topCollectionView) {
+        NSMutableArray *contentArray = [NSMutableArray array];
+        for (UIView *view in self.buttonScrollerView.subviews) {
+            if ([view isKindOfClass:[UIButton class]]) {
+                [contentArray addObject:view];
+            }
+        }
+        
+        NSInteger i = scrollView.contentOffset.x / SCREEN_WIDTH;
+        UIButton *button = contentArray[i];
+        if (button == self.selectButton) {
+            return;
+        }
+        //ACVillageDoorModel *door = objc_getAssociatedObject(button,&doorKey);
+        self.door = self.village.doorInfo[button.tag];
+        [button setBackgroundColor:NAVI_COLOR];
+        [self.selectButton setBackgroundColor:[UIColor lightGrayColor]];
+        self.selectButton = button;
+        [self.buttonScrollerView setContentOffset:CGPointMake(button.left - 10, 0) animated:YES];
+    }
 }
 
 - (void)setupBottomButton {
@@ -297,40 +339,58 @@ static const NSString *doorKey = @"DoorKey";
     [self.bottomCollectionView.mj_header beginRefreshing];
 }
 
+-(void)setupTopCollectionView {
+    UICollectionViewFlowLayout *topLayout = [[UICollectionViewFlowLayout alloc] init];
+    topLayout.itemSize = CGSizeMake(SCREEN_WIDTH, 130);
+    topLayout.minimumLineSpacing = 0;
+    topLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
+    [self.topCollectionView setCollectionViewLayout:topLayout];
+    self.topCollectionView.backgroundColor = BACKGROUND_COLOR;
+    self.topCollectionView.pagingEnabled = YES;
+    self.topCollectionView.showsHorizontalScrollIndicator = NO;
+    self.topCollectionView.showsVerticalScrollIndicator = NO;
+    self.topCollectionView.backgroundColor = [UIColor whiteColor];
+    self.topCollectionView.delegate = self;
+    self.topCollectionView.dataSource = self;
+    [self.topCollectionView registerClass:[AccessManiTopCell class] forCellWithReuseIdentifier:topCellID];
+}
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    if (collectionView == self.bottomCollectionView) {
+        return self.dataArray.count;
+    }else {
+        return self.topDataArray.count;
+    }
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
-//    if (indexPath.row < self.dataArray.count) {
-//        if (indexPath.row == self.selectedIndex) {
-//            cell.selected = YES;
-//        }else {
-//            cell.selected = NO;
-//        }
-//        cell.model = self.dataArray[indexPath.row];
-//        cell.isLastCell = NO;
-//    }else {
-//        cell.isLastCell = YES;
-//    }
-    if (indexPath.row == self.selectedIndex) {
-        cell.selected = YES;
+    if (collectionView == self.bottomCollectionView) {
+        AccessMainBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottomCellID forIndexPath:indexPath];
+        if (indexPath.row == self.selectedIndex) {
+            cell.selected = YES;
+        }else {
+            cell.selected = NO;
+        }
+        cell.model = self.dataArray[indexPath.row];
+        if (self.neareastVillage == self.dataArray[indexPath.row]) {
+            cell.isShowLocation = YES;
+        }else {
+            cell.isShowLocation = NO;
+        }
+        cell.isLastCell = NO;
+        return cell;
     }else {
-        cell.selected = NO;
+        AccessManiTopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:topCellID forIndexPath:indexPath];
+        ACVillageDoorModel *model = self.topDataArray[indexPath.row];
+        cell.model = model;
+        cell.bottomContent = [NSString stringWithFormat:@"%@km|%@|%@",@([model.meter floatValue] / 1000),self.village.areaName,model.azwz];
+        return cell;
     }
-    cell.model = self.dataArray[indexPath.row];
-    if (self.neareastVillage == self.dataArray[indexPath.row]) {
-        cell.isShowLocation = YES;
-    }else {
-        cell.isShowLocation = NO;
-    }
-    cell.isLastCell = NO;
-    return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -344,9 +404,14 @@ static const NSString *doorKey = @"DoorKey";
 //        [self setupScrollerViewWithIndex:indexPath.row];
 //        [self.bottomCollectionView reloadData];
 //    }
-    self.selectedIndex = indexPath.row;
-    [self setupScrollerViewWithIndex:indexPath.row];
-    [self.bottomCollectionView reloadData];
+    if (collectionView == self.bottomCollectionView) {
+        self.selectedIndex = indexPath.row;
+        [self setupScrollerViewWithIndex:indexPath.row];
+        [self.bottomCollectionView reloadData];
+    }else {
+        self.door = self.topDataArray[indexPath.row];
+        [self sureOpenDoorAction];
+    }
 }
 
 //开门

@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *faceImageView;
 @property (weak, nonatomic) IBOutlet UILabel *qualityContentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *qualityEndLabel;
-@property (copy, nonatomic) NSString *faceFilePath;
 @property (strong, nonatomic) UIView *backCoverView;
 @property (strong, nonatomic) UIView *noticeView;
 @property (strong, nonatomic) NSTimer *noticeTimer;
@@ -134,12 +133,15 @@
     static NSInteger count = 5;
     if (count <= 0) {
         self.bottomButton.backgroundColor = [UIColor blueColor];
+        self.bottomButton.userInteractionEnabled = YES;
         [self.bottomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.bottomButton setTitle:@"我知道了" forState:UIControlStateNormal];
         [self.noticeTimer invalidate];
         self.noticeTimer = nil;
+        count = 6;
     }else {
         self.bottomButton.backgroundColor = [UIColor lightGrayColor];
+        self.bottomButton.userInteractionEnabled = NO;
         [self.bottomButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         NSString *titleString = [NSString stringWithFormat:@"%@我知道了",@(count)];
         [self.bottomButton setTitle:titleString forState:UIControlStateNormal];
@@ -206,10 +208,19 @@
         NSString * code=returnValue[@"code"];
         if (code.integerValue==1) {
             [STTextHudTool showErrorText:@"上传成功"];
-            self.faceFilePath = returnValue[@"data"];
-            [self.faceImageView sd_setImageWithURL:[NSURL URLWithString:self.faceFilePath] placeholderImage:[UIImage imageNamed:@""]];
+            double quality = [returnValue[@"data"][@"quality"] doubleValue];
+            double minQuality = [returnValue[@"data"][@"minQuality"] doubleValue];
+            NSString *facePicture = returnValue[@"data"][@"facepicture"];
+            self.featureId = returnValue[@"data"][@"featureId"];
+            self.qualityContentLabel.text = [NSString stringWithFormat:@"%@",@(quality)];
+            [self.faceImageView sd_setImageWithURL:[NSURL URLWithString:facePicture] placeholderImage:[UIImage imageNamed:@""]];
+            if (quality < minQuality) {
+                self.qualityEndLabel.text = @"(不符合标准)";
+            }else {
+                self.qualityEndLabel.text = @"(符合标准)";
+            }
         }else {
-            [STTextHudTool showErrorText:@"上传失败"];
+            [STTextHudTool showErrorText:returnValue[@"message"]];
         }
     } WithErrorBlock:^(id errorCode) {
         [STTextHudTool showErrorText:@"上传失败"];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddVisitorVC">
             <connections>
                 <outlet property="backCoverView" destination="DCD-25-jRB" id="KJR-q4-uYL"/>
+                <outlet property="bottomContentView" destination="rmC-OT-D48" id="7Wp-Y5-UPm"/>
                 <outlet property="bottomMessageView" destination="scy-Cj-dMn" id="8Bv-YP-ONZ"/>
                 <outlet property="dateLabel" destination="kr1-PU-UDJ" id="0AS-Fb-bQe"/>
                 <outlet property="houseLabel" destination="weI-aH-TQq" id="wor-Mh-KSj"/>
@@ -45,13 +46,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人脸识别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2V-gh-o29">
-                    <rect key="frame" x="10" y="342" width="355" height="16"/>
+                    <rect key="frame" x="10" y="378" width="355" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如您的门禁支持人脸识别，请您上传光线清晰的正面照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OL-JM-0D9">
-                    <rect key="frame" x="10" y="363" width="355" height="12"/>
+                    <rect key="frame" x="10" y="399" width="355" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" red="0.31764705879999999" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -230,7 +231,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qku-IS-NL0">
-                    <rect key="frame" x="20" y="470" width="335" height="40"/>
+                    <rect key="frame" x="20" y="506" width="335" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="0uJ-4z-Jki"/>
@@ -248,7 +249,7 @@
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="y39-3y-Awb">
-                    <rect key="frame" x="0.0" y="385" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="421" width="375" height="60"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="u5x-k7-AYU"/>
@@ -373,6 +374,13 @@
                         <outletCollection property="gestureRecognizers" destination="YZE-iG-6NG" appends="YES" id="K5q-ri-LIi"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmC-OT-D48">
+                    <rect key="frame" x="0.0" y="323" width="375" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="cSp-Ts-YNP"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -380,6 +388,7 @@
                 <constraint firstItem="scy-Cj-dMn" firstAttribute="top" secondItem="DCD-25-jRB" secondAttribute="bottom" id="2r2-EJ-G3y"/>
                 <constraint firstAttribute="trailing" secondItem="weI-aH-TQq" secondAttribute="trailing" constant="10" id="3Zc-b5-IRL"/>
                 <constraint firstItem="2Bc-Lj-v5r" firstAttribute="top" secondItem="CYP-5r-3eV" secondAttribute="bottom" constant="1" id="3gB-jp-SYG"/>
+                <constraint firstItem="rmC-OT-D48" firstAttribute="top" secondItem="Hig-tK-DaZ" secondAttribute="bottom" constant="1" id="3tn-Gb-FDu"/>
                 <constraint firstItem="weI-aH-TQq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="5nr-TI-fbj"/>
                 <constraint firstAttribute="trailing" secondItem="DCD-25-jRB" secondAttribute="trailing" id="6kk-vG-peb"/>
                 <constraint firstAttribute="trailing" secondItem="0OL-JM-0D9" secondAttribute="trailing" constant="10" id="7aA-HG-1dA"/>
@@ -387,6 +396,7 @@
                 <constraint firstItem="mdv-U0-O9S" firstAttribute="top" secondItem="weI-aH-TQq" secondAttribute="bottom" constant="11" id="Cbl-Dj-BCz"/>
                 <constraint firstItem="CYP-5r-3eV" firstAttribute="top" secondItem="9gt-TQ-rui" secondAttribute="bottom" constant="1" id="DeZ-Eg-gVC"/>
                 <constraint firstItem="9gt-TQ-rui" firstAttribute="top" secondItem="mdv-U0-O9S" secondAttribute="bottom" constant="1" id="EKw-EZ-feu"/>
+                <constraint firstItem="rmC-OT-D48" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="EUv-et-eHa"/>
                 <constraint firstAttribute="trailing" secondItem="y39-3y-Awb" secondAttribute="trailing" id="Edv-GJ-c0N"/>
                 <constraint firstItem="rsH-sA-I4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="GD4-Qs-ngu"/>
                 <constraint firstItem="mdv-U0-O9S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IRW-u0-ibU"/>
@@ -401,9 +411,9 @@
                 <constraint firstItem="CYP-5r-3eV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Uqc-gw-cEl"/>
                 <constraint firstItem="DCD-25-jRB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="VSb-r2-EAo"/>
                 <constraint firstAttribute="trailing" secondItem="mdv-U0-O9S" secondAttribute="trailing" id="Zcn-ZE-GXP"/>
-                <constraint firstItem="a2V-gh-o29" firstAttribute="top" secondItem="Hig-tK-DaZ" secondAttribute="bottom" constant="20" id="hWk-IH-jqs"/>
                 <constraint firstItem="Hig-tK-DaZ" firstAttribute="top" secondItem="2Bc-Lj-v5r" secondAttribute="bottom" constant="1" id="izP-BK-lfh"/>
                 <constraint firstItem="Hig-tK-DaZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="l0N-qE-TJC"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="rmC-OT-D48" secondAttribute="trailing" id="nbc-j1-7f3"/>
                 <constraint firstAttribute="trailing" secondItem="qku-IS-NL0" secondAttribute="trailing" constant="20" id="oXD-yu-RlF"/>
                 <constraint firstItem="scy-Cj-dMn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="omF-uQ-LMU"/>
                 <constraint firstAttribute="trailing" secondItem="2Bc-Lj-v5r" secondAttribute="trailing" id="q43-bM-n5r"/>
@@ -415,10 +425,11 @@
                 <constraint firstItem="2Bc-Lj-v5r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uzQ-I0-4w9"/>
                 <constraint firstAttribute="trailing" secondItem="9gt-TQ-rui" secondAttribute="trailing" id="vcd-OD-M70"/>
                 <constraint firstAttribute="trailing" secondItem="rsH-sA-I4H" secondAttribute="trailing" constant="10" id="w3d-z9-11x"/>
+                <constraint firstItem="a2V-gh-o29" firstAttribute="top" secondItem="rmC-OT-D48" secondAttribute="bottom" constant="15" id="xkD-kL-Z2E"/>
                 <constraint firstItem="rsH-sA-I4H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="zGS-0y-yWs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="49" y="-259"/>
+            <point key="canvasLocation" x="48.5" y="-259.5"/>
         </view>
         <tapGestureRecognizer id="3VX-uP-g3n" userLabel="时间">
             <connections>

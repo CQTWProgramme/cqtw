@@ -142,6 +142,9 @@
 //模糊搜索小区接口
 #define selectBranchList                      POST_INTERFACE(@"app/selectBranchList")
 
+//房屋绑定申请审核接口
+#define auditApprovalOrRefusedTo                      POST_INTERFACE(@"app/auditApprovalOrRefusedTo")
+
 //根据小区及扩张区域查询子级扩展区域数据接口
 #define selectChildList                      POST_INTERFACE(@"app/selectChildList")
 

@@ -10,4 +10,5 @@
 @class ACVillageDoorModel;
 @interface AccessManiTopCell : UICollectionViewCell
 @property (nonatomic, strong) ACVillageDoorModel *model;
+@property (nonatomic, copy) NSString *bottomContent;
 @end

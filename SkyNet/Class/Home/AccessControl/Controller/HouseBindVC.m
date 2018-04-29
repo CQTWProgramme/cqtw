@@ -49,7 +49,7 @@
     MJWeakSelf
     if (!_myTableView) {
         _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
-        _myTableView.backgroundColor = BACKGROUND_COLOR;
+        _myTableView.backgroundColor = [UIColor whiteColor];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.tableFooterView=[[UIView alloc]init];
@@ -116,12 +116,12 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.frame = CGRectMake(10, 0, SCREEN_WIDTH - 10, 30);
-    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.textColor = [UIColor darkGrayColor];
     titleLabel.font = [UIFont systemFontOfSize:15];
     
     UIView *titleView = [[UIView alloc] init];
     titleView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
-    titleView.backgroundColor = [UIColor lightGrayColor];
+    titleView.backgroundColor = BACKGROUND_COLOR;
     [titleView addSubview:titleLabel];
     
     if (section == 0) {
